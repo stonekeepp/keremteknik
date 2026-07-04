@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { InternalLinksSection } from "@/components/seo/InternalLinksSection";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import { getBlogRepository } from "@/lib/blog";
@@ -11,6 +12,10 @@ import {
   buildArticleJsonLd,
   buildBreadcrumbJsonLd,
 } from "@/lib/seo/json-ld";
+import {
+  getBlogCategoryServiceSlug,
+  getBlogPostInternalLinks,
+} from "@/lib/seo/internal-links";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/services/site";
 
@@ -42,6 +47,9 @@ export default async function BlogDetailPage({ params }: Params) {
   const related = allPublished
     .filter((p) => p.id !== post.id && p.category === post.category)
     .slice(0, 2);
+
+  const internalLinks = getBlogPostInternalLinks(post.category, post.slug);
+  const relatedServiceSlug = getBlogCategoryServiceSlug(post.category);
 
   const breadcrumbs = [
     { label: "Ana Sayfa", href: "/" },
@@ -122,6 +130,15 @@ export default async function BlogDetailPage({ params }: Params) {
               <Button href={`tel:${SITE.phoneTel}`} className="w-full mb-3">
                 Hemen Ara
               </Button>
+              {relatedServiceSlug && (
+                <Button
+                  href={`/hizmetlerimiz/${relatedServiceSlug}`}
+                  variant="outline"
+                  className="w-full mb-3"
+                >
+                  İlgili servis sayfası
+                </Button>
+              )}
               <Button href="/iletisim" variant="outline" className="w-full">
                 Servis Talebi Oluştur
               </Button>
@@ -142,6 +159,11 @@ export default async function BlogDetailPage({ params }: Params) {
           </section>
         )}
       </div>
+
+      <InternalLinksSection
+        heading={internalLinks.heading}
+        links={internalLinks.links}
+      />
     </>
   );
 }

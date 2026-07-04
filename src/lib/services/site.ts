@@ -28,6 +28,7 @@ export const FOOTER_CORPORATE = [
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/hizmetlerimiz", label: "Hizmetlerimiz" },
   { href: "/blog", label: "Blog" },
+  { href: "/sss", label: "SSS" },
   { href: "/iletisim", label: "İletişim" },
 ] as const;
 
@@ -357,8 +358,9 @@ export const CONTACT_SERVICE_TYPES = [
   "Diğer",
 ] as const;
 
-export const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80";
+export const HERO_IMAGE = "/images/hero-kerem-teknik-servis.png";
+
+export const SERVICES_HERO_IMAGE = "/images/hero-hizmetlerimiz-kerem-teknik.png";
 
 export const STATS = [
   { value: "15+", label: "Yıllık Deneyim", icon: "history" },
@@ -394,21 +396,26 @@ export const TESTIMONIALS = [
   },
 ] as const;
 
-export const SERVICE_IMAGES: Record<string, string> = {
-  "klima-servisi":
-    "https://images.unsplash.com/photo-1631545806609-5d8f29e8c100?w=800&q=80",
-  "kombi-servisi":
-    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  "beyaz-esya-servisi":
-    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+export const SERVICE_HERO_IMAGES: Record<string, string> = {
+  "klima-servisi": "/images/services/hero-klima-servisi.png",
+  "kombi-servisi": "/images/services/hero-kombi-servisi.png",
+  "beyaz-esya-servisi": "/images/services/hero-beyaz-esya-servisi.png",
   "camasir-makinesi-servisi":
-    "https://images.unsplash.com/photo-1626806819282-2c1dc01a5b0a?w=800&q=80",
-  "buzdolabi-servisi":
-    "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=800&q=80",
+    "/images/services/hero-camasir-makinesi-servisi.png",
+  "buzdolabi-servisi": "/images/services/hero-buzdolabi-servisi.png",
   "bulasik-makinesi-servisi":
-    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
-  "firin-ocak-servisi":
-    "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
+    "/images/services/hero-bulasik-makinesi-servisi.png",
+  "firin-ocak-servisi": "/images/services/hero-firin-ocak-servisi.png",
+};
+
+export const SERVICE_IMAGES: Record<string, string> = {
+  "klima-servisi": SERVICE_HERO_IMAGES["klima-servisi"],
+  "kombi-servisi": SERVICE_HERO_IMAGES["kombi-servisi"],
+  "beyaz-esya-servisi": SERVICE_HERO_IMAGES["beyaz-esya-servisi"],
+  "camasir-makinesi-servisi": SERVICE_HERO_IMAGES["camasir-makinesi-servisi"],
+  "buzdolabi-servisi": SERVICE_HERO_IMAGES["buzdolabi-servisi"],
+  "bulasik-makinesi-servisi": SERVICE_HERO_IMAGES["bulasik-makinesi-servisi"],
+  "firin-ocak-servisi": SERVICE_HERO_IMAGES["firin-ocak-servisi"],
   "periyodik-bakim":
     "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
   "yedek-parca-iscilik":
@@ -435,6 +442,10 @@ export function getServiceImage(slug: string): string {
     SERVICE_IMAGES[slug] ??
     "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
   );
+}
+
+export function getServiceHeroImage(slug: string): string {
+  return SERVICE_HERO_IMAGES[slug] ?? HERO_IMAGE;
 }
 
 export function getServiceHref(slug: string): string {

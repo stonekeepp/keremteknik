@@ -52,14 +52,6 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/sss"
-                  className="text-primary-fixed-dim hover:text-on-primary transition-colors text-body-md"
-                >
-                  SSS
-                </Link>
-              </li>
             </ul>
           </div>
 

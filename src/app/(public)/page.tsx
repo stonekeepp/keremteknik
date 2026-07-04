@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { HeroShowcaseImage } from "@/components/ui/HeroShowcaseImage";
 import { Accordion } from "@/components/ui/Accordion";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -77,16 +78,10 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="w-full lg:w-1/2 relative">
-            <div className="rounded-3xl overflow-hidden shadow-premium-lg relative h-[360px] md:h-[440px]">
-              <Image
-                src={HERO_IMAGE}
-                alt="Kerem Teknik Servis uzman teknisyen ekibi"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+            <HeroShowcaseImage
+              src={HERO_IMAGE}
+              alt="Kerem Teknik Servis uzman teknisyen ekibi"
+            />
             <div className="absolute -bottom-6 -left-4 md:left-4 bg-surface rounded-2xl shadow-premium-lg p-4 hidden sm:block">
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-gold text-3xl">
