@@ -1,24 +1,38 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ServiceCard } from "@/components/services/ServiceCard";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Accordion } from "@/components/ui/Accordion";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { CTABand } from "@/components/ui/CTABand";
+import { Section } from "@/components/ui/Section";
+import { ServiceCard } from "@/components/services/ServiceCard";
+import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { getBlogRepository } from "@/lib/blog";
+import {
+  buildFaqPageJsonLd,
+  buildOrganizationJsonLd,
+} from "@/lib/seo/json-ld";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   FAQ_ITEMS,
   HERO_IMAGE,
   SERVICE_PROCESS,
   SERVICES,
   SITE,
+  STATS,
+  TESTIMONIALS,
   TRUST_BADGES,
   WHY_US,
 } from "@/lib/services/site";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Kerem Teknik Servis | Klima, Kombi ve Beyaz Eşya Servisi",
   description:
-    "Kerem Teknik Servis; klima, kombi ve beyaz eşya arızaları için hızlı, güvenilir ve profesyonel teknik servis hizmeti sunar.",
-};
+    "Kerem Teknik Servis; klima, kombi ve beyaz eşya arızaları için hızlı, güvenilir ve profesyonel teknik servis hizmeti sunar. İstanbul geneli aynı gün servis.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default async function HomePage() {
   const repo = getBlogRepository();
@@ -26,102 +40,121 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="relative px-margin-mobile md:px-margin-desktop py-16 md:py-24 bg-surface-container-low max-w-container-max mx-auto w-full flex flex-col md:flex-row items-center gap-stack-lg">
-        <div className="w-full md:w-1/2 flex flex-col gap-stack-md z-10">
-          <h1 className="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary">
-            Klima, Kombi ve Beyaz Eşya Servisinde Güvenilir Çözüm
-          </h1>
-          <p className="text-body-lg font-body-lg text-on-surface-variant">
-            Deneyimli teknik ekibimizle klima, kombi, çamaşır makinesi,
-            buzdolabı, bulaşık makinesi, fırın ve ocak arızalarınız için
-            hızlı, güvenilir ve profesyonel teknik servis hizmeti sunuyoruz.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
-            <Link
-              href="/iletisim"
-              className="bg-cta text-on-primary px-8 py-4 rounded-[12px] font-button text-button hover:bg-secondary-container transition-colors shadow-sm text-center"
-            >
-              Hemen Randevu Al
-            </Link>
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="border-2 border-primary text-primary px-8 py-4 rounded-[12px] font-button text-button hover:bg-surface-container-high transition-colors text-center"
-            >
-              Bizi Ara
-            </a>
-          </div>
-          <div className="flex flex-wrap gap-4 mt-8 pt-6 border-t border-outline-variant/30">
-            {TRUST_BADGES.map((badge) => (
-              <div key={badge.label} className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary">
-                  {badge.icon}
-                </span>
-                <span className="text-label-md font-label-md text-on-surface">
+      <JsonLd data={[buildOrganizationJsonLd(), buildFaqPageJsonLd(FAQ_ITEMS.slice(0, 4))]} />
+
+      {/* Hero */}
+      <section className="relative bg-gradient-hero overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 10% 20%, rgba(0,30,64,0.06) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(255,85,0,0.05) 0%, transparent 40%)",
+          }}
+        />
+        <div className="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24 flex flex-col lg:flex-row items-center gap-12">
+          <div className="w-full lg:w-1/2 flex flex-col gap-6 z-10">
+            <div className="flex flex-wrap gap-2">
+              {TRUST_BADGES.slice(0, 2).map((badge) => (
+                <Badge key={badge.label} icon={badge.icon}>
                   {badge.label}
-                </span>
-              </div>
-            ))}
+                </Badge>
+              ))}
+            </div>
+            <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">
+              Klima, Kombi ve Beyaz Eşya Servisinde Güvenilir Çözüm
+            </h1>
+            <p className="text-body-lg text-on-surface-variant max-w-xl">
+              Deneyimli teknik ekibimizle klima, kombi, çamaşır makinesi,
+              buzdolabı, bulaşık makinesi, fırın ve ocak arızalarınız için
+              hızlı, güvenilir ve profesyonel teknik servis hizmeti sunuyoruz.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button href="/iletisim">Hemen Randevu Al</Button>
+              <Button href={`tel:${SITE.phoneTel}`} variant="outline">
+                <span className="material-symbols-outlined">call</span>
+                Bizi Ara
+              </Button>
+            </div>
           </div>
-        </div>
-        <div className="w-full md:w-1/2 rounded-2xl overflow-hidden elevation-1 elevation-2 relative h-[400px]">
-          <Image
-            src={HERO_IMAGE}
-            alt="Teknik servis"
-            fill
-            className="object-cover"
-            priority
-          />
+          <div className="w-full lg:w-1/2 relative">
+            <div className="rounded-3xl overflow-hidden shadow-premium-lg relative h-[360px] md:h-[440px]">
+              <Image
+                src={HERO_IMAGE}
+                alt="Kerem Teknik Servis uzman teknisyen ekibi"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="absolute -bottom-6 -left-4 md:left-4 bg-surface rounded-2xl shadow-premium-lg p-4 hidden sm:block">
+              <div className="flex items-center gap-3">
+                <span className="material-symbols-outlined text-gold text-3xl">
+                  verified
+                </span>
+                <div>
+                  <p className="text-headline-sm font-headline-sm text-primary">
+                    Garantili İşçilik
+                  </p>
+                  <p className="text-body-md text-on-surface-variant">
+                    Tüm onarımlarda garanti
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto w-full">
-        <h2 className="text-headline-md font-headline-md text-primary mb-stack-lg text-center">
-          Hizmetlerimiz
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {SERVICES.slice(0, 3).map((service) => (
-            <Link
-              key={service.slug}
-              href={`/hizmetlerimiz/${service.slug}`}
-              className="bg-surface rounded-xl p-6 elevation-1 elevation-2 flex flex-col gap-4 items-start"
-            >
-              <div className="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center">
-                <span className="material-symbols-outlined text-on-primary-container text-3xl">
-                  {service.icon}
-                </span>
+      {/* Stats */}
+      <section className="bg-primary py-10 md:py-12">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-headline-md md:text-headline-lg font-headline-md text-gold mb-1">
+                {stat.value}
               </div>
-              <h3 className="text-headline-sm font-headline-sm text-primary">
-                {service.title}
-              </h3>
-              <p className="text-body-md font-body-md text-on-surface-variant">
-                {service.shortDescription.slice(0, 80)}...
-              </p>
-            </Link>
+              <div className="text-body-md text-primary-fixed-dim">{stat.label}</div>
+            </div>
           ))}
         </div>
-        <div className="text-center mt-8">
-          <Link
-            href="/hizmetlerimiz"
-            className="text-secondary font-button text-button hover:underline"
-          >
-            Tüm Hizmetleri Gör
-          </Link>
-        </div>
       </section>
 
-      <section className="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto w-full bg-surface-container-low rounded-2xl">
-        <h2 className="text-headline-md font-headline-md text-primary mb-stack-lg text-center">
-          Neden Kerem Teknik Servis?
-        </h2>
+      {/* Services */}
+      <Section
+        id="hizmetler"
+        title="Hizmetlerimiz"
+        subtitle="Klima, kombi ve beyaz eşya cihazlarınız için kapsamlı teknik servis çözümleri"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          {SERVICES.filter((s) => s.hasDetailPage).map((service) => (
+            <ServiceCard key={service.slug} service={service} />
+          ))}
+        </div>
+        <div className="text-center mt-10">
+          <Button href="/hizmetlerimiz" variant="outline">
+            Tüm Hizmetleri Gör
+          </Button>
+        </div>
+      </Section>
+
+      {/* Why Us */}
+      <Section
+        variant="muted"
+        title="Neden Kerem Teknik Servis?"
+        subtitle="Yılların deneyimi ve müşteri odaklı hizmet anlayışımızla yanınızdayız"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
           {WHY_US.map((item) => (
             <div
               key={item.title}
-              className="bg-surface rounded-xl p-6 elevation-1 text-center"
+              className="bg-surface rounded-2xl p-6 shadow-level-1 text-center card-elevation group"
             >
-              <span className="material-symbols-outlined text-primary text-4xl mb-4">
-                {item.icon}
-              </span>
+              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                <span className="material-symbols-outlined text-primary text-3xl">
+                  {item.icon}
+                </span>
+              </div>
               <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
                 {item.title}
               </h3>
@@ -131,71 +164,73 @@ export default async function HomePage() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto w-full">
-        <h2 className="text-headline-md font-headline-md text-primary mb-stack-lg text-center">
-          Servis Sürecimiz
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
-          {SERVICE_PROCESS.map((step) => (
-            <div
-              key={step.step}
-              className="bg-surface rounded-xl p-6 shadow-level-1 relative"
-            >
-              <span className="text-headline-md font-headline-md text-secondary mb-3 block">
-                {step.step}
-              </span>
-              <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
-                {step.title}
-              </h3>
-              <p className="text-body-md text-on-surface-variant">
-                {step.description}
-              </p>
+      {/* Process */}
+      <Section
+        title="Servis Sürecimiz"
+        subtitle="4 adımda hızlı ve şeffaf teknik servis deneyimi"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter relative">
+          {SERVICE_PROCESS.map((step, index) => (
+            <div key={step.step} className="relative">
+              {index < SERVICE_PROCESS.length - 1 && (
+                <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-outline-variant/50" />
+              )}
+              <div className="bg-surface rounded-2xl p-6 shadow-level-1 h-full border border-outline-variant/30">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-cta/10 text-cta text-headline-sm font-headline-sm mb-4">
+                  {step.step}
+                </span>
+                <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-body-md text-on-surface-variant">
+                  {step.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto w-full">
-        <h2 className="text-headline-md font-headline-md text-primary mb-stack-lg text-center">
-          Öne Çıkan Hizmetler
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {SERVICES.filter((s) => s.hasDetailPage)
-            .slice(0, 3)
-            .map((service) => (
-              <ServiceCard key={service.slug} service={service} />
-            ))}
+      {/* Testimonials */}
+      <Section
+        variant="muted"
+        title="Müşterilerimiz Ne Diyor?"
+        subtitle="Binlerce mutlu müşterimizden bazı yorumlar"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+          {TESTIMONIALS.map((t) => (
+            <TestimonialCard key={t.name} {...t} />
+          ))}
         </div>
-      </section>
+      </Section>
 
+      {/* Blog */}
       {latestPosts.length > 0 && (
-        <section className="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto w-full">
-          <div className="flex justify-between items-center mb-stack-lg">
-            <h2 className="text-headline-md font-headline-md text-primary">
-              Blogdan Son Yazılar
-            </h2>
+        <Section title="Blogdan Son Yazılar">
+          <div className="flex justify-end mb-6 -mt-6">
             <Link
               href="/blog"
               className="text-secondary font-button text-button hover:underline"
             >
-              Tüm Yazılar
+              Tüm Yazılar →
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {latestPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col"
+                className="bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group"
               >
-                <div className="relative h-48 bg-surface-container">
+                <div className="relative h-48 bg-surface-container overflow-hidden">
                   {post.coverImage && (
                     <Image
                       src={post.coverImage}
                       alt={post.title}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   )}
                 </div>
@@ -219,40 +254,25 @@ export default async function HomePage() {
               </article>
             ))}
           </div>
-        </section>
+        </Section>
       )}
 
-      <section className="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto w-full">
-        <h2 className="text-headline-md font-headline-md text-primary mb-stack-lg text-center">
-          Sık Sorulan Sorular
-        </h2>
-        <Accordion items={[...FAQ_ITEMS]} limit={4} />
-        <div className="text-center mt-6">
-          <Link
-            href="/sss"
-            className="text-secondary font-button text-button hover:underline"
-          >
-            Tüm Sorular
-          </Link>
+      {/* FAQ */}
+      <Section
+        title="Sık Sorulan Sorular"
+        subtitle="Merak ettiğiniz soruların cevapları"
+      >
+        <div className="max-w-3xl mx-auto">
+          <Accordion items={[...FAQ_ITEMS]} limit={4} />
+          <div className="text-center mt-8">
+            <Button href="/sss" variant="outline">
+              Tüm Sorular
+            </Button>
+          </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto w-full">
-        <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-on-primary shadow-xl">
-          <h2 className="text-headline-md font-headline-md mb-4">
-            Arıza Kaydı Oluşturun
-          </h2>
-          <p className="text-body-lg font-body-lg text-primary-fixed-dim mb-8 max-w-2xl mx-auto">
-            Profesyonel ekibimiz en kısa sürede adresinizde olsun.
-          </p>
-          <a
-            href={`tel:${SITE.phoneTel}`}
-            className="inline-block bg-cta text-on-primary px-8 py-4 rounded-[12px] font-button text-button hover:bg-secondary-container transition-colors shadow-sm"
-          >
-            Bizi Arayın: {SITE.phone}
-          </a>
-        </div>
-      </section>
+      <CTABand />
     </>
   );
 }

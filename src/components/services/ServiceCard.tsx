@@ -1,49 +1,61 @@
+import Image from "next/image";
 import Link from "next/link";
-import type { ServiceItem } from "@/lib/services/site";
-import { SITE, getServiceHref } from "@/lib/services/site";
+import {
+  getServiceHref,
+  getServiceImage,
+  SITE,
+  type ServiceItem,
+} from "@/lib/services/site";
 
 type ServiceCardProps = {
   service: ServiceItem;
-  showActions?: boolean;
 };
 
-export function ServiceCard({ service, showActions = true }: ServiceCardProps) {
+export function ServiceCard({ service }: ServiceCardProps) {
+  const href = getServiceHref(service.slug);
+  const image = getServiceImage(service.slug);
+
   return (
-    <div className="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 elevation-2 transition-all duration-300 flex flex-col h-full">
-      <div className="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
-        <span className="material-symbols-outlined text-2xl">{service.icon}</span>
+    <article className="group bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col h-full">
+      <div className="relative h-48 overflow-hidden">
+        <Image
+          src={image}
+          alt={`${service.title} - Kerem Teknik Servis`}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+        <div className="absolute bottom-4 left-4 w-11 h-11 bg-surface/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-premium-sm">
+          <span className="material-symbols-outlined text-primary text-2xl">
+            {service.icon}
+          </span>
+        </div>
       </div>
-      <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
-        {service.title}
-      </h3>
-      <p className="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
-        {service.shortDescription}
-      </p>
-      {showActions && (
-        <div className="flex flex-col sm:flex-row gap-3 mt-auto">
-          {service.hasDetailPage ? (
+      <div className="p-6 flex flex-col flex-grow">
+        <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
+          {service.title}
+        </h3>
+        <p className="text-body-md text-on-surface-variant mb-5 flex-grow line-clamp-3">
+          {service.shortDescription}
+        </p>
+        <div className="flex flex-col sm:flex-row gap-2">
+          {service.hasDetailPage && (
             <Link
-              href={getServiceHref(service.slug)}
-              className="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center"
+              href={href}
+              className="flex-1 text-center px-4 py-2.5 rounded-xl border-2 border-primary text-primary font-button text-button hover:bg-primary/5 transition-colors"
             >
-              Detaylı İncele
-            </Link>
-          ) : (
-            <Link
-              href="/iletisim"
-              className="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center"
-            >
-              Detaylı İncele
+              Detaylı Bilgi
             </Link>
           )}
           <a
             href={`tel:${SITE.phoneTel}`}
-            className="flex-1 py-2 px-4 rounded-[12px] bg-cta text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm"
+            className="flex-1 text-center px-4 py-2.5 rounded-xl bg-cta text-on-primary font-button text-button hover:brightness-105 transition-all"
           >
             Hemen Ara
           </a>
         </div>
-      )}
-    </div>
+      </div>
+    </article>
   );
 }

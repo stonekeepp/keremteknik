@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildLocalBusinessJsonLd } from "@/lib/seo/json-ld";
+import { rootMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Kerem Teknik Servis",
-    template: "%s | Kerem Teknik Servis",
-  },
-  description:
-    "Kerem Teknik Servis; klima, kombi ve beyaz eşya arızaları için hızlı, güvenilir ve profesyonel teknik servis hizmeti sunar.",
-};
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-display",
+});
+
+export const metadata: Metadata = rootMetadata;
 
 export default function RootLayout({
   children,
@@ -29,7 +30,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${inter.variable} min-h-screen flex flex-col`}>
+      <body
+        className={`${inter.variable} ${plusJakarta.variable} min-h-screen flex flex-col font-sans`}
+      >
+        <JsonLd data={buildLocalBusinessJsonLd()} />
         {children}
       </body>
     </html>

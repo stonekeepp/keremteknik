@@ -1,99 +1,111 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { SITE } from "@/lib/services/site";
+import { CTABand } from "@/components/ui/CTABand";
+import { PageHero } from "@/components/ui/PageHero";
+import { Section } from "@/components/ui/Section";
+import { StatCard } from "@/components/ui/StatCard";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { SERVICE_AREAS, SITE, STATS } from "@/lib/services/site";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Hakkımızda",
   description:
     "Kerem Teknik Servis, İstanbul'da klima, kombi ve beyaz eşya teknik servis hizmetleri sunan güvenilir bir teknik servis firmasıdır.",
-};
+  path: "/hakkimizda",
+});
+
+const sections = [
+  {
+    icon: "business",
+    title: "Firma Tanıtımı",
+    text: "Kerem Teknik Servis, İstanbul'da klima, kombi ve beyaz eşya teknik servis hizmetleri sunan, müşteri memnuniyetini ve güvenilir hizmet anlayışını ön planda tutan bir teknik servis firmasıdır.",
+  },
+  {
+    icon: "groups",
+    title: "Deneyimli Ekip",
+    text: "Alanında uzman teknisyenlerimiz her arızaya profesyonel ve kalıcı çözümler üretir.",
+  },
+  {
+    icon: "speed",
+    title: "Hızlı Servis Anlayışı",
+    text: "Aynı gün servis imkânı ile arızalarınıza en kısa sürede müdahale ediyoruz.",
+  },
+  {
+    icon: "verified",
+    title: "Garantili İşçilik",
+    text: "Yapılan işçilik ve değiştirilen parçalar için garanti sunuyoruz.",
+  },
+  {
+    icon: "payments",
+    title: "Şeffaf Fiyatlandırma",
+    text: "Onarım öncesi net bilgilendirme ile sürpriz maliyet oluşmasını önlüyoruz.",
+  },
+  {
+    icon: "thumb_up",
+    title: "Müşteri Memnuniyeti",
+    text: "Her servis sonrası müşteri memnuniyetini ölçerek hizmet kalitemizi sürekli geliştiriyoruz.",
+  },
+];
 
 export default function HakkimizdaPage() {
-  const sections = [
-    {
-      icon: "business",
-      title: "Firma Tanıtımı",
-      text: "Kerem Teknik Servis, İstanbul'da klima, kombi ve beyaz eşya teknik servis hizmetleri sunan, müşteri memnuniyetini ve güvenilir hizmet anlayışını ön planda tutan bir teknik servis firmasıdır.",
-    },
-    {
-      icon: "groups",
-      title: "Deneyimli Ekip",
-      text: "Alanında uzman teknisyenlerimiz her arızaya profesyonel ve kalıcı çözümler üretir.",
-    },
-    {
-      icon: "speed",
-      title: "Hızlı Servis Anlayışı",
-      text: "Aynı gün servis imkânı ile arızalarınıza en kısa sürede müdahale ediyoruz.",
-    },
-    {
-      icon: "verified",
-      title: "Garantili İşçilik",
-      text: "Yapılan işçilik ve değiştirilen parçalar için garanti sunuyoruz.",
-    },
-    {
-      icon: "payments",
-      title: "Şeffaf Fiyatlandırma",
-      text: "Onarım öncesi net bilgilendirme ile sürpriz maliyet oluşmasını önlüyoruz.",
-    },
-    {
-      icon: "thumb_up",
-      title: "Müşteri Memnuniyeti",
-      text: "Her servis sonrası müşteri memnuniyetini ölçerek hizmet kalitemizi sürekli geliştiriyoruz.",
-    },
-  ];
-
   return (
-    <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
-      <section className="text-center max-w-3xl mx-auto mb-16">
-        <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-primary mb-4">
-          Kerem Teknik Servis Hakkında
-        </h1>
-        <p className="text-body-lg text-on-surface-variant">
-          Kerem Teknik Servis, İstanbul&apos;da klima, kombi ve beyaz eşya
-          teknik servis hizmetleri sunan, müşteri memnuniyetini ve güvenilir
-          hizmet anlayışını ön planda tutan bir teknik servis firmasıdır.
-        </p>
-      </section>
+    <>
+      <PageHero
+        title="Kerem Teknik Servis Hakkında"
+        description="İstanbul'da klima, kombi ve beyaz eşya teknik servis hizmetleri sunan, müşteri memnuniyetini ve güvenilir hizmet anlayışını ön planda tutan bir teknik servis firmasıyız."
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Hakkımızda" },
+        ]}
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-16">
-        {sections.map((section) => (
-          <div
-            key={section.title}
-            className="bg-surface rounded-xl p-6 shadow-level-1 elevation-2"
-          >
-            <span className="material-symbols-outlined text-primary text-4xl mb-4">
-              {section.icon}
-            </span>
-            <h2 className="text-headline-sm font-headline-sm text-primary mb-3">
-              {section.title}
-            </h2>
-            <p className="text-body-md text-on-surface-variant">{section.text}</p>
-          </div>
-        ))}
-      </div>
-
-      <section className="bg-primary rounded-2xl p-8 md:p-12 text-center text-on-primary">
-        <h2 className="text-headline-md font-headline-md mb-4">
-          Bizimle İletişime Geçin
-        </h2>
-        <p className="text-body-lg text-primary-fixed-dim mb-8 max-w-2xl mx-auto">
-          Servis talebi, randevu veya bilgi almak için bize ulaşın.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/iletisim"
-            className="bg-cta text-white px-8 py-4 rounded-[12px] font-button text-button hover:bg-secondary-container transition-colors"
-          >
-            İletişim Formu
-          </Link>
-          <a
-            href={`tel:${SITE.phoneTel}`}
-            className="border-2 border-white text-white px-8 py-4 rounded-[12px] font-button text-button hover:bg-white/10 transition-colors"
-          >
-            {SITE.phone}
-          </a>
+      <Section className="!pt-0">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          {STATS.map((stat) => (
+            <StatCard key={stat.label} {...stat} />
+          ))}
         </div>
-      </section>
-    </main>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          {sections.map((section) => (
+            <div
+              key={section.title}
+              className="bg-surface rounded-2xl p-6 shadow-level-1 card-elevation"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-4">
+                <span className="material-symbols-outlined text-primary text-3xl">
+                  {section.icon}
+                </span>
+              </div>
+              <h2 className="text-headline-sm font-headline-sm text-primary mb-3">
+                {section.title}
+              </h2>
+              <p className="text-body-md text-on-surface-variant">
+                {section.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section
+        variant="muted"
+        title="Hizmet Bölgelerimiz"
+        subtitle="İstanbul genelinde hızlı servis ağı"
+      >
+        <div className="flex flex-wrap gap-3 justify-center">
+          {SERVICE_AREAS.map((area) => (
+            <span
+              key={area}
+              className="px-4 py-2 rounded-full bg-surface shadow-level-1 text-body-md text-on-surface-variant"
+            >
+              {area}
+            </span>
+          ))}
+        </div>
+        <p className="text-center text-body-md text-on-surface-variant mt-8">
+          Merkez ofisimiz: {SITE.fullAddress}
+        </p>
+      </Section>
+
+      <CTABand />
+    </>
   );
 }

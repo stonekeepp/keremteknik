@@ -58,12 +58,15 @@ const config: Config = {
         "on-surface-variant": "#43474f",
         "on-primary": "#ffffff",
         cta: "#FF5500",
+        gold: "#C9A227",
+        whatsapp: "#25D366",
       },
       borderRadius: {
         DEFAULT: "0.25rem",
         lg: "0.5rem",
         xl: "0.75rem",
         "2xl": "1rem",
+        "3xl": "1.5rem",
         full: "9999px",
       },
       spacing: {
@@ -76,21 +79,23 @@ const config: Config = {
         "stack-md": "16px",
       },
       fontFamily: {
-        "headline-lg-mobile": ["Inter", "sans-serif"],
-        "label-md": ["Inter", "sans-serif"],
-        "body-md": ["Inter", "sans-serif"],
-        "headline-lg": ["Inter", "sans-serif"],
-        button: ["Inter", "sans-serif"],
-        "headline-sm": ["Inter", "sans-serif"],
-        "body-lg": ["Inter", "sans-serif"],
-        "headline-md": ["Inter", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        "headline-lg-mobile": ["var(--font-display)", "sans-serif"],
+        "label-md": ["var(--font-inter)", "sans-serif"],
+        "body-md": ["var(--font-inter)", "sans-serif"],
+        "headline-lg": ["var(--font-display)", "sans-serif"],
+        button: ["var(--font-inter)", "sans-serif"],
+        "headline-sm": ["var(--font-display)", "sans-serif"],
+        "body-lg": ["var(--font-inter)", "sans-serif"],
+        "headline-md": ["var(--font-display)", "sans-serif"],
       },
       fontSize: {
         "headline-lg-mobile": [
           "32px",
           {
             lineHeight: "40px",
-            letterSpacing: "-0.01em",
+            letterSpacing: "-0.02em",
             fontWeight: "700",
           },
         ],
@@ -102,30 +107,21 @@ const config: Config = {
             fontWeight: "600",
           },
         ],
-        "body-md": [
-          "16px",
-          { lineHeight: "24px", fontWeight: "400" },
-        ],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
         "headline-lg": [
           "48px",
           {
             lineHeight: "56px",
-            letterSpacing: "-0.02em",
+            letterSpacing: "-0.03em",
             fontWeight: "700",
           },
         ],
-        button: [
-          "16px",
-          { lineHeight: "1", fontWeight: "600" },
-        ],
+        button: ["16px", { lineHeight: "1", fontWeight: "600" }],
         "headline-sm": [
           "24px",
           { lineHeight: "32px", fontWeight: "600" },
         ],
-        "body-lg": [
-          "18px",
-          { lineHeight: "28px", fontWeight: "400" },
-        ],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
         "headline-md": [
           "32px",
           { lineHeight: "40px", fontWeight: "600" },
@@ -133,6 +129,37 @@ const config: Config = {
       },
       maxWidth: {
         "container-max": "1280px",
+      },
+      boxShadow: {
+        "premium-sm":
+          "0 2px 8px rgba(0, 30, 64, 0.06), 0 1px 2px rgba(0, 30, 64, 0.04)",
+        "premium-md":
+          "0 8px 24px rgba(0, 30, 64, 0.08), 0 2px 8px rgba(0, 30, 64, 0.04)",
+        "premium-lg":
+          "0 16px 48px rgba(0, 30, 64, 0.12), 0 4px 16px rgba(0, 30, 64, 0.06)",
+        "premium-glow": "0 0 40px rgba(255, 85, 0, 0.15)",
+      },
+      backgroundImage: {
+        "gradient-hero":
+          "linear-gradient(135deg, #f6f3f2 0%, #e8eef8 50%, #f6f3f2 100%)",
+        "gradient-primary":
+          "linear-gradient(135deg, #001e40 0%, #003366 100%)",
+        "gradient-cta":
+          "linear-gradient(135deg, #FF5500 0%, #d04400 100%)",
+      },
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "slide-up": {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.5s ease-out forwards",
+        "slide-up": "slide-up 0.6s ease-out forwards",
       },
     },
   },

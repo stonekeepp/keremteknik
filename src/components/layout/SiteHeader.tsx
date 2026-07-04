@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/Button";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/services/site";
+import { cn } from "@/lib/utils/cn";
 import { MobileNav } from "./MobileNav";
 
 function NavLink({
@@ -15,23 +17,20 @@ function NavLink({
   label: string;
   active: boolean;
 }) {
-  if (active) {
-    return (
-      <Link
-        href={href}
-        className="text-secondary font-bold border-b-2 border-secondary pb-1 text-label-md font-label-md"
-      >
-        {label}
-      </Link>
-    );
-  }
-
   return (
     <Link
       href={href}
-      className="text-on-surface-variant hover:text-secondary transition-colors text-label-md font-label-md"
+      className={cn(
+        "relative text-label-md font-label-md transition-colors py-1",
+        active
+          ? "text-secondary font-bold"
+          : "text-on-surface-variant hover:text-primary",
+      )}
     >
       {label}
+      {active && (
+        <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary rounded-full" />
+      )}
     </Link>
   );
 }
@@ -47,31 +46,38 @@ function ServicesDropdown({ active }: { active: boolean }) {
     >
       <Link
         href="/hizmetlerimiz"
-        className={
+        className={cn(
+          "relative text-label-md font-label-md transition-colors py-1",
           active
-            ? "text-secondary font-bold border-b-2 border-secondary pb-1 text-label-md font-label-md"
-            : "text-on-surface-variant hover:text-secondary transition-colors text-label-md font-label-md"
-        }
+            ? "text-secondary font-bold"
+            : "text-on-surface-variant hover:text-primary",
+        )}
       >
         Hizmetlerimiz
+        {active && (
+          <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary rounded-full" />
+        )}
       </Link>
       {open && (
         <div className="absolute top-full left-0 pt-2 z-50">
-          <div className="bg-surface rounded-xl elevation-3 border border-outline-variant py-2 min-w-[260px]">
+          <div className="bg-surface rounded-2xl shadow-premium-lg border border-outline-variant/50 py-2 min-w-[280px]">
             {SERVICES.filter((s) => s.hasDetailPage).map((service) => (
               <Link
                 key={service.slug}
                 href={`/hizmetlerimiz/${service.slug}`}
-                className="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors"
+                className="flex items-center gap-3 px-4 py-2.5 text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors"
               >
+                <span className="material-symbols-outlined text-primary text-xl">
+                  {service.icon}
+                </span>
                 {service.title}
               </Link>
             ))}
             <Link
               href="/hizmetlerimiz"
-              className="block px-4 py-2 text-label-md font-label-md text-secondary border-t border-outline-variant mt-1"
+              className="block px-4 py-2.5 text-label-md font-label-md text-secondary border-t border-outline-variant/50 mt-1"
             >
-              Tüm Hizmetler
+              Tüm Hizmetler →
             </Link>
           </div>
         </div>
@@ -83,23 +89,41 @@ function ServicesDropdown({ active }: { active: boolean }) {
 export function SiteHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
+  const headerClass = cn(
+    "w-full sticky top-0 z-50 transition-all duration-300",
+    scrolled
+      ? "glass shadow-premium-sm"
+      : "bg-surface/95 backdrop-blur-sm",
+  );
+
   return (
     <>
-      <header className="hidden md:flex bg-surface shadow-sm w-full sticky top-0 z-50">
-        <div className="flex justify-between items-center px-margin-desktop py-stack-md w-full max-w-container-max mx-auto">
-          <Link
-            href="/"
-            className="text-headline-sm font-headline-sm font-bold text-primary"
-          >
-            {SITE.name}
+      <header className={cn("hidden lg:flex", headerClass)}>
+        <div className="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto gap-6">
+          <Link href="/" className="flex items-center shrink-0">
+            <img
+              src="/brand/logo-yatay.svg"
+              alt="Kerem Teknik Servis"
+              width={220}
+              height={68}
+              className="h-11 w-auto"
+            />
           </Link>
-          <nav className="flex gap-gutter items-center">
+          <nav className="flex gap-6 xl:gap-8 items-center flex-wrap justify-center">
             {NAV_LINKS.map((link) =>
               "hasDropdown" in link && link.hasDropdown ? (
                 <ServicesDropdown
@@ -116,27 +140,40 @@ export function SiteHeader() {
               ),
             )}
           </nav>
-          <a
-            href={`tel:${SITE.phoneTel}`}
-            className="bg-cta text-on-primary px-6 py-3 rounded-[12px] font-button text-button hover:bg-secondary-container transition-colors shadow-sm"
-          >
-            Hemen Ara
-          </a>
+          <div className="flex items-center gap-3 shrink-0">
+            <Button
+              href={`https://wa.me/${SITE.whatsapp}`}
+              variant="whatsapp"
+              external
+              className="!px-4 !py-2.5 text-sm"
+            >
+              <span className="material-symbols-outlined text-lg">chat</span>
+              WhatsApp
+            </Button>
+            <Button href={`tel:${SITE.phoneTel}`} className="!px-5 !py-2.5">
+              <span className="material-symbols-outlined text-lg">call</span>
+              Hemen Ara
+            </Button>
+          </div>
         </div>
       </header>
 
-      <header className="md:hidden flex justify-between items-center px-margin-mobile py-stack-md bg-surface shadow-sm sticky top-0 z-40">
-        <Link
-          href="/"
-          className="text-headline-sm font-headline-sm font-bold text-primary"
-        >
-          {SITE.name}
+      <header className={cn("lg:hidden flex justify-between items-center px-margin-mobile py-3", headerClass)}>
+        <Link href="/" className="flex items-center shrink-0">
+          <img
+            src="/brand/icon.svg"
+            alt="Kerem Teknik Servis"
+            width={56}
+            height={48}
+            className="h-10 w-auto"
+          />
         </Link>
         <button
           type="button"
-          className="text-primary"
+          className="text-primary p-2 rounded-xl hover:bg-surface-container-high transition-colors"
           onClick={() => setMobileOpen(true)}
           aria-label="Menüyü aç"
+          aria-expanded={mobileOpen}
         >
           <span className="material-symbols-outlined text-3xl">menu</span>
         </button>

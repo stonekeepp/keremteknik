@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { z } from "zod";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
 import { CONTACT_SERVICE_TYPES } from "@/lib/services/site";
 
 const contactSchema = z.object({
@@ -40,9 +43,13 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="bg-primary-fixed text-on-primary-fixed rounded-xl p-6 shadow-level-1">
-        <p className="text-body-lg">
-          Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.
+      <div className="bg-primary-fixed text-on-primary-fixed rounded-2xl p-8 shadow-level-1 text-center">
+        <span className="material-symbols-outlined text-primary text-5xl mb-4">
+          check_circle
+        </span>
+        <p className="text-body-lg font-medium mb-2">Talebiniz alındı!</p>
+        <p className="text-body-md text-on-surface-variant">
+          En kısa sürede sizinle iletişime geçeceğiz.
         </p>
       </div>
     );
@@ -50,42 +57,33 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <Input
+        label="Ad Soyad"
+        value={form.name}
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
+        error={errors.name}
+        autoComplete="name"
+      />
+      <Input
+        label="Telefon"
+        type="tel"
+        value={form.phone}
+        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+        error={errors.phone}
+        autoComplete="tel"
+      />
       <div>
-        <label className="block text-label-md font-label-md text-primary mb-2">
-          Ad Soyad
-        </label>
-        <input
-          type="text"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className="w-full px-4 py-3 rounded-[12px] bg-surface-container-high border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
-        />
-        {errors.name && (
-          <p className="text-error text-sm mt-1">{errors.name}</p>
-        )}
-      </div>
-      <div>
-        <label className="block text-label-md font-label-md text-primary mb-2">
-          Telefon
-        </label>
-        <input
-          type="tel"
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          className="w-full px-4 py-3 rounded-[12px] bg-surface-container-high border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
-        />
-        {errors.phone && (
-          <p className="text-error text-sm mt-1">{errors.phone}</p>
-        )}
-      </div>
-      <div>
-        <label className="block text-label-md font-label-md text-primary mb-2">
+        <label
+          htmlFor="service-type"
+          className="block text-label-md font-label-md text-primary mb-2"
+        >
           Hizmet Türü
         </label>
         <select
+          id="service-type"
           value={form.serviceType}
           onChange={(e) => setForm({ ...form, serviceType: e.target.value })}
-          className="w-full px-4 py-3 rounded-[12px] bg-surface-container-high border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+          className="w-full px-4 py-3 rounded-xl bg-surface-container-high border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
         >
           <option value="">Seçiniz</option>
           {CONTACT_SERVICE_TYPES.map((type) => (
@@ -95,29 +93,21 @@ export function ContactForm() {
           ))}
         </select>
         {errors.serviceType && (
-          <p className="text-error text-sm mt-1">{errors.serviceType}</p>
+          <p className="text-error text-sm mt-1" role="alert">
+            {errors.serviceType}
+          </p>
         )}
       </div>
-      <div>
-        <label className="block text-label-md font-label-md text-primary mb-2">
-          Mesaj
-        </label>
-        <textarea
-          rows={4}
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full px-4 py-3 rounded-[12px] bg-surface-container-high border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none"
-        />
-        {errors.message && (
-          <p className="text-error text-sm mt-1">{errors.message}</p>
-        )}
-      </div>
-      <button
-        type="submit"
-        className="bg-cta text-white px-8 py-4 rounded-[12px] font-button text-button hover:bg-secondary-container transition-colors shadow-sm"
-      >
+      <Textarea
+        label="Mesaj"
+        rows={4}
+        value={form.message}
+        onChange={(e) => setForm({ ...form, message: e.target.value })}
+        error={errors.message}
+      />
+      <Button type="submit" className="w-full">
         Gönder
-      </button>
+      </Button>
     </form>
   );
 }

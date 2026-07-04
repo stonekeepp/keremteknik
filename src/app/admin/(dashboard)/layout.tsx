@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Admin Panel",
+  description: "Kerem Teknik Servis yönetim paneli",
+  path: "/admin",
+  noIndex: true,
+});
 
 export default function AdminLayout({
   children,

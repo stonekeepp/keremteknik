@@ -1,126 +1,124 @@
-import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { Button } from "@/components/ui/Button";
+import { PageHero } from "@/components/ui/PageHero";
+import { Section } from "@/components/ui/Section";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/services/site";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "İletişim",
   description:
     "Servis talebi oluşturmak, arıza hakkında bilgi almak veya randevu planlamak için bizimle iletişime geçebilirsiniz.",
-};
+  path: "/iletisim",
+});
+
+const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(SITE.fullAddress)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
 export default function IletisimPage() {
   return (
-    <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
-      <section className="text-center max-w-3xl mx-auto mb-12">
-        <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-primary mb-4">
-          İletişim
-        </h1>
-        <p className="text-body-lg text-on-surface-variant">
-          Servis talebi oluşturmak, arıza hakkında bilgi almak veya randevu
-          planlamak için bizimle iletişime geçebilirsiniz.
-        </p>
-      </section>
+    <>
+      <PageHero
+        title="İletişim"
+        description="Servis talebi oluşturmak, arıza hakkında bilgi almak veya randevu planlamak için bizimle iletişime geçebilirsiniz."
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "İletişim" },
+        ]}
+      />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
-        <div className="flex flex-col gap-6">
-          <div className="bg-surface rounded-xl p-6 shadow-level-1">
-            <h2 className="text-headline-sm font-headline-sm text-primary mb-6">
-              İletişim Bilgileri
-            </h2>
-            <ul className="flex flex-col gap-5">
-              <li>
-                <p className="text-label-md font-label-md text-on-surface-variant mb-1">
-                  Telefon
-                </p>
-                <a
-                  href={`tel:${SITE.phoneTel}`}
-                  className="text-body-lg font-semibold text-primary hover:text-secondary transition-colors"
+      <Section className="!pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+          <div className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  icon: "call",
+                  label: "Telefon",
+                  value: SITE.phone,
+                  href: `tel:${SITE.phoneTel}`,
+                },
+                {
+                  icon: "chat",
+                  label: "WhatsApp",
+                  value: SITE.phone,
+                  href: `https://wa.me/${SITE.whatsapp}`,
+                  external: true,
+                },
+                {
+                  icon: "location_on",
+                  label: "Adres",
+                  value: `${SITE.address}, ${SITE.city}`,
+                },
+                {
+                  icon: "schedule",
+                  label: "Çalışma Saatleri",
+                  value: `${SITE.workingHours.weekday} | ${SITE.workingHours.saturday}`,
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="bg-surface rounded-2xl p-5 shadow-level-1 border border-outline-variant/30"
                 >
-                  {SITE.phone}
-                </a>
-              </li>
-              <li>
-                <p className="text-label-md font-label-md text-on-surface-variant mb-1">
-                  WhatsApp
-                </p>
-                <a
-                  href={`https://wa.me/${SITE.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-body-lg font-semibold text-primary hover:text-secondary transition-colors"
-                >
-                  {SITE.phone}
-                </a>
-              </li>
-              <li>
-                <p className="text-label-md font-label-md text-on-surface-variant mb-1">
-                  Adres
-                </p>
-                <p className="text-body-md text-on-surface">
-                  {SITE.address}
-                  <br />
-                  {SITE.city}
-                </p>
-              </li>
-              <li>
-                <p className="text-label-md font-label-md text-on-surface-variant mb-1">
-                  Çalışma Saatleri
-                </p>
-                <p className="text-body-md text-on-surface">
-                  {SITE.workingHours.weekday}
-                  <br />
-                  {SITE.workingHours.saturday}
-                </p>
-              </li>
-            </ul>
-          </div>
+                  <span className="material-symbols-outlined text-cta text-2xl mb-2">
+                    {item.icon}
+                  </span>
+                  <p className="text-label-md font-label-md text-on-surface-variant mb-1">
+                    {item.label}
+                  </p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
+                      className="text-body-md font-semibold text-primary hover:text-secondary transition-colors"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-body-md text-on-surface">{item.value}</p>
+                  )}
+                </div>
+              ))}
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-cta text-white rounded-[12px] font-button text-button hover:bg-secondary-container transition-all"
-            >
-              <span className="material-symbols-outlined">call</span>
-              Hemen Ara
-            </a>
-            <a
-              href={`https://wa.me/${SITE.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border-2 border-primary text-primary rounded-[12px] font-button text-button hover:bg-primary hover:text-white transition-all"
-            >
-              <span className="material-symbols-outlined">chat</span>
-              WhatsApp&apos;tan Yaz
-            </a>
-          </div>
-
-          <div className="bg-surface-container rounded-xl overflow-hidden shadow-level-1 h-64 flex items-center justify-center">
-            <div className="text-center p-6">
-              <span className="material-symbols-outlined text-primary text-5xl mb-3">
-                map
-              </span>
-              <p className="text-body-md text-on-surface-variant mb-3">
-                {SITE.fullAddress}
-              </p>
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.fullAddress)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-secondary font-button text-button hover:underline"
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button href={`tel:${SITE.phoneTel}`} className="flex-1">
+                <span className="material-symbols-outlined">call</span>
+                Hemen Ara
+              </Button>
+              <Button
+                href={`https://wa.me/${SITE.whatsapp}`}
+                variant="whatsapp"
+                external
+                className="flex-1"
               >
-                Yol Tarifi Al
-              </a>
+                <span className="material-symbols-outlined">chat</span>
+                WhatsApp
+              </Button>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden shadow-level-1 h-64 md:h-80 border border-outline-variant/30">
+              <iframe
+                title="Kerem Teknik Servis konum haritası"
+                src={MAP_EMBED}
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
-        </div>
 
-        <div className="bg-surface rounded-xl p-6 md:p-8 shadow-level-1">
-          <h2 className="text-headline-sm font-headline-sm text-primary mb-6">
-            İletişim Formu
-          </h2>
-          <ContactForm />
+          <div className="bg-surface rounded-2xl p-6 md:p-8 shadow-level-1 border border-outline-variant/30">
+            <h2 className="text-headline-sm font-headline-sm text-primary mb-2">
+              İletişim Formu
+            </h2>
+            <p className="text-body-md text-on-surface-variant mb-6">
+              Formu doldurun, en kısa sürede size dönüş yapalım.
+            </p>
+            <ContactForm />
+          </div>
         </div>
-      </div>
-    </main>
+      </Section>
+    </>
   );
 }

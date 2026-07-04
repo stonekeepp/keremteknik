@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" role="img" aria-label="Kerem Teknik Servis yatay logo">
+  <image href="logo-emblem.png" x="8" y="16" width="147" height="128" preserveAspectRatio="xMidYMid meet"/>
+  <line x1="172" y1="24" x2="172" y2="136" stroke="#C9A227" stroke-width="2"/>
+  <text x="188" y="62" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800" fill="#001e40" letter-spacing="1.5">KEREM</text>
+  <text x="188" y="92" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600" fill="#C9A227" letter-spacing="6.5">TEKNİK SERVİS</text>
+  <line x1="188" y1="108" x2="500" y2="108" stroke="#C9A227" stroke-width="1"/>
+  <rect x="338" y="104" width="8" height="7" fill="#C9A227"/>
+  <text x="188" y="126" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" fill="#001e40" letter-spacing="1.6">TEKNİK • KOMBİ • KALORİFER • KLİMA</text>
+  <text x="188" y="144" font-family="Inter, Arial, sans-serif" font-size="8" font-weight="500" fill="#7B8494" letter-spacing="2">TAMİR &amp; BAKIM SERVİSLERİ</text>
+</svg>

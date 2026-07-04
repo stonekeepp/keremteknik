@@ -19,6 +19,7 @@ export const NAV_LINKS = [
   { href: "/hizmetlerimiz", label: "Hizmetlerimiz", hasDropdown: true },
   { href: "/blog", label: "Blog" },
   { href: "/hakkimizda", label: "Hakkımızda" },
+  { href: "/sss", label: "SSS" },
   { href: "/iletisim", label: "İletişim" },
 ] as const;
 
@@ -357,7 +358,84 @@ export const CONTACT_SERVICE_TYPES = [
 ] as const;
 
 export const HERO_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuB-wS3qQPls_YG5WJa1fQ-e3zdhGTfCL8UrJLK6mYcBuG_mCKB8BIeScoxIriC6pzQJIEhggMF92aMp6tAM_BD46DnWExRSGHgHOU_68AQ3MM8mypNbiZVzVwoQInWlE4aRMGTc2NYlEmiAZUrpINOqJwSkVbk0afvBSk5fE9QQMvDxqQ2wJXF60Bk4G14WBdjcvZ9jPk-qicGht1oEjHqhrMKIgcPNB-Q7f2M3cs5m-YG5KOJEIvlm";
+  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80";
+
+export const STATS = [
+  { value: "15+", label: "Yıllık Deneyim", icon: "history" },
+  { value: "5000+", label: "Tamamlanan Servis", icon: "handyman" },
+  { value: "98%", label: "Müşteri Memnuniyeti", icon: "sentiment_satisfied" },
+  { value: "7/24", label: "Destek Hattı", icon: "support_agent" },
+] as const;
+
+export const TESTIMONIALS = [
+  {
+    name: "Ahmet Y.",
+    service: "Kombi Servisi",
+    rating: 5,
+    text: "Kombim kış ortasında arızalandı, aynı gün geldiler ve sorunu çözdüler. Çok profesyonel bir ekip.",
+  },
+  {
+    name: "Elif K.",
+    service: "Klima Servisi",
+    rating: 5,
+    text: "Klima bakımı için randevu aldım, hem temiz hem de uygun fiyatlı bir hizmet aldım. Kesinlikle tavsiye ederim.",
+  },
+  {
+    name: "Mehmet S.",
+    service: "Buzdolabı Servisi",
+    rating: 5,
+    text: "Buzdolabım soğutmuyordu, teknisyen hızlıca arızayı tespit etti ve garantili onarım yaptı.",
+  },
+  {
+    name: "Zeynep A.",
+    service: "Çamaşır Makinesi Servisi",
+    rating: 4,
+    text: "Çamaşır makinem su almıyordu, aynı gün müdahale ettiler. Fiyat bilgisi önceden verildi, sürpriz olmadı.",
+  },
+] as const;
+
+export const SERVICE_IMAGES: Record<string, string> = {
+  "klima-servisi":
+    "https://images.unsplash.com/photo-1631545806609-5d8f29e8c100?w=800&q=80",
+  "kombi-servisi":
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+  "beyaz-esya-servisi":
+    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+  "camasir-makinesi-servisi":
+    "https://images.unsplash.com/photo-1626806819282-2c1dc01a5b0a?w=800&q=80",
+  "buzdolabi-servisi":
+    "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=800&q=80",
+  "bulasik-makinesi-servisi":
+    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
+  "firin-ocak-servisi":
+    "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
+  "periyodik-bakim":
+    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+  "yedek-parca-iscilik":
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+};
+
+export const SERVICE_AREAS = [
+  "Eyüpsultan",
+  "Gaziosmanpaşa",
+  "Sultangazi",
+  "Esenler",
+  "Bayrampaşa",
+  "Fatih",
+  "Kağıthane",
+  "Sarıyer",
+  "Beşiktaş",
+  "Şişli",
+  "Beyoğlu",
+  "Bağcılar",
+] as const;
+
+export function getServiceImage(slug: string): string {
+  return (
+    SERVICE_IMAGES[slug] ??
+    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
+  );
+}
 
 export function getServiceHref(slug: string): string {
   const service = SERVICES.find((s) => s.slug === slug);

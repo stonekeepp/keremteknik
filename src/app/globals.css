@@ -4,64 +4,81 @@
 
 @layer base {
   body {
-    @apply bg-background text-on-background font-body-md text-body-md antialiased;
+    @apply bg-background text-on-background font-sans text-body-md antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
   }
 }
 
 @layer utilities {
+  .glass {
+    @apply bg-surface/80 backdrop-blur-md border-b border-outline-variant/40;
+  }
+
+  .glass-card {
+    @apply bg-surface/90 backdrop-blur-sm border border-outline-variant/30;
+  }
+
   .elevation-0 {
     background-color: theme("colors.surface");
   }
 
   .elevation-1 {
     box-shadow:
-      0 1px 2px 0 rgba(0, 51, 102, 0.05),
-      inset 0 0 0 1px #e5e5e7;
+      0 1px 2px 0 rgba(0, 30, 64, 0.05),
+      inset 0 0 0 1px theme("colors.outline-variant");
   }
 
   .elevation-2:hover {
     box-shadow:
-      0 10px 15px -3px rgba(0, 51, 102, 0.08),
-      0 4px 6px -2px rgba(0, 51, 102, 0.04);
+      0 10px 15px -3px rgba(0, 30, 64, 0.08),
+      0 4px 6px -2px rgba(0, 30, 64, 0.04);
     transform: translateY(-2px);
     transition: all 0.2s ease-in-out;
   }
 
   .elevation-3 {
     box-shadow:
-      0 20px 25px -5px rgba(0, 51, 102, 0.1),
-      0 10px 10px -5px rgba(0, 51, 102, 0.04);
+      0 20px 25px -5px rgba(0, 30, 64, 0.1),
+      0 10px 10px -5px rgba(0, 30, 64, 0.04);
   }
 
   .shadow-level-1 {
-    box-shadow:
-      0 1px 3px rgba(0, 51, 102, 0.08),
-      0 1px 2px rgba(0, 51, 102, 0.04);
-    border: 1px solid #e5e5e7;
+    @apply shadow-premium-sm border border-outline-variant/60;
   }
 
   .shadow-level-2 {
-    box-shadow:
-      0 4px 6px rgba(0, 51, 102, 0.08),
-      0 2px 4px rgba(0, 51, 102, 0.04);
-    border: 1px solid #e5e5e7;
+    @apply shadow-premium-md border border-outline-variant/60;
   }
 
   .shadow-level-3 {
-    box-shadow:
-      0 10px 15px rgba(0, 51, 102, 0.08),
-      0 4px 6px rgba(0, 51, 102, 0.04);
+    @apply shadow-premium-lg;
   }
 
   .card-elevation {
-    box-shadow: 0 4px 24px rgba(0, 51, 102, 0.08);
-    border: 1px solid #e5e5e7;
+    @apply shadow-premium-md border border-outline-variant/50 transition-all duration-300;
   }
 
   .card-elevation:hover {
-    box-shadow: 0 12px 32px rgba(0, 51, 102, 0.12);
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
+    @apply shadow-premium-lg -translate-y-0.5;
+  }
+
+  .animate-on-scroll {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll,
+    .elevation-2:hover,
+    .card-elevation:hover {
+      animation: none;
+      transform: none;
+    }
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -72,10 +89,14 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
 }
 
 .prose-blog h2 {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
@@ -85,7 +106,7 @@
 }
 
 .prose-blog h3 {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 24px;
   font-weight: 600;
   line-height: 32px;
@@ -95,12 +116,28 @@
 }
 
 .prose-blog p {
-  font-family: "Inter", sans-serif;
   font-size: 18px;
-  font-weight: 400;
   line-height: 28px;
   color: #43474f;
   margin-bottom: 24px;
+}
+
+.prose-blog a {
+  color: #a63500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-blog a:hover {
+  color: #d04400;
+}
+
+.prose-blog blockquote {
+  border-left: 4px solid #c9a227;
+  padding-left: 20px;
+  margin: 24px 0;
+  font-style: italic;
+  color: #43474f;
 }
 
 .prose-blog ul {
@@ -109,18 +146,22 @@
   list-style: none;
 }
 
+.prose-blog ol {
+  margin-bottom: 24px;
+  padding-left: 24px;
+  color: #43474f;
+}
+
 .prose-blog li {
   position: relative;
   padding-left: 32px;
   margin-bottom: 16px;
-  font-family: "Inter", sans-serif;
   font-size: 16px;
-  font-weight: 400;
   line-height: 24px;
   color: #43474f;
 }
 
-.prose-blog li::before {
+.prose-blog ul li::before {
   content: "check_circle";
   font-family: "Material Symbols Outlined";
   position: absolute;

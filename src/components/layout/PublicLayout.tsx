@@ -6,7 +6,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SiteHeader />
-      <main className="flex-grow pb-[72px] md:pb-0">{children}</main>
+      <main className="flex-grow pb-24 lg:pb-0">{children}</main>
       <SiteFooter />
       <StickyMobileCTA />
     </>
