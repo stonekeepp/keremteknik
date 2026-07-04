@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Buzdolabı Servisi - Kerem Teknik Servis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#a63500",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-container": "#d04400",
+                        "on-background": "#1c1b1b",
+                        "primary": "#001e40",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#799dd6",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-container": "#313335",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container": "#f0eded",
+                        "on-secondary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-secondary-fixed-variant": "#822700",
+                        "primary-fixed": "#d5e3ff",
+                        "error": "#ba1a1a",
+                        "outline": "#737780",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#9a9b9d",
+                        "surface": "#fcf9f8",
+                        "inverse-primary": "#a7c8ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#003366",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#390c00",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#c6c6c8",
+                        "outline-variant": "#c3c6d1",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed": "#1a1c1d",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-low": "#f6f3f2",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#454749",
+                        "surface-tint": "#3a5f94",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-fixed": "#e2e2e4",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "tertiary": "#1c1e20",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-surface-variant": "#43474f",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "button": ["16px", { "lineHeight": "1", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .elevation-0 { background-color: #ffffff; }
+        .elevation-1 { box-shadow: 0 1px 3px rgba(0, 51, 102, 0.08); border: 1px solid #E5E5E7; }
+        .elevation-2 { box-shadow: 0 4px 6px rgba(0, 51, 102, 0.12); border: 1px solid #E5E5E7; transition: box-shadow 0.3s ease; }
+        .elevation-2:hover { box-shadow: 0 10px 15px rgba(0, 51, 102, 0.16); }
+        .elevation-3 { box-shadow: 0 20px 25px rgba(0, 51, 102, 0.2); }
+        .btn-primary { background-color: #FF5500; color: #ffffff; border-radius: 12px; }
+        .btn-secondary { border: 2px solid #003366; color: #003366; border-radius: 12px; }
+        
+        /* Mobile Sticky CTA Padding */
+        @media (max-width: 767px) {
+            body { padding-bottom: 72px; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased font-body-md text-body-md">
+<!-- Top Navigation (Desktop) -->
+<nav class="hidden md:flex justify-between items-center px-margin-desktop py-stack-md max-w-container-max mx-auto shadow-sm bg-surface sticky top-0 z-50">
+<div class="text-headline-sm font-headline-sm font-bold text-primary">Kerem Teknik Servis</div>
+<div class="flex gap-gutter">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Home</a>
+<a class="text-label-md font-label-md text-secondary font-bold border-b-2 border-secondary pb-1" href="#">Services</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Blog</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<button class="btn-primary font-button text-button px-6 py-3 hover:bg-secondary transition-colors">Call Now</button>
+</nav>
+<!-- Side Navigation (Mobile) -->
+<div class="md:hidden fixed inset-y-0 left-0 z-50 w-64 bg-surface shadow-lg flex-col p-stack-md hidden" id="mobile-menu">
+<div class="mb-stack-lg">
+<div class="text-headline-sm-mobile font-headline-sm-mobile font-bold text-primary">Kerem Teknik</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Expert Technical Solutions</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">home</span>Home
+            </a>
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container p-3 rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">build</span>Services
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">article</span>Blog
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">info</span>About
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">contact_support</span>Contact
+            </a>
+</nav>
+</div>
+<!-- Mobile Header (hamburger) -->
+<header class="md:hidden flex justify-between items-center p-margin-mobile bg-surface shadow-sm sticky top-0 z-40">
+<div class="text-headline-sm-mobile font-headline-sm-mobile font-bold text-primary">Kerem Teknik</div>
+<button class="text-on-surface" id="menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-16 items-center">
+<div class="flex flex-col gap-stack-md">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">
+                    Buzdolabı Tamiri ve Teknik Servis
+                </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+                    Buzdolabınızdaki soğutma sorunları, su sızdırmaları veya gürültülü çalışma şikayetleri için uzman kadromuzla yanınızdayız. Orijinal yedek parça ve 1 yıl garanti ile güvenilir hizmet sunuyoruz.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 mt-4 hidden md:flex">
+<button class="btn-primary font-button text-button px-8 py-4 w-full sm:w-auto text-center hover:bg-secondary transition-colors">
+                        Hemen Servis Çağır
+                    </button>
+<button class="btn-secondary font-button text-button px-8 py-4 w-full sm:w-auto text-center hover:bg-surface-container-low transition-colors">
+                        Fiyat Al
+                    </button>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden elevation-1 h-[400px]">
+<img class="w-full h-full object-cover" data-alt="A modern, high-end refrigerator in a clean, brightly lit contemporary kitchen. The appliance is sleek silver metallic, reflecting soft natural light. The overall mood is professional, reliable, and pristine, utilizing a modern light-mode aesthetic with deep navy shadows and bright whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoDijlTk1a_EUKh3RgxzaEt3n7IIJ9YW4MHKyzQJp101GrkosBLuMlsin_6BS63zNhOSQQmPQbBu5XFtKXUV3N2FaO3DrqHLdpX4_PipTUWP-UeQ2AsGm1MY8VRvjq0jckYtIVCoQj6FLlU6V1yP63Uu0qN4KGKG2Pgf144Kxs2Xc7BNm0vmPDvz8OIK4J2DoO09noiJIm1Vz488LGq48d-sJ6GVRZZJpJn9kwtN40dXfvGFvdWzm2"/>
+</div>
+</section>
+<!-- Common Problems (Bento Grid) -->
+<section class="mb-16">
+<div class="text-center mb-stack-lg">
+<h2 class="text-headline-md font-headline-md text-primary mb-2">Sık Karşılaşılan Buzdolabı Arızaları</h2>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl mx-auto">En çok karşılaştığımız buzdolabı arızaları ve çözümleri. Hızlı teşhis ve onarım için bizi arayın.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface p-6 rounded-xl elevation-2 flex flex-col gap-3">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">ac_unit</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Soğutmuyor</h3>
+<p class="text-body-md text-on-surface-variant">Kompresör arızası, gaz kaçağı veya termostat sorunları nedeniyle soğutma yetersizliği.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface p-6 rounded-xl elevation-2 flex flex-col gap-3">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">severe_cold</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Aşırı Buzlanma</h3>
+<p class="text-body-md text-on-surface-variant">No-frost sistem arızası, rezistans veya sensör problemleri kaynaklı karlanma.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface p-6 rounded-xl elevation-2 flex flex-col gap-3">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Sesli Çalışma</h3>
+<p class="text-body-md text-on-surface-variant">Fan motoru sürtünmesi veya kompresör titreşimlerinden kaynaklanan anormal gürültüler.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface p-6 rounded-xl elevation-2 flex flex-col gap-3">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">build_circle</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Motor (Kompresör) Arızası</h3>
+<p class="text-body-md text-on-surface-variant">Sistem kalbi olan motorun yanması veya termik röle arızaları.</p>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface p-6 rounded-xl elevation-2 flex flex-col gap-3">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Su Akıtma / Gaz Kaçağı</h3>
+<p class="text-body-md text-on-surface-variant">Drenaj tıkanıklığı veya sistemdeki kılcal borularda meydana gelen soğutucu gaz sızıntısı.</p>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface p-6 rounded-xl elevation-2 flex flex-col gap-3">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">sensor_door</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Kapı Lastiği &amp; Gösterge</h3>
+<p class="text-body-md text-on-surface-variant">Yıpranmış contalar nedeniyle ısı kaybı veya elektronik kart/ekran arızaları.</p>
+</div>
+</div>
+</section>
+<!-- Service Process -->
+<section class="mb-16 bg-surface-container-low p-8 md:p-12 rounded-2xl elevation-1">
+<h2 class="text-headline-md font-headline-md text-primary mb-8 text-center">Nasıl Çalışıyoruz?</h2>
+<ul class="space-y-6 max-w-3xl mx-auto">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-[28px] mt-1">check_circle</span>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary mb-1">1. Arıza Tespiti</h4>
+<p class="text-body-md text-on-surface-variant">Adresinize gelen uzman ekibimiz, gelişmiş test cihazlarıyla sorunun kaynağını nokta atışı belirler.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-[28px] mt-1">check_circle</span>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary mb-1">2. Şeffaf Fiyatlandırma</h4>
+<p class="text-body-md text-on-surface-variant">Yapılacak işlemler ve parça değişimleri için size net bir maliyet sunulur, onayınız olmadan işleme başlanmaz.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-[28px] mt-1">check_circle</span>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary mb-1">3. Yerinde Onarım</h4>
+<p class="text-body-md text-on-surface-variant">Gerekli yedek parçalar araçlarımızda mevcut olup, onarım işlemleri genellikle yerinde aynı gün tamamlanır.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-[28px] mt-1">check_circle</span>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary mb-1">4. Test ve Garanti</h4>
+<p class="text-body-md text-on-surface-variant">Onarım sonrası cihazınız test edilir ve değiştirilen parçalar için 1 yıl servis garantisi belgesi teslim edilir.</p>
+</div>
+</li>
+</ul>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-margin-desktop max-w-container-max mx-auto bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-headline-sm font-headline-sm font-bold text-primary">Kerem Teknik Servis</div>
+<div class="flex flex-wrap gap-4 justify-center">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Services</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Blog</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">About</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Contact</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Terms of Service</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="text-body-md font-body-md text-on-surface-variant">© 2024 Kerem Teknik Servis. All Rights Reserved.</div>
+</div>
+</footer>
+<!-- Mobile Sticky CTA -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface elevation-3 p-4 z-50 border-t border-outline-variant">
+<button class="btn-primary font-button text-button w-full py-3 hover:bg-secondary transition-colors">Book Service Now</button>
+</div>
+<script>
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İletişim | Kerem Teknik Servis</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#f3f0ef",
+                      "secondary": "#a63500",
+                      "on-primary-fixed": "#001b3c",
+                      "secondary-container": "#d04400",
+                      "on-background": "#1c1b1b",
+                      "primary": "#001e40",
+                      "secondary-fixed": "#ffdbcf",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#799dd6",
+                      "surface-container-highest": "#e5e2e1",
+                      "tertiary-container": "#313335",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "surface-container": "#f0eded",
+                      "on-secondary-container": "#fffbff",
+                      "secondary-fixed-dim": "#ffb59c",
+                      "on-secondary-fixed-variant": "#822700",
+                      "primary-fixed": "#d5e3ff",
+                      "error": "#ba1a1a",
+                      "outline": "#737780",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#9a9b9d",
+                      "surface": "#fcf9f8",
+                      "inverse-primary": "#a7c8ff",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#003366",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#390c00",
+                      "surface-bright": "#fcf9f8",
+                      "surface-container-high": "#eae7e7",
+                      "tertiary-fixed-dim": "#c6c6c8",
+                      "outline-variant": "#c3c6d1",
+                      "inverse-surface": "#313030",
+                      "on-tertiary-fixed": "#1a1c1d",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container-low": "#f6f3f2",
+                      "background": "#fcf9f8",
+                      "on-tertiary-fixed-variant": "#454749",
+                      "surface-tint": "#3a5f94",
+                      "on-surface": "#1c1b1b",
+                      "tertiary-fixed": "#e2e2e4",
+                      "on-primary-fixed-variant": "#1f477b",
+                      "tertiary": "#1c1e20",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "on-surface-variant": "#43474f",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "container-max": "1280px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "stack-md": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter", "sans-serif"],
+                      "label-md": ["Inter", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"],
+                      "headline-lg": ["Inter", "sans-serif"],
+                      "button": ["Inter", "sans-serif"],
+                      "headline-sm": ["Inter", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "headline-md": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "button": ["16px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Desktop & Mobile header) -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm sticky top-0 z-50 w-full transition-all duration-300">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<a class="text-headline-sm-mobile md:text-headline-sm font-headline-sm-mobile md:font-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight" href="#">
+                Kerem Teknik Servis
+            </a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors py-2" href="#">Home</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors py-2" href="#">Services</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors py-2" href="#">Blog</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors py-2" href="#">About</a>
+<a aria-current="page" class="text-label-md font-label-md text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary py-2" href="#">Contact</a>
+</nav>
+<!-- Trailing Action (Desktop) -->
+<div class="hidden md:flex items-center gap-4">
+<a class="flex items-center justify-center gap-2 px-6 py-3 bg-[#FF5500] text-white rounded-[12px] font-button text-button hover:bg-secondary-container transition-all shadow-[0_4px_12px_rgba(0,51,102,0.08)] hover:shadow-[0_8px_24px_rgba(0,51,102,0.12)]" href="tel:05513972526">
+<span class="material-symbols-outlined text-[20px]" data-icon="phone" data-weight="fill">phone</span>
+                    Call Now
+                </a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Open Menu" class="md:hidden p-2 text-on-surface-variant rounded-full hover:bg-surface-container-high transition-colors" id="mobile-menu-btn">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation Bar (Mobile Overlay) -->
+<div class="fixed inset-0 bg-scrim/50 z-[60] hidden opacity-0 transition-opacity duration-300" id="mobile-menu-overlay"></div>
+<aside class="fixed inset-y-0 left-0 z-[70] w-64 bg-surface dark:bg-inverse-surface shadow-lg transform -translate-x-full transition-transform duration-300 flex flex-col md:hidden" id="mobile-side-nav">
+<div class="p-stack-md flex justify-between items-center border-b border-outline-variant">
+<div>
+<h2 class="text-headline-sm-mobile font-headline-sm-mobile font-bold text-primary dark:text-inverse-primary tracking-tight">Kerem Teknik</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Expert Technical Solutions</p>
+</div>
+<button class="p-2 text-on-surface-variant rounded-full hover:bg-surface-container-high transition-colors" id="close-mobile-menu">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto py-stack-md px-stack-sm flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="text-label-md font-label-md">Services</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="text-label-md font-label-md">Blog</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="text-label-md font-label-md">About</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-lg p-3 transition-all scale-98" href="#">
+<span class="material-symbols-outlined fill" data-icon="contact_support" data-weight="fill">contact_support</span>
+<span class="text-label-md font-label-md">Contact</span>
+</a>
+</nav>
+<div class="p-stack-md border-t border-outline-variant">
+<a class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#FF5500] text-white rounded-[12px] font-button text-button hover:bg-secondary-container transition-all" href="tel:05513972526">
+                Book Service Now
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full pb-[72px] md:pb-0">
+<!-- Hero Header Section -->
+<section class="bg-surface-container-lowest pt-stack-lg pb-stack-lg border-b border-outline-variant/30">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center max-w-3xl">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-stack-sm tracking-tight">İletişim</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+                    Servis talebi oluşturmak, arıza hakkında bilgi almak veya randevu planlamak için bizimle iletişime geçebilirsiniz.
+                </p>
+</div>
+</section>
+<!-- Bento Grid Contact Layout -->
+<section class="py-stack-lg bg-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Contact Information Cards -->
+<div class="lg:col-span-5 flex flex-col gap-stack-md">
+<!-- Main Contact Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-[#E5E5E7] p-stack-lg shadow-[0_2px_8px_rgba(0,51,102,0.04)] hover:shadow-[0_8px_24px_rgba(0,51,102,0.08)] transition-shadow duration-300 relative overflow-hidden group">
+<!-- Subtle decorative gradient -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-primary-fixed opacity-30 rounded-full blur-3xl group-hover:bg-primary-container group-hover:opacity-20 transition-all duration-700"></div>
+<h2 class="text-headline-sm font-headline-sm text-primary mb-stack-md relative z-10">Bize Ulaşın</h2>
+<ul class="flex flex-col gap-stack-md relative z-10">
+<!-- Phone -->
+<li class="flex items-start gap-4 group/item">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</div>
+<div class="pt-1">
+<p class="text-label-md font-label-md text-on-surface-variant mb-1">Telefon / WhatsApp</p>
+<a class="text-body-lg font-body-lg font-semibold text-primary hover:text-secondary transition-colors" href="tel:05513972526">0551 397 25 26</a>
+</div>
+</li>
+<!-- Address -->
+<li class="flex items-start gap-4 group/item">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div class="pt-1">
+<p class="text-label-md font-label-md text-on-surface-variant mb-1">Adres</p>
+<p class="text-body-md font-body-md text-on-surface">Alibeyköy, Eyüpsultan<br/>İstanbul, Türkiye</p>
+</div>
+</li>
+<!-- Working Hours -->
+<li class="flex items-start gap-4 group/item">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover/item:bg-primary group-hover/item:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div class="pt-1">
+<p class="text-label-md font-label-md text-on-surface-variant mb-1">Çalışma Saatleri</p>
+<p class="text-body-md font-body-md text-on-surface">Pazartesi - Cumartesi: 09:00 - 19:00<br/>Pazar: Kapalı</p>
+</div>
+</li>
+</ul>
+<div class="mt-stack-lg flex flex-col sm:flex-row gap-3 relative z-10">
+<a class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#FF5500] text-white rounded-[12px] font-button text-button hover:bg-secondary-container transition-all" href="tel:05513972526">
+<span class="material-symbols-outlined text-[20px]" data-icon="phone">phone</span>
+                                    Hemen Ara
+                                </a>
+<a class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border-2 border-primary text-primary rounded-[12px] font-button text-button hover:bg-primary hover:text-white transition-all" href="https://wa.me/905513972526" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat">chat</span>
+                                    WhatsApp'tan Yaz
+                                </a>
+</div>
+</div>
+<!-- Map Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-[#E5E5E7] p-2 shadow-[0_2px_8px_rgba(0,51,102,0.04)] h-64 relative overflow-hidden group">
+<!-- Placeholder for map. Using a soft gray background to simulate map area before load -->
+<div class="w-full h-full bg-surface-variant rounded-lg relative overflow-hidden flex items-center justify-center" data-location="Alibeyköy, Eyüpsultan" style="">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A clean, modern, light-mode top-down digital map view of the Alibeyköy, Eyüpsultan district in Istanbul, Turkey. The map should feature clear, simplified street lines, subtle blue water accents for the Golden Horn inlet, and minimal geographic clutter. The color palette must primarily consist of soft light grays, pristine whites, and delicate deep navy blue text or road highlights to match a corporate technical service brand identity. The lighting should appear flat and digital, giving a premium, professional UI aesthetic without heavy shading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3J3a-x2soPXPbetIFoSVzG94fG5HfGs73YGdstmbcljZTcRkoPJuFHKqpbOwFP6MHeA5O7fLMVQloPbratSulkeBdHMmFmEh5GAVWZ7ZmaHdJAQxXNIlouFeD6MOaeeeMl8fCBD1yduRCJs8Iky7ja3YgORxQRhkZYuje6SqEfyi8TvS3dX-vD5iMDpAhZeqJJVAdSgHyEFT4wzLf63PZAbvZKMB1FBYKdzawk6ed6Mu4zqGItKAr"/>
+<!-- Marker Pin Overlay -->
+<div class="absolute z-10 flex flex-col items-center transform -translate-y-4">
+<div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg animate-bounce">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div class="w-2 h-2 bg-primary rounded-full mt-1 opacity-50 blur-[2px]"></div>
+</div>
+</div>
+<!-- Overlay button for directions -->
+<div class="absolute bottom-4 left-0 w-full flex justify-center px-4 pointer-events-none">
+<a class="pointer-events-auto flex items-center justify-center gap-2 px-6 py-2 bg-surface-container-lowest border border-outline-variant text-primary rounded-[12px] font-button text-button shadow-md hover:bg-surface-container-low transition-all" href="https://maps.google.com/?q=Alibeyköy,Eyüpsultan" target="_blank">
+<span class="material-symbols-outlined text-[18px]" data-icon="directions">directions</span>
+                                    Yol Tarifi Al
+                                </a>
+</div>
+</div>
+</div>
+<!-- Right Column: Contact Form -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest rounded-xl border border-[#E5E5E7] p-stack-lg md:p-10 shadow-[0_2px_8px_rgba(0,51,102,0.04)] h-full flex flex-col">
+<div class="mb-stack-lg">
+<h2 class="text-headline-md font-headline-md text-primary mb-2">Servis Talebi Oluşturun</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Sorununuzu bize kısaca iletin, en kısa sürede size dönüş yapalım.</p>
+</div>
+<form action="#" class="flex flex-col gap-6 flex-1" method="POST">
+<!-- Name Input -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface" for="fullName">Adınız Soyadınız</label>
+<input class="w-full px-4 py-3 bg-[#F5F5F7] border border-transparent rounded-[12px] text-body-md font-body-md text-on-surface focus:border-primary focus:ring-0 focus:outline-none transition-colors shadow-sm" id="fullName" name="fullName" placeholder="Örn: Ahmet Yılmaz" required="" type="text"/>
+</div>
+<!-- Phone Input -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface" for="phoneNumber">Telefon Numaranız</label>
+<input class="w-full px-4 py-3 bg-[#F5F5F7] border border-transparent rounded-[12px] text-body-md font-body-md text-on-surface focus:border-primary focus:ring-0 focus:outline-none transition-colors shadow-sm" id="phoneNumber" name="phoneNumber" pattern="[0-9]{4} [0-9]{3} [0-9]{2} [0-9]{2}" placeholder="05XX XXX XX XX" required="" type="tel"/>
+</div>
+<!-- Service Type Select -->
+<div class="flex flex-col gap-2 relative group">
+<label class="text-label-md font-label-md text-on-surface" for="serviceType">Servis Türü</label>
+<div class="relative">
+<select class="w-full px-4 py-3 bg-[#F5F5F7] border border-transparent rounded-[12px] text-body-md font-body-md text-on-surface focus:border-primary focus:ring-0 focus:outline-none transition-colors shadow-sm appearance-none cursor-pointer" id="serviceType" name="serviceType" required="">
+<option disabled="" selected="" value="">Lütfen bir servis türü seçin</option>
+<option value="kombi">Kombi Tamiri &amp; Bakımı</option>
+<option value="klima">Klima Tamiri &amp; Bakımı</option>
+<option value="beyazesya">Beyaz Eşya Servisi</option>
+<option value="elektrik">Elektrik Tesisatı Onarımı</option>
+<option value="diger">Diğer / Bilmiyorum</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-on-surface-variant group-focus-within:text-primary">
+<span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Message Textarea -->
+<div class="flex flex-col gap-2 flex-1">
+<label class="text-label-md font-label-md text-on-surface" for="message">Mesajınız / Arıza Detayı</label>
+<textarea class="w-full h-full min-h-[120px] px-4 py-3 bg-[#F5F5F7] border border-transparent rounded-[12px] text-body-md font-body-md text-on-surface focus:border-primary focus:ring-0 focus:outline-none transition-colors shadow-sm resize-y" id="message" name="message" placeholder="Cihazınızdaki sorunu veya talebinizi kısaca açıklayın..." required="" rows="4"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-white rounded-[12px] font-button text-button hover:bg-primary-container transition-all shadow-[0_4px_12px_rgba(0,51,102,0.1)] hover:shadow-[0_8px_24px_rgba(0,51,102,0.15)] mt-auto" type="submit">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                                    Talebi Gönder
+                                </button>
+<p class="text-center text-[12px] text-on-surface-variant mt-2">Kişisel verileriniz gizlilik politikamız kapsamında korunmaktadır.</p>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<!-- Brand -->
+<div class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight text-center md:text-left">
+                Kerem Teknik Servis
+            </div>
+<!-- Footer Links -->
+<nav class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Services</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Blog</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">About</a>
+<a class="text-label-md font-label-md text-secondary dark:text-secondary-fixed font-bold opacity-80 transition-opacity hover:underline" href="#">Contact</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Terms of Service</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Privacy Policy</a>
+</nav>
+</div>
+<div class="mt-stack-md pt-stack-sm border-t border-outline-variant/30 text-center md:text-left">
+<p class="text-body-md font-body-md text-on-surface-variant">
+                © 2024 Kerem Teknik Servis. All Rights Reserved.
+            </p>
+</div>
+</footer>
+<!-- Sticky Mobile CTA (Bottom safe area) -->
+<div class="fixed bottom-0 w-full bg-surface border-t border-outline-variant shadow-[0_-4px_16px_rgba(0,51,102,0.08)] p-3 md:hidden z-40">
+<a class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#FF5500] text-white rounded-[12px] font-button text-button hover:bg-secondary-container transition-all" href="tel:05513972526">
+<span class="material-symbols-outlined text-[20px]" data-icon="phone" data-weight="fill">phone</span>
+            Hemen Ara
+        </a>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Logic
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-mobile-menu');
+            const sideNav = document.getElementById('mobile-side-nav');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openMenu() {
+                sideNav.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                // Small delay to allow display:block to render before opacity transition
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                    overlay.classList.add('opacity-100');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling on canvas
+            }
+
+            function closeMenu() {
+                sideNav.classList.add('-translate-x-full');
+                overlay.classList.remove('opacity-100');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300); // match duration-300
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Form focus states for custom styling if needed beyond Tailwind forms plugin
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.parentElement.classList.add('scale-[1.01]', 'transition-transform');
+                });
+                input.addEventListener('blur', () => {
+                    input.parentElement.classList.remove('scale-[1.01]');
+                });
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fırın ve Ocak Servisi - Kerem Teknik Servis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#a63500",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-container": "#d04400",
+                        "on-background": "#1c1b1b",
+                        "primary": "#001e40",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#799dd6",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-container": "#313335",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container": "#f0eded",
+                        "on-secondary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-secondary-fixed-variant": "#822700",
+                        "primary-fixed": "#d5e3ff",
+                        "error": "#ba1a1a",
+                        "outline": "#737780",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#9a9b9d",
+                        "surface": "#fcf9f8",
+                        "inverse-primary": "#a7c8ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#003366",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#390c00",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#c6c6c8",
+                        "outline-variant": "#c3c6d1",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed": "#1a1c1d",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-low": "#f6f3f2",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#454749",
+                        "surface-tint": "#3a5f94",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-fixed": "#e2e2e4",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "tertiary": "#1c1e20",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-surface-variant": "#43474f",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "button": ["16px", { "lineHeight": "1", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#e5e2e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased pb-24 md:pb-0">
+<!-- TopNavBar (Desktop) -->
+<header class="hidden md:flex bg-surface dark:bg-inverse-surface shadow-sm dark:shadow-none w-full sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-stack-md max-w-container-max mx-auto w-full">
+<div class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary">
+                Kerem Teknik Servis
+            </div>
+<nav class="flex gap-gutter">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Home</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary text-label-md font-label-md" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Blog</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">About</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Contact</a>
+</nav>
+<button class="bg-[#FF5500] text-white px-6 py-3 rounded-lg font-button text-button hover:bg-secondary-container transition-colors shadow-sm">
+                Call Now
+            </button>
+</div>
+</header>
+<!-- SideNavBar (Mobile) -->
+<nav class="md:hidden fixed inset-y-0 left-0 z-50 flex flex-col p-stack-md h-full w-64 bg-surface dark:bg-inverse-surface shadow-lg transform -translate-x-full transition-transform" id="mobile-nav">
+<div class="mb-stack-lg">
+<div class="text-headline-sm-mobile font-headline-sm-mobile font-bold text-primary dark:text-inverse-primary">Kerem Teknik</div>
+<div class="text-label-md font-label-md text-on-surface-variant mt-2">Expert Technical Solutions</div>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">home</span>Home
+            </a>
+<a class="flex items-center gap-4 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-lg p-3 scale-98 transition-all text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>Services
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">article</span>Blog
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">info</span>About
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-surface-variant p-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">contact_support</span>Contact
+            </a>
+</div>
+<div class="mt-auto pt-stack-md">
+<button class="w-full bg-[#FF5500] text-white px-4 py-3 rounded-lg font-button text-button hover:bg-secondary-container transition-colors shadow-sm">
+                Book Service Now
+            </button>
+</div>
+</nav>
+<!-- Mobile Header (trigger for nav) -->
+<div class="md:hidden flex justify-between items-center p-margin-mobile bg-surface shadow-sm sticky top-0 z-40">
+<div class="text-headline-sm-mobile font-headline-sm-mobile font-bold text-primary">Kerem Teknik</div>
+<button class="text-primary" onclick="document.getElementById('mobile-nav').classList.toggle('-translate-x-full')">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Hero Section -->
+<section class="grid md:grid-cols-2 gap-gutter items-center mb-16">
+<div>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-stack-sm">
+                    Fırın ve Ocak Servisi
+                </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-stack-lg">
+                    Ankastre, set üstü ocak ve fırınlarınızdaki ısıtma sorunları, çakmak arızaları ve elektrik bağlantı problemlerini uzman teknisyenlerimizle hızlıca çözüyoruz. Güvenilir ve garantili teknik servis.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-[#FF5500] text-white px-6 py-4 rounded-xl font-button text-button hover:bg-secondary-container transition-all shadow-[0_4px_14px_rgba(0,51,102,0.15)] flex items-center gap-2">
+<span class="material-symbols-outlined">build</span>
+                        Servis Çağır
+                    </button>
+<button class="border-2 border-primary text-primary px-6 py-4 rounded-xl font-button text-button hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">call</span>
+                        Bizi Arayın
+                    </button>
+</div>
+</div>
+<div class="relative h-[400px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,51,102,0.12)] border border-[#E5E5E7]">
+<img class="object-cover w-full h-full" data-alt="A modern, high-end built-in kitchen oven and stovetop unit being inspected by a professional technician in a clean, brightly lit residential kitchen. The technician is wearing a neat uniform and using specialized diagnostic tools. The lighting is bright and even, highlighting the clean metallic surfaces of the appliances, conveying a sense of expertise, cleanliness, and premium service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_YPod5hVqFD86YzWl6RH4EFmsPS0Uw_lbnB_LJ4cBWy1uvxBUcYZtJr3QMIEAHPOwwx-LGvfsx55ZNwJpBY0TUXrb8g1jffWq-0XeJNmtc52wmSGn-yY98XE0DGcM4X_bTV6PlGKyp3-KT9JCJNjdifKyIeND35IZUmBGXxQ8c54WG9xosiusKNHykm0FBA5S_b-xN_udhaR1CfXEGaV8HNBr5Zq6CVsPVG273vM01pOnQHpYGUDE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+</div>
+</section>
+<!-- Common Problems Bento Grid -->
+<section class="mb-24">
+<h2 class="text-headline-md font-headline-md text-primary mb-stack-md text-center">Sık Karşılaşılan Arızalar</h2>
+<p class="text-center text-on-surface-variant max-w-2xl mx-auto mb-stack-lg text-body-lg font-body-lg">
+                Fırın ve ocaklarda en sık rastlanan problemleri profesyonel ekipmanlarla kalıcı olarak onarıyoruz.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento Item 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,51,102,0.06)] border border-[#E5E5E7] hover:shadow-[0_8px_30px_rgba(0,51,102,0.12)] transition-shadow col-span-1 md:col-span-2 relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-32 h-32 bg-primary-fixed/30 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+<div class="flex items-start gap-4 h-full">
+<div class="bg-primary-container text-on-primary-container p-3 rounded-xl">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Isıtmama &amp; Yanmama Sorunu</h3>
+<p class="text-on-surface-variant">Fırınınızın alt veya üst rezistansının çalışmaması, ocağınızın gaz akışına rağmen yanmaması gibi temel fonksiyon kayıplarını hızlıca tespit edip orijinal yedek parçalarla onarıyoruz.</p>
+</div>
+</div>
+</div>
+<!-- Bento Item 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,51,102,0.06)] border border-[#E5E5E7] hover:shadow-[0_8px_30px_rgba(0,51,102,0.12)] transition-shadow">
+<div class="bg-primary/10 text-primary p-3 rounded-xl inline-block mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2 text-lg">Elektrik &amp; Rezistans</h3>
+<p class="text-on-surface-variant text-sm">Kısa devre, sigorta attırma sorunları ve rezistans değişimleri.</p>
+</div>
+<!-- Bento Item 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,51,102,0.06)] border border-[#E5E5E7] hover:shadow-[0_8px_30px_rgba(0,51,102,0.12)] transition-shadow">
+<div class="bg-primary/10 text-primary p-3 rounded-xl inline-block mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2 text-lg">Düğme &amp; Çakmak</h3>
+<p class="text-on-surface-variant text-sm">Basılı kalan düğmeler, sürekli çakan veya hiç çalışmayan çakmak sistemleri.</p>
+</div>
+<!-- Bento Item 4 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,51,102,0.06)] border border-[#E5E5E7] hover:shadow-[0_8px_30px_rgba(0,51,102,0.12)] transition-shadow col-span-1 md:col-span-2 bg-pattern">
+<div class="flex items-start gap-4">
+<div class="bg-primary-container text-on-primary-container p-3 rounded-xl">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">kitchen</span>
+</div>
+<div class="bg-surface/80 p-4 rounded-lg backdrop-blur-sm">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Ankastre Sistem Arızaları</h3>
+<p class="text-on-surface-variant">Gömme fırın ve ocakların söküm, montaj gerektiren kompleks arızaları, fan motoru problemleri ve elektronik kart tamirleri uzman kadromuz tarafından titizlikle yapılır.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Mobile CTA -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface shadow-[0_-4px_20px_rgba(0,51,102,0.1)] p-4 z-40 pb-safe">
+<button class="w-full bg-[#FF5500] text-white py-4 rounded-xl font-button text-button font-bold flex justify-center items-center gap-2">
+<span class="material-symbols-outlined">build</span>
+            Servis Randevusu Al
+        </button>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant w-full mt-12 pb-24 md:pb-0">
+<div class="w-full py-stack-lg px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary text-center md:text-left">
+                Kerem Teknik Servis
+            </div>
+<nav class="flex flex-wrap justify-center gap-4 text-label-md font-label-md">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Blog</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</nav>
+<div class="text-body-md font-body-md text-on-surface-variant">
+                © 2024 Kerem Teknik Servis. All Rights Reserved.
+            </div>
+</div>
+</footer>
+</body></html>

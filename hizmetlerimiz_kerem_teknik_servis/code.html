@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hizmetlerimiz | Kerem Teknik Servis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#a63500",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-container": "#d04400",
+                        "on-background": "#1c1b1b",
+                        "primary": "#001e40",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#799dd6",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-container": "#313335",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container": "#f0eded",
+                        "on-secondary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-secondary-fixed-variant": "#822700",
+                        "primary-fixed": "#d5e3ff",
+                        "error": "#ba1a1a",
+                        "outline": "#737780",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#9a9b9d",
+                        "surface": "#fcf9f8",
+                        "inverse-primary": "#a7c8ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#003366",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#390c00",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#c6c6c8",
+                        "outline-variant": "#c3c6d1",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed": "#1a1c1d",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-low": "#f6f3f2",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#454749",
+                        "surface-tint": "#3a5f94",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-fixed": "#e2e2e4",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "tertiary": "#1c1e20",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-surface-variant": "#43474f",
+                        "on-primary": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "button": ["16px", { lineHeight: "1", fontWeight: "600" }],
+                        "headline-sm": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "40px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .shadow-level-1 {
+            box-shadow: 0 4px 6px -1px rgba(0, 51, 102, 0.08), 0 2px 4px -1px rgba(0, 51, 102, 0.08), inset 0 0 0 1px #E5E5E7;
+        }
+        .shadow-level-2:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 51, 102, 0.12), 0 4px 6px -2px rgba(0, 51, 102, 0.08), inset 0 0 0 1px #E5E5E7;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar (Web) -->
+<nav class="hidden md:flex justify-between items-center px-margin-desktop py-stack-md max-w-container-max mx-auto w-full sticky top-0 z-50 shadow-sm bg-surface">
+<div class="text-headline-sm font-headline-sm font-bold text-primary">
+            Kerem Teknik Servis
+        </div>
+<div class="flex items-center gap-gutter">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Home</a>
+<a class="text-secondary font-bold border-b-2 border-secondary text-label-md font-label-md" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Blog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Contact</a>
+</div>
+<button class="bg-[#FF5500] text-white px-6 py-3 rounded-[12px] font-button text-button hover:bg-secondary-container transition-colors shadow-level-1">
+            Call Now
+        </button>
+</nav>
+<!-- SideNavBar (Mobile) -->
+<div class="md:hidden fixed inset-y-0 left-0 z-50 flex flex-col p-stack-md h-full w-64 shadow-lg bg-surface translate-x-[-100%] transition-transform" id="mobile-nav">
+<div class="mb-stack-lg">
+<h2 class="text-headline-sm-mobile font-headline-sm-mobile font-bold text-primary">Kerem Teknik</h2>
+<p class="text-on-surface-variant text-label-md font-label-md">Expert Technical Solutions</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg p-3 scale-98 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="text-label-md font-label-md font-bold">Services</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">article</span>
+<span class="text-label-md font-label-md">Blog</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">info</span>
+<span class="text-label-md font-label-md">About</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="text-label-md font-label-md">Contact</span>
+</a>
+</nav>
+<button class="bg-[#FF5500] text-white w-full py-3 rounded-[12px] font-button text-button mt-auto shadow-level-1">
+            Book Service Now
+        </button>
+</div>
+<!-- Mobile Header -->
+<header class="md:hidden flex justify-between items-center p-margin-mobile bg-surface shadow-sm sticky top-0 z-40">
+<div class="text-headline-sm-mobile font-headline-sm-mobile font-bold text-primary">
+            Kerem Teknik Servis
+        </div>
+<button class="text-primary" onclick="document.getElementById('mobile-nav').classList.toggle('translate-x-[-100%]')">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg pb-32 md:pb-stack-lg">
+<!-- Hero Section -->
+<section class="mb-16 text-center max-w-3xl mx-auto">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-stack-md">
+                Hizmetlerimiz
+            </h1>
+<p class="text-body-md md:text-body-lg font-body-md md:font-body-lg text-on-surface-variant">
+                Kerem Teknik Servis olarak klima, kombi ve beyaz eşya cihazlarınız için hızlı, güvenilir ve profesyonel servis çözümleri sunuyoruz.
+            </p>
+</section>
+<!-- Services Grid (Bento/Asymmetric style approach) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Service Card 1 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">ac_unit</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Klima Servisi</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Klimalarınızın bakım, onarım ve montaj işlemlerini uzman ekibimizle hızlı ve garantili olarak gerçekleştiriyoruz.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">thermostat</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Kombi Servisi</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Kış aylarında mağdur olmamanız için kombi bakımı ve arıza onarımında 7/24 profesyonel destek sağlıyoruz.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">kitchen</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Beyaz Eşya Servisi</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Evlerinizin vazgeçilmezi olan tüm beyaz eşyalarınız için güvenilir tamir ve periyodik bakım hizmeti.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 4 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">local_laundry_service</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Çamaşır Makinesi Servisi</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Çamaşır makinelerinizdeki su sızıntısı, sesli çalışma veya yıkama problemlerine kesin çözümler.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 5 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">severe_cold</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Buzdolabı Servisi</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Soğutmama, buzlanma veya motor arızaları gibi buzdolabı sorunlarınıza aynı gün içinde müdahale ediyoruz.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 6 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">dishwasher_gen</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Bulaşık Makinesi Servisi</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Bulaşık makinelerinizin temiz yıkamama veya su boşaltmama sorunlarını garantili yedek parçalarla onarıyoruz.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 7 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">microwave</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Fırın ve Ocak Servisi</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Ankastre veya solo fırın ve ocaklarınızın her türlü elektriksel veya mekanik arızasını gideriyoruz.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 8 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">calendar_month</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Periyodik Bakım</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Cihazlarınızın ömrünü uzatmak ve enerji tasarrufu sağlamak için düzenli periyodik bakım hizmetlerimizden faydalanın.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+<!-- Service Card 9 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-6 shadow-level-1 shadow-level-2 transition-all duration-300 flex flex-col md:col-span-2 lg:col-span-1">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-4">
+<span class="material-symbols-outlined text-2xl">handyman</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-2">Yedek Parça ve İşçilik</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 flex-grow">
+                    Kullandığımız tüm orijinal yedek parçalar ve uzman işçiliğimiz firmamız garantisi altındadır.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 mt-auto">
+<button class="flex-1 py-2 px-4 rounded-[12px] border-2 border-primary text-primary font-button text-button hover:bg-surface-container-high transition-colors text-center">
+                        Detaylı İncele
+                    </button>
+<button class="flex-1 py-2 px-4 rounded-[12px] bg-[#FF5500] text-white font-button text-button hover:bg-secondary-container transition-colors text-center shadow-sm">
+                        Hemen Ara
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant w-full py-stack-lg px-margin-desktop mt-auto">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-headline-sm font-headline-sm font-bold text-primary">
+                Kerem Teknik Servis
+            </div>
+<div class="flex flex-wrap justify-center gap-4 text-label-md font-label-md text-on-surface-variant">
+<a class="hover:underline hover:text-primary transition-colors text-secondary font-bold" href="#">Services</a>
+<a class="hover:underline hover:text-primary transition-colors" href="#">Blog</a>
+<a class="hover:underline hover:text-primary transition-colors" href="#">About</a>
+<a class="hover:underline hover:text-primary transition-colors" href="#">Contact</a>
+<a class="hover:underline hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:underline hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="text-body-md font-body-md text-on-surface-variant">
+                © 2024 Kerem Teknik Servis. All Rights Reserved.
+            </div>
+</div>
+</footer>
+<!-- Sticky Mobile CTA -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface shadow-[0_-4px_6px_-1px_rgba(0,51,102,0.08)] p-4 z-40">
+<button class="w-full bg-[#FF5500] text-white py-3 rounded-[12px] font-button text-button hover:bg-secondary-container transition-colors">
+            Book Service Now
+        </button>
+</div>
+</body></html>

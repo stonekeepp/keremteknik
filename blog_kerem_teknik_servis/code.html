@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog | Klima, Kombi ve Beyaz Eşya Bakım Rehberi</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#a63500",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-container": "#d04400",
+                        "on-background": "#1c1b1b",
+                        "primary": "#001e40",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#799dd6",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-container": "#313335",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container": "#f0eded",
+                        "on-secondary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "on-secondary-fixed-variant": "#822700",
+                        "primary-fixed": "#d5e3ff",
+                        "error": "#ba1a1a",
+                        "outline": "#737780",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#9a9b9d",
+                        "surface": "#fcf9f8",
+                        "inverse-primary": "#a7c8ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#003366",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#390c00",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-fixed-dim": "#c6c6c8",
+                        "outline-variant": "#c3c6d1",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed": "#1a1c1d",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-low": "#f6f3f2",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#454749",
+                        "surface-tint": "#3a5f94",
+                        "on-surface": "#1c1b1b",
+                        "tertiary-fixed": "#e2e2e4",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "tertiary": "#1c1e20",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-surface-variant": "#43474f",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "button": ["16px", { "lineHeight": "1", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Soft ambient shadow for bento cards (Level 1 Elevation) */
+        .card-elevation {
+            box-shadow: 0 4px 24px rgba(0, 51, 102, 0.08);
+            border: 1px solid #E5E5E7;
+        }
+        .card-elevation:hover {
+            box-shadow: 0 12px 32px rgba(0, 51, 102, 0.12);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar Shared Component -->
+<header class="w-full sticky top-0 z-50 bg-surface shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<div class="text-headline-sm font-headline-sm font-bold text-primary">
+                Kerem Teknik Servis
+            </div>
+<!-- Navigation Links (Hidden on mobile, assuming standard responsive behavior though JSON implies just top nav. We use md:flex to hide on mobile as per rules) -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Services</a>
+<!-- Active Navigation -->
+<a aria-current="page" class="text-secondary font-bold border-b-2 border-secondary pb-1 text-label-md font-label-md scale-95 transition-transform duration-200" href="#">Blog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Contact</a>
+</nav>
+<!-- Trailing Primary Action -->
+<button class="bg-secondary text-on-tertiary px-6 py-3 rounded-xl font-button text-button hover:bg-secondary-container transition-colors hidden md:block">
+                Call Now
+            </button>
+<!-- Mobile Menu Icon (Placeholder for functionality) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pb-stack-lg">
+<!-- Hero Section (Asymmetric Modern Layout) -->
+<section class="relative w-full pt-16 pb-12 overflow-hidden bg-surface-container-low">
+<div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#001e40 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10 flex flex-col md:flex-row items-end justify-between gap-gutter">
+<div class="max-w-2xl">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-6">
+                        Blog | Klima, Kombi ve Beyaz Eşya Bakım Rehberi
+                    </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+                        Klima, kombi ve beyaz eşya kullanımı hakkında pratik bakım önerileri, arıza belirtileri ve servis tavsiyeleri. Uzman ekibimizden hayatınızı kolaylaştıracak ipuçları.
+                    </p>
+</div>
+<div class="hidden md:flex flex-col items-end">
+<div class="bg-primary-container text-on-primary-container p-4 rounded-2xl flex items-center gap-3 max-w-xs shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build_circle</span>
+<span class="text-label-md font-label-md">Güvenilir ve uzman teknik içerikler.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Filters -->
+<section class="w-full py-stack-md border-b border-surface-variant bg-surface sticky top-[80px] z-40">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop overflow-x-auto no-scrollbar">
+<div class="flex items-center gap-3 min-w-max pb-2">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary text-label-md font-label-md shadow-sm transition-all hover:opacity-90">Tümü</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-md font-label-md border border-outline-variant hover:bg-surface-variant transition-all">Klima</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-md font-label-md border border-outline-variant hover:bg-surface-variant transition-all">Kombi</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-md font-label-md border border-outline-variant hover:bg-surface-variant transition-all">Beyaz Eşya</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-md font-label-md border border-outline-variant hover:bg-surface-variant transition-all">Bakım Önerileri</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-md font-label-md border border-outline-variant hover:bg-surface-variant transition-all">Arıza Rehberi</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Blog Articles -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg mt-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Featured Article (Bento Large) -->
+<article class="col-span-1 md:col-span-8 md:row-span-2 bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-64 md:h-96 relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional technician carefully cleaning the internal components of a modern wall-mounted air conditioning unit. Bright, clean light mode aesthetic, emphasizing hygiene and technical expertise. The scene features deep navy blue tools and subtle orange accents, conveying reliability and specialized service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4H13woV26a2-EfzcfOlw8HERkv_-I5U5q2jhcOCp-yBpu3HGZ3HsrkxJqcJi4ADtG1o5tzVUWW3GB3jurKaMchNkzZAfnWxS-5rVnMZh_aciXW_Kmq9Tn9k1s_F3aQRYHMyRnEgGNk_1n79TM8MjsQotXinz53lwy6c1hYm5IJCy36xwFh7cnqs4Rd-zKQYZwiDhBpCSMhrThKyyDu66If_Jj6V3uYMAWoPFvCzPRLdCG1SllIgQE"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full border border-surface-variant shadow-sm">
+<span class="text-label-md font-label-md text-primary">Klima</span>
+</div>
+</div>
+<div class="p-6 md:p-8 flex flex-col flex-grow justify-between">
+<div>
+<div class="flex items-center gap-2 text-outline text-label-md font-label-md mb-3">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>5 dk okuma</span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-background mb-4 group-hover:text-secondary transition-colors">
+                                Klima Bakımı: Yaza Hazırlık İçin Yapmanız Gereken 5 Kritik Adım
+                            </h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6 line-clamp-3">
+                                Havaların ısınmasıyla birlikte klimaların yoğun kullanımı başlıyor. Enerji tasarrufu sağlamak, cihaz ömrünü uzatmak ve sağlıklı bir hava solumak için profesyonel klima bakımının inceliklerini uzman teknisyenlerimizden öğrenin.
+                            </p>
+</div>
+<div class="flex items-center text-secondary font-button text-button group-hover:gap-2 transition-all">
+                            Devamını Oku <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Article 2 (Bento Small Right) -->
+<article class="col-span-1 md:col-span-4 bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-48 relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up shot of a modern residential boiler heating system being inspected. A digital pressure gauge is visible. Bright, clean, and organized utility room setting. Professional technical service atmosphere, utilizing a color palette with deep navy structural elements and crisp white lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALoTgCgYG1S4Jzq3hZXmiPb1rG30_2gNOnWqS_zko1UVwUjKzcrv7d0F5VfwZPl_ShA7bva7454ke3sgRxZHTLVzdfJ22ahTz22ASv3rc-skER6Bfirrtcnb_bLrzd9or1VktIoBthJTdgTOKF2MUTqBE3AMQieI8JrDMM113VYR3isWE47bS1Vsv5yChuyRj4qrDLRB2Hf08-TcjrT3kVIFbvJE0w3FatXPINIbJwIuL2EBdUpPZZ"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full border border-surface-variant shadow-sm">
+<span class="text-label-md font-label-md text-primary">Kombi</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-background mb-3 group-hover:text-secondary transition-colors">
+                                Kış Öncesi Kombi Bakımı Neden Şart?
+                            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 line-clamp-2">
+                                Petek temizliği ve yıllık kombi bakımının faturanıza olan etkisini ve güvenliğiniz için önemini detaylandırıyoruz.
+                            </p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-outline text-label-md font-label-md">4 dk okuma</span>
+<span class="text-secondary font-button text-button flex items-center">Oku <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- Article 3 (Bento Small Right) -->
+<article class="col-span-1 md:col-span-4 bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-48 relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, modern stainless steel refrigerator with its doors open, showing frost buildup in the freezer section. High-key lighting, bright light mode aesthetic. The environment suggests a clean, premium domestic kitchen, highlighting the need for expert appliance repair." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC28WVTGWj8ecKuimJfunnSoHR6goUo-urG1uX3V7znT2yoDHCFVBcQBz2myorO0nRitaRHJnDcICtlZkUqhIJlK1MQ9mHA2nwH9n5xjYzCGd62ANtsECs46Er_YV-CAn2wDQRr6KKaMaYqCJAu0QGlw4GTsG3DhqWSofunzYU1qCdCDEUo2SwZcvXlO0f-F1bO171ves2RECtYTZ-9X2gaSup2fs8CZBAyJBN3AzVEVid7ZFKY0o0e"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full border border-surface-variant shadow-sm">
+<span class="text-label-md font-label-md text-primary">Beyaz Eşya</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-background mb-3 group-hover:text-secondary transition-colors">
+                                Buzdolabı Soğutmuyorsa İlk Yapmanız Gerekenler
+                            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 line-clamp-2">
+                                Servis çağırmadan önce evde kontrol edebileceğiniz basit adımlar ve kompresör arıza belirtileri.
+                            </p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-outline text-label-md font-label-md">6 dk okuma</span>
+<span class="text-secondary font-button text-button flex items-center">Oku <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- Article 4 (Bottom Row) -->
+<article class="col-span-1 md:col-span-4 bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-48 relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A front-loading washing machine in a well-lit laundry room. Focus on the digital control panel and the drum. Professional, clean environment reflecting technical service standards. Light mode aesthetic with subtle contrasts of deep navy and bright white surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZh4yLTZiSdP8C6LHgdulAJ96QNyVHrYvclkhxCo2VrY41RBO2E31sJ8Yu5zAqhPLVVKPA3Q5m_FZe-sijLmSmQ-pDz3-cKjvQNHYFoowFgaL08tzLn3gF4meKXQcV6U4MN4wsMF-6dO30NldNRNkvLvTFK-p2VLTr7LR4fdOdF42qdKCKoPUSWI3KHOuMQ84Hv7MiKNpp-ZHHImPwmpqTO2W41L-lmPFBxpH3Z9FNgaxsNmI-EPPj"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full border border-surface-variant shadow-sm">
+<span class="text-label-md font-label-md text-primary">Arıza Rehberi</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-background mb-3 group-hover:text-secondary transition-colors">
+                                Çamaşır Makinesi Sıkma Yapmıyor Sorunu
+                            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 line-clamp-2">
+                                Pompa filtresi tıkanıklığından motor arızasına kadar sıkma probleminin olası nedenleri ve çözüm yolları.
+                            </p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-outline text-label-md font-label-md">3 dk okuma</span>
+<span class="text-secondary font-button text-button flex items-center">Oku <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- Article 5 (Bottom Row) -->
+<article class="col-span-1 md:col-span-4 bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-48 relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, modern dishwasher interior with racks slightly pulled out, showing gleaming water droplets. Bright, sterile light mode aesthetic. The composition implies hygiene and technical efficiency, using crisp whites and soft gray shadows to create a trustworthy, expert tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY3OzssuxqlZoDxYpoG-uUgD7IbCPlEFVxQYy14rtbmAzh9SoGfDntY4VSqnZlTklLReYcz9_-cymh-i6AxDYw1tCG1xlpm9F7bxxabz4EJbIqb4F-XgEZd_s2-RLSGCca0HIBQZtE5JZrVtXEU7asDzmbyW4TiV2n4LTRUMXuy-trVDBnIESRWwiJYOcE969Ujvs261arEZ25l22MbsGJCX-qF-zaVFKzqfBfP947Qm5p_e9tuVLj"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full border border-surface-variant shadow-sm">
+<span class="text-label-md font-label-md text-primary">Bakım Önerileri</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-background mb-3 group-hover:text-secondary transition-colors">
+                                Bulaşık Makinesi Koku Yapıyorsa Çözümü Basit
+                            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 line-clamp-2">
+                                Filtre temizliği, doğru deterjan kullanımı ve makine içi hijyeni sağlamanın en etkili profesyonel yöntemleri.
+                            </p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-outline text-label-md font-label-md">4 dk okuma</span>
+<span class="text-secondary font-button text-button flex items-center">Oku <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- Article 6 (Bottom Row) -->
+<article class="col-span-1 md:col-span-4 bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group cursor-pointer">
+<div class="w-full h-48 relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An electric oven with its glass door glowing warmly, but a technician's multimeter is resting on the counter nearby. Professional, high-clarity kitchen setting. Light mode aesthetic, blending the warmth of the appliance with the cool, analytical precision of deep navy and white technical elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRKwnYJo1E59ZrQiKpJVChnTSoBpPYxUVlczNj5b-4ytYHG-yhjnrw6Ul7ZDu6ofmm9nz31yp4uRvHijEfpRfA7rVsT6ewbQxDmxSlRJ_KWMXND7SOGw9NCkYKp_fAeM4eULqh_RCA3RNdxwFWH-UKIVbWyFJCdRXBsQ3ErA5hXbWQxTWtzdwkeQH8ebRLqO8QtSDiYtYpPX3nlq5xAaK5Z7MWMdEWFvRdprTpk_rMUOBqRHU2kANe"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full border border-surface-variant shadow-sm">
+<span class="text-label-md font-label-md text-primary">Beyaz Eşya</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-background mb-3 group-hover:text-secondary transition-colors">
+                                Fırın Isıtmıyorsa Rezistans Mı Bozuldu?
+                            </h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 line-clamp-2">
+                                Ankastre veya solo fırınınızın ısıtmama sorununun temel kaynakları ve ne zaman uzman servis çağırmanız gerektiği.
+                            </p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-outline text-label-md font-label-md">5 dk okuma</span>
+<span class="text-secondary font-button text-button flex items-center">Oku <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span></span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-12 flex justify-center">
+<button class="border-2 border-primary text-primary px-8 py-3 rounded-xl font-button text-button hover:bg-primary hover:text-on-primary transition-colors flex items-center gap-2">
+                    Daha Fazla Yazı Yükle <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container-low border-t border-outline-variant w-full py-stack-lg px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-headline-sm font-headline-sm font-bold text-primary">
+                Kerem Teknik Servis
+            </div>
+<nav class="flex flex-wrap justify-center gap-4 md:gap-6">
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-colors text-label-md font-label-md" href="#">Services</a>
+<a class="text-secondary font-bold hover:underline transition-colors text-label-md font-label-md" href="#">Blog</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-colors text-label-md font-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-colors text-label-md font-label-md" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-colors text-label-md font-label-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-colors text-label-md font-label-md" href="#">Privacy Policy</a>
+</nav>
+</div>
+<div class="max-w-container-max mx-auto mt-6 text-center md:text-left">
+<p class="text-body-md font-body-md text-outline">
+                © 2024 Kerem Teknik Servis. All Rights Reserved.
+            </p>
+</div>
+</footer>
+</body></html>
