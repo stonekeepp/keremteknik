@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/ui/CTABand";
 import { Section } from "@/components/ui/Section";
 import { ServiceCard } from "@/components/services/ServiceCard";
+import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { getBlogRepository } from "@/lib/blog";
 import {
@@ -19,7 +20,6 @@ import {
   FAQ_ITEMS,
   HERO_IMAGE,
   HOME_FAQ_LIMIT,
-  SERVICE_PROCESS,
   SERVICES,
   SITE,
   STATS,
@@ -183,34 +183,7 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Process */}
-      <Section
-        variant="muted"
-        title="Servis Sürecimiz"
-        subtitle="Randevudan teslimata kadar net, hızlı ve şeffaf bir servis akışı"
-        className="bg-gradient-to-b from-primary/8 via-surface-container-low to-surface-container-low"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter relative">
-          {SERVICE_PROCESS.map((step, index) => (
-            <div key={step.step} className="relative">
-              {index < SERVICE_PROCESS.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-primary/15" />
-              )}
-              <div className="bg-surface rounded-2xl p-6 shadow-level-1 h-full border border-outline-variant/30">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-cta/10 text-cta text-headline-sm font-headline-sm mb-4">
-                  {step.step}
-                </span>
-                <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-body-md text-on-surface-variant">
-                  {step.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <ServiceProcessBlock />
 
       {/* Testimonials */}
       <Section

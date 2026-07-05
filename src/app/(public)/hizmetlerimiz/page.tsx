@@ -7,11 +7,11 @@ import { HeroContactButtons } from "@/components/ui/HeroContactButtons";
 import { CTABand } from "@/components/ui/CTABand";
 import { Section } from "@/components/ui/Section";
 import { ServiceQuickNav } from "@/components/services/ServiceQuickNav";
+import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { buildOrganizationJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
-  SERVICE_PROCESS,
   SERVICES,
   SERVICES_HERO_IMAGE,
   TRUST_BADGES,
@@ -145,37 +145,7 @@ export default function HizmetlerimizPage() {
         </div>
       </Section>
 
-      <Section
-        variant="muted"
-        title="Servis Sürecimiz"
-        subtitle="Randevudan teslimata kadar şeffaf, hızlı ve bilgilendirici bir servis akışı"
-        centered
-        className="bg-gradient-to-b from-primary/8 via-surface-container-low to-surface-container-low"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
-          {SERVICE_PROCESS.map((step, index) => (
-            <div
-              key={step.step}
-              className="relative bg-surface rounded-2xl p-6 shadow-premium-sm border border-outline-variant/30"
-            >
-              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-cta/10 text-cta text-label-md font-label-md mb-4">
-                {step.step}
-              </span>
-              <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
-                {step.title}
-              </h3>
-              <p className="text-body-md text-on-surface-variant">
-                {step.description}
-              </p>
-              {index < SERVICE_PROCESS.length - 1 && (
-                <span className="hidden lg:block absolute top-1/2 -right-3 material-symbols-outlined text-primary/25 text-xl -translate-y-1/2">
-                  arrow_forward
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-      </Section>
+      <ServiceProcessBlock subtitle="Randevudan teslimata kadar şeffaf, hızlı ve bilgilendirici bir servis akışı" />
 
       <CTABand />
     </>

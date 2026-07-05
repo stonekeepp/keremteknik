@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
-import { SERVICE_PROCESS, SERVICES, WHY_US } from "@/lib/services/site";
+import { SERVICES, WHY_US } from "@/lib/services/site";
+import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 
 type ServiceWhySectionProps = {
   serviceTitle: string;
@@ -119,33 +120,9 @@ export function ServiceProcessSection({
   serviceTitle,
 }: ServiceProcessSectionProps) {
   return (
-    <Section
-      title="Servis Sürecimiz"
+    <ServiceProcessBlock
       subtitle={`${serviceTitle} için randevudan teslimata şeffaf ve profesyonel akış`}
-      centered
-      className="bg-gradient-to-b from-primary/8 via-surface-container-low to-background"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter relative">
-        {SERVICE_PROCESS.map((step, index) => (
-          <div key={step.step} className="relative">
-            {index < SERVICE_PROCESS.length - 1 && (
-              <div className="hidden lg:block absolute top-9 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-primary/15" />
-            )}
-            <div className="bg-surface rounded-2xl p-6 shadow-premium-sm border border-outline-variant/30 h-full text-center relative z-10">
-              <span className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-br from-cta/20 to-primary/10 text-cta text-label-md font-label-md mb-4 ring-2 ring-surface">
-                {step.step}
-              </span>
-              <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
-                {step.title}
-              </h3>
-              <p className="text-body-md text-on-surface-variant">
-                {step.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Section>
+    />
   );
 }
 
