@@ -43,20 +43,25 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="bg-primary-fixed text-on-primary-fixed rounded-2xl p-8 shadow-level-1 text-center">
-        <span className="material-symbols-outlined text-primary text-5xl mb-4">
-          check_circle
-        </span>
-        <p className="text-body-lg font-medium mb-2">Talebiniz alındı!</p>
-        <p className="text-body-md text-on-surface-variant">
-          En kısa sürede sizinle iletişime geçeceğiz.
+      <div className="bg-gradient-to-br from-primary/5 to-cta/5 rounded-2xl p-8 md:p-10 border border-primary/10 text-center">
+        <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-cta/10 flex items-center justify-center">
+          <span className="material-symbols-outlined text-cta text-4xl">
+            check_circle
+          </span>
+        </div>
+        <p className="text-headline-sm font-headline-sm text-primary mb-2">
+          Talebiniz alındı!
+        </p>
+        <p className="text-body-md text-on-surface-variant max-w-sm mx-auto">
+          En kısa sürede sizinle iletişime geçeceğiz. Acil durumlar için
+          telefon veya WhatsApp hattımızı kullanabilirsiniz.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <Input
         label="Ad Soyad"
         value={form.name}
@@ -105,8 +110,9 @@ export function ContactForm() {
         onChange={(e) => setForm({ ...form, message: e.target.value })}
         error={errors.message}
       />
-      <Button type="submit" className="w-full">
-        Gönder
+      <Button type="submit" className="w-full mt-1">
+        <span className="material-symbols-outlined">send</span>
+        Talebi Gönder
       </Button>
     </form>
   );

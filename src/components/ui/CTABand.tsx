@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { SITE } from "@/lib/services/site";
 import { Button } from "./Button";
 
@@ -30,7 +29,11 @@ export function CTABand() {
               <span className="material-symbols-outlined text-xl">call</span>
               {SITE.phone}
             </Button>
-            <Button href="/iletisim" variant="outline" className="border-on-primary/40 text-on-primary hover:bg-on-primary/10">
+            <Button
+              href="/iletisim"
+              variant="outline"
+              className="border-white text-white hover:bg-white/10 hover:text-white"
+            >
               Online Talep Oluştur
             </Button>
           </div>

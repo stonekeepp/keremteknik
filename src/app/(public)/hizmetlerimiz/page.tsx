@@ -3,9 +3,10 @@ import { HeroShowcaseImage } from "@/components/ui/HeroShowcaseImage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/Badge";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { Button } from "@/components/ui/Button";
+import { HeroContactButtons } from "@/components/ui/HeroContactButtons";
 import { CTABand } from "@/components/ui/CTABand";
 import { Section } from "@/components/ui/Section";
+import { ServiceQuickNav } from "@/components/services/ServiceQuickNav";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { buildOrganizationJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
@@ -13,21 +14,32 @@ import {
   SERVICE_PROCESS,
   SERVICES,
   SERVICES_HERO_IMAGE,
-  SITE,
   TRUST_BADGES,
 } from "@/lib/services/site";
 
 export const metadata = buildPageMetadata({
-  title: "Hizmetlerimiz",
+  title: "Hizmetlerimiz | İstanbul Klima, Kombi ve Beyaz Eşya Servisi",
   description:
-    "Kerem Teknik Servis olarak klima, kombi ve beyaz eşya cihazlarınız için hızlı, güvenilir ve profesyonel servis çözümleri sunuyoruz.",
+    "Kerem Teknik Servis hizmetleri: klima, kombi, beyaz eşya, periyodik bakım ve yedek parça. İstanbul genelinde aynı gün yerinde teknik servis, garantili işçilik.",
   path: "/hizmetlerimiz",
 });
 
 const SERVICE_CATEGORIES = [
-  { label: "Klima & Kombi", icon: "ac_unit", slugs: ["klima-servisi", "kombi-servisi"] },
-  { label: "Beyaz Eşya", icon: "kitchen", slugs: ["beyaz-esya-servisi"] },
-  { label: "Bakım & Onarım", icon: "handyman", slugs: ["periyodik-bakim", "yedek-parca-iscilik"] },
+  {
+    label: "Klima & Kombi",
+    icon: "ac_unit",
+    slugs: ["klima-servisi", "kombi-servisi"],
+  },
+  {
+    label: "Beyaz Eşya",
+    icon: "kitchen",
+    slugs: ["beyaz-esya-servisi"],
+  },
+  {
+    label: "Bakım & Parça",
+    icon: "handyman",
+    slugs: ["periyodik-bakim", "yedek-parca-iscilik"],
+  },
 ] as const;
 
 export default function HizmetlerimizPage() {
@@ -37,7 +49,6 @@ export default function HizmetlerimizPage() {
     <>
       <JsonLd data={buildOrganizationJsonLd()} />
 
-      {/* Premium Hero */}
       <section className="relative bg-gradient-hero overflow-hidden">
         <div
           className="absolute inset-0 opacity-40"
@@ -66,24 +77,18 @@ export default function HizmetlerimizPage() {
               </div>
 
               <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">
-                Hizmetlerimiz
+                İstanbul Teknik Servis Hizmetlerimiz
               </h1>
 
               <p className="text-body-lg text-on-surface-variant max-w-xl">
                 Kerem Teknik Servis olarak klima, kombi ve beyaz eşya
-                cihazlarınız için hızlı, güvenilir ve profesyonel servis
-                çözümleri sunuyoruz. İstanbul genelinde aynı gün teknik destek.
+                cihazlarınız için yerinde arıza tespiti, bakım, onarım ve yedek
+                parça desteği sunuyoruz. İstanbul genelinde aynı gün teknik
+                servis planlaması yapıyoruz.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button href="/iletisim">Hemen Randevu Al</Button>
-                <Button href={`tel:${SITE.phoneTel}`} variant="outline">
-                  <span className="material-symbols-outlined">call</span>
-                  {SITE.phone}
-                </Button>
-              </div>
+              <HeroContactButtons />
 
-              {/* Quick category links */}
               <div className="flex flex-wrap gap-2 pt-2 border-t border-outline-variant/40">
                 {SERVICE_CATEGORIES.map((cat) => (
                   <Link
@@ -103,7 +108,7 @@ export default function HizmetlerimizPage() {
             <div className="w-full lg:w-1/2 relative">
               <HeroShowcaseImage
                 src={SERVICES_HERO_IMAGE}
-                alt="Kerem Teknik Servis profesyonel hizmet ekibi"
+                alt="Kerem Teknik Servis — İstanbul klima, kombi ve beyaz eşya servisi"
               />
               <div className="absolute -bottom-5 -right-2 md:right-4 bg-surface rounded-2xl shadow-premium-lg p-4 hidden sm:block max-w-[220px]">
                 <div className="flex items-start gap-3">
@@ -112,10 +117,10 @@ export default function HizmetlerimizPage() {
                   </span>
                   <div>
                     <p className="text-headline-sm font-headline-sm text-primary leading-tight">
-                      9+ Servis Alanı
+                      {detailServices.length} Servis Alanı
                     </p>
                     <p className="text-body-md text-on-surface-variant mt-1">
-                      Klima, kombi ve tüm beyaz eşya
+                      Klima, kombi ve beyaz eşya
                     </p>
                   </div>
                 </div>
@@ -125,32 +130,11 @@ export default function HizmetlerimizPage() {
         </div>
       </section>
 
-      {/* Service highlights strip */}
-      <section className="bg-primary py-8 md:py-10 border-y border-primary-container">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {detailServices.slice(0, 4).map((service) => (
-              <Link
-                key={service.slug}
-                href={`/hizmetlerimiz/${service.slug}`}
-                className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary-container/30 transition-colors"
-              >
-                <span className="material-symbols-outlined text-gold text-2xl group-hover:scale-110 transition-transform">
-                  {service.icon}
-                </span>
-                <span className="text-body-md text-primary-fixed-dim group-hover:text-on-primary transition-colors font-medium">
-                  {service.title}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceQuickNav />
 
-      {/* Service cards grid */}
       <Section
         title="Tüm Servis Hizmetlerimiz"
-        subtitle="Arıza tespiti, bakım, onarım ve yedek parça desteği ile cihazlarınıza profesyonel çözümler sunuyoruz."
+        subtitle="Arıza tespiti, periyodik bakım, onarım ve yedek parça desteği ile cihazlarınıza profesyonel çözümler"
         centered
         className="!pb-8"
       >
@@ -161,12 +145,12 @@ export default function HizmetlerimizPage() {
         </div>
       </Section>
 
-      {/* Service process */}
       <Section
         variant="muted"
         title="Servis Sürecimiz"
-        subtitle="Şeffaf ve hızlı süreç ile arızalarınıza en kısa sürede müdahale ediyoruz."
+        subtitle="Randevudan teslimata kadar şeffaf, hızlı ve bilgilendirici bir servis akışı"
         centered
+        className="bg-gradient-to-b from-primary/8 via-surface-container-low to-surface-container-low"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
           {SERVICE_PROCESS.map((step, index) => (
@@ -174,7 +158,7 @@ export default function HizmetlerimizPage() {
               key={step.step}
               className="relative bg-surface rounded-2xl p-6 shadow-premium-sm border border-outline-variant/30"
             >
-              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-gold text-label-md font-label-md mb-4">
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-cta/10 text-cta text-label-md font-label-md mb-4">
                 {step.step}
               </span>
               <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
@@ -184,7 +168,7 @@ export default function HizmetlerimizPage() {
                 {step.description}
               </p>
               {index < SERVICE_PROCESS.length - 1 && (
-                <span className="hidden lg:block absolute top-1/2 -right-3 material-symbols-outlined text-outline-variant text-xl -translate-y-1/2">
+                <span className="hidden lg:block absolute top-1/2 -right-3 material-symbols-outlined text-primary/25 text-xl -translate-y-1/2">
                   arrow_forward
                 </span>
               )}

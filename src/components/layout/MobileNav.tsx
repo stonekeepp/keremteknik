@@ -56,11 +56,11 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       >
         <div className="flex justify-between items-center p-4 border-b border-outline-variant/50">
           <img
-            src="/brand/logo-yatay.svg"
-            alt="Kerem Teknik Servis"
-            width={160}
-            height={48}
-            className="h-9 w-auto"
+            src={SITE.logo}
+            alt={SITE.logoAlt}
+            width={715}
+            height={240}
+            className="h-9 w-auto max-w-[200px] object-contain"
           />
           <button
             type="button"

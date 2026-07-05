@@ -14,17 +14,23 @@ export function TestimonialCard({
   return (
     <blockquote className="bg-surface rounded-2xl p-6 shadow-level-1 flex flex-col h-full">
       <div className="flex gap-0.5 mb-4" aria-label={`${rating} yıldız`}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <span
-            key={i}
-            className={`material-symbols-outlined text-lg ${
-              i < rating ? "text-gold" : "text-outline-variant"
-            }`}
-            style={{ fontVariationSettings: "'FILL' 1" }}
-          >
-            star
-          </span>
-        ))}
+        {Array.from({ length: 5 }).map((_, i) => {
+          const filled = i < rating;
+          return (
+            <span
+              key={i}
+              className={`material-symbols-outlined text-xl ${
+                filled ? "text-gold" : "text-outline-variant/35"
+              }`}
+              style={{
+                fontVariationSettings: filled ? "'FILL' 1" : "'FILL' 0",
+                color: filled ? "#C9A227" : undefined,
+              }}
+            >
+              star
+            </span>
+          );
+        })}
       </div>
       <p className="text-body-md text-on-surface-variant flex-grow mb-4">
         &ldquo;{text}&rdquo;

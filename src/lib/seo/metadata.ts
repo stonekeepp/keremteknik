@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/config/env";
 const SITE_NAME = "Kerem Teknik Servis";
 const DEFAULT_DESCRIPTION =
   "Kerem Teknik Servis; klima, kombi ve beyaz eşya arızaları için hızlı, güvenilir ve profesyonel teknik servis hizmeti sunar.";
-const DEFAULT_OG_IMAGE = "/brand/logo-emblem.png";
+const DEFAULT_OG_IMAGE = "/brand/logo-kerem-teknik-servis.png";
 
 export function absoluteUrl(path: string): string {
   const base = getSiteUrl().replace(/\/$/, "");

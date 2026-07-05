@@ -1,6 +1,8 @@
 import type { BlogCategory } from "@/lib/blog/types";
 import { SERVICES } from "@/lib/services/site";
 
+export const INTERNAL_LINK_LIMIT = 6;
+
 export type ContextualLink = {
   href: string;
   label: string;
@@ -49,8 +51,8 @@ const CATEGORY_SERVICE_SLUG: Partial<Record<BlogCategory, string>> = {
 };
 
 const SERVICE_RELATED_SLUGS: Record<string, string[]> = {
-  "klima-servisi": ["kombi-servisi", "beyaz-esya-servisi"],
-  "kombi-servisi": ["klima-servisi", "beyaz-esya-servisi"],
+  "klima-servisi": ["kombi-servisi", "beyaz-esya-servisi", "periyodik-bakim"],
+  "kombi-servisi": ["klima-servisi", "beyaz-esya-servisi", "periyodik-bakim"],
   "beyaz-esya-servisi": [
     "camasir-makinesi-servisi",
     "buzdolabi-servisi",
@@ -60,6 +62,8 @@ const SERVICE_RELATED_SLUGS: Record<string, string[]> = {
   "buzdolabi-servisi": ["camasir-makinesi-servisi", "bulasik-makinesi-servisi"],
   "bulasik-makinesi-servisi": ["camasir-makinesi-servisi", "firin-ocak-servisi"],
   "firin-ocak-servisi": ["bulasik-makinesi-servisi", "beyaz-esya-servisi"],
+  "periyodik-bakim": ["klima-servisi", "kombi-servisi", "yedek-parca-iscilik"],
+  "yedek-parca-iscilik": ["periyodik-bakim", "beyaz-esya-servisi", "klima-servisi"],
 };
 
 function serviceLink(slug: string, description?: string): ContextualLink | null {
@@ -77,7 +81,22 @@ function truncate(text: string, max: number): string {
   return `${text.slice(0, max - 1).trim()}…`;
 }
 
-function uniqueLinks(links: (ContextualLink | null)[], limit = 5): ContextualLink[] {
+const FALLBACK_LINK_POOL: (ContextualLink | null)[] = [
+  UTILITY_LINKS.services,
+  UTILITY_LINKS.faq,
+  UTILITY_LINKS.contact,
+  UTILITY_LINKS.blog,
+  UTILITY_LINKS.about,
+  UTILITY_LINKS.home,
+  serviceLink("klima-servisi"),
+  serviceLink("kombi-servisi"),
+  serviceLink("beyaz-esya-servisi"),
+  serviceLink("camasir-makinesi-servisi"),
+  serviceLink("periyodik-bakim"),
+  serviceLink("yedek-parca-iscilik"),
+];
+
+function uniqueLinks(links: (ContextualLink | null)[]): ContextualLink[] {
   const seen = new Set<string>();
   const result: ContextualLink[] = [];
 
@@ -85,7 +104,6 @@ function uniqueLinks(links: (ContextualLink | null)[], limit = 5): ContextualLin
     if (!link || seen.has(link.href)) continue;
     seen.add(link.href);
     result.push(link);
-    if (result.length >= limit) break;
   }
 
   return result;
@@ -97,6 +115,15 @@ function excludePath(links: ContextualLink[], pathname: string): ContextualLink[
       ? pathname.slice(0, -1)
       : pathname;
   return links.filter((link) => link.href !== normalized);
+}
+
+function finalizeLinks(
+  candidates: (ContextualLink | null)[],
+  pathname: string,
+): ContextualLink[] {
+  const merged = uniqueLinks([...candidates, ...FALLBACK_LINK_POOL]);
+  const filtered = excludePath(merged, pathname);
+  return filtered.slice(0, INTERNAL_LINK_LIMIT);
 }
 
 export type InternalLinksBlock = {
@@ -123,24 +150,34 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
   if (path === "/") {
     block = {
       heading: "Sitede gezinin",
-      links: uniqueLinks([
-        UTILITY_LINKS.services,
-        serviceLink("klima-servisi"),
-        serviceLink("kombi-servisi"),
-        UTILITY_LINKS.faq,
-        UTILITY_LINKS.contact,
-      ]),
+      links: finalizeLinks(
+        [
+          UTILITY_LINKS.services,
+          serviceLink("klima-servisi"),
+          serviceLink("kombi-servisi"),
+          serviceLink("beyaz-esya-servisi"),
+          serviceLink("periyodik-bakim"),
+          UTILITY_LINKS.faq,
+          UTILITY_LINKS.contact,
+        ],
+        path,
+      ),
     };
   } else if (path === "/hizmetlerimiz") {
     block = {
       heading: "Öne çıkan servisler",
-      links: uniqueLinks([
-        serviceLink("klima-servisi"),
-        serviceLink("kombi-servisi"),
-        serviceLink("beyaz-esya-servisi"),
-        UTILITY_LINKS.faq,
-        UTILITY_LINKS.contact,
-      ]),
+      links: finalizeLinks(
+        [
+          serviceLink("klima-servisi"),
+          serviceLink("kombi-servisi"),
+          serviceLink("beyaz-esya-servisi"),
+          serviceLink("periyodik-bakim"),
+          UTILITY_LINKS.faq,
+          UTILITY_LINKS.contact,
+          UTILITY_LINKS.blog,
+        ],
+        path,
+      ),
     };
   } else if (path.startsWith("/hizmetlerimiz/")) {
     const slug = path.replace("/hizmetlerimiz/", "");
@@ -149,66 +186,83 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
     );
     block = {
       heading: "İlgili servis ve bilgi sayfaları",
-      links: uniqueLinks([
-        ...related,
-        UTILITY_LINKS.services,
-        UTILITY_LINKS.faq,
-        UTILITY_LINKS.blog,
-        UTILITY_LINKS.contact,
-      ]),
+      links: finalizeLinks(
+        [
+          ...related,
+          UTILITY_LINKS.services,
+          UTILITY_LINKS.faq,
+          UTILITY_LINKS.blog,
+          UTILITY_LINKS.contact,
+          UTILITY_LINKS.about,
+        ],
+        path,
+      ),
     };
   } else if (path === "/blog") {
     block = {
       heading: "Servis ve destek",
-      links: uniqueLinks([
-        UTILITY_LINKS.services,
-        serviceLink("klima-servisi", "Klima bakımı ve arıza çözümleri"),
-        UTILITY_LINKS.faq,
-        UTILITY_LINKS.about,
-        UTILITY_LINKS.contact,
-      ]),
+      links: finalizeLinks(
+        [
+          UTILITY_LINKS.services,
+          serviceLink("klima-servisi", "Klima bakımı ve arıza çözümleri"),
+          serviceLink("kombi-servisi"),
+          UTILITY_LINKS.faq,
+          UTILITY_LINKS.about,
+          UTILITY_LINKS.contact,
+        ],
+        path,
+      ),
     };
   } else if (path === "/hakkimizda") {
     block = {
       heading: "Hizmetlerimizi inceleyin",
-      links: uniqueLinks([
-        UTILITY_LINKS.services,
-        serviceLink("klima-servisi"),
-        serviceLink("kombi-servisi"),
-        UTILITY_LINKS.blog,
-        UTILITY_LINKS.contact,
-      ]),
+      links: finalizeLinks(
+        [
+          UTILITY_LINKS.services,
+          serviceLink("klima-servisi"),
+          serviceLink("kombi-servisi"),
+          serviceLink("beyaz-esya-servisi"),
+          UTILITY_LINKS.blog,
+          UTILITY_LINKS.contact,
+        ],
+        path,
+      ),
     };
   } else if (path === "/sss") {
     block = {
       heading: "Servis talebi ve hizmetler",
-      links: uniqueLinks([
-        UTILITY_LINKS.contact,
-        UTILITY_LINKS.services,
-        serviceLink("beyaz-esya-servisi"),
-        serviceLink("kombi-servisi"),
-        UTILITY_LINKS.about,
-      ]),
+      links: finalizeLinks(
+        [
+          UTILITY_LINKS.contact,
+          UTILITY_LINKS.services,
+          serviceLink("beyaz-esya-servisi"),
+          serviceLink("kombi-servisi"),
+          serviceLink("periyodik-bakim"),
+          UTILITY_LINKS.about,
+        ],
+        path,
+      ),
     };
   } else if (path === "/iletisim") {
     block = {
       heading: "Hizmetler hakkında bilgi",
-      links: uniqueLinks([
-        UTILITY_LINKS.services,
-        UTILITY_LINKS.faq,
-        serviceLink("klima-servisi"),
-        serviceLink("camasir-makinesi-servisi"),
-        UTILITY_LINKS.blog,
-      ]),
+      links: finalizeLinks(
+        [
+          UTILITY_LINKS.services,
+          UTILITY_LINKS.faq,
+          serviceLink("klima-servisi"),
+          serviceLink("camasir-makinesi-servisi"),
+          serviceLink("periyodik-bakim"),
+          UTILITY_LINKS.blog,
+        ],
+        path,
+      ),
     };
   }
 
-  if (!block) return null;
+  if (!block || block.links.length === 0) return null;
 
-  const links = excludePath(block.links, path);
-  if (links.length === 0) return null;
-
-  return { ...block, links };
+  return block;
 }
 
 export function getBlogPostInternalLinks(
@@ -218,17 +272,22 @@ export function getBlogPostInternalLinks(
   const serviceSlug = CATEGORY_SERVICE_SLUG[category];
   const service = serviceSlug ? serviceLink(serviceSlug) : null;
 
-  const links = uniqueLinks([
-    service,
-    UTILITY_LINKS.services,
-    UTILITY_LINKS.faq,
-    UTILITY_LINKS.contact,
-    UTILITY_LINKS.blog,
-  ]).filter((link) => link.href !== `/blog/${currentSlug}`);
+  const links = finalizeLinks(
+    [
+      service,
+      UTILITY_LINKS.services,
+      UTILITY_LINKS.faq,
+      UTILITY_LINKS.contact,
+      UTILITY_LINKS.blog,
+      serviceLink("kombi-servisi"),
+      UTILITY_LINKS.about,
+    ],
+    `/blog/${currentSlug}`,
+  ).filter((link) => link.href !== `/blog/${currentSlug}`);
 
   return {
     heading: "Bu yazıyla ilgili sayfalar",
-    links,
+    links: links.slice(0, INTERNAL_LINK_LIMIT),
   };
 }
 

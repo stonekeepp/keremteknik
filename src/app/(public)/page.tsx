@@ -18,6 +18,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   FAQ_ITEMS,
   HERO_IMAGE,
+  HOME_FAQ_LIMIT,
   SERVICE_PROCESS,
   SERVICES,
   SITE,
@@ -28,9 +29,10 @@ import {
 } from "@/lib/services/site";
 
 export const metadata = buildPageMetadata({
-  title: "Kerem Teknik Servis | Klima, Kombi ve Beyaz Eşya Servisi",
+  title:
+    "Kerem Teknik Servis | İstanbul Klima, Kombi ve Beyaz Eşya Teknik Servisi",
   description:
-    "Kerem Teknik Servis; klima, kombi ve beyaz eşya arızaları için hızlı, güvenilir ve profesyonel teknik servis hizmeti sunar. İstanbul geneli aynı gün servis.",
+    "İstanbul genelinde klima, kombi ve beyaz eşya arızalarına aynı gün müdahale. Kerem Teknik Servis; garantili işçilik, şeffaf fiyat ve periyodik bakım hizmeti sunar.",
   path: "/",
   absoluteTitle: true,
 });
@@ -41,7 +43,12 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd data={[buildOrganizationJsonLd(), buildFaqPageJsonLd(FAQ_ITEMS.slice(0, 4))]} />
+      <JsonLd
+        data={[
+          buildOrganizationJsonLd(),
+          buildFaqPageJsonLd(FAQ_ITEMS.slice(0, HOME_FAQ_LIMIT)),
+        ]}
+      />
 
       {/* Hero */}
       <section className="relative bg-gradient-hero overflow-hidden">
@@ -62,25 +69,34 @@ export default async function HomePage() {
               ))}
             </div>
             <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">
-              Klima, Kombi ve Beyaz Eşya Servisinde Güvenilir Çözüm
+              İstanbul&apos;da Profesyonel Klima, Kombi ve Beyaz Eşya Servisi
             </h1>
             <p className="text-body-lg text-on-surface-variant max-w-xl">
-              Deneyimli teknik ekibimizle klima, kombi, çamaşır makinesi,
-              buzdolabı, bulaşık makinesi, fırın ve ocak arızalarınız için
-              hızlı, güvenilir ve profesyonel teknik servis hizmeti sunuyoruz.
+              Kerem Teknik Servis; klima, kombi, çamaşır makinesi, buzdolabı,
+              bulaşık makinesi, fırın ve ocak arızalarında yerinde teşhis,
+              garantili işçilik ve şeffaf fiyatlandırma ile aynı gün teknik
+              servis hizmeti verir.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <Button href="/iletisim">Hemen Randevu Al</Button>
               <Button href={`tel:${SITE.phoneTel}`} variant="outline">
                 <span className="material-symbols-outlined">call</span>
                 Bizi Ara
+              </Button>
+              <Button
+                href={`https://wa.me/${SITE.whatsapp}`}
+                variant="whatsapp"
+                external
+              >
+                <span className="material-symbols-outlined">chat</span>
+                WhatsApp
               </Button>
             </div>
           </div>
           <div className="w-full lg:w-1/2 relative">
             <HeroShowcaseImage
               src={HERO_IMAGE}
-              alt="Kerem Teknik Servis uzman teknisyen ekibi"
+              alt="Kerem Teknik Servis — İstanbul klima, kombi ve beyaz eşya teknik servisi"
             />
             <div className="absolute -bottom-6 -left-4 md:left-4 bg-surface rounded-2xl shadow-premium-lg p-4 hidden sm:block">
               <div className="flex items-center gap-3">
@@ -92,7 +108,7 @@ export default async function HomePage() {
                     Garantili İşçilik
                   </p>
                   <p className="text-body-md text-on-surface-variant">
-                    Tüm onarımlarda garanti
+                    Onarım ve parça değişiminde yazılı garanti
                   </p>
                 </div>
               </div>
@@ -109,7 +125,9 @@ export default async function HomePage() {
               <div className="text-headline-md md:text-headline-lg font-headline-md text-gold mb-1">
                 {stat.value}
               </div>
-              <div className="text-body-md text-primary-fixed-dim">{stat.label}</div>
+              <div className="text-body-md text-primary-fixed-dim">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
@@ -119,16 +137,16 @@ export default async function HomePage() {
       <Section
         id="hizmetler"
         title="Hizmetlerimiz"
-        subtitle="Klima, kombi ve beyaz eşya cihazlarınız için kapsamlı teknik servis çözümleri"
+        subtitle="Klima, kombi, beyaz eşya, periyodik bakım ve yedek parça hizmetlerinde uçtan uca teknik destek"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-          {SERVICES.filter((s) => s.hasDetailPage).map((service) => (
+          {SERVICES.map((service) => (
             <ServiceCard key={service.slug} service={service} />
           ))}
         </div>
         <div className="text-center mt-10">
           <Button href="/hizmetlerimiz" variant="outline">
-            Tüm Hizmetleri Gör
+            Tüm Hizmetleri İncele
           </Button>
         </div>
       </Section>
@@ -137,7 +155,7 @@ export default async function HomePage() {
       <Section
         variant="muted"
         title="Neden Kerem Teknik Servis?"
-        subtitle="Yılların deneyimi ve müşteri odaklı hizmet anlayışımızla yanınızdayız"
+        subtitle="Hızlı müdahale, uzman ekip ve şeffaf süreç ile İstanbul genelinde güvenilir teknik servis deneyimi"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
           {WHY_US.map((item) => (
@@ -145,8 +163,12 @@ export default async function HomePage() {
               key={item.title}
               className="bg-surface rounded-2xl p-6 shadow-level-1 text-center card-elevation group"
             >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                <span className="material-symbols-outlined text-primary text-3xl">
+              <div
+                className={`w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-colors ${item.iconBg} group-hover:brightness-95`}
+              >
+                <span
+                  className={`material-symbols-outlined text-3xl ${item.iconColor}`}
+                >
                   {item.icon}
                 </span>
               </div>
@@ -163,14 +185,16 @@ export default async function HomePage() {
 
       {/* Process */}
       <Section
+        variant="muted"
         title="Servis Sürecimiz"
-        subtitle="4 adımda hızlı ve şeffaf teknik servis deneyimi"
+        subtitle="Randevudan teslimata kadar net, hızlı ve şeffaf bir servis akışı"
+        className="bg-gradient-to-b from-primary/8 via-surface-container-low to-surface-container-low"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter relative">
           {SERVICE_PROCESS.map((step, index) => (
             <div key={step.step} className="relative">
               {index < SERVICE_PROCESS.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-outline-variant/50" />
+                <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-primary/15" />
               )}
               <div className="bg-surface rounded-2xl p-6 shadow-level-1 h-full border border-outline-variant/30">
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-cta/10 text-cta text-headline-sm font-headline-sm mb-4">
@@ -190,9 +214,8 @@ export default async function HomePage() {
 
       {/* Testimonials */}
       <Section
-        variant="muted"
         title="Müşterilerimiz Ne Diyor?"
-        subtitle="Binlerce mutlu müşterimizden bazı yorumlar"
+        subtitle="Klima, kombi ve beyaz eşya servislerimizden memnun kalan müşterilerimizin geri bildirimleri"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
           {TESTIMONIALS.map((t) => (
@@ -203,7 +226,11 @@ export default async function HomePage() {
 
       {/* Blog */}
       {latestPosts.length > 0 && (
-        <Section title="Blogdan Son Yazılar">
+        <Section
+          variant="muted"
+          title="Blogdan Son Yazılar"
+          subtitle="Bakım önerileri, arıza belirtileri ve enerji tasarrufu ipuçları"
+        >
           <div className="flex justify-end mb-6 -mt-6">
             <Link
               href="/blog"
@@ -255,13 +282,13 @@ export default async function HomePage() {
       {/* FAQ */}
       <Section
         title="Sık Sorulan Sorular"
-        subtitle="Merak ettiğiniz soruların cevapları"
+        subtitle="Servis süresi, fiyatlandırma, garanti kapsamı ve hizmet bölgeleri hakkında yanıtlar"
       >
         <div className="max-w-3xl mx-auto">
-          <Accordion items={[...FAQ_ITEMS]} limit={4} />
+          <Accordion items={[...FAQ_ITEMS]} limit={HOME_FAQ_LIMIT} />
           <div className="text-center mt-8">
             <Button href="/sss" variant="outline">
-              Tüm Sorular
+              Tüm Soruları Görüntüle
             </Button>
           </div>
         </div>

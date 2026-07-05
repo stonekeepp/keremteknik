@@ -114,13 +114,16 @@ export function SiteHeader() {
     <>
       <header className={cn("hidden lg:flex", headerClass)}>
         <div className="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto gap-6">
-          <Link href="/" className="flex items-center shrink-0">
+          <Link
+            href="/"
+            className="flex items-center shrink-0 h-14 lg:h-16"
+          >
             <img
-              src="/brand/logo-yatay.svg"
-              alt="Kerem Teknik Servis"
-              width={220}
-              height={68}
-              className="h-11 w-auto"
+              src={SITE.logo}
+              alt={SITE.logoAlt}
+              width={715}
+              height={240}
+              className="h-full w-auto object-contain object-left"
             />
           </Link>
           <nav className="flex gap-6 xl:gap-8 items-center flex-wrap justify-center">
@@ -159,13 +162,16 @@ export function SiteHeader() {
       </header>
 
       <header className={cn("lg:hidden flex justify-between items-center px-margin-mobile py-3", headerClass)}>
-        <Link href="/" className="flex items-center shrink-0">
+        <Link
+          href="/"
+          className="flex items-center shrink-0 min-w-0 h-11 flex-1 max-w-[75%]"
+        >
           <img
-            src="/brand/icon.svg"
-            alt="Kerem Teknik Servis"
-            width={56}
-            height={48}
-            className="h-10 w-auto"
+            src={SITE.logo}
+            alt={SITE.logoAlt}
+            width={715}
+            height={240}
+            className="h-full w-auto max-w-full object-contain object-left"
           />
         </Link>
         <button

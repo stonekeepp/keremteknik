@@ -17,11 +17,11 @@ export function AdminSidebar() {
     <aside className="w-full md:w-64 bg-primary text-on-primary min-h-screen p-6 flex flex-col">
       <Link href="/admin/blog" className="mb-8 block">
         <img
-          src="/brand/icon.svg"
+          src="/brand/logo-kerem-teknik-servis.png"
           alt="Kerem Teknik Servis"
-          width={48}
-          height={42}
-          className="h-10 w-auto brightness-0 invert"
+          width={160}
+          height={107}
+          className="h-10 w-auto rounded-lg"
         />
       </Link>
       <nav className="flex flex-col gap-2 flex-grow">

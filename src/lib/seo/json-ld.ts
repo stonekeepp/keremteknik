@@ -43,7 +43,7 @@ export function buildOrganizationJsonLd() {
     "@type": "Organization",
     name: SITE.name,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/brand/logo-emblem.png"),
+    logo: absoluteUrl("/brand/logo-kerem-teknik-servis.png"),
     contactPoint: {
       "@type": "ContactPoint",
       telephone: SITE.phoneTel,
@@ -141,7 +141,7 @@ export function buildArticleJsonLd({
       name: SITE.name,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/brand/logo-emblem.png"),
+        url: absoluteUrl("/brand/logo-kerem-teknik-servis.png"),
       },
     },
     mainEntityOfPage: absoluteUrl(`/blog/${slug}`),

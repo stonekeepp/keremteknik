@@ -15,11 +15,11 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
           <div className="sm:col-span-2 lg:col-span-1">
             <img
-              src="/brand/logo-yatay.svg"
-              alt="Kerem Teknik Servis"
-              width={200}
-              height={60}
-              className="h-10 w-auto brightness-0 invert mb-4"
+              src={SITE.logo}
+              alt={SITE.logoAlt}
+              width={715}
+              height={240}
+              className="h-10 w-auto mb-4 rounded-md"
             />
             <p className="text-body-md text-primary-fixed-dim mb-4">
               {SITE.description}

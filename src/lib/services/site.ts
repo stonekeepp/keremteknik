@@ -12,6 +12,8 @@ export const SITE = {
   },
   description:
     "Klima, kombi ve beyaz eşya servisinde hızlı, güvenilir ve profesyonel teknik destek.",
+  logo: "/brand/logo-kerem-teknik-servis.png",
+  logoAlt: "Kerem Teknik Servis — keremteknikservis.com",
 } as const;
 
 export const NAV_LINKS = [
@@ -102,16 +104,16 @@ export const SERVICES: ServiceItem[] = [
     title: "Periyodik Bakım",
     icon: "handyman",
     shortDescription:
-      "Klima, kombi ve beyaz eşya cihazlarınız için düzenli bakım ve performans kontrolü hizmetleri.",
-    hasDetailPage: false,
+      "Klima, kombi ve beyaz eşya cihazlarınız için planlı bakım, performans kontrolü ve arıza önleme hizmetleri.",
+    hasDetailPage: true,
   },
   {
     slug: "yedek-parca-iscilik",
     title: "Yedek Parça ve İşçilik",
     icon: "settings",
     shortDescription:
-      "Orijinal ve uyumlu yedek parça temini ile şeffaf işçilik bedeli sunuyoruz.",
-    hasDetailPage: false,
+      "Orijinal ve uyumlu yedek parça temini ile şeffaf işçilik bedeli; onarım öncesi net fiyat bilgisi.",
+    hasDetailPage: true,
   },
 ];
 
@@ -131,7 +133,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Klima Servisi",
     icon: "ac_unit",
     description:
-      "Klima arızaları, bakım, gaz kontrolü, temizlik ve montaj işlemleri için deneyimli teknik ekibimizle hızlı ve güvenilir servis hizmeti sunuyoruz.",
+      "İstanbul genelinde split, multi, salon ve inverter klima arızalarında yerinde teşhis, gaz dolumu, filtre temizliği, bakım ve montaj hizmeti sunuyoruz. Kerem Teknik Servis olarak soğutmama, ısıtmama, su akıtma ve koku problemlerine aynı gün müdahale ediyor; onarım öncesi şeffaf fiyat bilgisi paylaşıyor, garantili işçilik ile kalıcı çözüm sağlıyoruz.",
     commonIssues: [
       "Klima soğutmuyor",
       "Klima ısıtmıyor",
@@ -148,7 +150,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Kombi Servisi",
     icon: "thermostat",
     description:
-      "Kombi arızaları, sıcak su problemleri, petek ısıtma sorunları ve periyodik bakım ihtiyaçlarınız için profesyonel teknik servis desteği sunuyoruz.",
+      "İstanbul'da kombi arıza, sıcak su, petek ısıtma ve basınç sorunlarında uzman teknisyen kadromuzla yerinde servis veriyoruz. Arıza kodu tespiti, petek temizliği, sezon öncesi kombi bakımı ve parça değişiminde şeffaf fiyatlandırma uyguluyor; onayınız olmadan işlem yapmadan, garantili işçilik ile kış aylarında kesintisiz ısınmanızı hedefliyoruz.",
     commonIssues: [
       "Kombi çalışmıyor",
       "Sıcak su gelmiyor",
@@ -165,7 +167,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Beyaz Eşya Servisi",
     icon: "kitchen",
     description:
-      "Ev ve iş yerlerinde kullanılan beyaz eşya cihazları için arıza tespiti, bakım, onarım ve parça değişimi hizmetleri sunuyoruz.",
+      "Çamaşır makinesi, buzdolabı, bulaşık makinesi, fırın ve ocak dahil tüm beyaz eşya cihazlarınız için İstanbul genelinde yerinde arıza tespiti, bakım ve onarım hizmeti sunuyoruz. Kerem Teknik Servis; ev ve iş yerlerinde aynı gün müdahale, uyumlu yedek parça temini ve garantili işçilik ile cihazlarınızın ömrünü uzatmayı amaçlar.",
     commonIssues: [],
     scope: [
       "Çamaşır makinesi",
@@ -182,7 +184,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Çamaşır Makinesi Servisi",
     icon: "local_laundry_service",
     description:
-      "Çamaşır makinesi arızalarında hızlı teşhis ve profesyonel onarım hizmeti sunuyoruz.",
+      "İstanbul'da çamaşır makinesi su almama, boşaltmama, sıkmama, ses ve kapak arızalarında aynı gün yerinde teknik servis sağlıyoruz. Pompa, motor, kayış, elektronik kart ve rulman değişimlerinde önce arızayı net teşhis ediyor, fiyat bilgisini paylaşıyor ve onayınız sonrası garantili onarım gerçekleştiriyoruz.",
     commonIssues: [
       "Su almıyor",
       "Su boşaltmıyor",
@@ -199,7 +201,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Buzdolabı Servisi",
     icon: "severe_cold",
     description:
-      "Buzdolabı soğutma, buzlanma ve motor arızalarında aynı gün teknik servis desteği sağlıyoruz.",
+      "Buzdolabı soğutmama, aşırı buzlanma, motor çalışmama ve gaz kaçağı gibi arızalarda İstanbul genelinde hızlı teknik servis desteği veriyoruz. Kerem Teknik Servis olarak termostat, kompresör, fan ve kapı lastiği değişimlerinde şeffaf fiyat politikası izler; yerinde teşhis sonrası garantili işçilik ile cihazınızı güvenle teslim ederiz.",
     commonIssues: [
       "Soğutmuyor",
       "Aşırı buzlanma yapıyor",
@@ -216,7 +218,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Bulaşık Makinesi Servisi",
     icon: "dishwasher_gen",
     description:
-      "Bulaşık makinesi yıkama, su alma ve boşaltma sorunlarında uzman teknik destek sunuyoruz.",
+      "Bulaşık makinesi yıkamama, su almama, boşaltmama, koku ve program hatalarında İstanbul'da yerinde arıza tespiti ve profesyonel onarım hizmeti sunuyoruz. Pompa, rezistans, filtre ve elektronik kart arızalarında uyumlu yedek parça kullanır; onarım öncesi net fiyat bilgisi vererek garantili işçilik ile kalıcı çözüm sağlarız.",
     commonIssues: [
       "Yıkamıyor",
       "Su almıyor",
@@ -233,7 +235,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Fırın ve Ocak Servisi",
     icon: "microwave",
     description:
-      "Fırın, ocak ve ankastre cihaz arızalarında güvenilir teknik servis ve bakım hizmeti sunuyoruz.",
+      "Fırın, ocak ve ankastre cihazlarda ısıtmama, ateşleme, rezistans ve elektrik bağlantı arızalarına İstanbul genelinde yerinde müdahale ediyoruz. Kerem Teknik Servis; ankastre setlerde güvenli teşhis, şeffaf işçilik bedeli ve orijinal ya da uyumlu parça değişimi ile mutfağınızdaki cihazları kısa sürede tekrar çalışır hale getirir.",
     commonIssues: [
       "Fırın ısıtmıyor",
       "Ocak yanmıyor",
@@ -243,6 +245,40 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Elektrik bağlantı problemi",
     ],
     relatedFaqIndices: [0, 2, 6],
+  },
+  "periyodik-bakim": {
+    slug: "periyodik-bakim",
+    title: "Periyodik Bakım",
+    icon: "handyman",
+    description:
+      "Klima, kombi ve beyaz eşya cihazlarınız için İstanbul genelinde planlı periyodik bakım, filtre temizliği, gaz ve basınç kontrolü ile performans testi hizmeti sunuyoruz. Düzenli bakım sayesinde enerji tüketimini düşürür, beklenmedik arızaların önüne geçer ve cihaz ömrünü uzatırsınız. Kerem Teknik Servis, sezon öncesi kombi ve yıllık klima bakımında şeffaf fiyat ve garantili işçilik ile yanınızdadır.",
+    commonIssues: [],
+    scope: [
+      "Klima periyodik bakım ve filtre temizliği",
+      "Kombi sezon öncesi bakım",
+      "Beyaz eşya genel kontrol ve ayar",
+      "Gaz ve basınç kontrolleri",
+      "Performans testi ve bilgilendirme",
+      "Arıza riski önleyici müdahale",
+    ],
+    relatedFaqIndices: [7, 1, 3],
+  },
+  "yedek-parca-iscilik": {
+    slug: "yedek-parca-iscilik",
+    title: "Yedek Parça ve İşçilik",
+    icon: "settings",
+    description:
+      "Klima, kombi ve beyaz eşya onarımlarında orijinal ve uyumlu yedek parça temini ile şeffaf işçilik bedeli sunuyoruz. Parça değişimi öncesi fiyat bilgisi paylaşılır; onayınız olmadan işlem yapılmaz. Kerem Teknik Servis olarak elektronik kart, motor, pompa ve mekanik parça değişimlerinde garanti belgesi ve fatura ile hizmet verir; İstanbul genelinde güvenilir, kaliteli ve uzun ömürlü onarım çözümleri sağlarız.",
+    commonIssues: [],
+    scope: [
+      "Orijinal ve uyumlu yedek parça temini",
+      "Şeffaf işçilik ve servis ücreti",
+      "Parça ve işçilik garantisi bilgilendirmesi",
+      "Klima, kombi ve beyaz eşya yedek parçaları",
+      "Elektronik kart ve mekanik parça değişimi",
+      "Servis sonrası fatura ve garanti belgesi",
+    ],
+    relatedFaqIndices: [4, 6, 3],
   },
 };
 
@@ -256,27 +292,35 @@ export const TRUST_BADGES = [
 export const WHY_US = [
   {
     icon: "groups",
+    iconColor: "text-primary",
+    iconBg: "bg-primary/10",
     title: "Deneyimli Ekip",
     description:
-      "Alanında uzman teknisyenlerimizle her arızaya profesyonel çözüm sunuyoruz.",
+      "Sertifikalı teknisyenlerimiz, klima, kombi ve beyaz eşya arızalarında yılların birikimiyle kalıcı çözümler üretir.",
   },
   {
     icon: "speed",
+    iconColor: "text-cta",
+    iconBg: "bg-cta/10",
     title: "Hızlı Müdahale",
     description:
-      "Aynı gün servis imkânı ile arızalarınıza en kısa sürede müdahale ediyoruz.",
+      "İstanbul genelinde aynı gün servis planlaması yapıyor; acil arızalarda bekleme süresini minimuma indiriyoruz.",
   },
   {
     icon: "shield",
+    iconColor: "text-secondary",
+    iconBg: "bg-secondary/10",
     title: "Garantili İşçilik",
     description:
-      "Yapılan işçilik ve değişen parçalar için garanti sağlıyoruz.",
+      "Yapılan onarım ve değiştirilen parçalar için yazılı garanti sunarak hizmet kalitemizi güvence altına alıyoruz.",
   },
   {
     icon: "payments",
+    iconColor: "text-gold",
+    iconBg: "bg-gold/15",
     title: "Şeffaf Fiyatlandırma",
     description:
-      "Servis öncesi net bilgilendirme ile sürpriz maliyet oluşmasını önlüyoruz.",
+      "Servis öncesi net fiyat bilgisi paylaşır; onayınız olmadan ek işlem veya sürpriz maliyet oluşturmayız.",
   },
 ] as const;
 
@@ -284,22 +328,26 @@ export const SERVICE_PROCESS = [
   {
     step: "01",
     title: "Talep Oluşturma",
-    description: "Telefon veya form ile servis talebinizi iletin.",
+    description:
+      "Telefon, WhatsApp veya iletişim formu ile arıza veya bakım talebinizi bize iletin.",
   },
   {
     step: "02",
     title: "Randevu Planlama",
-    description: "Size uygun gün ve saatte randevu oluşturalım.",
+    description:
+      "Size en uygun gün ve saat için randevu oluşturur, teknisyen yönlendirmesini netleştiririz.",
   },
   {
     step: "03",
     title: "Yerinde Teşhis",
-    description: "Teknisyenimiz arızayı yerinde tespit eder.",
+    description:
+      "Uzman teknisyenimiz adresinize gelerek arızayı yerinde tespit eder ve çözüm planını paylaşır.",
   },
   {
     step: "04",
     title: "Onarım ve Teslim",
-    description: "Onayınız sonrası onarım yapılır, cihaz teslim edilir.",
+    description:
+      "Onayınız sonrası profesyonel onarım yapılır; cihazınız test edilerek sorunsuz şekilde teslim edilir.",
   },
 ] as const;
 
@@ -307,44 +355,57 @@ export const FAQ_ITEMS = [
   {
     question: "Servis ne kadar sürer?",
     answer:
-      "Arızanın türüne göre değişmekle birlikte çoğu müdahale aynı gün içinde tamamlanır. Detaylı onarım gerektiren durumlarda süre teknisyenimiz tarafından bilgilendirilir.",
+      "Arızanın türüne göre değişmekle birlikte birçok müdahale aynı gün tamamlanır. Kapsamlı onarım gerektiren durumlarda süre, teknisyenimiz tarafından onayınız alınmadan önce net olarak paylaşılır.",
   },
   {
     question: "Aynı gün servis mümkün mü?",
     answer:
-      "Evet, yoğunluğa bağlı olarak İstanbul genelinde aynı gün servis hizmeti sunuyoruz. Acil durumlar için bizi arayabilirsiniz.",
+      "Evet. İstanbul genelinde yoğunluğa bağlı olarak aynı gün servis planlaması yapıyoruz. Acil arızalar için telefon veya WhatsApp hattımızdan hızlı talep oluşturabilirsiniz.",
   },
   {
     question: "Hangi cihazlara servis veriyorsunuz?",
     answer:
-      "Klima, kombi, çamaşır makinesi, buzdolabı, bulaşık makinesi, fırın, ocak ve ankastre cihazlara teknik servis hizmeti veriyoruz.",
+      "Klima, kombi, çamaşır makinesi, buzdolabı, bulaşık makinesi, fırın, ocak ve ankastre cihazlara yerinde teknik servis hizmeti veriyoruz.",
   },
   {
     question: "İşçilik garantisi var mı?",
     answer:
-      "Evet, gerçekleştirdiğimiz işçilik ve değiştirdiğimiz parçalar için garanti sunuyoruz. Detaylar servis sonrası paylaşılır.",
+      "Evet. Gerçekleştirdiğimiz işçilik ve değiştirdiğimiz parçalar için garanti sunuyoruz. Garanti kapsamı servis sonrası tarafınıza yazılı veya sözlü olarak bildirilir.",
   },
   {
     question: "Servis ücreti nasıl belirlenir?",
     answer:
-      "Servis ücreti arızanın türü, gerekli parça ve işçilik kapsamına göre belirlenir. Onarım öncesi şeffaf fiyat bilgisi verilir.",
+      "Servis ücreti; arıza türü, gerekli yedek parça ve işçilik kapsamına göre belirlenir. Onarım öncesi şeffaf fiyat bilgisi paylaşılır, onayınız olmadan ek işlem yapılmaz.",
   },
   {
     question: "Hangi bölgelere hizmet veriyorsunuz?",
     answer:
-      "İstanbul genelinde, özellikle Eyüpsultan ve çevre ilçelerde hızlı servis hizmeti sunuyoruz.",
+      "İstanbul genelinde hizmet veriyoruz. Merkez ofisimiz Eyüpsultan'da olup Gaziosmanpaşa, Sultangazi, Esenler ve çevre ilçelere hızlı servis yönlendirmesi yapıyoruz.",
   },
   {
     question: "Parça değişimi yapıyor musunuz?",
     answer:
-      "Evet, arıza tespiti sonrası gerekli parça değişimlerini uygun yedek parçalarla gerçekleştiriyoruz.",
+      "Evet. Yerinde teşhis sonrası gerekli parça değişimlerini, cihazınıza uygun yedek parçalarla gerçekleştiriyoruz.",
   },
   {
     question: "Klima ve kombi bakımını ne sıklıkla yaptırmalıyım?",
     answer:
-      "Klima bakımı yılda en az bir, kombi bakımı ise yılda bir kez kış sezonu öncesinde yaptırılması önerilir.",
+      "Klima bakımı yılda en az bir kez, kombi bakımı ise kış sezonu öncesinde yılda bir kez yaptırılması önerilir. Düzenli bakım, arıza riskini azaltır ve cihaz ömrünü uzatır.",
+  },
+  {
+    question: "WhatsApp üzerinden servis talebi oluşturabilir miyim?",
+    answer:
+      "Evet. WhatsApp hattımızdan arıza bilgisi, adres ve uygun saat paylaşarak hızlıca servis talebi oluşturabilirsiniz.",
+  },
+  {
+    question: "Yerinde servis mi, atölye servisi mi uyguluyorsunuz?",
+    answer:
+      "Klima, kombi ve beyaz eşya arızalarının büyük bölümünde yerinde servis hizmeti sunuyoruz. Gerekli durumlarda cihazın atölyeye alınması gerekip gerekmediği teknisyenimiz tarafından bilgilendirilir.",
   },
 ] as const;
+
+/** Ana sayfada gösterilecek SSS adedi */
+export const HOME_FAQ_LIMIT = 7;
 
 export const CONTACT_SERVICE_TYPES = [
   "Klima Servisi",
@@ -355,6 +416,7 @@ export const CONTACT_SERVICE_TYPES = [
   "Bulaşık Makinesi Servisi",
   "Fırın ve Ocak Servisi",
   "Periyodik Bakım",
+  "Yedek Parça ve İşçilik",
   "Diğer",
 ] as const;
 
@@ -362,11 +424,106 @@ export const HERO_IMAGE = "/images/hero-kerem-teknik-servis.png";
 
 export const SERVICES_HERO_IMAGE = "/images/hero-hizmetlerimiz-kerem-teknik.png";
 
+export const ABOUT_HERO_IMAGE = "/images/hero-hakkimizda-kerem-teknik.png";
+
+export const ABOUT_TIMELINE = [
+  {
+    year: "2010",
+    title: "Kuruluş ve İlk Servis Ağı",
+    description:
+      "Eyüpsultan merkezli olarak klima ve kombi servisiyle faaliyete başladık; yerel müşteri güvenini temel aldık.",
+  },
+  {
+    year: "2015",
+    title: "Beyaz Eşya Hizmetlerinin Eklenmesi",
+    description:
+      "Çamaşır makinesi, buzdolabı ve bulaşık makinesi servisini portföyümüze ekleyerek kapsamı genişlettik.",
+  },
+  {
+    year: "2020",
+    title: "İstanbul Geneline Yayılım",
+    description:
+      "Servis ağımızı Gaziosmanpaşa, Sultangazi, Esenler ve çevre ilçelere taşıyarak daha hızlı yönlendirme sağladık.",
+  },
+  {
+    year: "2024",
+    title: "Dijital Talep ve Şeffaf Süreç",
+    description:
+      "WhatsApp, telefon ve online form ile talep alımını kolaylaştırdık; onarım öncesi fiyat bilgilendirmesini standart hale getirdik.",
+  },
+] as const;
+
+export const ABOUT_STORY = {
+  title: "İstanbul'da Güvenilir Teknik Servis Deneyimi",
+  paragraphs: [
+    "Kerem Teknik Servis, Eyüpsultan merkezli olarak İstanbul genelinde klima, kombi ve beyaz eşya cihazlarına yerinde arıza tespiti, bakım ve onarım hizmeti sunar.",
+    "Her servis talebinde önce doğru teşhis, ardından şeffaf fiyat bilgisi ve onayınız sonrası profesyonel müdahale ilkesiyle çalışırız. Amacımız yalnızca arızayı gidermek değil; cihazınızın uzun ömürlü ve verimli çalışmasını sağlamaktır.",
+    "Aynı gün servis planlaması, garantili işçilik ve müşteri odaklı iletişim anlayışımızla ev ve iş yerlerinizde kesintisiz konfor hedefliyoruz.",
+  ],
+  missionTitle: "Misyonumuz",
+  mission:
+    "İstanbul genelinde hızlı, güvenilir ve kalıcı teknik servis çözümleri sunarak her müşterimize şeffaf ve memnuniyet odaklı bir hizmet deneyimi yaşatmak.",
+  visionTitle: "Vizyonumuz",
+  vision:
+    "Bölgenin en güvenilir klima, kombi ve beyaz eşya teknik servis markası olarak sürdürülebilir kalite ve uzmanlıkla fark yaratmak.",
+} as const;
+
+export const ABOUT_PILLARS = [
+  {
+    icon: "business",
+    iconColor: "text-primary",
+    iconBg: "bg-primary/10",
+    title: "Yerel ve Güvenilir",
+    description:
+      "Eyüpsultan merkezli ekibimizle İstanbul'un birçok ilçesine hızlı servis yönlendirmesi yapıyoruz.",
+  },
+  {
+    icon: "groups",
+    iconColor: "text-secondary",
+    iconBg: "bg-secondary/10",
+    title: "Uzman Teknisyen Kadrosu",
+    description:
+      "Klima, kombi ve beyaz eşya alanında deneyimli teknisyenlerimiz her arızaya kalıcı çözüm üretir.",
+  },
+  {
+    icon: "speed",
+    iconColor: "text-cta",
+    iconBg: "bg-cta/10",
+    title: "Aynı Gün Müdahale",
+    description:
+      "Acil arızalarda bekleme süresini minimuma indiriyor; uygun randevu planlamasıyla hızlı servis sunuyoruz.",
+  },
+  {
+    icon: "verified",
+    iconColor: "text-gold",
+    iconBg: "bg-gold/15",
+    title: "Garantili İşçilik",
+    description:
+      "Yapılan onarım ve değiştirilen parçalar için yazılı garanti ile hizmet kalitemizi güvence altına alıyoruz.",
+  },
+  {
+    icon: "payments",
+    iconColor: "text-primary",
+    iconBg: "bg-primary/10",
+    title: "Şeffaf Fiyat Politikası",
+    description:
+      "Onarım öncesi net fiyat paylaşır; onayınız olmadan ek işlem veya sürpriz maliyet oluşturmayız.",
+  },
+  {
+    icon: "thumb_up",
+    iconColor: "text-secondary",
+    iconBg: "bg-secondary/10",
+    title: "Müşteri Memnuniyeti",
+    description:
+      "Her servis sonrası geri bildirimleri değerlendirerek süreçlerimizi sürekli iyileştiriyoruz.",
+  },
+] as const;
+
 export const STATS = [
-  { value: "15+", label: "Yıllık Deneyim", icon: "history" },
-  { value: "5000+", label: "Tamamlanan Servis", icon: "handyman" },
-  { value: "98%", label: "Müşteri Memnuniyeti", icon: "sentiment_satisfied" },
-  { value: "7/24", label: "Destek Hattı", icon: "support_agent" },
+  { value: "15+", label: "Yıllık Sektör Deneyimi", icon: "history" },
+  { value: "5000+", label: "Başarılı Servis Kaydı", icon: "handyman" },
+  { value: "98%", label: "Müşteri Memnuniyet Oranı", icon: "sentiment_satisfied" },
+  { value: "7/24", label: "Ulaşılabilir Destek Hattı", icon: "support_agent" },
 ] as const;
 
 export const TESTIMONIALS = [
@@ -374,25 +531,25 @@ export const TESTIMONIALS = [
     name: "Ahmet Y.",
     service: "Kombi Servisi",
     rating: 5,
-    text: "Kombim kış ortasında arızalandı, aynı gün geldiler ve sorunu çözdüler. Çok profesyonel bir ekip.",
+    text: "Kombim kış ortasında arızalandı. Aynı gün geldiler, arızayı net açıkladılar ve sorunu kalıcı şekilde çözdüler. Profesyonel ve güvenilir ekip.",
   },
   {
     name: "Elif K.",
     service: "Klima Servisi",
     rating: 5,
-    text: "Klima bakımı için randevu aldım, hem temiz hem de uygun fiyatlı bir hizmet aldım. Kesinlikle tavsiye ederim.",
+    text: "Klima bakımı için randevu aldım. Temiz, düzenli ve fiyatı önceden bildiren bir hizmet aldım. Kesinlikle tavsiye ederim.",
   },
   {
     name: "Mehmet S.",
     service: "Buzdolabı Servisi",
     rating: 5,
-    text: "Buzdolabım soğutmuyordu, teknisyen hızlıca arızayı tespit etti ve garantili onarım yaptı.",
+    text: "Buzdolabım soğutmuyordu. Teknisyen kısa sürede arızayı tespit etti ve garantili onarım sonrası cihazım sorunsuz çalışıyor.",
   },
   {
     name: "Zeynep A.",
     service: "Çamaşır Makinesi Servisi",
     rating: 4,
-    text: "Çamaşır makinem su almıyordu, aynı gün müdahale ettiler. Fiyat bilgisi önceden verildi, sürpriz olmadı.",
+    text: "Çamaşır makinem su almıyordu, aynı gün müdahale ettiler. Fiyat bilgisi önceden verildi, süreç boyunca bilgilendirildim.",
   },
 ] as const;
 
@@ -406,6 +563,8 @@ export const SERVICE_HERO_IMAGES: Record<string, string> = {
   "bulasik-makinesi-servisi":
     "/images/services/hero-bulasik-makinesi-servisi.png",
   "firin-ocak-servisi": "/images/services/hero-firin-ocak-servisi.png",
+  "periyodik-bakim": "/images/services/hero-periyodik-bakim.png",
+  "yedek-parca-iscilik": "/images/services/hero-yedek-parca-iscilik.png",
 };
 
 export const SERVICE_IMAGES: Record<string, string> = {
@@ -416,10 +575,8 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "buzdolabi-servisi": SERVICE_HERO_IMAGES["buzdolabi-servisi"],
   "bulasik-makinesi-servisi": SERVICE_HERO_IMAGES["bulasik-makinesi-servisi"],
   "firin-ocak-servisi": SERVICE_HERO_IMAGES["firin-ocak-servisi"],
-  "periyodik-bakim":
-    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
-  "yedek-parca-iscilik":
-    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+  "periyodik-bakim": SERVICE_HERO_IMAGES["periyodik-bakim"],
+  "yedek-parca-iscilik": SERVICE_HERO_IMAGES["yedek-parca-iscilik"],
 };
 
 export const SERVICE_AREAS = [
@@ -445,7 +602,11 @@ export function getServiceImage(slug: string): string {
 }
 
 export function getServiceHeroImage(slug: string): string {
-  return SERVICE_HERO_IMAGES[slug] ?? HERO_IMAGE;
+  return (
+    SERVICE_HERO_IMAGES[slug] ??
+    SERVICE_IMAGES[slug] ??
+    HERO_IMAGE
+  );
 }
 
 export function getServiceHref(slug: string): string {
