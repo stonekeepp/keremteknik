@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/Button";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/services/site";
 import { SERVICE_NAV_GROUPS } from "@/lib/services/nav-groups";
 import { cn } from "@/lib/utils/cn";
@@ -180,22 +179,6 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             </div>
           </div>
         </nav>
-
-        <div className="p-4 border-t border-outline-variant/50 flex flex-col gap-2 safe-bottom">
-          <Button href={`tel:${SITE.phoneTel}`} className="w-full">
-            <span className="material-symbols-outlined">call</span>
-            {SITE.phone}
-          </Button>
-          <Button
-            href={`https://wa.me/${SITE.whatsapp}`}
-            variant="whatsapp"
-            external
-            className="w-full"
-          >
-            <span className="material-symbols-outlined">chat</span>
-            WhatsApp
-          </Button>
-        </div>
       </div>
     </>
   );

@@ -1,0 +1,25 @@
+# Örnek reverse proxy — mevcut nginx sunucunuza uyarlayın.
+# Uygulama Docker içinde 3060 portunda dinler.
+
+upstream keremteknik_app {
+    server 127.0.0.1:3060;
+    keepalive 32;
+}
+
+server {
+    listen 80;
+    server_name keremteknik.example.com;
+
+    client_max_body_size 20m;
+
+    location / {
+        proxy_pass http://keremteknik_app;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}

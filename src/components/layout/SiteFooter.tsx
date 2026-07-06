@@ -32,7 +32,7 @@ export function SiteFooter() {
   }));
 
   return (
-    <footer className="bg-primary text-on-primary w-full mt-auto">
+    <footer className="bg-primary text-on-primary w-full mt-auto mobile-cta-clearance lg:pb-0">
       <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-16">
@@ -48,12 +48,13 @@ export function SiteFooter() {
           <p className={`text-body-md ${footer.body} mb-4 max-w-md leading-relaxed`}>
             {SITE.description}
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 gap-2 sm:gap-2.5 max-w-md">
             {TRUST_BADGES.map((badge) => (
               <Badge
                 key={badge.label}
                 icon={badge.icon}
-                className="bg-on-primary/8 text-on-primary/90 border-on-primary/15 [&_.material-symbols-outlined]:text-gold"
+                variant="on-dark"
+                className="w-full !rounded-xl justify-start px-3 py-2.5 text-[13px] leading-snug"
               >
                 {badge.label}
               </Badge>
@@ -138,13 +139,16 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-on-primary/15 flex flex-col gap-5">
-          <div className="flex flex-col sm:flex-row gap-3 sm:justify-center md:justify-end">
+        {/* Bottom bar — desktop */}
+        <div className="hidden md:flex mt-10 pt-8 border-t border-on-primary/15 items-center justify-between gap-6">
+          <p className={`${footer.copyright} text-body-md`}>
+            © {new Date().getFullYear()} {SITE.name}. Tüm hakları saklıdır.
+          </p>
+          <div className="flex flex-row flex-wrap gap-3 justify-end">
             <Button
               href={`tel:${SITE.phoneTel}`}
               variant="primary"
-              className="!py-2.5 !px-5 text-sm w-full sm:w-auto"
+              className="!py-2.5 !px-5 text-sm"
             >
               <span className="material-symbols-outlined text-lg">call</span>
               Hemen Ara
@@ -153,7 +157,7 @@ export function SiteFooter() {
               href={`https://wa.me/${SITE.whatsapp}`}
               variant="whatsapp"
               external
-              className="!py-2.5 !px-5 text-sm w-full sm:w-auto"
+              className="!py-2.5 !px-5 text-sm"
             >
               <span className="material-symbols-outlined text-lg">chat</span>
               WhatsApp
@@ -161,7 +165,7 @@ export function SiteFooter() {
             <Button
               href="/iletisim"
               variant="outline"
-              className="!py-2.5 !px-5 text-sm w-full sm:w-auto !border-on-primary/25 !text-on-primary/90 hover:!text-on-primary hover:!bg-on-primary/10 hover:!border-gold/40"
+              className="!py-2.5 !px-5 text-sm !border-on-primary/25 !text-on-primary/90 hover:!text-on-primary hover:!bg-on-primary/10 hover:!border-gold/40"
             >
               <span className="material-symbols-outlined text-lg">
                 edit_calendar
@@ -169,9 +173,22 @@ export function SiteFooter() {
               Randevu Al
             </Button>
           </div>
-          <p className={`${footer.copyright} text-body-md text-center md:text-left`}>
-            © {new Date().getFullYear()} {SITE.name}. Tüm hakları saklıdır.
-          </p>
+        </div>
+
+        {/* Copyright — mobile */}
+        <div className="mt-8 pt-6 border-t border-gold/20 md:hidden">
+          <div className="rounded-2xl bg-on-primary/[0.05] border border-on-primary/10 px-5 py-4 text-center">
+            <div
+              className="w-10 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent mx-auto mb-3"
+              aria-hidden
+            />
+            <p className="text-sm text-on-primary/70 font-medium tracking-wide">
+              © {new Date().getFullYear()} {SITE.name}
+            </p>
+            <p className="text-xs text-on-primary/45 mt-1">
+              Tüm hakları saklıdır.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

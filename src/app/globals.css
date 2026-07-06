@@ -93,6 +93,16 @@
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
+
+  .mobile-cta-clearance {
+    padding-bottom: calc(6.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-cta-clearance {
+      padding-bottom: 0;
+    }
+  }
 }
 
 .prose-blog h2 {
