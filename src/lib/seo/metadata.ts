@@ -74,8 +74,12 @@ export const rootMetadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   icons: {
-    icon: "/brand/favicon-square-blue.svg",
-    apple: "/brand/favicon-square-blue.svg",
+    icon: [
+      { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/brand/favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/brand/apple-touch-icon.png",
   },
   openGraph: {
     siteName: SITE_NAME,

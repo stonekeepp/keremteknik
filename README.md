@@ -106,7 +106,3 @@ Mock mode çalışması Prisma'ya bağlı değildir.
 - `/admin/blog` — Blog listesi
 - `/admin/blog/new` — Yeni yazı
 - `/admin/blog/[id]/edit` — Düzenle
-
-## Stitch Referans
-
-Orijinal Stitch HTML export dosyaları proje kökünde referans olarak korunmuştur.
