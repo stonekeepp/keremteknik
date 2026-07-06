@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/services/site";
+import { SERVICE_NAV_GROUPS } from "@/lib/services/nav-groups";
 import { cn } from "@/lib/utils/cn";
 
 type MobileNavProps = {
@@ -15,10 +16,15 @@ type MobileNavProps = {
 export function MobileNav({ open, onClose }: MobileNavProps) {
   const pathname = usePathname();
   const panelRef = useRef<HTMLDivElement>(null);
+  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({});
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
+  };
+
+  const toggleGroup = (label: string) => {
+    setOpenGroups((prev) => ({ ...prev, [label]: !prev[label] }));
   };
 
   useEffect(() => {
@@ -33,6 +39,10 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [open, onClose]);
+
+  useEffect(() => {
+    if (!open) setOpenGroups({});
+  }, [open]);
 
   return (
     <>
@@ -74,7 +84,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
         <nav className="flex-1 overflow-y-auto p-4">
           <ul className="flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.filter((link) => link.href !== "/hizmetlerimiz").map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -93,25 +103,81 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           </ul>
 
           <div className="mt-4 pt-4 border-t border-outline-variant/50">
-            <p className="text-label-md font-label-md text-on-surface-variant px-4 mb-2">
-              Hizmetler
-            </p>
-            <ul className="flex flex-col gap-1">
-              {SERVICES.filter((s) => s.hasDetailPage).map((service) => (
-                <li key={service.slug}>
-                  <Link
-                    href={`/hizmetlerimiz/${service.slug}`}
-                    onClick={onClose}
-                    className="flex items-center gap-2 px-4 py-2 text-body-md text-on-surface-variant hover:text-primary"
+            <Link
+              href="/hizmetlerimiz"
+              onClick={onClose}
+              className={cn(
+                "block px-4 py-3 rounded-xl text-label-md font-label-md transition-colors mb-2",
+                isActive("/hizmetlerimiz")
+                  ? "bg-primary-container text-on-primary-container font-bold"
+                  : "text-on-surface-variant hover:bg-surface-container-high",
+              )}
+            >
+              Hizmetlerimiz
+            </Link>
+
+            <div className="flex flex-col gap-2">
+              {SERVICE_NAV_GROUPS.map((group) => {
+                const isGroupOpen = openGroups[group.label] ?? false;
+                return (
+                  <div
+                    key={group.label}
+                    className="rounded-xl border border-outline-variant/40 overflow-hidden bg-surface-container-low/50"
                   >
-                    <span className="material-symbols-outlined text-lg">
-                      {service.icon}
-                    </span>
-                    {service.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    <button
+                      type="button"
+                      aria-expanded={isGroupOpen}
+                      onClick={() => toggleGroup(group.label)}
+                      className="w-full flex items-center justify-between px-4 py-3 text-left"
+                    >
+                      <span className="flex items-center gap-2 text-label-md font-label-md text-primary">
+                        <span className="material-symbols-outlined text-secondary text-lg">
+                          {group.icon}
+                        </span>
+                        {group.label}
+                      </span>
+                      <span
+                        className={cn(
+                          "material-symbols-outlined text-on-surface-variant transition-transform duration-200",
+                          isGroupOpen && "rotate-180",
+                        )}
+                      >
+                        expand_more
+                      </span>
+                    </button>
+
+                    {isGroupOpen && (
+                      <ul className="px-2 pb-2 flex flex-col gap-0.5 border-t border-outline-variant/30">
+                        {group.slugs.map((slug) => {
+                          const service = SERVICES.find((s) => s.slug === slug);
+                          if (!service) return null;
+                          const href = `/hizmetlerimiz/${slug}`;
+                          return (
+                            <li key={slug}>
+                              <Link
+                                href={href}
+                                onClick={onClose}
+                                className={cn(
+                                  "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-body-md transition-colors",
+                                  pathname === href
+                                    ? "bg-primary/8 text-primary font-medium"
+                                    : "text-on-surface-variant hover:bg-surface-container-high hover:text-primary",
+                                )}
+                              >
+                                <span className="material-symbols-outlined text-lg text-secondary">
+                                  {service.icon}
+                                </span>
+                                {service.title}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </nav>
 

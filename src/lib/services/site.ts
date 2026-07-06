@@ -13,6 +13,7 @@ export const SITE = {
   description:
     "Klima, kombi ve beyaz eşya servisinde hızlı, güvenilir ve profesyonel teknik destek.",
   logo: "/brand/logo-kerem-teknik-servis.png",
+  logoFooter: "/brand/logo-kerem-teknik-servis-footer.png",
   logoAlt: "Kerem Teknik Servis — keremteknikservis.com",
 } as const;
 

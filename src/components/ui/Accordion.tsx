@@ -43,9 +43,9 @@ export function Accordion({ items, limit }: AccordionProps) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="w-full flex items-center justify-between p-5 md:p-6 text-left"
+              className="w-full flex items-center justify-between p-4 md:p-6 text-left gap-3"
             >
-              <span className="text-headline-sm font-headline-sm text-primary pr-4">
+              <span className="text-body-md md:text-headline-sm font-semibold md:font-headline-sm text-primary pr-2 leading-snug">
                 {item.question}
               </span>
               <span
@@ -61,7 +61,7 @@ export function Accordion({ items, limit }: AccordionProps) {
               role="region"
               aria-labelledby={buttonId}
               hidden={!isOpen}
-              className="px-5 md:px-6 pb-5 md:pb-6 text-body-md text-on-surface-variant border-t border-outline-variant/50 pt-4"
+              className="px-4 md:px-6 pb-4 md:pb-6 text-body-md text-on-surface-variant border-t border-outline-variant/50 pt-3 md:pt-4 leading-relaxed"
             >
               {item.answer}
             </div>
