@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { Section } from "@/components/ui/Section";
 import { SERVICES, WHY_US } from "@/lib/services/site";
 import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
@@ -29,11 +30,10 @@ export function ServiceWhySection({ serviceTitle }: ServiceWhySectionProps) {
             <div
               className={`w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-colors ${item.iconBg} group-hover:brightness-95`}
             >
-              <span
-                className={`material-symbols-outlined text-3xl ${item.iconColor}`}
-              >
-                {item.icon}
-              </span>
+              <Icon
+                name={item.icon as IconName}
+                className={`w-8 h-8 ${item.iconColor}`}
+              />
             </div>
             <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
               {item.title}
@@ -79,9 +79,10 @@ export function ServiceScopeSection({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/10 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
-              <span className="material-symbols-outlined text-gold text-3xl mb-2 block">
-                {icon}
-              </span>
+              <Icon
+                name={icon as IconName}
+                className="w-8 h-8 text-gold mb-2 block"
+              />
               <p className="text-headline-sm font-headline-sm text-on-primary">
                 Profesyonel {serviceTitle}
               </p>
@@ -197,16 +198,18 @@ export function ServiceRelatedSection({
               className="group flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-outline-variant/30 shadow-premium-sm hover:border-primary/20 hover:shadow-premium-md transition-all"
             >
               <span className="w-14 h-14 rounded-2xl bg-primary/8 flex items-center justify-center mb-4 group-hover:bg-primary/12 transition-colors">
-                <span className="material-symbols-outlined text-primary text-3xl">
-                  {service.icon}
-                </span>
+                <Icon
+                  name={service.icon as IconName}
+                  className="w-8 h-8 text-primary"
+                />
               </span>
               <span className="text-body-md font-semibold text-primary group-hover:text-secondary transition-colors">
                 {service.title}
               </span>
-              <span className="material-symbols-outlined text-cta text-lg mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                arrow_forward
-              </span>
+              <Icon
+                name="arrow_forward"
+                className="w-5 h-5 text-cta mt-3 opacity-0 group-hover:opacity-100 transition-opacity"
+              />
             </Link>
           );
         })}

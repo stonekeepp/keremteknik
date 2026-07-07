@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { SITE } from "@/lib/services/site";
 
 type HeroContactButtonsProps = {
@@ -18,7 +19,7 @@ export function HeroContactButtons({
         <Button href="/iletisim">{appointmentLabel}</Button>
       )}
       <Button href={`tel:${SITE.phoneTel}`} variant="outline">
-        <span className="material-symbols-outlined">call</span>
+        <Icon name="call" className="w-5 h-5" />
         {callLabel ?? SITE.phone}
       </Button>
       <Button
@@ -26,7 +27,7 @@ export function HeroContactButtons({
         variant="whatsapp"
         external
       >
-        <span className="material-symbols-outlined">chat</span>
+        <Icon name="chat" className="w-5 h-5" />
         WhatsApp
       </Button>
     </div>

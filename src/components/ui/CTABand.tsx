@@ -1,5 +1,6 @@
 import { SITE } from "@/lib/services/site";
 import { Button } from "./Button";
+import { Icon } from "./Icon";
 
 export function CTABand() {
   return (
@@ -26,7 +27,7 @@ export function CTABand() {
               variant="primary"
               className="bg-cta hover:bg-secondary-container"
             >
-              <span className="material-symbols-outlined text-xl">call</span>
+              <Icon name="call" className="w-5 h-5" />
               {SITE.phone}
             </Button>
             <Button

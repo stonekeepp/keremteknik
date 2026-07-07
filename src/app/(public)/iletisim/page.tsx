@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import {
   buildBreadcrumbJsonLd,
   buildLocalBusinessJsonLd,
@@ -115,9 +116,7 @@ export default function IletisimPage() {
                 </Link>
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-sm opacity-60">
-                  chevron_right
-                </span>
+                <Icon name="chevron_right" className="w-4 h-4 opacity-60" />
                 <span className="text-gold font-medium" aria-current="page">
                   İletişim
                 </span>
@@ -142,7 +141,7 @@ export default function IletisimPage() {
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 lg:justify-end">
               <Button href={`tel:${SITE.phoneTel}`}>
-                <span className="material-symbols-outlined">call</span>
+                <Icon name="call" className="w-5 h-5" />
                 {SITE.phone}
               </Button>
               <Button
@@ -150,7 +149,7 @@ export default function IletisimPage() {
                 variant="whatsapp"
                 external
               >
-                <span className="material-symbols-outlined">chat</span>
+                <Icon name="chat" className="w-5 h-5" />
                 WhatsApp
               </Button>
             </div>
@@ -162,9 +161,10 @@ export default function IletisimPage() {
                 key={badge.label}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/10 text-body-md text-primary-fixed-dim"
               >
-                <span className="material-symbols-outlined text-gold text-base">
-                  {badge.icon}
-                </span>
+                <Icon
+                  name={badge.icon as IconName}
+                  className="w-4 h-4 text-gold"
+                />
                 {badge.label}
               </span>
             ))}
@@ -178,9 +178,10 @@ export default function IletisimPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {RESPONSE_PROMISES.map((item) => (
               <div key={item.title} className="flex gap-4 items-start">
-                <span className="material-symbols-outlined text-cta text-3xl shrink-0">
-                  {item.icon}
-                </span>
+                <Icon
+                  name={item.icon as IconName}
+                  className="w-8 h-8 text-cta shrink-0"
+                />
                 <div>
                   <p className="text-headline-sm font-headline-sm text-primary mb-1">
                     {item.title}
@@ -232,11 +233,10 @@ export default function IletisimPage() {
                     <div
                       className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${channel.iconBg}`}
                     >
-                      <span
-                        className={`material-symbols-outlined text-2xl ${channel.iconColor}`}
-                      >
-                        {channel.icon}
-                      </span>
+                      <Icon
+                        name={channel.icon as IconName}
+                        className={`w-6 h-6 ${channel.iconColor}`}
+                      />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-label-md font-label-md text-on-surface-variant mb-0.5">
@@ -297,7 +297,7 @@ export default function IletisimPage() {
               variant="outline"
               external
             >
-              <span className="material-symbols-outlined">directions</span>
+              <Icon name="directions" className="w-5 h-5" />
               Yol Tarifi Al
             </Button>
           </div>

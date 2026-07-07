@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils/cn";
 
 type FooterAccordionItem = {
@@ -35,14 +36,13 @@ export function FooterAccordion({ items }: FooterAccordionProps) {
               <span className="text-label-md font-label-md uppercase tracking-wide text-gold">
                 {item.title}
               </span>
-              <span
+              <Icon
+                name="expand_more"
                 className={cn(
-                  "material-symbols-outlined text-on-primary/60 transition-transform duration-200",
+                  "w-5 h-5 text-on-primary/60 transition-transform duration-200",
                   isOpen && "rotate-180",
                 )}
-              >
-                expand_more
-              </span>
+              />
             </button>
             {isOpen && (
               <div className="px-4 pb-4 pt-1 border-t border-on-primary/10">

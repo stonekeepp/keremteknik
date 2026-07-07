@@ -1,14 +1,15 @@
 import { cn } from "@/lib/utils/cn";
+import { Icon, type IconName } from "./Icon";
 
 const badgeVariants = {
   default:
-    "bg-primary/5 text-primary border-primary/10 [&_.material-symbols-outlined]:text-primary",
+    "bg-primary/5 text-primary border-primary/10 [&_svg]:text-primary",
   "on-dark":
-    "bg-white/[0.07] text-primary-fixed-dim border-gold/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] [&_.material-symbols-outlined]:text-gold",
+    "bg-white/[0.07] text-primary-fixed-dim border-gold/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] [&_svg]:text-gold",
 } as const;
 
 type BadgeProps = {
-  icon?: string;
+  icon?: IconName;
   children: React.ReactNode;
   className?: string;
   variant?: keyof typeof badgeVariants;
@@ -28,9 +29,7 @@ export function Badge({
         className,
       )}
     >
-      {icon && (
-        <span className="material-symbols-outlined text-base">{icon}</span>
-      )}
+      {icon && <Icon name={icon} className="w-4 h-4" />}
       {children}
     </span>
   );

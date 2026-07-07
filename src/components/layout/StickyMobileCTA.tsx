@@ -1,3 +1,4 @@
+import { Icon } from "@/components/ui/Icon";
 import { SITE } from "@/lib/services/site";
 
 export function StickyMobileCTA() {
@@ -8,7 +9,7 @@ export function StickyMobileCTA() {
           href={`tel:${SITE.phoneTel}`}
           className="flex-1 bg-gradient-cta text-on-primary py-3.5 rounded-xl font-button text-button shadow-premium-sm flex justify-center items-center gap-2"
         >
-          <span className="material-symbols-outlined text-xl">call</span>
+          <Icon name="call" className="w-5 h-5" />
           Ara
         </a>
         <a
@@ -17,7 +18,7 @@ export function StickyMobileCTA() {
           rel="noopener noreferrer"
           className="flex-1 bg-whatsapp text-white py-3.5 rounded-xl font-button text-button flex justify-center items-center gap-2"
         >
-          <span className="material-symbols-outlined text-xl">chat</span>
+          <Icon name="chat" className="w-5 h-5" />
           WhatsApp
         </a>
       </div>

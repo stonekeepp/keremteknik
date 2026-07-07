@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { InternalLinksSection } from "@/components/seo/InternalLinksSection";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { getBlogRepository } from "@/lib/blog";
 import { formatDate, formatReadingTime } from "@/lib/blog/reading-time";
 import {
@@ -84,13 +85,11 @@ export default async function BlogDetailPage({ params }: Params) {
             {post.category}
           </span>
           <div className="flex items-center gap-1">
-            <span className="material-symbols-outlined text-base">
-              calendar_today
-            </span>
+            <Icon name="calendar_today" className="w-4 h-4" />
             <span>{formatDate(post.publishedAt)}</span>
           </div>
           <div className="flex items-center gap-1">
-            <span className="material-symbols-outlined text-base">schedule</span>
+            <Icon name="schedule" className="w-4 h-4" />
             <span>{formatReadingTime(post.readingTime)}</span>
           </div>
         </div>

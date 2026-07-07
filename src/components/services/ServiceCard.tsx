@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import {
   getServiceHref,
   getServiceImage,
@@ -27,9 +28,10 @@ export function ServiceCard({ service }: ServiceCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
         <div className="absolute bottom-4 left-4 w-11 h-11 bg-surface/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-premium-sm">
-          <span className="material-symbols-outlined text-primary text-2xl">
-            {service.icon}
-          </span>
+          <Icon
+            name={service.icon as IconName}
+            className="w-6 h-6 text-primary"
+          />
         </div>
       </div>
       <div className="p-6 flex flex-col flex-grow">

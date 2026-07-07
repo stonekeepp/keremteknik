@@ -3,6 +3,7 @@ import Link from "next/link";
 import { HeroContactButtons } from "@/components/ui/HeroContactButtons";
 import { Badge } from "@/components/ui/Badge";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { TRUST_BADGES } from "@/lib/services/site";
 
 type ServiceDetailHeroProps = {
@@ -38,9 +39,10 @@ function ServiceHeroImageCard({
 
       <div className="absolute bottom-4 left-4 right-4 flex flex-col sm:flex-row gap-3">
         <div className="flex items-center gap-3 bg-surface/95 backdrop-blur-sm rounded-2xl p-4 shadow-premium-md flex-1">
-          <span className="material-symbols-outlined text-gold text-3xl shrink-0">
-            {icon}
-          </span>
+          <Icon
+            name={icon as IconName}
+            className="w-8 h-8 text-gold shrink-0"
+          />
           <div>
             <p className="text-headline-sm font-headline-sm text-primary leading-tight">
               Uzman Servis Ekibi
@@ -51,7 +53,7 @@ function ServiceHeroImageCard({
           </div>
         </div>
         <div className="hidden sm:flex items-center gap-2 bg-primary/90 backdrop-blur-sm rounded-2xl px-4 py-3 text-on-primary shrink-0">
-          <span className="material-symbols-outlined text-gold">star</span>
+          <Icon name="star" filled className="w-5 h-5 text-gold" />
           <span className="text-body-md font-semibold whitespace-nowrap">
             %98 Memnuniyet
           </span>
@@ -118,16 +120,14 @@ export function ServiceDetailHero({
                 href="/hizmetlerimiz"
                 className="inline-flex items-center gap-1.5 text-label-md font-label-md text-secondary hover:text-primary transition-colors"
               >
-                <span className="material-symbols-outlined text-lg">
-                  grid_view
-                </span>
+                <Icon name="grid_view" className="w-5 h-5" />
                 Tüm Hizmetler
               </Link>
               <Link
                 href="/sss"
                 className="inline-flex items-center gap-1.5 text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors"
               >
-                <span className="material-symbols-outlined text-lg">help</span>
+                <Icon name="help" className="w-5 h-5" />
                 SSS
               </Link>
             </div>

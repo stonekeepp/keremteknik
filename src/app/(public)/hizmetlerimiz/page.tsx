@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HeroShowcaseImage } from "@/components/ui/HeroShowcaseImage";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/Badge";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -96,9 +97,10 @@ export default function HizmetlerimizPage() {
                     href={`/hizmetlerimiz/${cat.slugs[0]}`}
                     className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface/80 border border-outline-variant/50 text-label-md font-label-md text-on-surface-variant hover:text-primary hover:border-primary/30 transition-colors"
                   >
-                    <span className="material-symbols-outlined text-lg text-secondary">
-                      {cat.icon}
-                    </span>
+                    <Icon
+                      name={cat.icon as IconName}
+                      className="w-5 h-5 text-secondary"
+                    />
                     {cat.label}
                   </Link>
                 ))}
@@ -109,12 +111,14 @@ export default function HizmetlerimizPage() {
               <HeroShowcaseImage
                 src={SERVICES_HERO_IMAGE}
                 alt="Kerem Teknik Servis — İstanbul klima, kombi ve beyaz eşya servisi"
+                priority
               />
               <div className="absolute -bottom-5 -right-2 md:right-4 bg-surface rounded-2xl shadow-premium-lg p-4 hidden sm:block max-w-[220px]">
                 <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-gold text-3xl shrink-0">
-                    home_repair_service
-                  </span>
+                  <Icon
+                    name="home_repair_service"
+                    className="w-8 h-8 text-gold shrink-0"
+                  />
                   <div>
                     <p className="text-headline-sm font-headline-sm text-primary leading-tight">
                       {detailServices.length} Servis Alanı

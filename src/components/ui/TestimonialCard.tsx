@@ -1,3 +1,5 @@
+import { Icon } from "./Icon";
+
 type TestimonialCardProps = {
   name: string;
   service: string;
@@ -17,18 +19,14 @@ export function TestimonialCard({
         {Array.from({ length: 5 }).map((_, i) => {
           const filled = i < rating;
           return (
-            <span
+            <Icon
               key={i}
-              className={`material-symbols-outlined text-xl ${
+              name="star"
+              filled={filled}
+              className={`w-5 h-5 ${
                 filled ? "text-gold" : "text-outline-variant/35"
               }`}
-              style={{
-                fontVariationSettings: filled ? "'FILL' 1" : "'FILL' 0",
-                color: filled ? "#C9A227" : undefined,
-              }}
-            >
-              star
-            </span>
+            />
           );
         })}
       </div>

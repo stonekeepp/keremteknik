@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/services/site";
 import { SERVICE_NAV_GROUPS } from "@/lib/services/nav-groups";
 import { cn } from "@/lib/utils/cn";
@@ -77,7 +78,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             className="p-2 rounded-xl text-primary hover:bg-surface-container-high"
             aria-label="Menüyü kapat"
           >
-            <span className="material-symbols-outlined">close</span>
+            <Icon name="close" className="w-6 h-6" />
           </button>
         </div>
 
@@ -130,19 +131,19 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                       className="w-full flex items-center justify-between px-4 py-3 text-left"
                     >
                       <span className="flex items-center gap-2 text-label-md font-label-md text-primary">
-                        <span className="material-symbols-outlined text-secondary text-lg">
-                          {group.icon}
-                        </span>
+                        <Icon
+                          name={group.icon as IconName}
+                          className="w-5 h-5 text-secondary"
+                        />
                         {group.label}
                       </span>
-                      <span
+                      <Icon
+                        name="expand_more"
                         className={cn(
-                          "material-symbols-outlined text-on-surface-variant transition-transform duration-200",
+                          "w-5 h-5 text-on-surface-variant transition-transform duration-200",
                           isGroupOpen && "rotate-180",
                         )}
-                      >
-                        expand_more
-                      </span>
+                      />
                     </button>
 
                     {isGroupOpen && (
@@ -163,9 +164,10 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                                     : "text-on-surface-variant hover:bg-surface-container-high hover:text-primary",
                                 )}
                               >
-                                <span className="material-symbols-outlined text-lg text-secondary">
-                                  {service.icon}
-                                </span>
+                                <Icon
+                                  name={service.icon as IconName}
+                                  className="w-5 h-5 text-secondary"
+                                />
                                 {service.title}
                               </Link>
                             </li>

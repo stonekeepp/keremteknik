@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Icon } from "@/components/ui/Icon";
 import type { BlogPost } from "@/lib/blog/types";
 import { formatDate, formatReadingTime } from "@/lib/blog/reading-time";
 
@@ -33,9 +34,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
         <div className="p-6 md:p-8 flex flex-col flex-grow justify-between">
           <div>
             <div className="flex items-center gap-2 text-outline text-label-md font-label-md mb-3">
-              <span className="material-symbols-outlined text-[18px]">
-                schedule
-              </span>
+              <Icon name="schedule" className="w-[18px] h-[18px]" />
               <span>{formatReadingTime(post.readingTime)}</span>
               <span>•</span>
               <span>{formatDate(post.publishedAt)}</span>
@@ -52,7 +51,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             className="inline-flex items-center gap-2 text-secondary font-button text-button hover:underline"
           >
             Devamını Oku
-            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            <Icon name="arrow_forward" className="w-4 h-4" />
           </Link>
         </div>
       </article>
@@ -94,7 +93,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
           className="text-secondary font-button text-button hover:underline inline-flex items-center gap-1"
         >
           Devamını Oku
-          <span className="material-symbols-outlined text-sm">arrow_forward</span>
+          <Icon name="arrow_forward" className="w-4 h-4" />
         </Link>
       </div>
     </article>

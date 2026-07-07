@@ -15,7 +15,7 @@ export function HeroShowcaseImage({
   src,
   alt,
   className,
-  priority = true,
+  priority = false,
 }: HeroShowcaseImageProps) {
   return (
     <div
@@ -32,6 +32,7 @@ export function HeroShowcaseImage({
         fill
         className="object-cover object-center"
         priority={priority}
+        fetchPriority={priority ? "high" : undefined}
         sizes="(max-width: 1024px) 100vw, 50vw"
       />
     </div>

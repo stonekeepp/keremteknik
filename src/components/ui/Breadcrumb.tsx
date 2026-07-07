@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils/cn";
+import { Icon } from "./Icon";
 
 type BreadcrumbItem = {
   label: string;
@@ -23,9 +24,10 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
           return (
             <li key={item.label} className="flex items-center gap-1.5">
               {index > 0 && (
-                <span className="material-symbols-outlined text-sm opacity-50">
-                  chevron_right
-                </span>
+                <Icon
+                  name="chevron_right"
+                  className="w-4 h-4 opacity-50"
+                />
               )}
               {isLast || !item.href ? (
                 <span

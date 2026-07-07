@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/services/site";
 import { cn } from "@/lib/utils/cn";
 import { MobileNav } from "./MobileNav";
@@ -67,9 +68,10 @@ function ServicesDropdown({ active }: { active: boolean }) {
                 href={`/hizmetlerimiz/${service.slug}`}
                 className="flex items-center gap-3 px-4 py-2.5 text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors"
               >
-                <span className="material-symbols-outlined text-primary text-xl">
-                  {service.icon}
-                </span>
+                <Icon
+                  name={service.icon as IconName}
+                  className="w-5 h-5 text-primary"
+                />
                 {service.title}
               </Link>
             ))}
@@ -150,11 +152,11 @@ export function SiteHeader() {
               external
               className="!px-4 !py-2.5 text-sm"
             >
-              <span className="material-symbols-outlined text-lg">chat</span>
+              <Icon name="chat" className="w-5 h-5" />
               WhatsApp
             </Button>
             <Button href={`tel:${SITE.phoneTel}`} className="!px-5 !py-2.5">
-              <span className="material-symbols-outlined text-lg">call</span>
+              <Icon name="call" className="w-5 h-5" />
               Hemen Ara
             </Button>
           </div>
@@ -181,7 +183,7 @@ export function SiteHeader() {
           aria-label="Menüyü aç"
           aria-expanded={mobileOpen}
         >
-          <span className="material-symbols-outlined text-3xl">menu</span>
+          <Icon name="menu" className="w-8 h-8" />
         </button>
       </header>
 

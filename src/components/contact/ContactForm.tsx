@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { CONTACT_SERVICE_TYPES } from "@/lib/services/site";
@@ -45,9 +46,7 @@ export function ContactForm() {
     return (
       <div className="bg-gradient-to-br from-primary/5 to-cta/5 rounded-2xl p-8 md:p-10 border border-primary/10 text-center">
         <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-cta/10 flex items-center justify-center">
-          <span className="material-symbols-outlined text-cta text-4xl">
-            check_circle
-          </span>
+          <Icon name="check_circle" className="w-10 h-10 text-cta" />
         </div>
         <p className="text-headline-sm font-headline-sm text-primary mb-2">
           Talebiniz alındı!
@@ -111,7 +110,7 @@ export function ContactForm() {
         error={errors.message}
       />
       <Button type="submit" className="w-full mt-1">
-        <span className="material-symbols-outlined">send</span>
+        <Icon name="send" className="w-5 h-5" />
         Talebi Gönder
       </Button>
     </form>

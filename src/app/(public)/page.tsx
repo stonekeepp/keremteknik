@@ -1,16 +1,16 @@
-import Link from "next/link";
-import Image from "next/image";
+import { Suspense } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { HeroShowcaseImage } from "@/components/ui/HeroShowcaseImage";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { Accordion } from "@/components/ui/Accordion";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/ui/CTABand";
 import { Section } from "@/components/ui/Section";
+import { HomeLatestPosts } from "@/components/home/HomeLatestPosts";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
-import { getBlogRepository } from "@/lib/blog";
 import {
   buildFaqPageJsonLd,
   buildOrganizationJsonLd,
@@ -37,10 +37,10 @@ export const metadata = buildPageMetadata({
   absoluteTitle: true,
 });
 
-export default async function HomePage() {
-  const repo = getBlogRepository();
-  const latestPosts = (await repo.findPublished()).slice(0, 3);
+const heroImageAlt =
+  "Kerem Teknik Servis — İstanbul klima, kombi ve beyaz eşya teknik servisi";
 
+export default function HomePage() {
   return (
     <>
       <JsonLd
@@ -50,7 +50,6 @@ export default async function HomePage() {
         ]}
       />
 
-      {/* Hero */}
       <section className="relative bg-gradient-hero overflow-hidden">
         <div
           className="absolute inset-0 opacity-40"
@@ -71,6 +70,15 @@ export default async function HomePage() {
             <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">
               İstanbul&apos;da Profesyonel Klima, Kombi ve Beyaz Eşya Servisi
             </h1>
+
+            <div className="lg:hidden">
+              <HeroShowcaseImage
+                src={HERO_IMAGE}
+                alt={heroImageAlt}
+                priority
+              />
+            </div>
+
             <p className="text-body-lg text-on-surface-variant max-w-xl">
               Kerem Teknik Servis; klima, kombi, çamaşır makinesi, buzdolabı,
               bulaşık makinesi, fırın ve ocak arızalarında yerinde teşhis,
@@ -80,7 +88,7 @@ export default async function HomePage() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <Button href="/iletisim">Hemen Randevu Al</Button>
               <Button href={`tel:${SITE.phoneTel}`} variant="outline">
-                <span className="material-symbols-outlined">call</span>
+                <Icon name="call" className="w-5 h-5" />
                 Bizi Ara
               </Button>
               <Button
@@ -88,21 +96,21 @@ export default async function HomePage() {
                 variant="whatsapp"
                 external
               >
-                <span className="material-symbols-outlined">chat</span>
+                <Icon name="chat" className="w-5 h-5" />
                 WhatsApp
               </Button>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 relative">
+
+          <div className="hidden lg:block w-full lg:w-1/2 relative">
             <HeroShowcaseImage
               src={HERO_IMAGE}
-              alt="Kerem Teknik Servis — İstanbul klima, kombi ve beyaz eşya teknik servisi"
+              alt={heroImageAlt}
+              priority
             />
-            <div className="absolute -bottom-6 -left-4 md:left-4 bg-surface rounded-2xl shadow-premium-lg p-4 hidden sm:block">
+            <div className="absolute -bottom-6 -left-4 md:left-4 bg-surface rounded-2xl shadow-premium-lg p-4">
               <div className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-gold text-3xl">
-                  verified
-                </span>
+                <Icon name="verified" className="w-8 h-8 text-gold" />
                 <div>
                   <p className="text-headline-sm font-headline-sm text-primary">
                     Garantili İşçilik
@@ -117,7 +125,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Stats */}
       <section className="bg-primary py-10 md:py-12">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {STATS.map((stat) => (
@@ -133,7 +140,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Services */}
       <Section
         id="hizmetler"
         title="Hizmetlerimiz"
@@ -151,7 +157,6 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Why Us */}
       <Section
         variant="muted"
         title="Neden Kerem Teknik Servis?"
@@ -166,11 +171,10 @@ export default async function HomePage() {
               <div
                 className={`w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-colors ${item.iconBg} group-hover:brightness-95`}
               >
-                <span
-                  className={`material-symbols-outlined text-3xl ${item.iconColor}`}
-                >
-                  {item.icon}
-                </span>
+                <Icon
+                  name={item.icon as IconName}
+                  className={`w-8 h-8 ${item.iconColor}`}
+                />
               </div>
               <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
                 {item.title}
@@ -185,7 +189,6 @@ export default async function HomePage() {
 
       <ServiceProcessBlock />
 
-      {/* Testimonials */}
       <Section
         title="Müşterilerimiz Ne Diyor?"
         subtitle="Klima, kombi ve beyaz eşya servislerimizden memnun kalan müşterilerimizin geri bildirimleri"
@@ -197,62 +200,10 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Blog */}
-      {latestPosts.length > 0 && (
-        <Section
-          variant="muted"
-          title="Blogdan Son Yazılar"
-          subtitle="Bakım önerileri, arıza belirtileri ve enerji tasarrufu ipuçları"
-        >
-          <div className="flex justify-end mb-6 -mt-6">
-            <Link
-              href="/blog"
-              className="text-secondary font-button text-button hover:underline"
-            >
-              Tüm Yazılar →
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {latestPosts.map((post) => (
-              <article
-                key={post.id}
-                className="bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group"
-              >
-                <div className="relative h-48 bg-surface-container overflow-hidden">
-                  {post.coverImage && (
-                    <Image
-                      src={post.coverImage}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  )}
-                </div>
-                <div className="p-5 flex flex-col flex-grow">
-                  <span className="text-label-md font-label-md text-secondary mb-2">
-                    {post.category}
-                  </span>
-                  <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-body-md text-on-surface-variant mb-4 line-clamp-2 flex-grow">
-                    {post.excerpt}
-                  </p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="text-secondary font-button text-button hover:underline"
-                  >
-                    Devamını Oku
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </Section>
-      )}
+      <Suspense fallback={null}>
+        <HomeLatestPosts />
+      </Suspense>
 
-      {/* FAQ */}
       <Section
         title="Sık Sorulan Sorular"
         subtitle="Servis süresi, fiyatlandırma, garanti kapsamı ve hizmet bölgeleri hakkında yanıtlar"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { CTABand } from "@/components/ui/CTABand";
 import {
   buildBreadcrumbJsonLd,
@@ -57,9 +58,7 @@ export default function HakkimizdaPage() {
                 </Link>
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-sm opacity-60">
-                  chevron_right
-                </span>
+                <Icon name="chevron_right" className="w-4 h-4 opacity-60" />
                 <span className="text-gold font-medium" aria-current="page">
                   Hakkımızda
                 </span>
@@ -88,7 +87,7 @@ export default function HakkimizdaPage() {
               variant="outline"
               className="!border-primary-fixed-dim/60 !text-on-primary hover:!bg-white/10"
             >
-              <span className="material-symbols-outlined">call</span>
+              <Icon name="call" className="w-5 h-5" />
               {SITE.phone}
             </Button>
             <Button
@@ -96,7 +95,7 @@ export default function HakkimizdaPage() {
               variant="whatsapp"
               external
             >
-              <span className="material-symbols-outlined">chat</span>
+              <Icon name="chat" className="w-5 h-5" />
               WhatsApp
             </Button>
           </div>
@@ -164,9 +163,10 @@ export default function HakkimizdaPage() {
                     key={stat.label}
                     className="flex items-center gap-4 pb-5 border-b border-outline-variant/30 last:border-0 last:pb-0"
                   >
-                    <span className="material-symbols-outlined text-gold text-2xl shrink-0">
-                      {stat.icon}
-                    </span>
+                    <Icon
+                      name={stat.icon as IconName}
+                      className="w-6 h-6 text-gold shrink-0"
+                    />
                     <div>
                       <p className="text-headline-sm font-headline-sm text-primary">
                         {stat.value}
@@ -184,9 +184,7 @@ export default function HakkimizdaPage() {
                   className="inline-flex items-center gap-2 text-body-md font-semibold text-secondary hover:text-primary transition-colors"
                 >
                   Hizmetlerimizi keşfedin
-                  <span className="material-symbols-outlined text-lg">
-                    arrow_forward
-                  </span>
+                  <Icon name="arrow_forward" className="w-5 h-5" />
                 </Link>
               </div>
             </div>
@@ -221,11 +219,10 @@ export default function HakkimizdaPage() {
                 <div
                   className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${pillar.iconBg}`}
                 >
-                  <span
-                    className={`material-symbols-outlined text-3xl ${pillar.iconColor}`}
-                  >
-                    {pillar.icon}
-                  </span>
+                  <Icon
+                    name={pillar.icon as IconName}
+                    className={`w-8 h-8 ${pillar.iconColor}`}
+                  />
                 </div>
                 <div>
                   <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
@@ -289,12 +286,11 @@ export default function HakkimizdaPage() {
       <section className="bg-primary py-14 md:py-20">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <figure className="max-w-3xl mx-auto text-center">
-            <span
-              className="material-symbols-outlined text-gold text-5xl mb-6 block opacity-80"
+            <Icon
+              name="format_quote"
+              className="w-12 h-12 text-gold mb-6 block opacity-80"
               aria-hidden
-            >
-              format_quote
-            </span>
+            />
             <blockquote className="text-headline-sm md:text-headline-md font-headline-sm text-primary-fixed-dim leading-relaxed mb-8">
               &ldquo;{featuredTestimonial.text}&rdquo;
             </blockquote>
@@ -327,9 +323,10 @@ export default function HakkimizdaPage() {
                   key={area}
                   className="flex items-center gap-2 text-body-md text-on-surface-variant"
                 >
-                  <span className="material-symbols-outlined text-cta text-lg shrink-0">
-                    check_circle
-                  </span>
+                  <Icon
+                    name="check_circle"
+                    className="w-5 h-5 text-cta shrink-0"
+                  />
                   {area}
                 </li>
               ))}
@@ -338,9 +335,10 @@ export default function HakkimizdaPage() {
 
           <div className="bg-surface rounded-3xl p-8 md:p-10 border border-outline-variant/30 shadow-premium-sm flex flex-col justify-between">
             <div>
-              <span className="material-symbols-outlined text-gold text-4xl mb-4 block">
-                location_on
-              </span>
+              <Icon
+                name="location_on"
+                className="w-10 h-10 text-gold mb-4 block"
+              />
               <h3 className="text-headline-sm font-headline-sm text-primary mb-3">
                 Merkez Ofisimiz
               </h3>

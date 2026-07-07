@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { SERVICES, SITE, type ServiceItem } from "@/lib/services/site";
 import { cn } from "@/lib/utils/cn";
 
@@ -83,9 +84,7 @@ export function ServiceQuickNav() {
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-6 pb-6 border-b border-outline-variant/30">
               <div className="flex flex-col sm:flex-row sm:items-start gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-primary/8 flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-primary text-2xl">
-                    grid_view
-                  </span>
+                  <Icon name="grid_view" className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -112,9 +111,10 @@ export function ServiceQuickNav() {
                       key={pill.label}
                       className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant/40 text-label-md font-label-md text-on-surface-variant"
                     >
-                      <span className="material-symbols-outlined text-cta text-sm">
-                        {pill.icon}
-                      </span>
+                      <Icon
+                        name={pill.icon as IconName}
+                        className="w-4 h-4 text-cta"
+                      />
                       {pill.label}
                     </span>
                   ))}
@@ -141,9 +141,10 @@ export function ServiceQuickNav() {
                   >
                     <p className="text-label-md font-label-md text-on-surface-variant flex items-center gap-2">
                       <span className="w-8 h-px bg-outline-variant hidden sm:block" aria-hidden />
-                      <span className="material-symbols-outlined text-secondary text-lg">
-                        {group.icon}
-                      </span>
+                      <Icon
+                        name={group.icon as IconName}
+                        className="w-5 h-5 text-secondary"
+                      />
                       {group.label}
                     </p>
                     <span className="text-label-md font-label-md text-on-surface-variant/70 tabular-nums">
@@ -171,21 +172,18 @@ export function ServiceQuickNav() {
                                 style.bg,
                               )}
                             >
-                              <span
-                                className={cn(
-                                  "material-symbols-outlined text-2xl",
-                                  style.color,
-                                )}
-                              >
-                                {service.icon}
-                              </span>
+                              <Icon
+                                name={service.icon as IconName}
+                                className={cn("w-6 h-6", style.color)}
+                              />
                             </span>
                             <span className="flex-1 text-body-md font-semibold text-primary group-hover:text-secondary transition-colors leading-tight">
                               {service.title}
                             </span>
-                            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-cta group-hover:translate-x-0.5 transition-all text-xl shrink-0">
-                              arrow_forward
-                            </span>
+                            <Icon
+                              name="arrow_forward"
+                              className="w-5 h-5 text-on-surface-variant group-hover:text-cta group-hover:translate-x-0.5 transition-all shrink-0"
+                            />
                           </Link>
                         </li>
                       );
@@ -198,9 +196,7 @@ export function ServiceQuickNav() {
             {/* Alt CTA şeridi */}
             <div className="mt-6 pt-6 border-t border-outline-variant/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <p className="text-body-md text-on-surface-variant flex items-center gap-2">
-                <span className="material-symbols-outlined text-gold text-xl">
-                  support_agent
-                </span>
+                <Icon name="support_agent" className="w-5 h-5 text-gold" />
                 Arıza veya bakım için hemen destek alın
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-2 shrink-0">
@@ -209,7 +205,7 @@ export function ServiceQuickNav() {
                   variant="outline"
                   className="!px-5 !py-2.5"
                 >
-                  <span className="material-symbols-outlined">call</span>
+                  <Icon name="call" className="w-5 h-5" />
                   {SITE.phone}
                 </Button>
                 <Button
@@ -218,11 +214,11 @@ export function ServiceQuickNav() {
                   external
                   className="!px-5 !py-2.5"
                 >
-                  <span className="material-symbols-outlined">chat</span>
+                  <Icon name="chat" className="w-5 h-5" />
                   WhatsApp
                 </Button>
                 <Button href="/iletisim" className="!px-5 !py-2.5">
-                  <span className="material-symbols-outlined">edit_calendar</span>
+                  <Icon name="edit_calendar" className="w-5 h-5" />
                   Randevu Al
                 </Button>
               </div>

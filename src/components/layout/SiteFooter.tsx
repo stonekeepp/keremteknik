@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import {
   FooterAccordion,
   FooterLinkList,
@@ -57,9 +58,10 @@ export function SiteFooter() {
                   {SERVICE_NAV_GROUPS.map((group) => (
                     <div key={group.label}>
                       <p className={`text-label-md font-label-md ${footer.label} mb-2 flex items-center gap-1.5`}>
-                        <span className="material-symbols-outlined text-gold/90 text-base">
-                          {group.icon}
-                        </span>
+                        <Icon
+                          name={group.icon as IconName}
+                          className="w-4 h-4 text-gold/90"
+                        />
                         {group.label}
                       </p>
                       <ul className="flex flex-col gap-2 pl-1">
@@ -131,7 +133,7 @@ export function SiteFooter() {
               variant="primary"
               className="!py-2 !px-4 text-sm"
             >
-              <span className="material-symbols-outlined text-lg">call</span>
+              <Icon name="call" className="w-5 h-5" />
               Hemen Ara
             </Button>
             <Button
@@ -140,7 +142,7 @@ export function SiteFooter() {
               external
               className="!py-2 !px-4 text-sm"
             >
-              <span className="material-symbols-outlined text-lg">chat</span>
+              <Icon name="chat" className="w-5 h-5" />
               WhatsApp
             </Button>
             <Button
@@ -148,9 +150,7 @@ export function SiteFooter() {
               variant="outline"
               className="!py-2 !px-4 text-sm !border-on-primary/25 !text-on-primary/90 hover:!text-on-primary hover:!bg-on-primary/10 hover:!border-gold/40"
             >
-              <span className="material-symbols-outlined text-lg">
-                edit_calendar
-              </span>
+              <Icon name="edit_calendar" className="w-5 h-5" />
               Randevu Al
             </Button>
           </div>
@@ -223,9 +223,7 @@ function FooterContactBlock({ compact = false }: { compact?: boolean }) {
   return (
     <ul className={compact ? "flex flex-col gap-2" : "flex flex-col gap-3"}>
       <li className={`flex gap-3 rounded-xl bg-on-primary/5 border border-on-primary/10 ${compact ? "p-2.5" : "p-3"}`}>
-        <span className="material-symbols-outlined text-gold shrink-0 mt-0.5">
-          call
-        </span>
+        <Icon name="call" className="w-5 h-5 text-gold shrink-0 mt-0.5" />
         <div>
           <span className={`block text-label-md font-label-md ${footer.label} mb-0.5`}>
             Telefon
@@ -239,9 +237,7 @@ function FooterContactBlock({ compact = false }: { compact?: boolean }) {
         </div>
       </li>
       <li className={`flex gap-3 rounded-xl bg-on-primary/5 border border-on-primary/10 ${compact ? "p-2.5" : "p-3"}`}>
-        <span className="material-symbols-outlined text-gold shrink-0 mt-0.5">
-          location_on
-        </span>
+        <Icon name="location_on" className="w-5 h-5 text-gold shrink-0 mt-0.5" />
         <div>
           <span className={`block text-label-md font-label-md ${footer.label} mb-0.5`}>
             Adres
@@ -252,9 +248,7 @@ function FooterContactBlock({ compact = false }: { compact?: boolean }) {
         </div>
       </li>
       <li className={`flex gap-3 rounded-xl bg-on-primary/5 border border-on-primary/10 ${compact ? "p-2.5" : "p-3"}`}>
-        <span className="material-symbols-outlined text-gold shrink-0 mt-0.5">
-          schedule
-        </span>
+        <Icon name="schedule" className="w-5 h-5 text-gold shrink-0 mt-0.5" />
         <div>
           <span className={`block text-label-md font-label-md ${footer.label} mb-0.5`}>
             Çalışma Saatleri

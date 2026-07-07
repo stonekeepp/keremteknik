@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
+import { Icon } from "./Icon";
 
 type FaqItem = {
   question: string;
@@ -48,13 +49,12 @@ export function Accordion({ items, limit }: AccordionProps) {
               <span className="text-body-md md:text-headline-sm font-semibold md:font-headline-sm text-primary pr-2 leading-snug">
                 {item.question}
               </span>
-              <span
-                className={`material-symbols-outlined text-primary shrink-0 transition-transform duration-200 ${
+              <Icon
+                name="expand_more"
+                className={`w-6 h-6 text-primary shrink-0 transition-transform duration-200 ${
                   isOpen ? "rotate-180" : ""
                 }`}
-              >
-                expand_more
-              </span>
+              />
             </button>
             <div
               id={panelId}
