@@ -19,6 +19,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
               alt={post.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, 66vw"
             />
           ) : (
             <div className="w-full h-full bg-surface-container-high" />
@@ -67,6 +68,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             alt={post.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
           <div className="w-full h-full bg-surface-container-high" />

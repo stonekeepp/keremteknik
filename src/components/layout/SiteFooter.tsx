@@ -35,31 +35,10 @@ export function SiteFooter() {
     <footer className="bg-primary text-on-primary w-full mt-auto mobile-cta-clearance lg:pb-0">
       <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
-      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-16">
-        {/* Brand */}
-        <div className="mb-8 md:mb-10 pb-8 border-b border-on-primary/10">
-          <img
-            src={SITE.logoFooter}
-            alt={SITE.logoAlt}
-            width={715}
-            height={240}
-            className="h-10 w-auto mb-4"
-          />
-          <p className={`text-body-md ${footer.body} mb-4 max-w-md leading-relaxed`}>
-            {SITE.description}
-          </p>
-          <div className="grid grid-cols-2 gap-2 sm:gap-2.5 max-w-md">
-            {TRUST_BADGES.map((badge) => (
-              <Badge
-                key={badge.label}
-                icon={badge.icon}
-                variant="on-dark"
-                className="w-full !rounded-xl justify-start px-3 py-2.5 text-[13px] leading-snug"
-              >
-                {badge.label}
-              </Badge>
-            ))}
-          </div>
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-12 lg:py-10">
+        {/* Brand — mobile */}
+        <div className="mb-8 pb-8 border-b border-on-primary/10 md:hidden">
+          <FooterBrandBlock />
         </div>
 
         {/* Mobile accordion */}
@@ -113,8 +92,10 @@ export function SiteFooter() {
         />
 
         {/* Desktop grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-10 lg:gap-12">
-          <div>
+        <div className="hidden md:grid md:grid-cols-[1.2fr_0.7fr_0.9fr_1fr] gap-8 lg:gap-10 items-start">
+          <FooterBrandBlock compact />
+
+          <div className="pt-1">
             <h3 className={`text-label-md font-label-md mb-4 uppercase tracking-wide ${footer.heading} flex items-center gap-2`}>
               <span className="w-6 h-px bg-gold/50" aria-hidden />
               Kurumsal
@@ -122,7 +103,7 @@ export function SiteFooter() {
             <FooterLinkList links={[...FOOTER_CORPORATE]} />
           </div>
 
-          <div>
+          <div className="pt-1">
             <h3 className={`text-label-md font-label-md mb-4 uppercase tracking-wide ${footer.heading} flex items-center gap-2`}>
               <span className="w-6 h-px bg-gold/50" aria-hidden />
               Hizmetler
@@ -130,25 +111,25 @@ export function SiteFooter() {
             <FooterLinkList links={serviceLinks} />
           </div>
 
-          <div>
+          <div className="pt-1">
             <h3 className={`text-label-md font-label-md mb-4 uppercase tracking-wide ${footer.heading} flex items-center gap-2`}>
               <span className="w-6 h-px bg-gold/50" aria-hidden />
               İletişim
             </h3>
-            <FooterContactBlock />
+            <FooterContactBlock compact />
           </div>
         </div>
 
         {/* Bottom bar — desktop */}
-        <div className="hidden md:flex mt-10 pt-8 border-t border-on-primary/15 items-center justify-between gap-6">
+        <div className="hidden md:flex mt-8 pt-6 border-t border-on-primary/12 items-center justify-between gap-5">
           <p className={`${footer.copyright} text-body-md`}>
             © {new Date().getFullYear()} {SITE.name}. Tüm hakları saklıdır.
           </p>
-          <div className="flex flex-row flex-wrap gap-3 justify-end">
+          <div className="flex flex-row flex-wrap gap-2.5 justify-end">
             <Button
               href={`tel:${SITE.phoneTel}`}
               variant="primary"
-              className="!py-2.5 !px-5 text-sm"
+              className="!py-2 !px-4 text-sm"
             >
               <span className="material-symbols-outlined text-lg">call</span>
               Hemen Ara
@@ -157,7 +138,7 @@ export function SiteFooter() {
               href={`https://wa.me/${SITE.whatsapp}`}
               variant="whatsapp"
               external
-              className="!py-2.5 !px-5 text-sm"
+              className="!py-2 !px-4 text-sm"
             >
               <span className="material-symbols-outlined text-lg">chat</span>
               WhatsApp
@@ -165,7 +146,7 @@ export function SiteFooter() {
             <Button
               href="/iletisim"
               variant="outline"
-              className="!py-2.5 !px-5 text-sm !border-on-primary/25 !text-on-primary/90 hover:!text-on-primary hover:!bg-on-primary/10 hover:!border-gold/40"
+              className="!py-2 !px-4 text-sm !border-on-primary/25 !text-on-primary/90 hover:!text-on-primary hover:!bg-on-primary/10 hover:!border-gold/40"
             >
               <span className="material-symbols-outlined text-lg">
                 edit_calendar
@@ -195,10 +176,53 @@ export function SiteFooter() {
   );
 }
 
-function FooterContactBlock() {
+function FooterBrandBlock({ compact = false }: { compact?: boolean }) {
   return (
-    <ul className="flex flex-col gap-3">
-      <li className="flex gap-3 p-3 rounded-xl bg-on-primary/5 border border-on-primary/10">
+    <div>
+      <img
+        src={SITE.logoFooter}
+        alt={SITE.logoAlt}
+        width={715}
+        height={240}
+        className={compact ? "h-9 w-auto mb-3" : "h-10 w-auto mb-4"}
+      />
+      <p
+        className={`text-body-md ${footer.body} ${
+          compact ? "mb-3 max-w-sm leading-6" : "mb-4 max-w-md leading-relaxed"
+        }`}
+      >
+        {SITE.description}
+      </p>
+      <div
+        className={
+          compact
+            ? "flex flex-wrap gap-1.5 max-w-sm"
+            : "grid grid-cols-2 gap-2 sm:gap-2.5 max-w-md"
+        }
+      >
+        {TRUST_BADGES.map((badge) => (
+          <Badge
+            key={badge.label}
+            icon={badge.icon}
+            variant="on-dark"
+            className={
+              compact
+                ? "!rounded-full px-2.5 py-1 text-[11px] leading-none"
+                : "w-full !rounded-xl justify-start px-3 py-2.5 text-[13px] leading-snug"
+            }
+          >
+            {badge.label}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FooterContactBlock({ compact = false }: { compact?: boolean }) {
+  return (
+    <ul className={compact ? "flex flex-col gap-2" : "flex flex-col gap-3"}>
+      <li className={`flex gap-3 rounded-xl bg-on-primary/5 border border-on-primary/10 ${compact ? "p-2.5" : "p-3"}`}>
         <span className="material-symbols-outlined text-gold shrink-0 mt-0.5">
           call
         </span>
@@ -214,7 +238,7 @@ function FooterContactBlock() {
           </a>
         </div>
       </li>
-      <li className="flex gap-3 p-3 rounded-xl bg-on-primary/5 border border-on-primary/10">
+      <li className={`flex gap-3 rounded-xl bg-on-primary/5 border border-on-primary/10 ${compact ? "p-2.5" : "p-3"}`}>
         <span className="material-symbols-outlined text-gold shrink-0 mt-0.5">
           location_on
         </span>
@@ -227,7 +251,7 @@ function FooterContactBlock() {
           </span>
         </div>
       </li>
-      <li className="flex gap-3 p-3 rounded-xl bg-on-primary/5 border border-on-primary/10">
+      <li className={`flex gap-3 rounded-xl bg-on-primary/5 border border-on-primary/10 ${compact ? "p-2.5" : "p-3"}`}>
         <span className="material-symbols-outlined text-gold shrink-0 mt-0.5">
           schedule
         </span>
