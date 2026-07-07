@@ -46,7 +46,7 @@ export default function HakkimizdaPage() {
       {/* Dark editorial header — farklı hero yapısı */}
       <header className="bg-primary text-on-primary">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-12 md:pt-10 md:pb-16">
-          <nav aria-label="Breadcrumb" className="text-body-md mb-8">
+          <nav aria-label="Breadcrumb" className="hidden md:block text-body-md mb-8">
             <ol className="flex flex-wrap items-center gap-1.5 text-primary-fixed-dim">
               <li>
                 <Link

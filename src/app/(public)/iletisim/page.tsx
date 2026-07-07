@@ -102,7 +102,7 @@ export default function IletisimPage() {
           }}
         />
         <div className="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 pb-14 md:pt-10 md:pb-20">
-          <nav aria-label="Breadcrumb" className="text-body-md mb-8">
+          <nav aria-label="Breadcrumb" className="hidden md:block text-body-md mb-8">
             <ol className="flex flex-wrap items-center gap-1.5 text-primary-fixed-dim">
               <li>
                 <Link

@@ -13,7 +13,10 @@ type BreadcrumbProps = {
 
 export function Breadcrumb({ items, className }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" className={cn("text-body-md", className)}>
+    <nav
+      aria-label="Breadcrumb"
+      className={cn("hidden md:block text-body-md", className)}
+    >
       <ol className="flex flex-wrap items-center gap-1.5 text-on-surface-variant">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
