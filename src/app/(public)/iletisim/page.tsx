@@ -16,7 +16,9 @@ export const metadata = buildPageMetadata({
   path: "/iletisim",
 });
 
-const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(SITE.fullAddress)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+const MAP_EMBED =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.3157303637377!2d28.939218!3d41.083947699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab13589ba8c63%3A0xa48288a7dda22cd3!2zS0VSRU0gVEVLTsSwSyAtIEJFWUFaIEXFnllBIFNFUlbEsFPEsA!5e0!3m2!1str!2str!4v1783426121998!5m2!1str!2str";
+const MAP_DIRECTIONS_URL = "https://maps.app.goo.gl/yyhn6iHWhFNRvcRf8";
 
 const CONTACT_CHANNELS = [
   {
@@ -291,7 +293,7 @@ export default function IletisimPage() {
               </p>
             </div>
             <Button
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.fullAddress)}`}
+              href={MAP_DIRECTIONS_URL}
               variant="outline"
               external
             >
@@ -305,8 +307,9 @@ export default function IletisimPage() {
               title="Kerem Teknik Servis konum haritası — Eyüpsultan, İstanbul"
               src={MAP_EMBED}
               className="w-full h-full border-0"
+              allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         </div>

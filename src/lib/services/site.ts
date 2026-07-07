@@ -12,8 +12,8 @@ export const SITE = {
   },
   description:
     "Klima, kombi ve beyaz eşya servisinde hızlı, güvenilir ve profesyonel teknik destek.",
-  logo: "/brand/logo-kerem-teknik-servis.png",
-  logoFooter: "/brand/logo-kerem-teknik-servis-footer.png",
+  logo: "/brand/preview-logo-target-c16-p8-fp1.svg",
+  logoFooter: "/brand/preview-logo-target-c16-p8-fp1.svg",
   logoAlt: "Kerem Teknik Servis — keremteknikservis.com",
 } as const;
 
@@ -421,11 +421,11 @@ export const CONTACT_SERVICE_TYPES = [
   "Diğer",
 ] as const;
 
-export const HERO_IMAGE = "/images/hero-kerem-teknik-servis.png";
+export const HERO_IMAGE = "/images/hero-kerem-teknik-servis.webp";
 
-export const SERVICES_HERO_IMAGE = "/images/hero-hizmetlerimiz-kerem-teknik.png";
+export const SERVICES_HERO_IMAGE = "/images/hero-hizmetlerimiz-kerem-teknik.webp";
 
-export const ABOUT_HERO_IMAGE = "/images/hero-hakkimizda-kerem-teknik.png";
+export const ABOUT_HERO_IMAGE = "/images/hero-hakkimizda-kerem-teknik.webp";
 
 export const ABOUT_TIMELINE = [
   {
@@ -555,17 +555,17 @@ export const TESTIMONIALS = [
 ] as const;
 
 export const SERVICE_HERO_IMAGES: Record<string, string> = {
-  "klima-servisi": "/images/services/hero-klima-servisi.png",
-  "kombi-servisi": "/images/services/hero-kombi-servisi.png",
-  "beyaz-esya-servisi": "/images/services/hero-beyaz-esya-servisi.png",
+  "klima-servisi": "/images/services/hero-klima-servisi.webp",
+  "kombi-servisi": "/images/services/hero-kombi-servisi.webp",
+  "beyaz-esya-servisi": "/images/services/hero-beyaz-esya-servisi.webp",
   "camasir-makinesi-servisi":
-    "/images/services/hero-camasir-makinesi-servisi.png",
-  "buzdolabi-servisi": "/images/services/hero-buzdolabi-servisi.png",
+    "/images/services/hero-camasir-makinesi-servisi.webp",
+  "buzdolabi-servisi": "/images/services/hero-buzdolabi-servisi.webp",
   "bulasik-makinesi-servisi":
-    "/images/services/hero-bulasik-makinesi-servisi.png",
-  "firin-ocak-servisi": "/images/services/hero-firin-ocak-servisi.png",
-  "periyodik-bakim": "/images/services/hero-periyodik-bakim.png",
-  "yedek-parca-iscilik": "/images/services/hero-yedek-parca-iscilik.png",
+    "/images/services/hero-bulasik-makinesi-servisi.webp",
+  "firin-ocak-servisi": "/images/services/hero-firin-ocak-servisi.webp",
+  "periyodik-bakim": "/images/services/hero-periyodik-bakim.webp",
+  "yedek-parca-iscilik": "/images/services/hero-yedek-parca-iscilik.webp",
 };
 
 export const SERVICE_IMAGES: Record<string, string> = {
