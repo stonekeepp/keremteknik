@@ -15,7 +15,11 @@ export function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <blockquote className="bg-surface rounded-2xl p-6 shadow-level-1 flex flex-col h-full">
-      <div className="flex gap-0.5 mb-4" aria-label={`${rating} yıldız`}>
+      <div
+        className="flex gap-0.5 mb-4"
+        role="img"
+        aria-label={`${rating} üzerinden 5 yıldız`}
+      >
         {Array.from({ length: 5 }).map((_, i) => {
           const filled = i < rating;
           return (
