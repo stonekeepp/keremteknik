@@ -13,6 +13,54 @@ type ServiceDetailHeroProps = {
   breadcrumbs: { label: string; href?: string }[];
 };
 
+function ServiceHeroImageCard({
+  title,
+  heroImage,
+  icon,
+}: {
+  title: string;
+  heroImage: string;
+  icon: string;
+}) {
+  return (
+    <div className="relative rounded-3xl overflow-hidden shadow-premium-lg border border-outline-variant/30 ring-1 ring-primary/5">
+      <div className="relative aspect-[4/3] sm:aspect-[16/11] min-h-[280px]">
+        <Image
+          src={heroImage}
+          alt={`${title} — Kerem Teknik Servis İstanbul`}
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
+      </div>
+
+      <div className="absolute bottom-4 left-4 right-4 flex flex-col sm:flex-row gap-3">
+        <div className="flex items-center gap-3 bg-surface/95 backdrop-blur-sm rounded-2xl p-4 shadow-premium-md flex-1">
+          <span className="material-symbols-outlined text-gold text-3xl shrink-0">
+            {icon}
+          </span>
+          <div>
+            <p className="text-headline-sm font-headline-sm text-primary leading-tight">
+              Uzman Servis Ekibi
+            </p>
+            <p className="text-body-md text-on-surface-variant">
+              Yerinde teşhis · Garantili onarım
+            </p>
+          </div>
+        </div>
+        <div className="hidden sm:flex items-center gap-2 bg-primary/90 backdrop-blur-sm rounded-2xl px-4 py-3 text-on-primary shrink-0">
+          <span className="material-symbols-outlined text-gold">star</span>
+          <span className="text-body-md font-semibold whitespace-nowrap">
+            %98 Memnuniyet
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ServiceDetailHero({
   title,
   description,
@@ -51,6 +99,14 @@ export function ServiceDetailHero({
               </h1>
             </div>
 
+            <div className="lg:hidden">
+              <ServiceHeroImageCard
+                title={title}
+                heroImage={heroImage}
+                icon={icon}
+              />
+            </div>
+
             <p className="text-body-lg text-on-surface-variant leading-relaxed max-w-xl">
               {description}
             </p>
@@ -77,44 +133,12 @@ export function ServiceDetailHero({
             </div>
           </div>
 
-          <div className="lg:col-span-6 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-premium-lg border border-outline-variant/30 ring-1 ring-primary/5">
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] min-h-[280px]">
-                <Image
-                  src={heroImage}
-                  alt={`${title} — Kerem Teknik Servis İstanbul`}
-                  fill
-                  className="object-cover object-center"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
-              </div>
-
-              <div className="absolute bottom-4 left-4 right-4 flex flex-col sm:flex-row gap-3">
-                <div className="flex items-center gap-3 bg-surface/95 backdrop-blur-sm rounded-2xl p-4 shadow-premium-md flex-1">
-                  <span className="material-symbols-outlined text-gold text-3xl shrink-0">
-                    {icon}
-                  </span>
-                  <div>
-                    <p className="text-headline-sm font-headline-sm text-primary leading-tight">
-                      Uzman Servis Ekibi
-                    </p>
-                    <p className="text-body-md text-on-surface-variant">
-                      Yerinde teşhis · Garantili onarım
-                    </p>
-                  </div>
-                </div>
-                <div className="hidden sm:flex items-center gap-2 bg-primary/90 backdrop-blur-sm rounded-2xl px-4 py-3 text-on-primary shrink-0">
-                  <span className="material-symbols-outlined text-gold">
-                    star
-                  </span>
-                  <span className="text-body-md font-semibold whitespace-nowrap">
-                    %98 Memnuniyet
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div className="hidden lg:block lg:col-span-6 relative">
+            <ServiceHeroImageCard
+              title={title}
+              heroImage={heroImage}
+              icon={icon}
+            />
           </div>
         </div>
       </div>
