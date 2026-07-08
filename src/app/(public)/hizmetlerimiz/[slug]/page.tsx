@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Params) {
   if (!detail) return {};
   const heroImage = getServiceHeroImage(slug);
   return buildPageMetadata({
-    title: `${detail.title} | İstanbul Teknik Servis`,
+    title: detail.title,
     description: buildServiceSeoDescription(detail.description),
     path: `/hizmetlerimiz/${slug}`,
     ogImage: heroImage,
@@ -55,9 +55,10 @@ export default async function ServiceDetailPage({ params }: Params) {
   if (!detail) notFound();
 
   const heroImage = getServiceHeroImage(slug);
-  const relatedFaq = (detail.relatedFaqIndices ?? [0, 1, 2]).map(
-    (i) => FAQ_ITEMS[i],
-  );
+  const relatedFaq = [
+    ...(detail.faqs ?? []),
+    ...(detail.relatedFaqIndices ?? [0, 1, 2]).map((i) => FAQ_ITEMS[i]),
+  ];
 
   const breadcrumbs = [
     { label: "Ana Sayfa", href: "/" },
@@ -102,7 +103,10 @@ export default async function ServiceDetailPage({ params }: Params) {
 
       <ServiceQualityStrip />
 
-      <ServiceWhySection serviceTitle={detail.title} />
+      <ServiceWhySection
+        serviceTitle={detail.title}
+        uniqueIntro={detail.uniqueIntro}
+      />
 
       {scopeItems.length > 0 && (
         <ServiceScopeSection

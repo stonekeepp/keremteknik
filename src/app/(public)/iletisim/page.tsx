@@ -11,7 +11,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { SITE, TRUST_BADGES } from "@/lib/services/site";
 
 export const metadata = buildPageMetadata({
-  title: "İletişim | Servis Talebi ve Randevu — Kerem Teknik Servis",
+  title: "İletişim | Servis Talebi ve Randevu",
   description:
     "Kerem Teknik Servis iletişim: telefon, WhatsApp veya online form ile klima, kombi ve beyaz eşya servis talebi oluşturun. Eyüpsultan merkezli, İstanbul geneli aynı gün teknik servis.",
   path: "/iletisim",
@@ -19,7 +19,7 @@ export const metadata = buildPageMetadata({
 
 const MAP_EMBED =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.3157303637377!2d28.939218!3d41.083947699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab13589ba8c63%3A0xa48288a7dda22cd3!2zS0VSRU0gVEVLTsSwSyAtIEJFWUFaIEXFnllBIFNFUlbEsFPEsA!5e0!3m2!1str!2str!4v1783426121998!5m2!1str!2str";
-const MAP_DIRECTIONS_URL = "https://maps.app.goo.gl/yyhn6iHWhFNRvcRf8";
+const MAP_DIRECTIONS_URL = SITE.mapsUrl;
 
 const CONTACT_CHANNELS = [
   {

@@ -20,6 +20,8 @@ type BuildPageMetadataOptions = {
   title: string;
   description?: string;
   path: string;
+  /** Absolute URL overrides path-based canonical when set. */
+  canonicalUrl?: string | null;
   ogImage?: string;
   noIndex?: boolean;
   absoluteTitle?: boolean;
@@ -31,13 +33,17 @@ export function buildPageMetadata({
   title,
   description = DEFAULT_DESCRIPTION,
   path,
+  canonicalUrl,
   ogImage = DEFAULT_OG_IMAGE,
   noIndex = false,
   absoluteTitle = false,
   type = "website",
   publishedTime,
 }: BuildPageMetadataOptions): Metadata {
-  const canonical = buildCanonical(path);
+  const canonical =
+    canonicalUrl && canonicalUrl.trim()
+      ? canonicalUrl.trim()
+      : buildCanonical(path);
   const imageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
 
   return {
@@ -66,6 +72,8 @@ export function buildPageMetadata({
   };
 }
 
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+
 export const rootMetadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
@@ -73,6 +81,9 @@ export const rootMetadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
+  ...(googleVerification
+    ? { verification: { google: googleVerification } }
+    : {}),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

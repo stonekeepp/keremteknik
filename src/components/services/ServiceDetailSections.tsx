@@ -7,9 +7,13 @@ import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 
 type ServiceWhySectionProps = {
   serviceTitle: string;
+  uniqueIntro?: string;
 };
 
-export function ServiceWhySection({ serviceTitle }: ServiceWhySectionProps) {
+export function ServiceWhySection({
+  serviceTitle,
+  uniqueIntro,
+}: ServiceWhySectionProps) {
   return (
     <Section
       title="Neden Kerem Teknik Servis?"
@@ -17,6 +21,11 @@ export function ServiceWhySection({ serviceTitle }: ServiceWhySectionProps) {
       centered
       className="!pb-8"
     >
+      {uniqueIntro && (
+        <p className="text-body-lg text-on-surface-variant max-w-3xl mx-auto mb-10 text-center leading-relaxed">
+          {uniqueIntro}
+        </p>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
         {WHY_US.map((item) => (
           <article

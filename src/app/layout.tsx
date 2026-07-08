@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { buildLocalBusinessJsonLd } from "@/lib/seo/json-ld";
 import { rootMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
@@ -33,7 +31,6 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${plusJakarta.variable} min-h-screen flex flex-col font-sans`}
       >
-        <JsonLd data={buildLocalBusinessJsonLd()} />
         {children}
       </body>
     </html>

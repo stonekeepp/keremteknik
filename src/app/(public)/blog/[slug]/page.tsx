@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Params) {
     title: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
     path: `/blog/${post.slug}`,
+    canonicalUrl: post.canonicalUrl,
     ogImage: post.coverImage,
     type: "article",
     publishedTime: post.publishedAt ?? undefined,
@@ -68,6 +69,7 @@ export default async function BlogDetailPage({ params }: Params) {
             slug: post.slug,
             publishedAt: post.publishedAt ?? new Date().toISOString(),
             coverImage: post.coverImage,
+            canonicalUrl: post.canonicalUrl,
           }),
           buildBreadcrumbJsonLd([
             { name: "Ana Sayfa", href: "/" },

@@ -6,6 +6,15 @@ export const SITE = {
   address: "Alibeyköy, Uygar Sk. No:8 A",
   city: "Eyüpsultan / İstanbul",
   fullAddress: "Alibeyköy, Uygar Sk. No:8 A, Eyüpsultan / İstanbul",
+  postalCode: "34060",
+  addressLocality: "Eyüpsultan",
+  addressRegion: "İstanbul",
+  geo: {
+    latitude: 41.083948,
+    longitude: 28.939218,
+  },
+  mapsUrl: "https://maps.app.goo.gl/yyhn6iHWhFNRvcRf8",
+  priceRange: "₺₺",
   workingHours: {
     weekday: "Hafta içi: 08:00 - 20:00",
     saturday: "Cumartesi: 09:00 - 18:00",
@@ -15,6 +24,9 @@ export const SITE = {
   logo: "/brand/preview-logo-target-c16-p8-fp1.svg",
   logoFooter: "/brand/preview-logo-target-c16-p8-fp1.svg",
   logoAlt: "Kerem Teknik Servis — keremteknikservis.com",
+  /** Schema / Open Graph için tercih edilen raster logo */
+  logoImage: "/brand/logo-kerem-teknik-servis.png",
+  image: "/images/hero-kerem-teknik-servis.webp",
 } as const;
 
 export const NAV_LINKS = [
@@ -122,10 +134,14 @@ export type ServiceDetail = {
   slug: string;
   title: string;
   description: string;
+  /** Hizmete özel, şablon dışı güven / süreç paragrafı (thin content azaltır) */
+  uniqueIntro: string;
   icon: string;
   commonIssues: string[];
   scope?: string[];
   relatedFaqIndices?: number[];
+  /** Servise özel SSS — global FAQ ile birleştirilir */
+  faqs?: { question: string; answer: string }[];
 };
 
 export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
@@ -135,6 +151,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "ac_unit",
     description:
       "İstanbul genelinde split, multi, salon ve inverter klima arızalarında yerinde teşhis, gaz dolumu, filtre temizliği, bakım ve montaj hizmeti sunuyoruz. Kerem Teknik Servis olarak soğutmama, ısıtmama, su akıtma ve koku problemlerine aynı gün müdahale ediyor; onarım öncesi şeffaf fiyat bilgisi paylaşıyor, garantili işçilik ile kalıcı çözüm sağlıyoruz.",
+    uniqueIntro:
+      "Eyüpsultan merkezli ekibimiz, split ve inverter klimalarda basınç ölçümü, kaçak tespiti ve enerji verimliliği odaklı teşhis uygular. Özellikle mevsim geçişlerinde filtre tıkanıklığı ve dış ünite fan arızalarını yerinde ayrıştırır; gaz dolumu gerektiğinde cihaz kapasitesine uygun dolum miktarını paylaşırız. Onayınızdan önce net işçilik ve parça bedelini bildiririz.",
     commonIssues: [
       "Klima soğutmuyor",
       "Klima ısıtmıyor",
@@ -145,6 +163,23 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Kumanda veya elektronik kart arızası",
     ],
     relatedFaqIndices: [0, 1, 6, 7],
+    faqs: [
+      {
+        question: "Klima gazı ne zaman doldurulmalı?",
+        answer:
+          "Gaz dolumu yalnızca kaçak veya basınç düşüklüğü tespit edildiğinde yapılmalıdır. Önce kaçak kontrolü ve basınç ölçümü yapılır; gereksiz gaz dolumu önlenir. Onarım öncesi işlem ve bedel bilgisi paylaşılır.",
+      },
+      {
+        question: "İstanbul'da klima bakımı ne sıklıkla yapılmalı?",
+        answer:
+          "Yıldızlı kullanımı olan ev ve iş yerlerinde yıllık klima bakımı yeterlidir; yaz öncesi filtre, serpantin ve drenaj temizliği önerilir. Yoğun kullanımda yılda iki kez kontrol daha doğru olur.",
+      },
+      {
+        question: "Klimadan su akıyor, ne yapmalıyım?",
+        answer:
+          "Genellikle drenaj tıkanıklığı veya filtre kirliliği kaynaklıdır. Cihazı kapatıp yerinde servis talep edin; teknisyen drenaj hattını ve iç üniteyi kontrol ederek kalıcı çözüm uygular.",
+      },
+    ],
   },
   "kombi-servisi": {
     slug: "kombi-servisi",
@@ -152,6 +187,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "thermostat",
     description:
       "İstanbul'da kombi arıza, sıcak su, petek ısıtma ve basınç sorunlarında uzman teknisyen kadromuzla yerinde servis veriyoruz. Arıza kodu tespiti, petek temizliği, sezon öncesi kombi bakımı ve parça değişiminde şeffaf fiyatlandırma uyguluyor; onayınız olmadan işlem yapmadan, garantili işçilik ile kış aylarında kesintisiz ısınmanızı hedefliyoruz.",
+    uniqueIntro:
+      "Kombi servisinde arıza kodu, brülör ve genleşme tankı kontrollerini yerinde yaparak petek ısınma sorunlarını sistematik ayırıyoruz. Sezon öncesi bakımlarda baca, emniyet ventili ve basınç değerlerini ölçer; petek temizliği ihtiyacı varsa önce blokaj seviyesini değerlendiririz. Eyüpsultan ve çevre ilçelerde kış yoğunluğunda aynı gün planlama önceliği veriyoruz.",
     commonIssues: [
       "Kombi çalışmıyor",
       "Sıcak su gelmiyor",
@@ -162,6 +199,23 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Periyodik bakım ihtiyacı",
     ],
     relatedFaqIndices: [0, 1, 6, 7],
+    faqs: [
+      {
+        question: "Kombi basıncı sürekli düşüyorsa sebebi nedir?",
+        answer:
+          "Sık görülen nedenler tesisatta mikro kaçak, genleşme tankı arızası veya doldurma vanası sızıntısıdır. Basınç bili olmadan her gün takviye yapmak yerine yerinde kaçak ve tank kontrolü yapılmalıdır.",
+      },
+      {
+        question: "Petekler altta sıcak üstte soğuk; kombi bakımı yeterli mi?",
+        answer:
+          "Bu durum çoğu zaman hava veya çamur birikimiyle ilgilidir. Kombi bakımı tek başına yetmeyebilir; petek temizliği veya dengeleme gerekebilir. Teşhis sonrası işlem kapsamını net fiyatla paylaşırız.",
+      },
+      {
+        question: "Sezon öncesi kombi bakımı ne zaman yaptırılmalı?",
+        answer:
+          "İstanbul’da ideal dönem sonbahar başıdır. Bakımda filtre, emniyet ekipmanları, brülör ve baca kontrolleri yapılarak kış arızası riski azaltılır.",
+      },
+    ],
   },
   "beyaz-esya-servisi": {
     slug: "beyaz-esya-servisi",
@@ -169,6 +223,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "kitchen",
     description:
       "Çamaşır makinesi, buzdolabı, bulaşık makinesi, fırın ve ocak dahil tüm beyaz eşya cihazlarınız için İstanbul genelinde yerinde arıza tespiti, bakım ve onarım hizmeti sunuyoruz. Kerem Teknik Servis; ev ve iş yerlerinde aynı gün müdahale, uyumlu yedek parça temini ve garantili işçilik ile cihazlarınızın ömrünü uzatmayı amaçlar.",
+    uniqueIntro:
+      "Beyaz eşya servisinde marka-model fark etmeksizin önce kullanım hatası ile mekanik/elektronik arızayı ayırırız. Ankastre ve serbest duran cihazlarda yerinde teşhis öncelikli; gereksiz sökme işlemi yapılmaz. Uyumlu veya orijinal parça seçenekleri, maliyet ve garanti süresiyle birlikte açıklanır.",
     commonIssues: [],
     scope: [
       "Çamaşır makinesi",
@@ -179,6 +235,18 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Ankastre cihazlar",
     ],
     relatedFaqIndices: [2, 3, 6],
+    faqs: [
+      {
+        question: "Tüm beyaz eşya markalarına servis veriyor musunuz?",
+        answer:
+          "Yaygın ev tipi marka ve modellerde yerinde teşhis ve onarım yapıyoruz. Parça bulunabilirliği modele göre değişir; teşhis sonrası uygun parça seçeneklerini net fiyatla bildiririz.",
+      },
+      {
+        question: "Beyaz eşya onarımında cihaz atölyeye alınır mı?",
+        answer:
+          "Çoğu arıza yerinde giderilir. Ağır motor/kart müdahalelerinde atölye gerekirse önceden bilgilendirilirsiniz; onayınız olmadan cihaz taşınmaz.",
+      },
+    ],
   },
   "camasir-makinesi-servisi": {
     slug: "camasir-makinesi-servisi",
@@ -186,6 +254,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "local_laundry_service",
     description:
       "İstanbul'da çamaşır makinesi su almama, boşaltmama, sıkmama, ses ve kapak arızalarında aynı gün yerinde teknik servis sağlıyoruz. Pompa, motor, kayış, elektronik kart ve rulman değişimlerinde önce arızayı net teşhis ediyor, fiyat bilgisini paylaşıyor ve onayınız sonrası garantili onarım gerçekleştiriyoruz.",
+    uniqueIntro:
+      "Çamaşır makinesinde metal ses, sıkmama ve tur atma hatalarını rulman, kayış, pompa ve ammortisör testleriyle ayrıştırıyoruz. Su kaçırma şikâyetlerinde hortum, kelepçe ve kapı lastiği kontrolleri önceliklidir. Değişim gereken parçalarda uyumlu/orijinal seçenekleri ve işçilik bedelini onaya sunarız.",
     commonIssues: [
       "Su almıyor",
       "Su boşaltmıyor",
@@ -196,6 +266,18 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Elektronik kart arızası",
     ],
     relatedFaqIndices: [0, 2, 6],
+    faqs: [
+      {
+        question: "Makine sıkma sırasında çok sallanıyor, ne yapılmalı?",
+        answer:
+          "Genelde ayak ayarı, ammortisör veya denge ağırlığı kaynaklıdır. Yüksek ses ve metal sürtünme varsa rulman kontrolü gerekir. Kullanmaya devam etmeden yerinde teşhis önerilir.",
+      },
+      {
+        question: "Su boşaltmama arızasında pompa mı değişmeli?",
+        answer:
+          "Her zaman pompa değildir; filtre tıkanıklığı, hortum bükülmesi veya kart hatası da benzer belirti verir. Önce teşhis yapılır, gereksiz parça değişiminden kaçınılır.",
+      },
+    ],
   },
   "buzdolabi-servisi": {
     slug: "buzdolabi-servisi",
@@ -203,6 +285,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "severe_cold",
     description:
       "Buzdolabı soğutmama, aşırı buzlanma, motor çalışmama ve gaz kaçağı gibi arızalarda İstanbul genelinde hızlı teknik servis desteği veriyoruz. Kerem Teknik Servis olarak termostat, kompresör, fan ve kapı lastiği değişimlerinde şeffaf fiyat politikası izler; yerinde teşhis sonrası garantili işçilik ile cihazınızı güvenle teslim ederiz.",
+    uniqueIntro:
+      "Buzdolabında soğutmama şikâyetlerini fan, defrost, termostat ve gaz hattı ölçümleriyle doğrularız. Aşırı buzlanmada kapı lastiği ve drenaj tıkanıklığı sık nedenlerdir. Gaz işlemleri yalnızca kaçak doğrulandıktan sonra yapılır; boş yere gaz basılmaz.",
     commonIssues: [
       "Soğutmuyor",
       "Aşırı buzlanma yapıyor",
@@ -213,6 +297,18 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Dijital gösterge arızası",
     ],
     relatedFaqIndices: [0, 2, 6],
+    faqs: [
+      {
+        question: "Buzdolabı çalışıyor ama yeterince soğutmuyor, neden?",
+        answer:
+          "Kirli kondansatör, fan arızası, kapı lastiği kaçırıyor veya gaz eksikliği olabilir. Termostat ayarı ve yük dengesi de kontrol edilir. Kesin neden yerinde ölçümle ortaya çıkar.",
+      },
+      {
+        question: "No-frost buzdolabında buzlanma normal mi?",
+        answer:
+          "Yoğun buzlanma normal değildir; defrost sistemi veya kapak conta sorununu işaret edebilir. Gecikmeden müdahale enerji kaybını ve kompresör yükünü azaltır.",
+      },
+    ],
   },
   "bulasik-makinesi-servisi": {
     slug: "bulasik-makinesi-servisi",
@@ -220,6 +316,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "dishwasher_gen",
     description:
       "Bulaşık makinesi yıkamama, su almama, boşaltmama, koku ve program hatalarında İstanbul'da yerinde arıza tespiti ve profesyonel onarım hizmeti sunuyoruz. Pompa, rezistans, filtre ve elektronik kart arızalarında uyumlu yedek parça kullanır; onarım öncesi net fiyat bilgisi vererek garantili işçilik ile kalıcı çözüm sağlarız.",
+    uniqueIntro:
+      "Bulaşık makinesinde lekeli bardak ve yetersiz yıkama şikâyetlerini önce filtre, pervaneler ve tuz/parlatıcı sistemi üzerinden değerlendiririz. Isıtmama sorularında rezistans ve NTC ölçümü yapılır. Koku problemlerinde lavabo sirkülasyonu ve filtro temizliği çoğu kez yeterli olur; kart değişimi en son adımdır.",
     commonIssues: [
       "Yıkamıyor",
       "Su almıyor",
@@ -230,6 +328,18 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Program tamamlamıyor",
     ],
     relatedFaqIndices: [0, 2, 6],
+    faqs: [
+      {
+        question: "Bardaklar mat ve lekeli çıkıyor, parça mı değişmeli?",
+        answer:
+          "Çoğu zaman tuz ayarı, tabak yerleşimi veya filtrasyon kaynaklıdır. Önce kullanım ve temizlik kontrolleri yapılır; NTC/rezistans arızası o zaman düşünülür.",
+      },
+      {
+        question: "Makine program ortasında duruyor, sebebi nedir?",
+        answer:
+          "Kapak kilidi, ısı sensörü veya kart hatası olabilir. Hata kodu varsa kayıt altına alınır ve yerinde teşhisle hangi bileşenin arızalı olduğu belirlenir.",
+      },
+    ],
   },
   "firin-ocak-servisi": {
     slug: "firin-ocak-servisi",
@@ -237,6 +347,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "microwave",
     description:
       "Fırın, ocak ve ankastre cihazlarda ısıtmama, ateşleme, rezistans ve elektrik bağlantı arızalarına İstanbul genelinde yerinde müdahale ediyoruz. Kerem Teknik Servis; ankastre setlerde güvenli teşhis, şeffaf işçilik bedeli ve orijinal ya da uyumlu parça değişimi ile mutfağınızdaki cihazları kısa sürede tekrar çalışır hale getirir.",
+    uniqueIntro:
+      "Fırın ve ocak servisinde elektrik güvenliği ön plandadır; tetikleme, gaz vanası ve izolasyon testleri yerinde yapılır. Ankastre setlerde tezgâh sökmeden mümkün olan müdahaleler tercih edilir. Ateşleme problemlerinde çakmak, kapak ve gaz basıncı birlikte kontrol edilir.",
     commonIssues: [
       "Fırın ısıtmıyor",
       "Ocak yanmıyor",
@@ -246,6 +358,18 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Elektrik bağlantı problemi",
     ],
     relatedFaqIndices: [0, 2, 6],
+    faqs: [
+      {
+        question: "Fırın fan çalışıyor ama ısınmıyor, ne olabilir?",
+        answer:
+          "Üst/alt rezistans arızası, termostat veya röle sık görülen nedenlerdir. Önce ısı elemaları ölçülür; kart değişimi gerekirse fiyat önceden bildirilir.",
+      },
+      {
+        question: "Gazlı ocakta tek göz yanmıyor, servis şart mı?",
+        answer:
+          "Çakmak teli, brülör kapağı veya gaz yolu tıkanıklığı olabilir. Basit temizlik yetmezse yerinde ateşleme ve gaz kontrolleri yapılır.",
+      },
+    ],
   },
   "periyodik-bakim": {
     slug: "periyodik-bakim",
@@ -253,6 +377,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "handyman",
     description:
       "Klima, kombi ve beyaz eşya cihazlarınız için İstanbul genelinde planlı periyodik bakım, filtre temizliği, gaz ve basınç kontrolü ile performans testi hizmeti sunuyoruz. Düzenli bakım sayesinde enerji tüketimini düşürür, beklenmedik arızaların önüne geçer ve cihaz ömrünü uzatırsınız. Kerem Teknik Servis, sezon öncesi kombi ve yıllık klima bakımında şeffaf fiyat ve garantili işçilik ile yanınızdadır.",
+    uniqueIntro:
+      "Periyodik bakımda amaç sadece temizlik değil; ölçülebilir performans ve güvenlik kontrolüdür. Klima bakımlarında filtre/serpantin, kombi bakımlarında brülör ve emniyet ekipmanları kontrol listesiyle geçer. Bakım sonunda cihaz durumu ve önerilen sonraki kontrol dönemi yazılı veya sözlü paylaşılır.",
     commonIssues: [],
     scope: [
       "Klima periyodik bakım ve filtre temizliği",
@@ -263,6 +389,18 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Arıza riski önleyici müdahale",
     ],
     relatedFaqIndices: [7, 1, 3],
+    faqs: [
+      {
+        question: "Periyodik bakım ile arıza onarımı aynı mı?",
+        answer:
+          "Hayır. Bakım önleyici kontrol ve temizliği kapsar. Bakım sırasında arıza tespit edilirse onarım ayrıca fiyatlandırılır ve onayınız alınır.",
+      },
+      {
+        question: "Birden fazla cihaz için tek seferde bakım yapılabilir mi?",
+        answer:
+          "Evet. Aynı adreste klima ve kombi gibi birden fazla cihaz için planlı bakım randevusu oluşturulabilir; süre ve ücret önceden netleştirilir.",
+      },
+    ],
   },
   "yedek-parca-iscilik": {
     slug: "yedek-parca-iscilik",
@@ -270,6 +408,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "settings",
     description:
       "Klima, kombi ve beyaz eşya onarımlarında orijinal ve uyumlu yedek parça temini ile şeffaf işçilik bedeli sunuyoruz. Parça değişimi öncesi fiyat bilgisi paylaşılır; onayınız olmadan işlem yapılmaz. Kerem Teknik Servis olarak elektronik kart, motor, pompa ve mekanik parça değişimlerinde garanti belgesi ve fatura ile hizmet verir; İstanbul genelinde güvenilir, kaliteli ve uzun ömürlü onarım çözümleri sağlarız.",
+    uniqueIntro:
+      "Parça ve işçilik süreçlerinde önce teşhis, sonra teklif, ardından onaylı değişim yürütürüz. Uyumlu parça önerildiğinde marka/model uyumu ve garanti süresi açıkça belirtilir. Fatura ve işçilik/parça garantisi bilgisi servis sonunda paylaşılır; sürpriz ek ücret uygulanmaz.",
     commonIssues: [],
     scope: [
       "Orijinal ve uyumlu yedek parça temini",
@@ -280,6 +420,18 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Servis sonrası fatura ve garanti belgesi",
     ],
     relatedFaqIndices: [4, 6, 3],
+    faqs: [
+      {
+        question: "Orijinal mi uyumlu mu parça kullanıyorsunuz?",
+        answer:
+          "Her iki seçeneği de, cihaz ve arızaya göre sunuyoruz. Fiyat, temin süresi ve garanti farklarını değişiklik öncesi karşılaştırarak paylaşırız; tercihiniz doğrultusunda ilerleriz.",
+      },
+      {
+        question: "Parça değişimi sonrası garanti nasıl işler?",
+        answer:
+          "Değiştirilen parça ve ilgili işçilik için kapsam ve süre bilgilendirilir. Garanti dışı kullanım hataları ayrıca belirtilir; belgelendirme talep halinde sağlanır.",
+      },
+    ],
   },
 };
 

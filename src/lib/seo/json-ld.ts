@@ -1,25 +1,40 @@
 import { SITE, FAQ_ITEMS } from "@/lib/services/site";
 import { absoluteUrl } from "./metadata";
 
+const localBusinessId = () => absoluteUrl("/#localbusiness");
+const organizationId = () => absoluteUrl("/#organization");
+
 export function buildLocalBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["HVACBusiness", "LocalBusiness"],
+    "@id": localBusinessId(),
     name: SITE.name,
     description: SITE.description,
     telephone: SITE.phoneTel,
+    image: absoluteUrl(SITE.image),
+    logo: absoluteUrl(SITE.logoImage),
+    priceRange: SITE.priceRange,
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address,
-      addressLocality: "Eyüpsultan",
-      addressRegion: "İstanbul",
+      addressLocality: SITE.addressLocality,
+      addressRegion: SITE.addressRegion,
+      postalCode: SITE.postalCode,
       addressCountry: "TR",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: SITE.geo.latitude,
+      longitude: SITE.geo.longitude,
+    },
+    hasMap: SITE.mapsUrl,
     url: absoluteUrl("/"),
     areaServed: {
       "@type": "City",
       name: "İstanbul",
     },
+    sameAs: [SITE.mapsUrl],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -41,9 +56,12 @@ export function buildOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId(),
     name: SITE.name,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/brand/logo-kerem-teknik-servis.png"),
+    logo: absoluteUrl(SITE.logoImage),
+    image: absoluteUrl(SITE.image),
+    sameAs: [SITE.mapsUrl],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: SITE.phoneTel,
@@ -101,7 +119,8 @@ export function buildServiceJsonLd({
     name,
     description,
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "HVACBusiness",
+      "@id": localBusinessId(),
       name: SITE.name,
       telephone: SITE.phoneTel,
     },
@@ -119,13 +138,20 @@ export function buildArticleJsonLd({
   slug,
   publishedAt,
   coverImage,
+  canonicalUrl,
 }: {
   title: string;
   description: string;
   slug: string;
   publishedAt: string;
   coverImage?: string;
+  canonicalUrl?: string | null;
 }) {
+  const pageUrl =
+    canonicalUrl && canonicalUrl.trim()
+      ? canonicalUrl.trim()
+      : absoluteUrl(`/blog/${slug}`);
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -134,17 +160,19 @@ export function buildArticleJsonLd({
     datePublished: publishedAt,
     author: {
       "@type": "Organization",
+      "@id": organizationId(),
       name: SITE.name,
     },
     publisher: {
       "@type": "Organization",
+      "@id": organizationId(),
       name: SITE.name,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/brand/logo-kerem-teknik-servis.png"),
+        url: absoluteUrl(SITE.logoImage),
       },
     },
-    mainEntityOfPage: absoluteUrl(`/blog/${slug}`),
+    mainEntityOfPage: pageUrl,
     ...(coverImage
       ? {
           image: coverImage.startsWith("http")

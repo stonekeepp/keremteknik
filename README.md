@@ -60,8 +60,8 @@ REDIS_URL=redis://localhost:6379
 ADMIN_EMAIL=
 ADMIN_PASSWORD=
 JWT_SECRET=
-NEXT_PUBLIC_SITE_URL=https://alanadi.com
-```
+NEXT_PUBLIC_SITE_URL=https://keremteknikservis.com
+# NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=```
 
 Production mod (`DATA_MODE=postgres`) şu an tam aktif edilmemiş olabilir; kod mimarisi buna uygun hazırlanmıştır:
 
@@ -106,3 +106,26 @@ Mock mode çalışması Prisma'ya bağlı değildir.
 - `/admin/blog` — Blog listesi
 - `/admin/blog/new` — Yeni yazı
 - `/admin/blog/[id]/edit` — Düzenle
+
+## Google Search: güven ve indeks checklist
+
+Production’da Google’ın siteyi hızlı keşfetmesi ve yerel işletme olarak güvenmesi için:
+
+1. **Production URL**
+   - Deploy ortamında `NEXT_PUBLIC_SITE_URL=https://keremteknikservis.com` olmalı (sitemap, canonical, JSON-LD bu değere bağlıdır).
+
+2. **Search Console**
+   - Property’yi URL-prefix veya Domain olarak ekleyin.
+   - Meta doğrulama: GSC’den aldığınız kodu `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` olarak `.env`’e yazın (boşsa meta basılmaz).
+   - Sitemap gönderin: `https://keremteknikservis.com/sitemap.xml`
+   - Kritik URL’lerde URL Inspection → “Dizine eklenmesini iste”: `/`, `/hizmetlerimiz`, birkaç hizmet detay, `/iletisim`, `/blog`.
+
+3. **Google İşletme Profili (GBP)**
+   - NAP (ad, adres, telefon) sitedeki `SITE` bilgileriyle birebir aynı olsun.
+   - Website alanına canlı site URL’si.
+   - Maps linki `SITE.mapsUrl` ile uyumlu tutulsun.
+
+4. **Yapılmaması gerekenler**
+   - İlçe başına aynı şablonlu thin landing page üretmeyin (doorway / spam riski).
+   - Doğrulanmamış yıldız / AggregateRating şeması eklemeyin.
+   - Admin paneli zaten `noindex` + robots disallow altındadır; public dışına indekslenmemeli.
