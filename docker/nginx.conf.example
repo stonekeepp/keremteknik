@@ -8,7 +8,7 @@ upstream keremteknik_app {
 
 server {
     listen 80;
-    server_name keremteknik.example.com;
+    server_name keremteknikservis.com www.keremteknikservis.com;
 
     client_max_body_size 20m;
 

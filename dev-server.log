@@ -1,0 +1,31 @@
+
+> kerem-teknik-servis@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.20
+   - Local:        http://localhost:3000
+   - Network:      http://193.255.159.175:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1635ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.4s (733 modules)
+ ✓ Compiled in 161ms (269 modules)
+ GET / 200 in 3091ms
+ ✓ Compiled in 76ms (255 modules)
+ ✓ Compiled in 113ms (269 modules)
+   ▲ Next.js 15.5.20
+   - Local:        http://localhost:3000
+   - Network:      http://193.255.159.175:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+   ▲ Next.js 15.5.20
+   - Local:        http://localhost:3000
+   - Network:      http://172.24.240.1:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 2.4s

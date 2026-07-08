@@ -11,7 +11,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ARG NEXT_PUBLIC_SITE_URL=http://localhost:3060
+ARG NEXT_PUBLIC_SITE_URL=https://keremteknikservis.com
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 ENV DATA_MODE=mock
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -26,6 +26,10 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV DATA_MODE=mock
 ENV PORT=3060
 ENV HOSTNAME=0.0.0.0
+
+# NEXT_PUBLIC_* is inlined at build; keep runtime env aligned for server routes.
+ARG NEXT_PUBLIC_SITE_URL=https://keremteknikservis.com
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 
 RUN addgroup --system --gid 1001 nodejs \
   && adduser --system --uid 1001 nextjs
