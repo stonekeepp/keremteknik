@@ -4,10 +4,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { CTABand } from "@/components/ui/CTABand";
-import {
-  buildBreadcrumbJsonLd,
-  buildOrganizationJsonLd,
-} from "@/lib/seo/json-ld";
+import { buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils/cn";
 import {
@@ -35,13 +32,10 @@ export default function HakkimizdaPage() {
   return (
     <>
       <JsonLd
-        data={[
-          buildOrganizationJsonLd(),
-          buildBreadcrumbJsonLd([
-            { name: "Ana Sayfa", href: "/" },
-            { name: "Hakkımızda" },
-          ]),
-        ]}
+        data={buildBreadcrumbJsonLd([
+          { name: "Ana Sayfa", href: "/" },
+          { name: "Hakkımızda" },
+        ])}
       />
 
       {/* Dark editorial header — farklı hero yapısı */}

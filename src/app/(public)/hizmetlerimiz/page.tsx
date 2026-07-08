@@ -10,7 +10,7 @@ import { Section } from "@/components/ui/Section";
 import { ServiceQuickNav } from "@/components/services/ServiceQuickNav";
 import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 import { ServiceCard } from "@/components/services/ServiceCard";
-import { buildOrganizationJsonLd } from "@/lib/seo/json-ld";
+import { buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   SERVICES,
@@ -48,7 +48,12 @@ export default function HizmetlerimizPage() {
 
   return (
     <>
-      <JsonLd data={buildOrganizationJsonLd()} />
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Ana Sayfa", href: "/" },
+          { name: "Hizmetlerimiz" },
+        ])}
+      />
 
       <section className="relative bg-gradient-hero overflow-hidden">
         <div

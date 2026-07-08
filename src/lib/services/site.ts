@@ -134,6 +134,8 @@ export type ServiceDetail = {
   slug: string;
   title: string;
   description: string;
+  metaDescription?: string;
+  updatedAt: string;
   /** Hizmete özel, şablon dışı güven / süreç paragrafı (thin content azaltır) */
   uniqueIntro: string;
   icon: string;
@@ -151,6 +153,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "ac_unit",
     description:
       "İstanbul genelinde split, multi, salon ve inverter klima arızalarında yerinde teşhis, gaz dolumu, filtre temizliği, bakım ve montaj hizmeti sunuyoruz. Kerem Teknik Servis olarak soğutmama, ısıtmama, su akıtma ve koku problemlerine aynı gün müdahale ediyor; onarım öncesi şeffaf fiyat bilgisi paylaşıyor, garantili işçilik ile kalıcı çözüm sağlıyoruz.",
+    metaDescription:
+      "İstanbul klima servisi: bakım, montaj, gaz kontrolü ve arıza onarımında aynı gün yerinde destek, şeffaf fiyat ve garantili işçilik.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Eyüpsultan merkezli ekibimiz, split ve inverter klimalarda basınç ölçümü, kaçak tespiti ve enerji verimliliği odaklı teşhis uygular. Özellikle mevsim geçişlerinde filtre tıkanıklığı ve dış ünite fan arızalarını yerinde ayrıştırır; gaz dolumu gerektiğinde cihaz kapasitesine uygun dolum miktarını paylaşırız. Onayınızdan önce net işçilik ve parça bedelini bildiririz.",
     commonIssues: [
@@ -187,6 +192,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "thermostat",
     description:
       "İstanbul'da kombi arıza, sıcak su, petek ısıtma ve basınç sorunlarında uzman teknisyen kadromuzla yerinde servis veriyoruz. Arıza kodu tespiti, petek temizliği, sezon öncesi kombi bakımı ve parça değişiminde şeffaf fiyatlandırma uyguluyor; onayınız olmadan işlem yapmadan, garantili işçilik ile kış aylarında kesintisiz ısınmanızı hedefliyoruz.",
+    metaDescription:
+      "İstanbul kombi servisi: sıcak su, petek ısıtma, basınç ve arıza kodu sorunlarında yerinde teşhis, bakım ve garantili onarım.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Kombi servisinde arıza kodu, brülör ve genleşme tankı kontrollerini yerinde yaparak petek ısınma sorunlarını sistematik ayırıyoruz. Sezon öncesi bakımlarda baca, emniyet ventili ve basınç değerlerini ölçer; petek temizliği ihtiyacı varsa önce blokaj seviyesini değerlendiririz. Eyüpsultan ve çevre ilçelerde kış yoğunluğunda aynı gün planlama önceliği veriyoruz.",
     commonIssues: [
@@ -223,6 +231,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "kitchen",
     description:
       "Çamaşır makinesi, buzdolabı, bulaşık makinesi, fırın ve ocak dahil tüm beyaz eşya cihazlarınız için İstanbul genelinde yerinde arıza tespiti, bakım ve onarım hizmeti sunuyoruz. Kerem Teknik Servis; ev ve iş yerlerinde aynı gün müdahale, uyumlu yedek parça temini ve garantili işçilik ile cihazlarınızın ömrünü uzatmayı amaçlar.",
+    metaDescription:
+      "İstanbul beyaz eşya servisi: çamaşır makinesi, buzdolabı, bulaşık makinesi, fırın ve ocak için yerinde garantili onarım.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Beyaz eşya servisinde marka-model fark etmeksizin önce kullanım hatası ile mekanik/elektronik arızayı ayırırız. Ankastre ve serbest duran cihazlarda yerinde teşhis öncelikli; gereksiz sökme işlemi yapılmaz. Uyumlu veya orijinal parça seçenekleri, maliyet ve garanti süresiyle birlikte açıklanır.",
     commonIssues: [],
@@ -254,6 +265,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "local_laundry_service",
     description:
       "İstanbul'da çamaşır makinesi su almama, boşaltmama, sıkmama, ses ve kapak arızalarında aynı gün yerinde teknik servis sağlıyoruz. Pompa, motor, kayış, elektronik kart ve rulman değişimlerinde önce arızayı net teşhis ediyor, fiyat bilgisini paylaşıyor ve onayınız sonrası garantili onarım gerçekleştiriyoruz.",
+    metaDescription:
+      "İstanbul çamaşır makinesi servisi: su almama, boşaltmama, sıkmama ve ses arızalarında yerinde teşhis ve garantili onarım.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Çamaşır makinesinde metal ses, sıkmama ve tur atma hatalarını rulman, kayış, pompa ve ammortisör testleriyle ayrıştırıyoruz. Su kaçırma şikâyetlerinde hortum, kelepçe ve kapı lastiği kontrolleri önceliklidir. Değişim gereken parçalarda uyumlu/orijinal seçenekleri ve işçilik bedelini onaya sunarız.",
     commonIssues: [
@@ -285,6 +299,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "severe_cold",
     description:
       "Buzdolabı soğutmama, aşırı buzlanma, motor çalışmama ve gaz kaçağı gibi arızalarda İstanbul genelinde hızlı teknik servis desteği veriyoruz. Kerem Teknik Servis olarak termostat, kompresör, fan ve kapı lastiği değişimlerinde şeffaf fiyat politikası izler; yerinde teşhis sonrası garantili işçilik ile cihazınızı güvenle teslim ederiz.",
+    metaDescription:
+      "İstanbul buzdolabı servisi: soğutmama, buzlanma, motor ve gaz kaçağı arızalarında hızlı yerinde teşhis ve garantili onarım.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Buzdolabında soğutmama şikâyetlerini fan, defrost, termostat ve gaz hattı ölçümleriyle doğrularız. Aşırı buzlanmada kapı lastiği ve drenaj tıkanıklığı sık nedenlerdir. Gaz işlemleri yalnızca kaçak doğrulandıktan sonra yapılır; boş yere gaz basılmaz.",
     commonIssues: [
@@ -316,6 +333,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "dishwasher_gen",
     description:
       "Bulaşık makinesi yıkamama, su almama, boşaltmama, koku ve program hatalarında İstanbul'da yerinde arıza tespiti ve profesyonel onarım hizmeti sunuyoruz. Pompa, rezistans, filtre ve elektronik kart arızalarında uyumlu yedek parça kullanır; onarım öncesi net fiyat bilgisi vererek garantili işçilik ile kalıcı çözüm sağlarız.",
+    metaDescription:
+      "İstanbul bulaşık makinesi servisi: yıkamama, su almama, boşaltmama, koku ve program hatalarında yerinde garantili onarım.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Bulaşık makinesinde lekeli bardak ve yetersiz yıkama şikâyetlerini önce filtre, pervaneler ve tuz/parlatıcı sistemi üzerinden değerlendiririz. Isıtmama sorularında rezistans ve NTC ölçümü yapılır. Koku problemlerinde lavabo sirkülasyonu ve filtro temizliği çoğu kez yeterli olur; kart değişimi en son adımdır.",
     commonIssues: [
@@ -347,6 +367,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "microwave",
     description:
       "Fırın, ocak ve ankastre cihazlarda ısıtmama, ateşleme, rezistans ve elektrik bağlantı arızalarına İstanbul genelinde yerinde müdahale ediyoruz. Kerem Teknik Servis; ankastre setlerde güvenli teşhis, şeffaf işçilik bedeli ve orijinal ya da uyumlu parça değişimi ile mutfağınızdaki cihazları kısa sürede tekrar çalışır hale getirir.",
+    metaDescription:
+      "İstanbul fırın ve ocak servisi: ısıtmama, ateşleme, rezistans ve ankastre arızalarında güvenli yerinde teknik destek.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Fırın ve ocak servisinde elektrik güvenliği ön plandadır; tetikleme, gaz vanası ve izolasyon testleri yerinde yapılır. Ankastre setlerde tezgâh sökmeden mümkün olan müdahaleler tercih edilir. Ateşleme problemlerinde çakmak, kapak ve gaz basıncı birlikte kontrol edilir.",
     commonIssues: [
@@ -377,6 +400,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "handyman",
     description:
       "Klima, kombi ve beyaz eşya cihazlarınız için İstanbul genelinde planlı periyodik bakım, filtre temizliği, gaz ve basınç kontrolü ile performans testi hizmeti sunuyoruz. Düzenli bakım sayesinde enerji tüketimini düşürür, beklenmedik arızaların önüne geçer ve cihaz ömrünü uzatırsınız. Kerem Teknik Servis, sezon öncesi kombi ve yıllık klima bakımında şeffaf fiyat ve garantili işçilik ile yanınızdadır.",
+    metaDescription:
+      "İstanbul periyodik bakım hizmeti: klima, kombi ve beyaz eşya için filtre, gaz, basınç ve performans kontrolleri.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Periyodik bakımda amaç sadece temizlik değil; ölçülebilir performans ve güvenlik kontrolüdür. Klima bakımlarında filtre/serpantin, kombi bakımlarında brülör ve emniyet ekipmanları kontrol listesiyle geçer. Bakım sonunda cihaz durumu ve önerilen sonraki kontrol dönemi yazılı veya sözlü paylaşılır.",
     commonIssues: [],
@@ -408,6 +434,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     icon: "settings",
     description:
       "Klima, kombi ve beyaz eşya onarımlarında orijinal ve uyumlu yedek parça temini ile şeffaf işçilik bedeli sunuyoruz. Parça değişimi öncesi fiyat bilgisi paylaşılır; onayınız olmadan işlem yapılmaz. Kerem Teknik Servis olarak elektronik kart, motor, pompa ve mekanik parça değişimlerinde garanti belgesi ve fatura ile hizmet verir; İstanbul genelinde güvenilir, kaliteli ve uzun ömürlü onarım çözümleri sağlarız.",
+    metaDescription:
+      "Yedek parça ve işçilik hizmeti: klima, kombi ve beyaz eşya onarımlarında uyumlu parça, net fiyat ve garanti bilgisi.",
+    updatedAt: "2026-01-15T10:00:00.000Z",
     uniqueIntro:
       "Parça ve işçilik süreçlerinde önce teşhis, sonra teklif, ardından onaylı değişim yürütürüz. Uyumlu parça önerildiğinde marka/model uyumu ve garanti süresi açıkça belirtilir. Fatura ve işçilik/parça garantisi bilgisi servis sonunda paylaşılır; sürpriz ek ücret uygulanmaz.",
     commonIssues: [],

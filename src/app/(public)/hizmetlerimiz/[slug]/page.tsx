@@ -16,7 +16,11 @@ import {
   buildFaqPageJsonLd,
   buildServiceJsonLd,
 } from "@/lib/seo/json-ld";
-import { buildPageMetadata, absoluteUrl } from "@/lib/seo/metadata";
+import {
+  absoluteUrl,
+  buildDescriptionFallback,
+  buildPageMetadata,
+} from "@/lib/seo/metadata";
 import {
   FAQ_ITEMS,
   SERVICE_DETAILS,
@@ -30,12 +34,6 @@ export async function generateStaticParams() {
   return getServiceDetailSlugs().map((slug) => ({ slug }));
 }
 
-function buildServiceSeoDescription(description: string): string {
-  const max = 165;
-  if (description.length <= max) return description;
-  return `${description.slice(0, max - 1).trim()}…`;
-}
-
 export async function generateMetadata({ params }: Params) {
   const { slug } = await params;
   const detail = SERVICE_DETAILS[slug];
@@ -43,7 +41,12 @@ export async function generateMetadata({ params }: Params) {
   const heroImage = getServiceHeroImage(slug);
   return buildPageMetadata({
     title: detail.title,
-    description: buildServiceSeoDescription(detail.description),
+    description:
+      detail.metaDescription ??
+      buildDescriptionFallback({
+        title: detail.title,
+        description: detail.description,
+      }),
     path: `/hizmetlerimiz/${slug}`,
     ogImage: heroImage,
   });
@@ -81,6 +84,7 @@ export default async function ServiceDetailPage({ params }: Params) {
               name: detail.title,
               description: detail.description,
               slug,
+              serviceType: detail.title,
             }),
             image: absoluteUrl(heroImage),
           },

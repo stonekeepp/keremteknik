@@ -3,10 +3,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { Icon, type IconName } from "@/components/ui/Icon";
-import {
-  buildBreadcrumbJsonLd,
-  buildLocalBusinessJsonLd,
-} from "@/lib/seo/json-ld";
+import { buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { SITE, TRUST_BADGES } from "@/lib/services/site";
 
@@ -86,13 +83,10 @@ export default function IletisimPage() {
   return (
     <>
       <JsonLd
-        data={[
-          buildLocalBusinessJsonLd(),
-          buildBreadcrumbJsonLd([
-            { name: "Ana Sayfa", href: "/" },
-            { name: "İletişim" },
-          ]),
-        ]}
+        data={buildBreadcrumbJsonLd([
+          { name: "Ana Sayfa", href: "/" },
+          { name: "İletişim" },
+        ])}
       />
 
       {/* Premium header */}

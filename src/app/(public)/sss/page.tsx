@@ -4,7 +4,10 @@ import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/ui/CTABand";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
-import { buildFaqPageJsonLd } from "@/lib/seo/json-ld";
+import {
+  buildBreadcrumbJsonLd,
+  buildFaqPageJsonLd,
+} from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { FAQ_ITEMS, SITE } from "@/lib/services/site";
 
@@ -18,7 +21,15 @@ export const metadata = buildPageMetadata({
 export default function SssPage() {
   return (
     <>
-      <JsonLd data={buildFaqPageJsonLd()} />
+      <JsonLd
+        data={[
+          buildBreadcrumbJsonLd([
+            { name: "Ana Sayfa", href: "/" },
+            { name: "SSS" },
+          ]),
+          buildFaqPageJsonLd(),
+        ]}
+      />
       <PageHero
         title="Sık Sorulan Sorular"
         description="Hizmetlerimiz, süreçlerimiz ve politikalarımız hakkında en çok merak edilen soruların cevaplarını burada bulabilirsiniz."

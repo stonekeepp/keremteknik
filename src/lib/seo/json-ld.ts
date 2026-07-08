@@ -1,14 +1,20 @@
 import { SITE, FAQ_ITEMS } from "@/lib/services/site";
 import { absoluteUrl } from "./metadata";
 
-const localBusinessId = () => absoluteUrl("/#localbusiness");
-const organizationId = () => absoluteUrl("/#organization");
+export const LOCAL_BUSINESS_ID =
+  "https://keremteknikservis.com/#localbusiness";
+
+function buildLocalBusinessReference() {
+  return {
+    "@id": LOCAL_BUSINESS_ID,
+  };
+}
 
 export function buildLocalBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": ["HVACBusiness", "LocalBusiness"],
-    "@id": localBusinessId(),
+    "@type": ["HVACBusiness", "LocalBusiness", "Organization"],
+    "@id": LOCAL_BUSINESS_ID,
     name: SITE.name,
     description: SITE.description,
     telephone: SITE.phoneTel,
@@ -52,26 +58,6 @@ export function buildLocalBusinessJsonLd() {
   };
 }
 
-export function buildOrganizationJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": organizationId(),
-    name: SITE.name,
-    url: absoluteUrl("/"),
-    logo: absoluteUrl(SITE.logoImage),
-    image: absoluteUrl(SITE.image),
-    sameAs: [SITE.mapsUrl],
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: SITE.phoneTel,
-      contactType: "customer service",
-      areaServed: "TR",
-      availableLanguage: "Turkish",
-    },
-  };
-}
-
 export function buildFaqPageJsonLd(
   items: readonly { question: string; answer: string }[] = FAQ_ITEMS,
 ) {
@@ -108,22 +94,20 @@ export function buildServiceJsonLd({
   name,
   description,
   slug,
+  serviceType,
 }: {
   name: string;
   description: string;
   slug: string;
+  serviceType?: string;
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name,
     description,
-    provider: {
-      "@type": "HVACBusiness",
-      "@id": localBusinessId(),
-      name: SITE.name,
-      telephone: SITE.phoneTel,
-    },
+    serviceType: serviceType ?? name,
+    provider: buildLocalBusinessReference(),
     areaServed: {
       "@type": "City",
       name: "İstanbul",
@@ -137,6 +121,7 @@ export function buildArticleJsonLd({
   description,
   slug,
   publishedAt,
+  modifiedAt,
   coverImage,
   canonicalUrl,
 }: {
@@ -144,6 +129,7 @@ export function buildArticleJsonLd({
   description: string;
   slug: string;
   publishedAt: string;
+  modifiedAt?: string | null;
   coverImage?: string;
   canonicalUrl?: string | null;
 }) {
@@ -154,25 +140,27 @@ export function buildArticleJsonLd({
 
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: title,
     description,
     datePublished: publishedAt,
+    dateModified: modifiedAt ?? publishedAt,
     author: {
-      "@type": "Organization",
-      "@id": organizationId(),
+      ...buildLocalBusinessReference(),
       name: SITE.name,
     },
     publisher: {
-      "@type": "Organization",
-      "@id": organizationId(),
+      "@id": LOCAL_BUSINESS_ID,
       name: SITE.name,
       logo: {
         "@type": "ImageObject",
         url: absoluteUrl(SITE.logoImage),
       },
     },
-    mainEntityOfPage: pageUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
     ...(coverImage
       ? {
           image: coverImage.startsWith("http")

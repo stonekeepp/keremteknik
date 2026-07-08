@@ -1,6 +1,8 @@
 import { BlogList } from "@/components/blog/BlogList";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { getBlogRepository } from "@/lib/blog";
+import { buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
@@ -16,6 +18,12 @@ export default async function BlogPage() {
 
   return (
     <>
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Ana Sayfa", href: "/" },
+          { name: "Blog" },
+        ])}
+      />
       <PageHero
         title="Blog"
         description="Klima, kombi ve beyaz eşya kullanımı hakkında pratik bakım önerileri, arıza belirtileri ve servis tavsiyeleri."

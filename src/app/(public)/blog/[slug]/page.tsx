@@ -51,13 +51,15 @@ export default async function BlogDetailPage({ params }: Params) {
     .slice(0, 2);
 
   const internalLinks = getBlogPostInternalLinks(post.category, post.slug);
-  const relatedServiceSlug = getBlogCategoryServiceSlug(post.category);
+  const relatedServiceSlug = getBlogCategoryServiceSlug(post.category, post.slug);
 
   const breadcrumbs = [
     { label: "Ana Sayfa", href: "/" },
     { label: "Blog", href: "/blog" },
     { label: post.title },
   ];
+  const publishedAt = post.publishedAt ?? post.createdAt;
+  const modifiedAt = post.updatedAt ?? publishedAt;
 
   return (
     <>
@@ -67,7 +69,8 @@ export default async function BlogDetailPage({ params }: Params) {
             title: post.title,
             description: post.excerpt,
             slug: post.slug,
-            publishedAt: post.publishedAt ?? new Date().toISOString(),
+            publishedAt,
+            modifiedAt,
             coverImage: post.coverImage,
             canonicalUrl: post.canonicalUrl,
           }),

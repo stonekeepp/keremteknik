@@ -50,6 +50,15 @@ const CATEGORY_SERVICE_SLUG: Partial<Record<BlogCategory, string>> = {
   "Arıza Rehberi": "beyaz-esya-servisi",
 };
 
+const BLOG_SERVICE_SLUG: Record<string, string> = {
+  "klima-bakimi-ne-zaman-yapilmali": "klima-servisi",
+  "kombi-bakimi-neden-onemlidir": "kombi-servisi",
+  "buzdolabi-sogutmuyorsa-ne-yapilmali": "buzdolabi-servisi",
+  "camasir-makinesi-sikma-yapmiyorsa-sebebi-ne-olabilir":
+    "camasir-makinesi-servisi",
+  "bulasik-makinesi-neden-koku-yapar": "bulasik-makinesi-servisi",
+};
+
 const SERVICE_RELATED_SLUGS: Record<string, string[]> = {
   "klima-servisi": ["kombi-servisi", "beyaz-esya-servisi", "periyodik-bakim"],
   "kombi-servisi": ["klima-servisi", "beyaz-esya-servisi", "periyodik-bakim"],
@@ -269,7 +278,7 @@ export function getBlogPostInternalLinks(
   category: BlogCategory,
   currentSlug: string,
 ): InternalLinksBlock {
-  const serviceSlug = CATEGORY_SERVICE_SLUG[category];
+  const serviceSlug = BLOG_SERVICE_SLUG[currentSlug] ?? CATEGORY_SERVICE_SLUG[category];
   const service = serviceSlug ? serviceLink(serviceSlug) : null;
 
   const links = finalizeLinks(
@@ -297,6 +306,10 @@ export function getServiceSidebarLink(slug: string): ContextualLink | null {
 
 export function getBlogCategoryServiceSlug(
   category: BlogCategory,
+  currentSlug?: string,
 ): string | null {
+  if (currentSlug && BLOG_SERVICE_SLUG[currentSlug]) {
+    return BLOG_SERVICE_SLUG[currentSlug];
+  }
   return CATEGORY_SERVICE_SLUG[category] ?? null;
 }

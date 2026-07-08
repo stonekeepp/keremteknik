@@ -11,10 +11,7 @@ import { HomeLatestPosts } from "@/components/home/HomeLatestPosts";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
-import {
-  buildFaqPageJsonLd,
-  buildOrganizationJsonLd,
-} from "@/lib/seo/json-ld";
+import { buildFaqPageJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   FAQ_ITEMS,
@@ -43,12 +40,7 @@ const heroImageAlt =
 export default function HomePage() {
   return (
     <>
-      <JsonLd
-        data={[
-          buildOrganizationJsonLd(),
-          buildFaqPageJsonLd(FAQ_ITEMS.slice(0, HOME_FAQ_LIMIT)),
-        ]}
-      />
+      <JsonLd data={buildFaqPageJsonLd(FAQ_ITEMS.slice(0, HOME_FAQ_LIMIT))} />
 
       <section className="relative bg-gradient-hero overflow-hidden">
         <div

@@ -5,6 +5,8 @@ const SITE_NAME = "Kerem Teknik Servis";
 const DEFAULT_DESCRIPTION =
   "Kerem Teknik Servis; klima, kombi ve beyaz eşya arızaları için hızlı, güvenilir ve profesyonel teknik servis hizmeti sunar.";
 const DEFAULT_OG_IMAGE = "/brand/logo-kerem-teknik-servis.png";
+const SERVICE_DESCRIPTION_FALLBACK_SUFFIX =
+  "için İstanbul genelinde yerinde teknik servis, bakım ve onarım desteği. Garantili işçilik ve hızlı randevu.";
 
 export function absoluteUrl(path: string): string {
   const base = getSiteUrl().replace(/\/$/, "");
@@ -14,6 +16,31 @@ export function absoluteUrl(path: string): string {
 
 export function buildCanonical(path: string): string {
   return absoluteUrl(path);
+}
+
+export function buildDescriptionFallback({
+  title,
+  description,
+  maxLength = 165,
+}: {
+  title: string;
+  description: string;
+  maxLength?: number;
+}): string {
+  const cleanDescription = description.replace(/\s+/g, " ").trim();
+  if (cleanDescription.length <= maxLength) return cleanDescription;
+
+  const sentences = cleanDescription.match(/[^.!?…]+[.!?…]+/g) ?? [];
+  let fallback = "";
+  for (const sentence of sentences) {
+    const next = `${fallback} ${sentence.trim()}`.trim();
+    if (next.length > maxLength) break;
+    fallback = next;
+  }
+
+  if (fallback) return fallback;
+
+  return `${title} ${SERVICE_DESCRIPTION_FALLBACK_SUFFIX}`;
 }
 
 type BuildPageMetadataOptions = {
@@ -72,7 +99,8 @@ export function buildPageMetadata({
   };
 }
 
-const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+const googleVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
