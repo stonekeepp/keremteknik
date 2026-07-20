@@ -33,7 +33,7 @@ export const SEED_BLOG_POSTS: BlogPost[] = [
 
 Su akıtma, yanık kokusu, sigorta attırma, sürekli ses veya belirgin performans kaybı varsa cihazı zorlamayın. Gaz kaçağı, drenaj hattı, fan motoru ve elektronik kart kontrolleri kullanıcı müdahalesiyle yapılmamalıdır.
 
-[Klima servisi](/hizmetlerimiz/klima-servisi) ve [periyodik bakım](/hizmetlerimiz/periyodik-bakim) desteğiyle klimanızı sezon başlamadan kontrol ettirebilirsiniz. Yaz yoğunluğu başlamadan servis randevusu oluşturmak daha sağlıklı planlama sağlar.`,
+[Klima servisi](/hizmetlerimiz/klima-servisi) ve [periyodik bakım](/hizmetlerimiz/periyodik-bakim) desteğiyle klimanızı sezon başlamadan kontrol ettirebilirsiniz. Soğutma performansı düşükse [klima soğutmuyor rehberi](/ariza-rehberi/klima/sogutmuyor) ve [Alibeyköy klima servisi](/servis-bolgeleri/alibeykoy/klima-servisi) sayfalarına göz atabilirsiniz.`,
     coverImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuD4H13woV26a2-EfzcfOlw8HERkv_-I5U5q2jhcOCp-yBpu3HGZ3HsrkxJqcJi4ADtG1o5tzVUWW3GB3jurKaMchNkzZAfnWxS-5rVnMZh_aciXW_Kmq9Tn9k1s_F3aQRYHMyRnEgGNk_1n79TM8MjsQotXinz53lwy6c1hYm5IJCy36xwFh7cnqs4Rd-zKQYZwiDhBpCSMhrThKyyDu66If_Jj6V3uYMAWoPFvCzPRLdCG1SllIgQE",
     category: "Klima",
@@ -77,7 +77,7 @@ Hayır. Kombi bakımı cihazın güvenli ve verimli çalışmasına odaklanır. 
 
 Gaz kokusu, baca/yanma uyarısı, su kaçağı, sık basınç düşmesi, sıcak su dalgalanması veya tekrarlayan arıza kodu varsa kombiyi zorlamayın. Gaz, baca, yanma ayarı ve iç parça kontrolleri yalnızca yetkili teknik ekip tarafından yapılmalıdır.
 
-Kış sezonu öncesinde [kombi servisi](/hizmetlerimiz/kombi-servisi) veya [periyodik bakım](/hizmetlerimiz/periyodik-bakim) talebi oluşturarak sürpriz arızaların önüne geçebilirsiniz.`,
+Kış sezonu öncesinde [kombi servisi](/hizmetlerimiz/kombi-servisi) veya [periyodik bakım](/hizmetlerimiz/periyodik-bakim) talebi oluşturarak sürpriz arızaların önüne geçebilirsiniz. Su akıtma belirtisi varsa [kombi su akıtıyor rehberi](/ariza-rehberi/kombi/su-akitiyor) ve [Eyüpsultan kombi servisi](/servis-bolgeleri/eyupsultan/kombi-servisi) sayfalarına bakabilirsiniz.`,
     coverImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAVyOnCwNpQ5_8SmWormBHJF1tRTbjSo8KWEvgH3aobFPcxYpRmfReET99mfsUDQwXmN5WwsCjjvTjm1p0ghdC2v2CaT-WLgw1kw1iKwp9IkPM-LNbEf0Q_ONwbicizhH2CuTtNdtyWoC_NC5USQy8Cw2_BD_1wHwoulYhzS_flQVxSXaOaiohtG3GAievde4fTFy5ikZGOpmOLtf8_qk7yNGItL3r-Vz_wzY1E0qW5fdG_nMj_ZF5e",
     category: "Kombi",
@@ -115,7 +115,7 @@ Sadece alt bölüm soğutmuyorsa hava kanalı, fan veya buzlanma kaynaklı bir s
 
 Motor çalışıyor gibi görünüyor ama soğutma yoksa, fan sesi gelmiyorsa, sürekli buzlanma oluşuyorsa veya kompresör aşırı ısınıyorsa cihazı zorlamayın. Gaz, motor ve elektronik kart arızaları kullanıcı tarafından kesin teşhis edilemez.
 
-Gıda bozulma riski varsa beklemeden [buzdolabı servisi](/hizmetlerimiz/buzdolabi-servisi) için destek alın. Genel kapsam için [beyaz eşya servisi](/hizmetlerimiz/beyaz-esya-servisi) sayfasını da inceleyebilirsiniz.`,
+Gıda bozulma riski varsa beklemeden [buzdolabı servisi](/hizmetlerimiz/buzdolabi-servisi) için destek alın. [Arıza rehberi](/ariza-rehberi) ve [Arçelik buzdolabı servisi](/markalar/arcelik/buzdolabi-servisi) sayfalarından ilgili kontrol listelerine ulaşabilirsiniz.`,
     coverImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuB-wS3qQPls_YG5WJa1fQ-e3zdhGTfCL8UrJLK6mYcBuG_mCKB8BIeScoxIriC6pzQJIEhggMF92aMp6tAM_BD46DnWExRSGHgHOU_68AQ3MM8mypNbiZVzVwoQInWlE4aRMGTc2NYlEmiAZUrpINOqJwSkVbk0afvBSk5fE9QQMvDxqQ2wJXF60Bk4G14WBdjcvZ9jPk-qicGht1oEjHqhrMKIgcPNB-Q7f2M3cs5m-YG5KOJEIvlm",
     category: "Beyaz Eşya",
@@ -157,7 +157,7 @@ Gıda bozulma riski varsa beklemeden [buzdolabı servisi](/hizmetlerimiz/buzdola
 
 Makine suyu boşaltmıyorsa, kazan dönmüyorsa, yanık kokusu varsa, sigorta attırıyorsa veya motor sesi gelip hareket oluşmuyorsa cihazı çalıştırmaya devam etmeyin. Kayış, motor, pompa ve elektronik kart müdahaleleri teknik servis tarafından yapılmalıdır.
 
-Sorun basit yük dengesinden kaynaklanmıyorsa [çamaşır makinesi servisi](/hizmetlerimiz/camasir-makinesi-servisi) için yerinde arıza tespiti isteyebilirsiniz. Parça değişimi gereken durumlarda [yedek parça ve işçilik](/hizmetlerimiz/yedek-parca-iscilik) kapsamını inceleyin.`,
+Sorun basit yük dengesinden kaynaklanmıyorsa [çamaşır makinesi servisi](/hizmetlerimiz/camasir-makinesi-servisi) için yerinde arıza tespiti isteyebilirsiniz. [Bosch çamaşır makinesi servisi](/markalar/bosch/camasir-makinesi-servisi) ve [Bosch E09 hata kodu](/hata-kodlari/camasir-makinesi/bosch-siemens-profilo/e09) sayfaları sıkma arızalarında yol gösterir.`,
     coverImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuD4H13woV26a2-EfzcfOlw8HERkv_-I5U5q2jhcOCp-yBpu3HGZ3HsrkxJqcJi4ADtG1o5tzVUWW3GB3jurKaMchNkzZAfnWxS-5rVnMZh_aciXW_Kmq9Tn9k1s_F3aQRYHMyRnEgGNk_1n79TM8MjsQotXinz53lwy6c1hYm5IJCy36xwFh7cnqs4Rd-zKQYZwiDhBpCSMhrThKyyDu66If_Jj6V3uYMAWoPFvCzPRLdCG1SllIgQE",
     category: "Arıza Rehberi",
@@ -198,7 +198,7 @@ Sorun basit yük dengesinden kaynaklanmıyorsa [çamaşır makinesi servisi](/hi
 
 Makine su tahliye etmiyorsa, giderden geri koku veya su geliyorsa, pompa sesi anormalse, kaçak varsa ya da temizlikten kısa süre sonra koku tekrar ediyorsa teknik kontrol gerekir.
 
-Düzenli temizlik sorunu çözmüyorsa [bulaşık makinesi servisi](/hizmetlerimiz/bulasik-makinesi-servisi) desteği alın. Benzer cihaz sorunları için [beyaz eşya servisi](/hizmetlerimiz/beyaz-esya-servisi) kapsamını inceleyebilirsiniz.`,
+Düzenli temizlik sorunu çözmüyorsa [bulaşık makinesi servisi](/hizmetlerimiz/bulasik-makinesi-servisi) desteği alın. [Musluk işareti rehberi](/ariza-rehberi/bulasik-makinesi/musluk-isareti) ve [Bosch bulaşık makinesi servisi](/markalar/bosch/bulasik-makinesi-servisi) sayfalarından ek kontrol listelerine ulaşabilirsiniz.`,
     coverImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAVyOnCwNpQ5_8SmWormBHJF1tRTbjSo8KWEvgH3aobFPcxYpRmfReET99mfsUDQwXmN5WwsCjjvTjm1p0ghdC2v2CaT-WLgw1kw1iKwp9IkPM-LNbEf0Q_ONwbicizhH2CuTtNdtyWoC_NC5USQy8Cw2_BD_1wHwoulYhzS_flQVxSXaOaiohtG3GAievde4fTFy5ikZGOpmOLtf8_qk7yNGItL3r-Vz_wzY1E0qW5fdG_nMj_ZF5e",
     category: "Bakım Önerileri",

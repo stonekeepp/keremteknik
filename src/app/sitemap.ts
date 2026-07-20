@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getBlogRepository } from "@/lib/blog";
+import { getIndexableSeoPages } from "@/lib/seo-pages";
 import { absoluteUrl } from "@/lib/seo/metadata";
 import { SERVICE_DETAILS } from "@/lib/services/site";
 
@@ -66,6 +67,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ),
       changeFrequency: "weekly" as const,
       priority: 0.6,
+    })),
+    ...getIndexableSeoPages().map((page) => ({
+      url: absoluteUrl(page.canonicalPath),
+      lastModified: new Date(page.updatedAt),
+      changeFrequency: "weekly" as const,
     })),
   ];
 }

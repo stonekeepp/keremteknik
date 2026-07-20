@@ -13,6 +13,7 @@ import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { buildFaqPageJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { PRIORITY_REGION_SLUGS, REGION_SEEDS } from "@/lib/seo-pages";
 import {
   FAQ_ITEMS,
   HERO_IMAGE,
@@ -36,6 +37,9 @@ export const metadata = buildPageMetadata({
 
 const heroImageAlt =
   "Kerem Teknik Servis — İstanbul klima, kombi ve beyaz eşya teknik servisi";
+const featuredRegions = REGION_SEEDS.filter((item) =>
+  PRIORITY_REGION_SLUGS.includes(item.slug as (typeof PRIORITY_REGION_SLUGS)[number]),
+);
 
 export default function HomePage() {
   return (
@@ -146,6 +150,31 @@ export default function HomePage() {
           <Button href="/hizmetlerimiz" variant="outline">
             Tüm Hizmetleri İncele
           </Button>
+        </div>
+      </Section>
+
+      <Section
+        variant="muted"
+        title="Öne çıkan servis bölgeleri"
+        subtitle="Alibeyköy, Eyüpsultan, Gaziosmanpaşa ve Kağıthane için bölge odaklı servis sayfaları"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+          {featuredRegions.map((region) => (
+            <a
+              key={region.slug}
+              href={`/servis-bolgeleri/${region.slug}`}
+              className="rounded-2xl bg-surface border border-outline-variant/40 p-6 shadow-level-1"
+            >
+              <h3 className="text-headline-sm font-headline-sm text-primary">{region.name}</h3>
+              <p className="text-body-md text-on-surface-variant mt-2">{region.continentSide}</p>
+            </a>
+          ))}
+        </div>
+        <div className="flex flex-wrap justify-center gap-4 mt-10">
+          <Button href="/servis-bolgeleri" variant="outline">Tüm servis bölgeleri</Button>
+          <Button href="/markalar" variant="outline">Marka servisleri</Button>
+          <Button href="/ariza-rehberi" variant="outline">Arıza rehberi</Button>
+          <Button href="/hata-kodlari" variant="outline">Hata kodları</Button>
         </div>
       </Section>
 

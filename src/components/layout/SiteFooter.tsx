@@ -25,6 +25,13 @@ const footer = {
 } as const;
 
 const detailServices = SERVICES.filter((s) => s.hasDetailPage);
+const footerRegionLinks = [
+  { href: "/servis-bolgeleri/alibeykoy", label: "Alibeyköy" },
+  { href: "/servis-bolgeleri/eyupsultan", label: "Eyüpsultan" },
+  { href: "/servis-bolgeleri/gaziosmanpasa", label: "Gaziosmanpaşa" },
+  { href: "/servis-bolgeleri/kagithane", label: "Kağıthane" },
+  { href: "/servis-bolgeleri", label: "Tüm servis bölgeleri" },
+];
 
 export function SiteFooter() {
   const serviceLinks = detailServices.map((s) => ({
@@ -90,11 +97,16 @@ export function SiteFooter() {
               title: "İletişim",
               children: <FooterContactBlock />,
             },
+            {
+              id: "bolgeler",
+              title: "Servis Bölgeleri",
+              children: <FooterLinkList links={footerRegionLinks} />,
+            },
           ]}
         />
 
         {/* Desktop grid */}
-        <div className="hidden md:grid md:grid-cols-[1.2fr_0.7fr_0.9fr_1fr] gap-8 lg:gap-10 items-start">
+        <div className="hidden md:grid md:grid-cols-[1.2fr_0.7fr_0.9fr_0.8fr_1fr] gap-8 lg:gap-10 items-start">
           <FooterBrandBlock compact />
 
           <div className="pt-1">
@@ -111,6 +123,14 @@ export function SiteFooter() {
               Hizmetler
             </h3>
             <FooterLinkList links={serviceLinks} />
+          </div>
+
+          <div className="pt-1">
+            <h3 className={`text-label-md font-label-md mb-4 uppercase tracking-wide ${footer.heading} flex items-center gap-2`}>
+              <span className="w-6 h-px bg-gold/50" aria-hidden />
+              Bölgeler
+            </h3>
+            <FooterLinkList links={footerRegionLinks} />
           </div>
 
           <div className="pt-1">

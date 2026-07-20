@@ -267,6 +267,106 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
         path,
       ),
     };
+  } else if (path === "/servis-bolgeleri") {
+    block = {
+      heading: "Öne çıkan bölgeler ve cihaz sayfaları",
+      links: finalizeLinks(
+        [
+          { href: "/servis-bolgeleri/alibeykoy", label: "Alibeyköy Servis Bölgesi" },
+          { href: "/servis-bolgeleri/eyupsultan", label: "Eyüpsultan Teknik Servis" },
+          { href: "/servis-bolgeleri/gaziosmanpasa", label: "Gaziosmanpaşa Teknik Servis" },
+          { href: "/servis-bolgeleri/kagithane", label: "Kağıthane Teknik Servis" },
+          { href: "/markalar", label: "Marka Servisleri" },
+          { href: "/ariza-rehberi", label: "Arıza Rehberi" },
+        ],
+        path,
+      ),
+    };
+  } else if (path.startsWith("/servis-bolgeleri/")) {
+    block = {
+      heading: "Bölgesel servis bağlantıları",
+      links: finalizeLinks(
+        [
+          { href: "/servis-bolgeleri", label: "Tüm servis bölgeleri" },
+          { href: "/hizmetlerimiz/klima-servisi", label: "Klima Servisi" },
+          { href: "/hizmetlerimiz/kombi-servisi", label: "Kombi Servisi" },
+          { href: "/hizmetlerimiz/beyaz-esya-servisi", label: "Beyaz Eşya Servisi" },
+          { href: "/ariza-rehberi", label: "Arıza Rehberi" },
+          { href: "/iletisim", label: "İletişim" },
+        ],
+        path,
+      ),
+    };
+  } else if (path === "/markalar") {
+    block = {
+      heading: "Marka ve servis sayfaları",
+      links: finalizeLinks(
+        [
+          { href: "/markalar/bosch", label: "Bosch Servisi" },
+          { href: "/markalar/arcelik", label: "Arçelik Servisi" },
+          { href: "/markalar/beko", label: "Beko Servisi" },
+          { href: "/hata-kodlari", label: "Hata Kodları" },
+          { href: "/ariza-rehberi", label: "Arıza Rehberi" },
+        ],
+        path,
+      ),
+    };
+  } else if (path.startsWith("/markalar/")) {
+    block = {
+      heading: "İlgili servis ve bilgi sayfaları",
+      links: finalizeLinks(
+        [
+          { href: "/markalar", label: "Tüm markalar" },
+          { href: "/hata-kodlari", label: "Hata kodları rehberi" },
+          { href: "/ariza-rehberi", label: "Arıza rehberi" },
+          { href: "/servis-bolgeleri/alibeykoy", label: "Alibeyköy Servis Bölgesi" },
+          { href: "/servis-bolgeleri/eyupsultan", label: "Eyüpsultan Servis Bölgesi" },
+        ],
+        path,
+      ),
+    };
+  } else if (path === "/ariza-rehberi") {
+    block = {
+      heading: "Arıza rehberinden devam edin",
+      links: finalizeLinks(
+        [
+          { href: "/ariza-rehberi/klima/sogutmuyor", label: "Klima soğutmuyor" },
+          { href: "/ariza-rehberi/kombi/su-akitiyor", label: "Kombi su akıtıyor" },
+          { href: "/hizmetlerimiz", label: "Tüm hizmetlerimiz" },
+          { href: "/hata-kodlari", label: "Hata kodları" },
+          { href: "/markalar", label: "Marka servisleri" },
+        ],
+        path,
+      ),
+    };
+  } else if (path.startsWith("/ariza-rehberi/")) {
+    block = {
+      heading: "İlgili sayfalar",
+      links: finalizeLinks(
+        [
+          { href: "/ariza-rehberi", label: "Tüm arıza rehberleri" },
+          { href: "/hata-kodlari", label: "Hata kodları rehberi" },
+          { href: "/hizmetlerimiz", label: "Ana hizmet sayfaları" },
+          { href: "/servis-bolgeleri/alibeykoy", label: "Alibeyköy Servisi" },
+          { href: "/servis-bolgeleri/gaziosmanpasa", label: "Gaziosmanpaşa Servisi" },
+        ],
+        path,
+      ),
+    };
+  } else if (path === "/hata-kodlari" || path.startsWith("/hata-kodlari/")) {
+    block = {
+      heading: "Hata kodlarından ilgili sayfalara geçin",
+      links: finalizeLinks(
+        [
+          { href: "/hata-kodlari", label: "Hata kodları ana merkezi" },
+          { href: "/ariza-rehberi", label: "Arıza rehberi" },
+          { href: "/markalar", label: "Marka servisleri" },
+          { href: "/hizmetlerimiz/klima-servisi", label: "Klima Servisi" },
+          { href: "/hizmetlerimiz/camasir-makinesi-servisi", label: "Çamaşır Makinesi Servisi" },
+        ],
+        path,
+      ),
+    };
   }
 
   if (!block || block.links.length === 0) return null;
@@ -274,22 +374,53 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
   return block;
 }
 
+const BLOG_SEO_LINKS: Record<string, ContextualLink[]> = {
+  "klima-bakimi-ne-zaman-yapilmali": [
+    { href: "/ariza-rehberi/klima/sogutmuyor", label: "Klima soğutmuyor rehberi" },
+    { href: "/servis-bolgeleri/alibeykoy/klima-servisi", label: "Alibeyköy klima servisi" },
+    { href: "/hata-kodlari/klima", label: "Klima hata kodları" },
+  ],
+  "kombi-bakimi-neden-onemlidir": [
+    { href: "/ariza-rehberi/kombi/su-akitiyor", label: "Kombi su akıtıyor rehberi" },
+    { href: "/servis-bolgeleri/eyupsultan/kombi-servisi", label: "Eyüpsultan kombi servisi" },
+  ],
+  "buzdolabi-sogutmuyorsa-ne-yapilmali": [
+    { href: "/ariza-rehberi", label: "Arıza rehberi" },
+    { href: "/markalar/arcelik/buzdolabi-servisi", label: "Arçelik buzdolabı servisi" },
+  ],
+  "camasir-makinesi-sikma-yapmiyorsa-sebebi-ne-olabilir": [
+    { href: "/markalar/bosch/camasir-makinesi-servisi", label: "Bosch çamaşır makinesi servisi" },
+    {
+      href: "/hata-kodlari/camasir-makinesi/bosch-siemens-profilo/e09",
+      label: "Bosch E09 hata kodu",
+    },
+  ],
+  "bulasik-makinesi-neden-koku-yapar": [
+    { href: "/ariza-rehberi/bulasik-makinesi/musluk-isareti", label: "Bulaşık makinesi musluk işareti" },
+    { href: "/markalar/bosch/bulasik-makinesi-servisi", label: "Bosch bulaşık makinesi servisi" },
+  ],
+};
+
+const FAULT_GUIDE_BLOG: Record<string, string> = {
+  "klima/sogutmuyor": "/blog/klima-bakimi-ne-zaman-yapilmali",
+  "kombi/su-akitiyor": "/blog/kombi-bakimi-neden-onemlidir",
+};
+
 export function getBlogPostInternalLinks(
   category: BlogCategory,
   currentSlug: string,
 ): InternalLinksBlock {
   const serviceSlug = BLOG_SERVICE_SLUG[currentSlug] ?? CATEGORY_SERVICE_SLUG[category];
   const service = serviceSlug ? serviceLink(serviceSlug) : null;
+  const seoLinks = BLOG_SEO_LINKS[currentSlug] ?? [];
 
   const links = finalizeLinks(
     [
+      ...seoLinks,
       service,
       UTILITY_LINKS.services,
       UTILITY_LINKS.faq,
       UTILITY_LINKS.contact,
-      UTILITY_LINKS.blog,
-      serviceLink("kombi-servisi"),
-      UTILITY_LINKS.about,
     ],
     `/blog/${currentSlug}`,
   ).filter((link) => link.href !== `/blog/${currentSlug}`);

@@ -135,7 +135,9 @@ export function buildArticleJsonLd({
 }) {
   const pageUrl =
     canonicalUrl && canonicalUrl.trim()
-      ? canonicalUrl.trim()
+      ? canonicalUrl.startsWith("http")
+        ? canonicalUrl.trim()
+        : absoluteUrl(canonicalUrl.trim())
       : absoluteUrl(`/blog/${slug}`);
 
   return {
@@ -168,5 +170,52 @@ export function buildArticleJsonLd({
             : absoluteUrl(coverImage),
         }
       : {}),
+  };
+}
+
+export function buildCollectionPageJsonLd({
+  title,
+  description,
+  path,
+}: {
+  title: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description,
+    url: absoluteUrl(path),
+    isPartOf: absoluteUrl("/"),
+  };
+}
+
+export function buildAreaServedServiceJsonLd({
+  name,
+  description,
+  path,
+  areaName,
+  serviceType,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  areaName: string;
+  serviceType: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    serviceType,
+    provider: buildLocalBusinessReference(),
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: areaName,
+    },
+    url: absoluteUrl(path),
   };
 }
