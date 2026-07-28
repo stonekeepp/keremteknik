@@ -8,6 +8,7 @@ import { Section } from "@/components/ui/Section";
 import { buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import type { SeoPageRecord } from "@/lib/seo-pages/types";
 import { SITE } from "@/lib/services/site";
+import Link from "next/link";
 
 type SeoPageTemplateProps = {
   page: SeoPageRecord;
@@ -61,6 +62,16 @@ export function SeoPageTemplate({
             <div className="whitespace-pre-line text-body-lg text-on-surface-variant leading-relaxed">
               {section.body}
             </div>
+            {section.href && (
+              <p className="mt-4">
+                <Link
+                  href={section.href}
+                  className="text-body-md font-semibold text-cta hover:underline"
+                >
+                  {section.title} sayfasına git →
+                </Link>
+              </p>
+            )}
           </div>
         </Section>
       ))}

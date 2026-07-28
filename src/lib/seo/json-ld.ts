@@ -36,10 +36,20 @@ export function buildLocalBusinessJsonLd() {
     },
     hasMap: SITE.mapsUrl,
     url: absoluteUrl("/"),
-    areaServed: {
-      "@type": "City",
-      name: "İstanbul",
-    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "İstanbul",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Eyüpsultan",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Alibeyköy",
+      },
+    ],
     sameAs: [SITE.mapsUrl],
     openingHoursSpecification: [
       {

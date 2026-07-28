@@ -39,11 +39,35 @@ export const REGION_SERVICE_SLUGS = [
   "beyaz-esya-servisi",
 ] as const;
 
+/** Extra district×device pages — Eyüpsultan only (white-goods long-tail). */
+export const EYUPSULTAN_EXTRA_SERVICE_SLUGS = [
+  "camasir-makinesi-servisi",
+  "buzdolabi-servisi",
+  "bulasik-makinesi-servisi",
+] as const;
+
+export function getRegionServiceSlugs(regionSlug: string): readonly string[] {
+  if (!PRIORITY_REGION_SLUGS.includes(regionSlug as (typeof PRIORITY_REGION_SLUGS)[number])) {
+    return [];
+  }
+  if (regionSlug === "eyupsultan") {
+    return [...REGION_SERVICE_SLUGS, ...EYUPSULTAN_EXTRA_SERVICE_SLUGS];
+  }
+  return REGION_SERVICE_SLUGS;
+}
+
+export function hasRegionServicePage(
+  regionSlug: string,
+  serviceSlug: string,
+): boolean {
+  return getRegionServiceSlugs(regionSlug).includes(serviceSlug);
+}
+
 export const CONTENT_DATES = {
   /** Initial programmatic SEO batch publish */
   initialPublish: "2026-03-01T10:00:00.000Z",
-  /** Pre-launch QC content refresh */
-  qcUpdate: "2026-07-20T12:00:00.000Z",
+  /** Eyüpsultan local SEO content + linking refresh */
+  qcUpdate: "2026-07-29T10:00:00.000Z",
   /** Technical review stamp for verified content */
-  technicalReview: "2026-07-20T12:00:00.000Z",
+  technicalReview: "2026-07-29T10:00:00.000Z",
 } as const;

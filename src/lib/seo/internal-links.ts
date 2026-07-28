@@ -193,16 +193,40 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
     const related = (SERVICE_RELATED_SLUGS[slug] ?? []).map((s) =>
       serviceLink(s),
     );
+    const regionPriority =
+      slug === "klima-servisi" ||
+      slug === "kombi-servisi" ||
+      slug === "beyaz-esya-servisi"
+        ? [
+            {
+              href: `/servis-bolgeleri/eyupsultan/${slug}`,
+              label: `Eyüpsultan ${slug.replace(/-/g, " ")}`,
+            },
+            {
+              href: `/servis-bolgeleri/alibeykoy/${slug}`,
+              label: `Alibeyköy ${slug.replace(/-/g, " ")}`,
+            },
+          ]
+        : slug === "camasir-makinesi-servisi" ||
+            slug === "buzdolabi-servisi" ||
+            slug === "bulasik-makinesi-servisi"
+          ? [
+              {
+                href: `/servis-bolgeleri/eyupsultan/${slug}`,
+                label: `Eyüpsultan ${slug.replace(/-/g, " ")}`,
+              },
+            ]
+          : [];
     block = {
       heading: "İlgili servis ve bilgi sayfaları",
       links: finalizeLinks(
         [
+          ...regionPriority,
           ...related,
           UTILITY_LINKS.services,
           UTILITY_LINKS.faq,
           UTILITY_LINKS.blog,
           UTILITY_LINKS.contact,
-          UTILITY_LINKS.about,
         ],
         path,
       ),
@@ -283,15 +307,59 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
       ),
     };
   } else if (path.startsWith("/servis-bolgeleri/")) {
+    const parts = path.replace("/servis-bolgeleri/", "").split("/");
+    const regionSlug = parts[0];
+    const serviceSlug = parts[1];
+    const regionChildLinks =
+      regionSlug === "eyupsultan"
+        ? [
+            {
+              href: "/servis-bolgeleri/eyupsultan/klima-servisi",
+              label: "Eyüpsultan Klima Servisi",
+            },
+            {
+              href: "/servis-bolgeleri/eyupsultan/beyaz-esya-servisi",
+              label: "Eyüpsultan Beyaz Eşya Servisi",
+            },
+            {
+              href: "/servis-bolgeleri/eyupsultan/camasir-makinesi-servisi",
+              label: "Eyüpsultan Çamaşır Makinesi Servisi",
+            },
+          ]
+        : regionSlug === "alibeykoy"
+          ? [
+              {
+                href: "/servis-bolgeleri/alibeykoy/klima-servisi",
+                label: "Alibeyköy Klima Servisi",
+              },
+              {
+                href: "/servis-bolgeleri/alibeykoy/beyaz-esya-servisi",
+                label: "Alibeyköy Beyaz Eşya Servisi",
+              },
+            ]
+          : [
+              {
+                href: "/servis-bolgeleri/eyupsultan/klima-servisi",
+                label: "Eyüpsultan Klima Servisi",
+              },
+              {
+                href: `/servis-bolgeleri/${regionSlug}`,
+                label: "Bölge ana sayfası",
+              },
+            ];
+
     block = {
       heading: "Bölgesel servis bağlantıları",
       links: finalizeLinks(
         [
           { href: "/servis-bolgeleri", label: "Tüm servis bölgeleri" },
-          { href: "/hizmetlerimiz/klima-servisi", label: "Klima Servisi" },
-          { href: "/hizmetlerimiz/kombi-servisi", label: "Kombi Servisi" },
-          { href: "/hizmetlerimiz/beyaz-esya-servisi", label: "Beyaz Eşya Servisi" },
-          { href: "/ariza-rehberi", label: "Arıza Rehberi" },
+          ...regionChildLinks,
+          serviceSlug
+            ? {
+                href: `/hizmetlerimiz/${serviceSlug}`,
+                label: "Genel hizmet sayfası",
+              }
+            : { href: "/hizmetlerimiz/klima-servisi", label: "Klima Servisi" },
           { href: "/iletisim", label: "İletişim" },
         ],
         path,
@@ -377,6 +445,7 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
 const BLOG_SEO_LINKS: Record<string, ContextualLink[]> = {
   "klima-bakimi-ne-zaman-yapilmali": [
     { href: "/ariza-rehberi/klima/sogutmuyor", label: "Klima soğutmuyor rehberi" },
+    { href: "/servis-bolgeleri/eyupsultan/klima-servisi", label: "Eyüpsultan klima servisi" },
     { href: "/servis-bolgeleri/alibeykoy/klima-servisi", label: "Alibeyköy klima servisi" },
     { href: "/hata-kodlari/klima", label: "Klima hata kodları" },
   ],
@@ -386,9 +455,17 @@ const BLOG_SEO_LINKS: Record<string, ContextualLink[]> = {
   ],
   "buzdolabi-sogutmuyorsa-ne-yapilmali": [
     { href: "/ariza-rehberi", label: "Arıza rehberi" },
+    {
+      href: "/servis-bolgeleri/eyupsultan/buzdolabi-servisi",
+      label: "Eyüpsultan buzdolabı servisi",
+    },
     { href: "/markalar/arcelik/buzdolabi-servisi", label: "Arçelik buzdolabı servisi" },
   ],
   "camasir-makinesi-sikma-yapmiyorsa-sebebi-ne-olabilir": [
+    {
+      href: "/servis-bolgeleri/eyupsultan/camasir-makinesi-servisi",
+      label: "Eyüpsultan çamaşır makinesi servisi",
+    },
     { href: "/markalar/bosch/camasir-makinesi-servisi", label: "Bosch çamaşır makinesi servisi" },
     {
       href: "/hata-kodlari/camasir-makinesi/bosch-siemens-profilo/e09",
@@ -397,6 +474,10 @@ const BLOG_SEO_LINKS: Record<string, ContextualLink[]> = {
   ],
   "bulasik-makinesi-neden-koku-yapar": [
     { href: "/ariza-rehberi/bulasik-makinesi/musluk-isareti", label: "Bulaşık makinesi musluk işareti" },
+    {
+      href: "/servis-bolgeleri/eyupsultan/bulasik-makinesi-servisi",
+      label: "Eyüpsultan bulaşık makinesi servisi",
+    },
     { href: "/markalar/bosch/bulasik-makinesi-servisi", label: "Bosch bulaşık makinesi servisi" },
   ],
 };

@@ -1,8 +1,9 @@
 import { BRAND_SERVICE_SEEDS } from "./brand-services";
-import { PRIORITY_REGION_SLUGS, REGION_SERVICE_SLUGS } from "./constants";
+import { getRegionServiceSlugs } from "./constants";
 import { buildErrorCodePages } from "./error-codes";
 import { FAULT_GUIDE_SEEDS } from "./fault-guides";
 import { REGION_SEEDS } from "./regions-seed";
+import { SERVICE_TITLES } from "./region-services";
 
 export type KeywordMapEntry = {
   query: string;
@@ -61,12 +62,6 @@ const BLOG_CANONICAL: KeywordMapEntry[] = [
   },
 ];
 
-const SERVICE_TITLES: Record<string, string> = {
-  "klima-servisi": "klima servisi",
-  "kombi-servisi": "kombi servisi",
-  "beyaz-esya-servisi": "beyaz eşya servisi",
-};
-
 function buildRegionEntries(): KeywordMapEntry[] {
   return REGION_SEEDS.flatMap((region) => {
     const base: KeywordMapEntry[] = [
@@ -78,17 +73,17 @@ function buildRegionEntries(): KeywordMapEntry[] {
         reason: "İlçe/semt genel teknik servis niyeti bölge sayfasına yönlendirildi.",
       },
     ];
-    if (PRIORITY_REGION_SLUGS.includes(region.slug as (typeof PRIORITY_REGION_SLUGS)[number])) {
-      for (const serviceSlug of REGION_SERVICE_SLUGS) {
-        const serviceTitle = SERVICE_TITLES[serviceSlug] ?? serviceSlug;
-        base.push({
-          query: `${region.name} ${serviceTitle}`,
-          href: `/servis-bolgeleri/${region.slug}/${serviceSlug}`,
-          pageType: "region-service",
-          source: "created",
-          reason: "Öncelikli bölge+hizmet kombinasyonu ayrı sayfada.",
-        });
-      }
+    for (const serviceSlug of getRegionServiceSlugs(region.slug)) {
+      const serviceTitle = (
+        SERVICE_TITLES[serviceSlug] ?? serviceSlug
+      ).toLowerCase();
+      base.push({
+        query: `${region.name} ${serviceTitle}`,
+        href: `/servis-bolgeleri/${region.slug}/${serviceSlug}`,
+        pageType: "region-service",
+        source: "created",
+        reason: "Öncelikli bölge+hizmet kombinasyonu ayrı sayfada.",
+      });
     }
     return base;
   });

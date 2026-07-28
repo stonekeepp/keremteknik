@@ -5,6 +5,7 @@ export * from "./constants";
 export * from "./fault-guides";
 export * from "./keyword-map";
 export * from "./regions";
+export * from "./region-service-content";
 export * from "./region-services";
 export * from "./registry";
 export * from "./types";

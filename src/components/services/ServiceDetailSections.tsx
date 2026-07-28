@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Section } from "@/components/ui/Section";
+import { hasRegionServicePage } from "@/lib/seo-pages/constants";
 import { SERVICES, WHY_US } from "@/lib/services/site";
 import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 
@@ -188,41 +189,96 @@ export function ServiceRelatedSection({
     .map((slug) => SERVICES.find((s) => s.slug === slug))
     .filter(Boolean);
 
-  if (related.length === 0) return null;
+  const serviceTitle =
+    SERVICES.find((s) => s.slug === currentSlug)?.title ?? "Servis";
+
+  const regionLinks: { href: string; label: string }[] = [];
+  if (hasRegionServicePage("eyupsultan", currentSlug)) {
+    regionLinks.push({
+      href: `/servis-bolgeleri/eyupsultan/${currentSlug}`,
+      label: `Eyüpsultan ${serviceTitle}`,
+    });
+  }
+  if (hasRegionServicePage("alibeykoy", currentSlug)) {
+    regionLinks.push({
+      href: `/servis-bolgeleri/alibeykoy/${currentSlug}`,
+      label: `Alibeyköy ${serviceTitle}`,
+    });
+  } else if (
+    currentSlug === "camasir-makinesi-servisi" ||
+    currentSlug === "buzdolabi-servisi" ||
+    currentSlug === "bulasik-makinesi-servisi"
+  ) {
+    regionLinks.push({
+      href: "/servis-bolgeleri/alibeykoy/beyaz-esya-servisi",
+      label: "Alibeyköy Beyaz Eşya Servisi",
+    });
+  }
+
+  if (related.length === 0 && regionLinks.length === 0) return null;
 
   return (
-    <Section
-      variant="muted"
-      title="İlgili Hizmetler"
-      subtitle="Diğer teknik servis alanlarımıza da göz atın"
-      centered
-    >
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-gutter max-w-4xl mx-auto">
-        {related.map((service) => {
-          if (!service) return null;
-          return (
-            <Link
-              key={service.slug}
-              href={`/hizmetlerimiz/${service.slug}`}
-              className="group flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-outline-variant/30 shadow-premium-sm hover:border-primary/20 hover:shadow-premium-md transition-all"
-            >
-              <span className="w-14 h-14 rounded-2xl bg-primary/8 flex items-center justify-center mb-4 group-hover:bg-primary/12 transition-colors">
+    <>
+      {regionLinks.length > 0 && (
+        <Section
+          title="Öne çıkan bölgeler"
+          subtitle="Bu hizmet için öncelikli servis bölgeleri"
+          centered
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-gutter max-w-3xl mx-auto">
+            {regionLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group flex items-center justify-between p-6 bg-surface rounded-2xl border border-outline-variant/30 shadow-premium-sm hover:border-primary/20 hover:shadow-premium-md transition-all"
+              >
+                <span className="text-body-md font-semibold text-primary group-hover:text-secondary transition-colors">
+                  {link.label}
+                </span>
                 <Icon
-                  name={service.icon as IconName}
-                  className="w-8 h-8 text-primary"
+                  name="arrow_forward"
+                  className="w-5 h-5 text-cta opacity-70 group-hover:opacity-100 transition-opacity"
                 />
-              </span>
-              <span className="text-body-md font-semibold text-primary group-hover:text-secondary transition-colors">
-                {service.title}
-              </span>
-              <Icon
-                name="arrow_forward"
-                className="w-5 h-5 text-cta mt-3 opacity-0 group-hover:opacity-100 transition-opacity"
-              />
-            </Link>
-          );
-        })}
-      </div>
-    </Section>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
+      {related.length > 0 && (
+        <Section
+          variant="muted"
+          title="İlgili Hizmetler"
+          subtitle="Diğer teknik servis alanlarımıza da göz atın"
+          centered
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-gutter max-w-4xl mx-auto">
+            {related.map((service) => {
+              if (!service) return null;
+              return (
+                <Link
+                  key={service.slug}
+                  href={`/hizmetlerimiz/${service.slug}`}
+                  className="group flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-outline-variant/30 shadow-premium-sm hover:border-primary/20 hover:shadow-premium-md transition-all"
+                >
+                  <span className="w-14 h-14 rounded-2xl bg-primary/8 flex items-center justify-center mb-4 group-hover:bg-primary/12 transition-colors">
+                    <Icon
+                      name={service.icon as IconName}
+                      className="w-8 h-8 text-primary"
+                    />
+                  </span>
+                  <span className="text-body-md font-semibold text-primary group-hover:text-secondary transition-colors">
+                    {service.title}
+                  </span>
+                  <Icon
+                    name="arrow_forward"
+                    className="w-5 h-5 text-cta mt-3 opacity-0 group-hover:opacity-100 transition-opacity"
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        </Section>
+      )}
+    </>
   );
 }

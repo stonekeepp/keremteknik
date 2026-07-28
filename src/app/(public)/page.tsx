@@ -13,7 +13,8 @@ import { ServiceProcessBlock } from "@/components/services/ServiceProcessBlock";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { buildFaqPageJsonLd } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
-import { PRIORITY_REGION_SLUGS, REGION_SEEDS } from "@/lib/seo-pages";
+import { PRIORITY_REGION_SLUGS, REGION_SEEDS, getRegionServiceSlugs } from "@/lib/seo-pages";
+import { SERVICE_TITLES } from "@/lib/seo-pages/region-services";
 import {
   FAQ_ITEMS,
   HERO_IMAGE,
@@ -159,19 +160,43 @@ export default function HomePage() {
         subtitle="Alibeyköy, Eyüpsultan, Gaziosmanpaşa ve Kağıthane için bölge odaklı servis sayfaları"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-          {featuredRegions.map((region) => (
-            <a
-              key={region.slug}
-              href={`/servis-bolgeleri/${region.slug}`}
-              className="rounded-2xl bg-surface border border-outline-variant/40 p-6 shadow-level-1"
-            >
-              <h3 className="text-headline-sm font-headline-sm text-primary">{region.name}</h3>
-              <p className="text-body-md text-on-surface-variant mt-2">{region.continentSide}</p>
-            </a>
-          ))}
+          {featuredRegions.map((region) => {
+            const childSlugs = getRegionServiceSlugs(region.slug).slice(0, 3);
+            return (
+              <div
+                key={region.slug}
+                className="rounded-2xl bg-surface border border-outline-variant/40 p-6 shadow-level-1 flex flex-col"
+              >
+                <a
+                  href={`/servis-bolgeleri/${region.slug}`}
+                  className="block"
+                >
+                  <h3 className="text-headline-sm font-headline-sm text-primary">{region.name}</h3>
+                  <p className="text-body-md text-on-surface-variant mt-2">{region.continentSide}</p>
+                </a>
+                {childSlugs.length > 0 && (
+                  <ul className="mt-4 space-y-2 border-t border-outline-variant/30 pt-4">
+                    {childSlugs.map((serviceSlug) => (
+                      <li key={serviceSlug}>
+                        <a
+                          href={`/servis-bolgeleri/${region.slug}/${serviceSlug}`}
+                          className="text-body-md text-cta hover:underline"
+                        >
+                          {SERVICE_TITLES[serviceSlug] ?? serviceSlug}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
         </div>
         <div className="flex flex-wrap justify-center gap-4 mt-10">
           <Button href="/servis-bolgeleri" variant="outline">Tüm servis bölgeleri</Button>
+          <Button href="/servis-bolgeleri/eyupsultan/klima-servisi" variant="outline">
+            Eyüpsultan Klima Servisi
+          </Button>
           <Button href="/markalar" variant="outline">Marka servisleri</Button>
           <Button href="/ariza-rehberi" variant="outline">Arıza rehberi</Button>
           <Button href="/hata-kodlari" variant="outline">Hata kodları</Button>

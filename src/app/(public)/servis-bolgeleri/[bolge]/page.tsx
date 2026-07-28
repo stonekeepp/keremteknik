@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import {
   buildAreaServedServiceJsonLd,
   buildCollectionPageJsonLd,
+  buildFaqPageJsonLd,
 } from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getRegionPage, getRegionStaticParams } from "@/lib/seo-pages";
@@ -53,6 +54,7 @@ export default async function RegionDetailPage({ params }: Params) {
           description: page.metaDescription,
           path: page.canonicalPath,
         }),
+        ...(page.faqs.length > 0 ? [buildFaqPageJsonLd(page.faqs)] : []),
       ]}
       extraTop={
         <Section title="Yerel bilgiler" centered={false}>

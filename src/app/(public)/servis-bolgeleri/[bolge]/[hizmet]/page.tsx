@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import { SeoPageTemplate } from "@/components/seo-pages/SeoPageTemplate";
-import { buildAreaServedServiceJsonLd } from "@/lib/seo/json-ld";
+import {
+  buildAreaServedServiceJsonLd,
+  buildFaqPageJsonLd,
+} from "@/lib/seo/json-ld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getRegionServicePage, getRegionServiceParams } from "@/lib/seo-pages";
 
@@ -37,13 +40,16 @@ export default async function RegionServicePage({ params }: Params) {
         { label: page.regionName, href: `/servis-bolgeleri/${page.regionSlug}` },
         { label: page.serviceTitle },
       ]}
-      jsonLd={buildAreaServedServiceJsonLd({
-        name: page.h1,
-        description: page.metaDescription,
-        path: page.canonicalPath,
-        areaName: page.regionName,
-        serviceType: page.serviceTitle,
-      })}
+      jsonLd={[
+        buildAreaServedServiceJsonLd({
+          name: page.h1,
+          description: page.metaDescription,
+          path: page.canonicalPath,
+          areaName: page.regionName,
+          serviceType: page.serviceTitle,
+        }),
+        buildFaqPageJsonLd(page.faqs),
+      ]}
     />
   );
 }

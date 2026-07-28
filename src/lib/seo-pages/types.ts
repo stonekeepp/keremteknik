@@ -25,6 +25,8 @@ export type ContentSection = {
   id: string;
   title: string;
   body: string;
+  /** When set, section heading renders as an internal link (hub → child pages). */
+  href?: string;
 };
 
 export type FaqItem = {

@@ -2,6 +2,8 @@ import {
   CONTENT_DATES,
   DISTANCE_DISCLAIMER,
   PRIORITY_REGION_SLUGS,
+  getRegionServiceSlugs,
+  hasRegionServicePage,
 } from "./constants";
 import { computeDistanceFromBusiness, isBusinessLocationVerified } from "./geo";
 import { REGION_SEEDS, type RegionSeed } from "./regions-seed";
@@ -57,7 +59,7 @@ function pickVariantIndex(seed: RegionSeed, serviceSlug: string): number {
   return hash % variants.length;
 }
 
-function buildServiceSections(seed: RegionSeed): { id: string; title: string; body: string }[] {
+function buildServiceSections(seed: RegionSeed): { id: string; title: string; body: string; href?: string }[] {
   const mahalleSample = seed.neighborhoods.slice(0, 2).join(", ") || seed.name;
   return seed.highlightedServices.map((slug) => {
     const label = SERVICE_LABELS[slug] ?? slug;
@@ -71,10 +73,15 @@ function buildServiceSections(seed: RegionSeed): { id: string; title: string; bo
       .replaceAll("{profile}", seed.localProfile.split(".")[0] + ".")
       .replaceAll("{planning}", seed.servicePlanningNote.split(".")[0] + ".");
 
+    const href = hasRegionServicePage(seed.slug, slug)
+      ? `/servis-bolgeleri/${seed.slug}/${slug}`
+      : `/hizmetlerimiz/${slug}`;
+
     return {
       id: slug,
       title: `${seed.name} ${label}`,
       body,
+      href,
     };
   });
 }
@@ -130,6 +137,12 @@ export function buildRegionPages(): RegionPageData[] {
       };
     });
 
+    const childServiceLinks = getRegionServiceSlugs(seed.slug).map((serviceSlug) => ({
+      href: `/servis-bolgeleri/${seed.slug}/${serviceSlug}`,
+      label: `${seed.name} ${SERVICE_LABELS[serviceSlug] ?? serviceSlug}`,
+      description: "Bölge odaklı hizmet sayfası",
+    }));
+
     return {
       slug: seed.slug,
       pageType: "region",
@@ -153,6 +166,7 @@ export function buildRegionPages(): RegionPageData[] {
       sections,
       faqs: seed.uniqueFaqs,
       internalLinks: [
+        ...childServiceLinks,
         ...nearbyLinks,
         { href: "/hizmetlerimiz", label: "Tüm hizmetlerimiz" },
         { href: "/iletisim", label: "Servis talebi oluştur" },
