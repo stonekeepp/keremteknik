@@ -1,7 +1,8 @@
 import {
   CONTENT_DATES,
   INDEPENDENT_SERVICE_DISCLAIMER,
-  PRIORITY_REGION_SLUGS,
+  INDEXABLE_REGION_SERVICE_REGION_SLUGS,
+  REGION_SERVICE_REGION_SLUGS,
   getRegionServiceSlugs,
   hasRegionServicePage,
 } from "./constants";
@@ -11,11 +12,27 @@ import type { ContentSection, FaqItem, RegionServicePageData } from "./types";
 
 export const SERVICE_TITLES: Record<string, string> = {
   "klima-servisi": "Klima Servisi",
+  "klima-gaz-dolumu": "Klima Gaz Dolumu",
+  "klima-bakimi": "Klima Bakımı",
+  "klima-montaji": "Klima Montajı",
+  "klima-ariza-tamiri": "Klima Arıza Tamiri",
+  "klima-temizligi": "Klima Temizliği",
+  "acil-klima-servisi": "Acil Klima Servisi",
   "kombi-servisi": "Kombi Servisi",
   "beyaz-esya-servisi": "Beyaz Eşya Servisi",
   "camasir-makinesi-servisi": "Çamaşır Makinesi Servisi",
   "buzdolabi-servisi": "Buzdolabı Servisi",
   "bulasik-makinesi-servisi": "Bulaşık Makinesi Servisi",
+};
+
+const KLIMA_SIBLINGS: Record<string, string[]> = {
+  "klima-servisi": ["klima-bakimi", "klima-ariza-tamiri"],
+  "klima-gaz-dolumu": ["klima-servisi", "klima-ariza-tamiri"],
+  "klima-bakimi": ["klima-temizligi", "klima-servisi"],
+  "klima-montaji": ["klima-servisi", "klima-bakimi"],
+  "klima-ariza-tamiri": ["klima-gaz-dolumu", "klima-servisi"],
+  "klima-temizligi": ["klima-bakimi", "klima-servisi"],
+  "acil-klima-servisi": ["klima-ariza-tamiri", "klima-servisi"],
 };
 
 const REGION_SERVICE_INTROS: Record<string, Record<string, string>> = {
@@ -52,6 +69,18 @@ const REGION_SERVICE_INTROS: Record<string, Record<string, string>> = {
 const SERVICE_SCOPE_HINTS: Record<string, string> = {
   "klima-servisi":
     "soğutma/ısıtma performansı, filtre ve drenaj hattı, gaz kaçak/basınç değerlendirmesi",
+  "klima-gaz-dolumu":
+    "basınç ölçümü, kaçak kontrolü ve uygun gaz türüyle dolum planlaması",
+  "klima-bakimi":
+    "filtre, serpantin, drenaj ve dış ünite hava akışı checklist bakımı",
+  "klima-montaji":
+    "keşif, hat/drenaj planı, vakum, sızdırmazlık ve ilk çalıştırma",
+  "klima-ariza-tamiri":
+    "soğutmama, su akıtma, ses ve kart arızalarında kök neden teşhisi",
+  "klima-temizligi":
+    "koku, filtre tıkanıklığı ve serpantin/drenaj hijyeni",
+  "acil-klima-servisi":
+    "su taşması ve hiç soğutmama gibi acil belirtilerde hızlı teşhis",
   "kombi-servisi":
     "basınç, sıcak su, petek ısınma, baca ve emniyet ekipmanları kontrolü",
   "beyaz-esya-servisi":
@@ -63,6 +92,16 @@ const SERVICE_SCOPE_HINTS: Record<string, string> = {
   "bulasik-makinesi-servisi":
     "yıkama kalitesi, koku, ısıtıcı ve tahliye sorunları",
 };
+
+function isIndexableRegion(regionSlug: string): boolean {
+  return (INDEXABLE_REGION_SERVICE_REGION_SLUGS as readonly string[]).includes(
+    regionSlug,
+  );
+}
+
+function isKlimaService(serviceSlug: string): boolean {
+  return serviceSlug.includes("klima");
+}
 
 function buildDefaultSections(
   regionName: string,
@@ -78,7 +117,8 @@ function buildDefaultSections(
       ? neighborhoods.slice(0, 12).join(", ")
       : regionName;
   const profileSentence = localProfile.split(".")[0] + ".";
-  const scopeHint = SERVICE_SCOPE_HINTS[serviceSlug] ?? "arıza tespiti, bakım ve onarım";
+  const scopeHint =
+    SERVICE_SCOPE_HINTS[serviceSlug] ?? "arıza tespiti, bakım ve onarım";
 
   return [
     {
@@ -132,34 +172,85 @@ function buildInternalLinks(
   regionName: string,
   serviceSlug: string,
   serviceTitle: string,
+  indexable: boolean,
 ): RegionServicePageData["internalLinks"] {
-  const siblings = getRegionServiceSlugs(regionSlug)
-    .filter((slug) => slug !== serviceSlug)
-    .map((slug) => ({
-      href: `/servis-bolgeleri/${regionSlug}/${slug}`,
-      label: `${regionName} ${SERVICE_TITLES[slug] ?? slug}`,
-    }));
-
-  return [
+  const links: NonNullable<RegionServicePageData["internalLinks"]> = [
     {
       href: `/servis-bolgeleri/${regionSlug}`,
-      label: `${regionName} servis bölgesi`,
+      label: `${regionName} teknik servis`,
+      description: `${regionName} bölge ana sayfası — tüm yerel hizmetler`,
     },
-    ...siblings.slice(0, 4),
     {
       href: `/hizmetlerimiz/${serviceSlug}`,
-      label: `Genel ${serviceTitle.toLowerCase()} sayfası`,
+      label: `Genel ${serviceTitle.toLowerCase()}`,
+      description: "İstanbul geneli hizmet sayfası",
     },
-    { href: "/iletisim", label: "İletişim ve randevu" },
   ];
+
+  const available = new Set(getRegionServiceSlugs(regionSlug));
+  const siblingPool: string[] = isKlimaService(serviceSlug)
+    ? [
+        ...(serviceSlug !== "klima-servisi" ? ["klima-servisi"] : []),
+        ...(KLIMA_SIBLINGS[serviceSlug] ?? []),
+        "kombi-servisi",
+        "beyaz-esya-servisi",
+      ]
+    : serviceSlug === "kombi-servisi"
+      ? ["klima-servisi", "klima-bakimi", "beyaz-esya-servisi"]
+      : serviceSlug === "beyaz-esya-servisi"
+        ? ["klima-servisi", "kombi-servisi", "camasir-makinesi-servisi"]
+        : ["klima-servisi", "kombi-servisi", "beyaz-esya-servisi"];
+
+  const seen = new Set<string>([serviceSlug]);
+  for (const sibling of siblingPool) {
+    if (seen.has(sibling) || !available.has(sibling)) continue;
+    seen.add(sibling);
+    links.push({
+      href: `/servis-bolgeleri/${regionSlug}/${sibling}`,
+      label: `${regionName} ${SERVICE_TITLES[sibling] ?? sibling}`,
+      description: `${regionName} yerel ${(SERVICE_TITLES[sibling] ?? sibling).toLowerCase()} sayfası`,
+    });
+    if (links.length >= 8) break;
+  }
+
+  if (indexable && isKlimaService(serviceSlug)) {
+    const pair =
+      regionSlug === "eyupsultan"
+        ? "alibeykoy"
+        : regionSlug === "alibeykoy"
+          ? "eyupsultan"
+          : null;
+    if (pair && hasRegionServicePage(pair, serviceSlug)) {
+      const pairName = pair === "alibeykoy" ? "Alibeyköy" : "Eyüpsultan";
+      links.push({
+        href: `/servis-bolgeleri/${pair}/${serviceSlug}`,
+        label: `${pairName} ${serviceTitle}`,
+        description: `Yakın bölge: ${pairName} ${serviceTitle.toLowerCase()}`,
+      });
+    }
+  }
+
+  if (isKlimaService(serviceSlug) && serviceSlug !== "klima-servisi") {
+    links.push({
+      href: "/hizmetlerimiz/klima-servisi",
+      label: "Genel klima servisi",
+      description: "Klima hizmetleri ana sayfası",
+    });
+  }
+
+  links.push({ href: "/iletisim", label: "İletişim ve randevu" });
+
+  return links;
 }
 
 export function buildRegionServicePages(): RegionServicePageData[] {
   const pages: RegionServicePageData[] = [];
 
-  for (const regionSlug of PRIORITY_REGION_SLUGS) {
+  for (const regionSlug of REGION_SERVICE_REGION_SLUGS) {
     const region = getRegionPage(regionSlug);
     if (!region) continue;
+
+    const indexable = isIndexableRegion(regionSlug);
 
     for (const serviceSlug of getRegionServiceSlugs(regionSlug)) {
       const serviceTitle = SERVICE_TITLES[serviceSlug] ?? serviceSlug;
@@ -195,15 +286,15 @@ export function buildRegionServicePages(): RegionServicePageData[] {
         slug: `${regionSlug}-${serviceSlug}`,
         pageType: "region-service",
         status: "published",
-        indexable: true,
+        indexable,
         focusKeyphrase,
         secondaryKeyphrases: override?.secondaryKeyphrases ?? [
           `${region.name} ${serviceSlug.replace(/-/g, " ")}`,
           `${region.name} teknik servis`,
         ],
         searchIntent: "local",
-        cornerstone: true,
-        priorityTier: 1,
+        cornerstone: indexable,
+        priorityTier: indexable ? 1 : 2,
         title,
         seoTitle: title,
         metaDescription,
@@ -216,6 +307,7 @@ export function buildRegionServicePages(): RegionServicePageData[] {
           region.name,
           serviceSlug,
           serviceTitle,
+          indexable,
         ),
         relatedPageSlugs: [regionSlug, serviceSlug],
         canonicalPath,
@@ -249,8 +341,11 @@ export function getRegionServicePage(
   );
 }
 
-export function getRegionServiceStaticParams(): { bolge: string; hizmet: string }[] {
-  return PRIORITY_REGION_SLUGS.flatMap((bolge) =>
+export function getRegionServiceStaticParams(): {
+  bolge: string;
+  hizmet: string;
+}[] {
+  return REGION_SERVICE_REGION_SLUGS.flatMap((bolge) =>
     getRegionServiceSlugs(bolge).map((hizmet) => ({ bolge, hizmet })),
   );
 }

@@ -1,5 +1,8 @@
 import { BRAND_SERVICE_SEEDS } from "./brand-services";
-import { getRegionServiceSlugs } from "./constants";
+import {
+  INDEXABLE_REGION_SERVICE_REGION_SLUGS,
+  getRegionServiceSlugs,
+} from "./constants";
 import { buildErrorCodePages } from "./error-codes";
 import { FAULT_GUIDE_SEEDS } from "./fault-guides";
 import { REGION_SEEDS } from "./regions-seed";
@@ -73,17 +76,23 @@ function buildRegionEntries(): KeywordMapEntry[] {
         reason: "İlçe/semt genel teknik servis niyeti bölge sayfasına yönlendirildi.",
       },
     ];
-    for (const serviceSlug of getRegionServiceSlugs(region.slug)) {
-      const serviceTitle = (
-        SERVICE_TITLES[serviceSlug] ?? serviceSlug
-      ).toLowerCase();
-      base.push({
-        query: `${region.name} ${serviceTitle}`,
-        href: `/servis-bolgeleri/${region.slug}/${serviceSlug}`,
-        pageType: "region-service",
-        source: "created",
-        reason: "Öncelikli bölge+hizmet kombinasyonu ayrı sayfada.",
-      });
+    if (
+      (INDEXABLE_REGION_SERVICE_REGION_SLUGS as readonly string[]).includes(
+        region.slug,
+      )
+    ) {
+      for (const serviceSlug of getRegionServiceSlugs(region.slug)) {
+        const serviceTitle = (
+          SERVICE_TITLES[serviceSlug] ?? serviceSlug
+        ).toLowerCase();
+        base.push({
+          query: `${region.name} ${serviceTitle}`,
+          href: `/servis-bolgeleri/${region.slug}/${serviceSlug}`,
+          pageType: "region-service",
+          source: "created",
+          reason: "Indexlenebilir bölge+hizmet kombinasyonu ayrı sayfada.",
+        });
+      }
     }
     return base;
   });

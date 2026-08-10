@@ -2,15 +2,22 @@ import {
   CONTENT_DATES,
   DISTANCE_DISCLAIMER,
   PRIORITY_REGION_SLUGS,
+  REGION_SERVICE_REGION_SLUGS,
   getRegionServiceSlugs,
   hasRegionServicePage,
 } from "./constants";
 import { computeDistanceFromBusiness, isBusinessLocationVerified } from "./geo";
 import { REGION_SEEDS, type RegionSeed } from "./regions-seed";
-import type { RegionPageData } from "./types";
+import type { InternalLinkItem, RegionPageData } from "./types";
 
 const SERVICE_LABELS: Record<string, string> = {
   "klima-servisi": "Klima Servisi",
+  "klima-gaz-dolumu": "Klima Gaz Dolumu",
+  "klima-bakimi": "Klima Bakımı",
+  "klima-montaji": "Klima Montajı",
+  "klima-ariza-tamiri": "Klima Arıza Tamiri",
+  "klima-temizligi": "Klima Temizliği",
+  "acil-klima-servisi": "Acil Klima Servisi",
   "kombi-servisi": "Kombi Servisi",
   "beyaz-esya-servisi": "Beyaz Eşya Servisi",
   "camasir-makinesi-servisi": "Çamaşır Makinesi Servisi",
@@ -24,6 +31,30 @@ const SERVICE_BODY_VARIANTS: Record<string, string[]> = {
     "{name} bölgesinde {label} taleplerinde önce soğutma/ısıtma şikâyeti, filtre durumu ve drenaj hattı değerlendirilir. {side} konut profiline uygun randevu planlanır; yüksek katlı binalarda erişim koşulları önceden netleştirilir.",
     "{name} genelinde {label} için gaz kontrolü, fan performansı ve iç ünite temizliği yerinde teşhis kapsamındadır. {mahalle} gibi yoğun yerleşim alanlarında cihaz konumu ve elektrik hattı güvenliği randevu sırasında not edilir.",
     "{name} sakinlerinin {label} ihtiyacında mevsimsel yoğunluk dikkate alınır. {profile} Filtre tıkanıklığı ve drenaj sorunları sık görülen nedenler arasındadır; onarım öncesi işlem kapsamı paylaşılır.",
+  ],
+  "klima-gaz-dolumu": [
+    "{name} bölgesinde {label} için önce basınç ölçümü ve kaçak kontrolü yapılır; gereksiz dolum önerilmez. {mahalle} hattında dış ünite erişimi randevu notuna yazılır.",
+    "{name} genelinde {label} taleplerinde cihaz etiketindeki gaz türüne uygun dolum planlanır. {planning}",
+  ],
+  "klima-bakimi": [
+    "{name} bölgesinde {label} sezon öncesi filtre, serpantin ve drenaj checklist’iyle yürütülür. {side} konutlarında yaz yoğunluğu öncesi bakım randevusu önerilir.",
+    "{name} genelinde {label} için iç/dış ünite hava akışı ve elektrik bağlantıları birlikte kontrol edilir. {profile}",
+  ],
+  "klima-montaji": [
+    "{name} bölgesinde {label} keşfinde iç-dış ünite konumu, hat mesafesi ve drenaj çıkışı planlanır. {mahalle} apartmanlarında balkon erişimi önceden netleştirilir.",
+    "{name} genelinde {label} sonrası vakum, sızdırmazlık ve ilk çalıştırma testi uygulanır. {planning}",
+  ],
+  "klima-ariza-tamiri": [
+    "{name} bölgesinde {label} soğutmama, su akıtma, ses ve kart arızalarında yerinde kök neden ayrıştırılır. {profile}",
+    "{name} genelinde {label} için onaylı parça değişimi ve şeffaf fiyatlandırma uygulanır. {mahalle} adreslerinde erişim notu alınır.",
+  ],
+  "klima-temizligi": [
+    "{name} bölgesinde {label} koku, filtre tıkanıklığı ve drenaj sorunlarına odaklanır. {side} konutlarında sezon başı temizlik talebi artar.",
+    "{name} genelinde {label} iç ünite ve serpantin temizliğiyle performans düşüşünü hedefler. {planning}",
+  ],
+  "acil-klima-servisi": [
+    "{name} bölgesinde {label} taleplerinde su taşması ve hiç soğutmama önceliklendirilir. {mahalle} hattında aynı gün slot planlaması hedeflenir.",
+    "{name} genelinde {label} için belirti ve adres bilgisi alınarak hızlı teşhis planlanır. {profile}",
   ],
   "kombi-servisi": [
     "{name} bölgesinde {label} taleplerinde basınç, sıcak su dalgalanması ve petek ısınma şikâyetleri birlikte dinlenir. {side} konutlarda baca hattı ve emniyet ekipmanları kontrol listesinde önceliklidir.",
@@ -52,6 +83,69 @@ const SERVICE_BODY_VARIANTS: Record<string, string[]> = {
     "{name} konutlarında {label} taleplerinde cam kapak, rezistans ve kontrol paneli arızaları teşhis edilir. {side} yerleşimlerinde erişim koşulları önceden netleştirilir.",
   ],
 };
+
+function hasRegionServicePages(regionSlug: string): boolean {
+  return (REGION_SERVICE_REGION_SLUGS as readonly string[]).includes(regionSlug);
+}
+
+/** Hub → spoke links for districts that have /servis-bolgeleri/[bolge]/[hizmet]. */
+export function buildRegionHubServiceLinks(
+  regionSlug: string,
+  regionName: string,
+): InternalLinkItem[] {
+  if (!hasRegionServicePages(regionSlug)) return [];
+
+  return getRegionServiceSlugs(regionSlug).map((serviceSlug) => {
+    const label = SERVICE_LABELS[serviceSlug] ?? serviceSlug;
+    return {
+      href: `/servis-bolgeleri/${regionSlug}/${serviceSlug}`,
+      label: `${regionName} ${label}`,
+      description: `${regionName} için ${label.toLowerCase()} detay sayfası`,
+    };
+  });
+}
+
+function buildRegionInternalLinks(seed: RegionSeed): InternalLinkItem[] {
+  const hasSpokes = hasRegionServicePages(seed.slug);
+
+  const nearbyLinks = seed.nearbyAreas.slice(0, 4).map((slug) => {
+    const nearby = REGION_SEEDS.find((r) => r.slug === slug);
+    return {
+      href: `/servis-bolgeleri/${slug}`,
+      label: nearby?.name ?? slug,
+      description: "Yakın servis bölgesi",
+    };
+  });
+
+  // When hub has a dedicated service grid, keep bottom links to nearby + utilities.
+  // When not, fall back to /hizmetlerimiz for highlighted services.
+  const generalServiceFallbacks = !hasSpokes
+    ? seed.highlightedServices.slice(0, 4).map((slug) => ({
+        href: `/hizmetlerimiz/${slug}`,
+        label: SERVICE_LABELS[slug] ?? slug,
+        description: "Genel hizmet sayfası",
+      }))
+    : [
+        {
+          href: "/hizmetlerimiz/klima-servisi",
+          label: "Genel klima servisi",
+          description: "İstanbul geneli klima hizmet sayfası",
+        },
+        {
+          href: "/hizmetlerimiz/kombi-servisi",
+          label: "Genel kombi servisi",
+          description: "İstanbul geneli kombi hizmet sayfası",
+        },
+      ];
+
+  return [
+    ...nearbyLinks,
+    ...generalServiceFallbacks,
+    { href: "/hizmetlerimiz", label: "Tüm hizmetlerimiz" },
+    { href: "/iletisim", label: "Servis talebi oluştur" },
+    { href: "/servis-bolgeleri", label: "Tüm servis bölgeleri" },
+  ];
+}
 
 function pickVariantIndex(seed: RegionSeed, serviceSlug: string): number {
   const variants = SERVICE_BODY_VARIANTS[serviceSlug] ?? SERVICE_BODY_VARIANTS["beyaz-esya-servisi"];
@@ -128,21 +222,6 @@ export function buildRegionPages(): RegionPageData[] {
       });
     }
 
-    const nearbyLinks = seed.nearbyAreas.slice(0, 6).map((slug) => {
-      const nearby = REGION_SEEDS.find((r) => r.slug === slug);
-      return {
-        href: `/servis-bolgeleri/${slug}`,
-        label: nearby?.name ?? slug,
-        description: "Yakın servis bölgesi",
-      };
-    });
-
-    const childServiceLinks = getRegionServiceSlugs(seed.slug).map((serviceSlug) => ({
-      href: `/servis-bolgeleri/${seed.slug}/${serviceSlug}`,
-      label: `${seed.name} ${SERVICE_LABELS[serviceSlug] ?? serviceSlug}`,
-      description: "Bölge odaklı hizmet sayfası",
-    }));
-
     return {
       slug: seed.slug,
       pageType: "region",
@@ -165,13 +244,7 @@ export function buildRegionPages(): RegionPageData[] {
       intro: seed.uniqueIntro,
       sections,
       faqs: seed.uniqueFaqs,
-      internalLinks: [
-        ...childServiceLinks,
-        ...nearbyLinks,
-        { href: "/hizmetlerimiz", label: "Tüm hizmetlerimiz" },
-        { href: "/iletisim", label: "Servis talebi oluştur" },
-        { href: "/servis-bolgeleri", label: "Tüm servis bölgeleri" },
-      ],
+      internalLinks: buildRegionInternalLinks(seed),
       relatedPageSlugs: seed.nearbyAreas,
       canonicalPath,
       author: "Kerem Teknik Servis",

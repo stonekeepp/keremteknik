@@ -90,7 +90,13 @@ export function SeoPageTemplate({
 
       {page.internalLinks.length > 0 && (
         <InternalLinksSection
-          heading="İlgili sayfalar"
+          heading={
+            page.pageType === "region-service"
+              ? "Bu bölgede ilgili hizmetler"
+              : page.pageType === "region"
+                ? "Yakın bölgeler ve genel hizmetler"
+                : "İlgili sayfalar"
+          }
           links={page.internalLinks}
         />
       )}

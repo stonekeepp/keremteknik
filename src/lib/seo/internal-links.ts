@@ -60,7 +60,41 @@ const BLOG_SERVICE_SLUG: Record<string, string> = {
 };
 
 const SERVICE_RELATED_SLUGS: Record<string, string[]> = {
-  "klima-servisi": ["kombi-servisi", "beyaz-esya-servisi", "periyodik-bakim"],
+  "klima-servisi": [
+    "klima-gaz-dolumu",
+    "klima-bakimi",
+    "klima-ariza-tamiri",
+  ],
+  "klima-gaz-dolumu": [
+    "klima-servisi",
+    "klima-ariza-tamiri",
+    "klima-bakimi",
+  ],
+  "klima-bakimi": [
+    "klima-servisi",
+    "klima-temizligi",
+    "klima-gaz-dolumu",
+  ],
+  "klima-montaji": [
+    "klima-servisi",
+    "klima-bakimi",
+    "acil-klima-servisi",
+  ],
+  "klima-ariza-tamiri": [
+    "klima-servisi",
+    "klima-gaz-dolumu",
+    "acil-klima-servisi",
+  ],
+  "klima-temizligi": [
+    "klima-servisi",
+    "klima-bakimi",
+    "klima-ariza-tamiri",
+  ],
+  "acil-klima-servisi": [
+    "klima-servisi",
+    "klima-ariza-tamiri",
+    "klima-gaz-dolumu",
+  ],
   "kombi-servisi": ["klima-servisi", "beyaz-esya-servisi", "periyodik-bakim"],
   "beyaz-esya-servisi": [
     "camasir-makinesi-servisi",
@@ -217,12 +251,28 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
               },
             ]
           : [];
+    const klimaLocalLinks =
+      slug.startsWith("klima") || slug === "acil-klima-servisi"
+        ? [
+            {
+              href: `/servis-bolgeleri/eyupsultan/${slug}`,
+              label: `Eyüpsultan ${SERVICES.find((s) => s.slug === slug)?.title ?? "Klima"}`,
+              description: "Eyüpsultan yerel klima hizmet sayfası",
+            },
+            {
+              href: `/servis-bolgeleri/alibeykoy/${slug}`,
+              label: `Alibeyköy ${SERVICES.find((s) => s.slug === slug)?.title ?? "Klima"}`,
+              description: "Alibeyköy yerel klima hizmet sayfası",
+            },
+          ]
+        : [];
     block = {
       heading: "İlgili servis ve bilgi sayfaları",
       links: finalizeLinks(
         [
           ...regionPriority,
           ...related,
+          ...klimaLocalLinks,
           UTILITY_LINKS.services,
           UTILITY_LINKS.faq,
           UTILITY_LINKS.blog,
@@ -444,9 +494,13 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
 
 const BLOG_SEO_LINKS: Record<string, ContextualLink[]> = {
   "klima-bakimi-ne-zaman-yapilmali": [
+    { href: "/hizmetlerimiz/klima-bakimi", label: "Klima bakımı hizmeti" },
+    { href: "/hizmetlerimiz/klima-gaz-dolumu", label: "Klima gaz dolumu" },
     { href: "/ariza-rehberi/klima/sogutmuyor", label: "Klima soğutmuyor rehberi" },
     { href: "/servis-bolgeleri/eyupsultan/klima-servisi", label: "Eyüpsultan klima servisi" },
     { href: "/servis-bolgeleri/alibeykoy/klima-servisi", label: "Alibeyköy klima servisi" },
+    { href: "/servis-bolgeleri/alibeykoy/klima-bakimi", label: "Alibeyköy klima bakımı" },
+    { href: "/servis-bolgeleri/eyupsultan/klima-bakimi", label: "Eyüpsultan klima bakımı" },
     { href: "/hata-kodlari/klima", label: "Klima hata kodları" },
   ],
   "kombi-bakimi-neden-onemlidir": [

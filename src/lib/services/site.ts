@@ -65,6 +65,54 @@ export const SERVICES: ServiceItem[] = [
     hasDetailPage: true,
   },
   {
+    slug: "klima-gaz-dolumu",
+    title: "Klima Gaz Dolumu",
+    icon: "severe_cold",
+    shortDescription:
+      "Basınç ölçümü ve kaçak kontrolü sonrası cihaz kapasitesine uygun klima gaz dolumu hizmeti.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "klima-bakimi",
+    title: "Klima Bakımı",
+    icon: "schedule",
+    shortDescription:
+      "Filtre, serpantin ve drenaj kontrolleriyle sezon öncesi periyodik klima bakımı.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "klima-montaji",
+    title: "Klima Montajı",
+    icon: "home_repair_service",
+    shortDescription:
+      "Split ve inverter klimalarda yerinde keşif, doğru konumlandırma ve garantili montaj.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "klima-ariza-tamiri",
+    title: "Klima Arıza Tamiri",
+    icon: "engineering",
+    shortDescription:
+      "Soğutmama, su akıtma, ses ve elektronik kart arızalarında yerinde teşhis ve onarım.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "klima-temizligi",
+    title: "Klima Temizliği",
+    icon: "handyman",
+    shortDescription:
+      "İç ünite, filtre ve drenaj hattı temizliği ile koku ve performans sorunlarına çözüm.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "acil-klima-servisi",
+    title: "Acil Klima Servisi",
+    icon: "bolt",
+    shortDescription:
+      "Aynı gün müdahale önceliğiyle acil klima arızalarında hızlı yerinde teknik destek.",
+    hasDetailPage: true,
+  },
+  {
     slug: "kombi-servisi",
     title: "Kombi Servisi",
     icon: "thermostat",
@@ -152,12 +200,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     title: "Klima Servisi",
     icon: "ac_unit",
     description:
-      "İstanbul genelinde split, multi, salon ve inverter klima arızalarında yerinde teşhis, gaz dolumu, filtre temizliği, bakım ve montaj hizmeti sunuyoruz. Kerem Teknik Servis olarak soğutmama, ısıtmama, su akıtma ve koku problemlerine aynı gün müdahale ediyor; onarım öncesi şeffaf fiyat bilgisi paylaşıyor, garantili işçilik ile kalıcı çözüm sağlıyoruz.",
+      "İstanbul genelinde split, multi, salon ve inverter klima arızalarında yerinde teşhis, gaz dolumu, filtre temizliği, bakım ve montaj hizmeti sunuyoruz. Kerem Teknik Servis olarak soğutmama, ısıtmama, su akıtma, koku ve ses problemlerine aynı gün müdahale ediyoruz. Basınç ölçümü ve kök neden analizi olmadan parça veya gaz önerisi yapmayız; onarım öncesi işçilik ve malzeme bedelini net paylaşır, onayınız olmadan işlem başlatmayız. Garantili işçilik ile kalıcı ve ölçülebilir performans hedefleriz.",
     metaDescription:
-      "İstanbul klima servisi: bakım, montaj, gaz kontrolü ve arıza onarımında aynı gün yerinde destek, şeffaf fiyat ve garantili işçilik.",
-    updatedAt: "2026-01-15T10:00:00.000Z",
+      "İstanbul klima servisi: bakım, montaj, gaz dolumu ve arıza onarımında aynı gün yerinde teşhis, şeffaf fiyatlandırma ve garantili işçilik sunuyoruz.",
+    updatedAt: "2026-08-10T12:00:00.000Z",
     uniqueIntro:
-      "Eyüpsultan merkezli ekibimiz, split ve inverter klimalarda basınç ölçümü, kaçak tespiti ve enerji verimliliği odaklı teşhis uygular. Özellikle mevsim geçişlerinde filtre tıkanıklığı ve dış ünite fan arızalarını yerinde ayrıştırır; gaz dolumu gerektiğinde cihaz kapasitesine uygun dolum miktarını paylaşırız. Onayınızdan önce net işçilik ve parça bedelini bildiririz.",
+      "Eyüpsultan merkezli saha ekibimiz, İstanbul genelinde split ve inverter klimalarda önce kullanım hikâyesini dinler: ne zamandır soğutmuyor, su akıtıyor mu, hata kodu var mı, son bakım ne zaman yapıldı. Manifold ile yüksek-düşük basıncı ölçer; filtre, drenaj, fan ve elektronik kartı sırayla ayırırız. Klima gaz dolumu, klima bakımı, klima montajı, klima arıza tamiri, klima temizliği ve acil klima servisi için ayrıntılı özel sayfalarımız bulunur; bu hub genel yönlendirme, ilgili sayfa ise o işlemin adım adım sürecini anlatır. Evde gaz vanası açmak, kartı sökmek veya drenaja yabancı madde basmak risklidir—elektrik çarpması, kompresör yanması ve su baskını yaşanabilir. Fiyatı teşhis sonrası, onayınızdan önce işçilik ve varsa parça olarak yazarız; yetkili servis değiliz, bağımsız özel servis olarak şeffaf raporlama ile çalışırız. İş bitiminde yapılan ölçümleri ve sonraki bakım önerisini kısaca özetleriz.",
     commonIssues: [
       "Klima soğutmuyor",
       "Klima ısıtmıyor",
@@ -166,23 +214,337 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       "Klima kötü koku yapıyor",
       "Klima gaz eksiltiyor",
       "Kumanda veya elektronik kart arızası",
+      "Dış ünite fanı çalışmıyor",
     ],
     relatedFaqIndices: [0, 1, 6, 7],
     faqs: [
       {
-        question: "Klima gazı ne zaman doldurulmalı?",
+        question: "Klima servisi çağırırken hangi bilgileri hazırlamalıyım?",
         answer:
-          "Gaz dolumu yalnızca kaçak veya basınç düşüklüğü tespit edildiğinde yapılmalıdır. Önce kaçak kontrolü ve basınç ölçümü yapılır; gereksiz gaz dolumu önlenir. Onarım öncesi işlem ve bedel bilgisi paylaşılır.",
+          "Marka-model, yaklaşık BTU/kapasite, iç-dış ünite erişim durumu, arızanın ne zamandır sürdüğü ve varsa hata kodu yeterli olur. Su akıtıyorsa veya yanık kokusu varsa bunu da belirtin; randevu önceliği ve teşhis süresi buna göre planlanır.",
       },
       {
-        question: "İstanbul'da klima bakımı ne sıklıkla yapılmalı?",
+        question: "Yetkili servis misiniz, yoksa bağımsız özel servis mi?",
         answer:
-          "Yıldızlı kullanımı olan ev ve iş yerlerinde yıllık klima bakımı yeterlidir; yaz öncesi filtre, serpantin ve drenaj temizliği önerilir. Yoğun kullanımda yılda iki kez kontrol daha doğru olur.",
+          "Bağımsız özel servisiz. Üretici yetkili ağına bağlı değiliz; yaygın split ve inverter modellerinde yerinde teşhis, bakım, gaz kontrolü ve onarım sunarız. Parça gerektiğinde orijinal veya uyumlu seçenekleri maliyet ve garanti süresiyle birlikte paylaşırız.",
       },
       {
-        question: "Klimadan su akıyor, ne yapmalıyım?",
+        question: "Klima servisinde fiyat nasıl netleşir?",
         answer:
-          "Genellikle drenaj tıkanıklığı veya filtre kirliliği kaynaklıdır. Cihazı kapatıp yerinde servis talep edin; teknisyen drenaj hattını ve iç üniteyi kontrol ederek kalıcı çözüm uygular.",
+          "Önce yerinde teşhis yapılır; ardından işçilik ve varsa parça/gaz bedeli onayınızdan önce yazılı veya sözlü netleştirilir. Onay olmadan işlem başlamaz. Keşif veya teşhis kapsamı randevu sırasında da özetlenir.",
+      },
+      {
+        question: "Aynı gün klima servisi mümkün mü?",
+        answer:
+          "Yoğunluğa göre aynı gün veya en yakın slot hedeflenir. Hiç soğutmama, su taşması ve elektrik kokusu gibi riskli durumlarda öncelik verilir. Telefon veya WhatsApp ile adres ve belirti paylaşmanız planlamayı hızlandırır.",
+      },
+      {
+        question: "Hangi klima türlerine bakıyorsunuz?",
+        answer:
+          "Ev ve ofis tipindeki split, inverter, multi ve salon klimalarda yerinde hizmet veririz. Merkezi sistem veya VRF gibi özel tesisatlarda kapsam keşif sonrası netleştirilir; uygun değilse yönlendirme yapılır.",
+      },
+    ],
+  },
+  "klima-gaz-dolumu": {
+    slug: "klima-gaz-dolumu",
+    title: "Klima Gaz Dolumu",
+    icon: "severe_cold",
+    description:
+      "İstanbul'da klima gaz dolumu hizmetinde önce basınç ölçümü ve kaçak kontrolü yapıyoruz. Gereksiz dolum yerine kalıcı çözüm hedefleriz; R32, R410A ve cihaz tipine uygun gaz miktarını onayınızdan önce net fiyatla paylaşırız. Kerem Teknik Servis, split ve inverter klimalarda yerinde gaz dolumu, vakum, sızdırmazlık kontrolü ve performans testi uygular. Kaçak giderilmeden yapılan dolum kısa sürede tekrar arızaya yol açar; bu yüzden kök nedeni ayırır, ardından kapasiteye uygun miktarla dolum yaparız.",
+    metaDescription:
+      "İstanbul klima gaz dolumu: kaçak tespiti sonrası doğru miktarda dolum, vakum ve performans testi ile yerinde şeffaf fiyatlandırma sunuyoruz.",
+    updatedAt: "2026-08-10T12:00:00.000Z",
+    uniqueIntro:
+      "Gaz dolumu tek başına çözüm değildir; sağlıklı kapalı çevrimde soğutucu akışkan tüketilmez. Sahada önce manifold ile yüksek-düşük basıncı okur, iç ünite evaporatörü ve dış ünite kondenserini, flaş bağlantıları ile bakır hattı kaçak açısından tararız. Tespit edilen kaçak kaynak (sıkma, kaynak, çatlak hat, servis valfi) giderilmeden dolum yapmayız. Ardından vakum ile nem ve hava alınır; cihaz etiketindeki gaz türü ve BTU/kapasiteye göre gramaj hesaplanır. Evde tüp bağlamak, valfi körlemesine açmak veya 'biraz gaz basmak' kompresör yağının bozulmasına ve yanmaya yol açabilir. Fiyat; kaçak onarımı, gaz türü, dolum miktarı ve işçilik kapsamına göre teşhis sonrası netleşir. Bağımsız özel servis olarak yetkili ağ iddiası olmadan ölçüm değerlerini ve yapılan işlemi size anlatırız. İşlem sonunda soğutma/ısıtma performansını yerinde doğrular, tekrar kaçak riski varsa açıkça belirtiriz.",
+    commonIssues: [
+      "Klima soğutmuyor / gaz eksik",
+      "Basınç düşüklüğü",
+      "Gaz kaçağı şüphesi",
+      "Kısa sürede gaz eksilmesi",
+      "Donma / buzlanma",
+      "Kompresör aşırı ısınma",
+      "Servis valfi veya bağlantı sızıntısı",
+      "Vakum sonrası basınç tutmama",
+    ],
+    relatedFaqIndices: [0, 1, 6],
+    faqs: [
+      {
+        question: "Klima gaz dolumu her yıl yapılmalı mı?",
+        answer:
+          "Hayır. Sağlam sistemde gaz tüketilmez. Dolum yalnızca kaçak veya basınç düşüklüğü doğrulandığında gerekir; önce kaçak tespiti ve onarımı yapılır, sonra kapasiteye uygun dolum uygulanır.",
+      },
+      {
+        question: "Hangi klima gazı kullanılıyor?",
+        answer:
+          "Cihaz etiketindeki gaza uygun dolum yapılır (örneğin R32 veya R410A). Farklı gaz karıştırılmaz; miktar BTU/kapasite ve hat uzunluğuna göre hesaplanır.",
+      },
+      {
+        question: "Gaz dolumu ücreti neye göre belirlenir?",
+        answer:
+          "Kaçak onarımı ihtiyacı, gaz türü, dolum miktarı (gramaj) ve işçilik kapsamı fiyatı etkiler. Teşhis sonrası net bedel onayınızdan önce paylaşılır; onay olmadan dolum başlamaz.",
+      },
+      {
+        question: "Kaçak varken sadece gaz doldurulursa ne olur?",
+        answer:
+          "Gaz kısa sürede tekrar düşer; soğutmama geri gelir ve kompresör zorlanır. Bu yüzden önce kaçak kaynağı bulunur ve giderilir, ardından vakum ve doğru miktarda dolum yapılır.",
+      },
+      {
+        question: "Gaz dolumu sonrası cihaz hemen soğutur mu?",
+        answer:
+          "Doğru kaçak onarımı ve dolum sonrası yerinde soğutma/ısıtma testi yapılır. Performans beklenen seviyeye gelmezse basınç ve hava akışı yeniden kontrol edilir; sonuç size net raporlanır.",
+      },
+    ],
+  },
+  "klima-bakimi": {
+    slug: "klima-bakimi",
+    title: "Klima Bakımı",
+    icon: "schedule",
+    description:
+      "İstanbul'da klima bakımı ile filtre, serpantin, drenaj ve elektrik bağlantılarını kontrol ederek cihaz verimini artırıyoruz. Yaz veya kış sezonu öncesi periyodik bakım; koku, enerji tüketimi ve ani arıza riskini azaltır. Kerem Teknik Servis, split ve inverter klimalarda yerinde bakım, ölçüm ve şeffaf fiyatlandırma sunar. Bakım sırasında arıza bulunursa onarım ayrı kalem olarak onayınıza sunulur; sürpriz işlem yapılmaz. Sezon başlamadan randevu almak yoğunlukta bekleme süresini kısaltır.",
+    metaDescription:
+      "İstanbul klima bakımı: filtre, serpantin, drenaj ve elektrik kontrolüyle sezon öncesi yerinde periyodik bakım; şeffaf fiyatlandırma sunuyoruz.",
+    updatedAt: "2026-08-10T12:00:00.000Z",
+    uniqueIntro:
+      "Bakımda amaç yalnızca görsel temizlik değildir. Teknisyenimiz iç ünite hava akışını, filtre ve serpantin kirliliğini, drenaj eğimini, dış ünite ısı değişimini ve elektrik bağlantı güvenliğini birlikte değerlendirir. Yoğun yaz kullanımında yılda iki bakım; standart ev kullanımında yaz öncesi tek bakım çoğu zaman yeterlidir. Evde filtreyi silmek faydalıdır ama serpantin kimyasalı, basınç kontrolü veya kart müdahalesi DIY için uygun değildir—yanlış kimyasal kanatları aşındırır, drenaja yabancı madde su baskını yaratır. Bakım bedeli kapsam (filtre+serpantin+drenaj+elektrik kontrolü) netleştirilerek önceden paylaşılır; arıza onarımı çıkarsa ayrı fiyatlandırılır. Bağımsız özel servis olarak bakım sonunda cihaz durumu, önerilen sonraki kontrol dönemi ve varsa risk notlarını size bırakırız. Böylece bir sonraki sezona hangi noktadan devam edeceğinizi net bilirsiniz; checklist çıktısı talep edebilirsiniz. Ses, koku veya basınç sapması varsa bunları da aynı raporda işaretleriz.",
+    commonIssues: [],
+    scope: [
+      "Filtre ve iç ünite bakımı",
+      "Serpantin ve fan kontrolü",
+      "Drenaj hattı kontrolü",
+      "Dış ünite hava akışı kontrolü",
+      "Elektrik ve bağlantı kontrolleri",
+      "Performans ve ses değerlendirmesi",
+      "Kondenser yüzey ve fan kanat kontrolü",
+      "Bakım sonrası çalışma testi",
+    ],
+    relatedFaqIndices: [1, 7, 0],
+    faqs: [
+      {
+        question: "Klima bakımı ne sıklıkla yapılmalı?",
+        answer:
+          "Normal kullanımda yılda bir kez, yoğun yaz kullanımında yılda iki kez yeterlidir. Kullanıcı filtreyi düzenli temizleyebilir; profesyonel bakım serpantin, drenaj ve elektrik kontrollerini de kapsar.",
+      },
+      {
+        question: "Bakım ile onarım aynı mı?",
+        answer:
+          "Hayır. Bakım önleyici kontrol ve temizliktir. Bakım sırasında arıza bulunursa onarım ayrı fiyatlandırılır ve onayınız alınır; bakım ücreti onarım anlamına gelmez.",
+      },
+      {
+        question: "Sezon öncesi bakım ne zaman yaptırılmalı?",
+        answer:
+          "Yaz için ilkbahar, ısıtma kullanımına geçmeden önce sonbahar ideal dönemdir. Yoğun sezonda randevu süreleri uzayabilir; erken planlama aynı gün slot bulmayı kolaylaştırır.",
+      },
+      {
+        question: "Bakım sırasında elektrik kesilir mi?",
+        answer:
+          "Güvenlik için cihazın enerjisi kısa süreli kesilebilir. İşlem bitiminde bağlantılar kontrol edilip cihaz yeniden çalıştırılır; süre ve kapsam randevu öncesi özetlenir.",
+      },
+      {
+        question: "Bakım sonrası enerji faturası düşer mi?",
+        answer:
+          "Kirli filtre ve serpantin kompresörü zorlar; temiz ve dengeli sistem aynı konforu daha düşük yükle sağlar. Tasarruf miktarı kullanım ve cihaz yaşına göre değişir; bakım sonrası performans farkı yerinde gözlemlenir.",
+      },
+    ],
+  },
+  "klima-montaji": {
+    slug: "klima-montaji",
+    title: "Klima Montajı",
+    icon: "home_repair_service",
+    description:
+      "İstanbul'da klima montajı hizmetinde yerinde keşif, doğru iç-dış ünite konumlandırması, bakır hat ve drenaj kurulumu yapıyoruz. Split ve inverter klimalarda vakum, gaz kontrolü ve ilk çalıştırma testi dahildir. Kerem Teknik Servis; güvenli montaj, şeffaf işçilik bedeli ve montaj sonrası bilgilendirme ile hizmet verir. Yanlış eğim, kısa vakum veya zayıf izolasyon erken kaçak ve su akıtmasına yol açtığı için adımları atlamadan uygularız.",
+    metaDescription:
+      "İstanbul klima montajı: yerinde keşif, bakır hat, drenaj, vakum ve ilk çalıştırma testiyle garantili kurulum; şeffaf işçilik bedeli paylaşılır.",
+    updatedAt: "2026-08-10T12:00:00.000Z",
+    uniqueIntro:
+      "Doğru montaj, cihaz ömrünü ve soğutma verimini doğrudan etkiler. Keşifte duvar tipi, hat mesafesi, drenaj çıkışı, dış ünite taşıma kapasitesi ve elektrik hattı değerlendirilir; uygunsuz konum önerilmez. Sahada bakır boru kesim-havşa, izolasyon, drenaj eğimi, braket sabitleme, vakum süresi ve sızdırmazlık testleri sırayla yapılır. İlk çalıştırmada soğutma/ısıtma, basınç dengesi ve drenaj akışı doğrulanır. Evde 'kendin yap' montaj—özellikle vakumsuz veya eksik izolasyonlu kurulum—kaçaka, kompresör hasarına ve duvar içi su hasarına yol açabilir. İşçilik bedeli keşif sonrası (hat mesafesi, kat, duvar tipi) netleştirilir; ekstra delik veya özel iskele ihtiyacı önceden söylenir. Bağımsız özel servis olarak üretici montaj şartlarını ve kullanıcıya bırakılan bakım ipuçlarını montaj sonunda paylaşırız. Böylece cihazı ilk günden doğru kullanıma alırsınız; filtre temizliği ve drenaj kontrol periyodunu da hatırlatırız.",
+    commonIssues: [],
+    scope: [
+      "Yerinde keşif ve konum önerisi",
+      "İç ve dış ünite montajı",
+      "Bakır hat ve izolasyon",
+      "Drenaj hattı kurulumu",
+      "Vakum ve sızdırmazlık testi",
+      "İlk çalıştırma ve kullanıcı bilgilendirmesi",
+      "Elektrik besleme ve topraklama kontrolü",
+      "Montaj sonrası performans doğrulama",
+    ],
+    relatedFaqIndices: [0, 6, 1],
+    faqs: [
+      {
+        question: "Klima montajı ne kadar sürer?",
+        answer:
+          "Standart split montaj çoğu evde birkaç saat içinde tamamlanır. Hat mesafesi, duvar tipi, kat erişimi ve elektrik hazırlığı süreyi etkiler; keşif sonrası net süre paylaşılır.",
+      },
+      {
+        question: "Montaj öncesi ne hazırlamalıyım?",
+        answer:
+          "Kurulum alanının erişilebilir olması ve uygun elektrik hattının hazır olması yeterlidir. Keşifte eksik (sigorta, hat, drenaj çıkışı) varsa önceden bildiririz; sürpriz iş çıkmasın diye kapsam yazılı özetlenir.",
+      },
+      {
+        question: "Montaj sonrası garanti var mı?",
+        answer:
+          "İşçilik kapsamı ve süresi montaj sonunda paylaşılır. Cihaz üretici garantisi ile montaj işçiliği ayrı değerlendirilir; hangi arızanın işçilik kapsamına girdiği net anlatılır.",
+      },
+      {
+        question: "Eski klima sökülüp yenisi takılabilir mi?",
+        answer:
+          "Evet. Söküm, hat kontrolü ve yeni montaj aynı ziyarette planlanabilir. Eski hat kullanılacaksa kaçak ve izolasyon durumu keşifte değerlendirilir; uygun değilse yenilenir.",
+      },
+      {
+        question: "Dış ünite nereye konmalı?",
+        answer:
+          "Hava sirkülasyonu iyi, titreşime dayanıklı ve bakım erişimi olan bir nokta tercih edilir. Kapalı kuyu veya aşırı dar balkonlar verimi düşürür; keşifte alternatif konum önerilir.",
+      },
+    ],
+  },
+  "klima-ariza-tamiri": {
+    slug: "klima-ariza-tamiri",
+    title: "Klima Arıza Tamiri",
+    icon: "engineering",
+    description:
+      "İstanbul'da klima arıza tamiri için soğutmama, ısıtmama, su akıtma, sesli çalışma ve elektronik kart sorunlarında yerinde teşhis yapıyoruz. Kerem Teknik Servis; fan motoru, kompresör, sensör ve kart arızalarında uyumlu parça seçenekleri sunar, onayınız olmadan işlem yapmaz ve garantili işçilik uygular. Belirtiyi dinleyip gaz, mekanik, drenaj ve elektronik ayrımını ölçümle netleştiririz; gereksiz parça değişimini engelleriz. Onarım sonrası cihazı yük altında test ederek teslim ederiz.",
+    metaDescription:
+      "İstanbul klima arıza tamiri: soğutmama, su akıtma, ses ve kart arızalarında hızlı yerinde teşhis; şeffaf fiyat ve garantili onarım sunuyoruz.",
+    updatedAt: "2026-08-10T12:00:00.000Z",
+    uniqueIntro:
+      "Arıza tamirinde önce belirtileri ayırırız: gaz mı, mekanik mi, drenaj mı, elektronik mi? Manifold, akım ölçümü, hata kodu okuma ve görsel kontrol ile kök neden bulunur; 'hemen kart değişelim' yaklaşımı uygulanmaz. Parça gerektiğinde orijinal veya uyumlu seçenekler maliyet, temin süresi ve garanti ile birlikte sunulur. Onarım sonrası cihaz yük altında soğutma/ısıtma testine alınır. Kart sökmek, kapasitör değiştirmek veya kompresöre körlemesine müdahale etmek evde yapılmamalıdır—yanlış bağlantı daha büyük arızaya yol açar. Fiyat teşhis sonrası işçilik + parça olarak onayınızdan önce netleşir. Bağımsız özel servis olarak marka-model fark etmeksizin ölçülebilir teşhis ve yazılı/sözlü onay süreciyle çalışırız. Aynı ziyarette çözülemeyen parça temininde güvenli kullanım sınırı net anlatılır; ikinci ziyaret planı peşinen paylaşılır. Gereksiz parça stoku dayatması yapmayız; ölçüm kaydı olmadan işlem önermeyiz.",
+    commonIssues: [
+      "Klima soğutmuyor",
+      "Klima ısıtmıyor",
+      "Klimadan su akıyor",
+      "Klima sesli çalışıyor",
+      "Hata kodu veriyor",
+      "Kumanda / kart arızası",
+      "Fan çalışmıyor",
+      "Kompresör çalışmıyor / aşırı ısınma",
+    ],
+    relatedFaqIndices: [0, 2, 6],
+    faqs: [
+      {
+        question: "Aynı gün klima tamiri mümkün mü?",
+        answer:
+          "Yoğunluğa göre aynı gün planlama yapılır. Acil soğutmama veya su baskını riskinde öncelik verilir; randevu sırasında adres, marka-model ve belirti bilgisi alınır.",
+      },
+      {
+        question: "Parça değişmeden önce fiyat öğrenir miyim?",
+        answer:
+          "Evet. Teşhis sonrası işçilik ve parça bedeli onayınızdan önce paylaşılır; onay olmadan işlem yapılmaz. Stokta olmayan parçada temin süresi de net söylenir.",
+      },
+      {
+        question: "Hangi marka klimaları tamir ediyorsunuz?",
+        answer:
+          "Yaygın split ve inverter markalarında bağımsız özel servis olarak çalışırız. Marka-model bilgisi randevu sırasında alınır; özel/ithal modellerde parça temini keşif sonrası netleşir.",
+      },
+      {
+        question: "Hata kodu görünce ne yapmalıyım?",
+        answer:
+          "Kodu not edin veya fotoğrafını çekin; cihazı zorlamayın. Kod tek başına kesin teşhis değildir—sensör, kart, fan veya basınç sorunu ayırt edilir. Teknisyen kodu ve ölçümleri birlikte yorumlar.",
+      },
+      {
+        question: "Onarım sonrası garanti nasıl işler?",
+        answer:
+          "Yapılan işçilik ve değiştirilen parça için süre/kapsam onarım sonunda paylaşılır. Garanti, onaylanan iş kalemiyle sınırlıdır; farklı bir arıza yeni teşhis gerektirir.",
+      },
+    ],
+  },
+  "klima-temizligi": {
+    slug: "klima-temizligi",
+    title: "Klima Temizliği",
+    icon: "handyman",
+    description:
+      "İstanbul'da klima temizliği ile iç ünite, filtre, serpantin ve drenaj hattındaki kir, küf ve kokuyu hedefliyoruz. Düzenli temizlik hava kalitesini artırır, enerji tüketimini düşürür ve su akıtma riskini azaltır. Kerem Teknik Servis, yerinde klima yıkama/temizlik uygulamasında şeffaf fiyat ve cihaz güvenliğine uygun yöntem kullanır. Elektronik aksam korunur; agresif ev kimyasalları önerilmez. Koku veya tıkanıklık sürerse ek teşhis açıkça paylaşılır; kapsam önceden netleştirilir.",
+    metaDescription:
+      "İstanbul klima temizliği: filtre, serpantin ve drenaj temizliğiyle koku ile hava kalitesi sorunlarına yerinde güvenli ve profesyonel çözüm sunuyoruz.",
+    updatedAt: "2026-08-10T12:00:00.000Z",
+    uniqueIntro:
+      "Klima temizliği bakımın görünen kısmıdır; koku ve alerjen kaynağı çoğu zaman filtre ile serpantin birikimidir. Uygulamada cihaz tipine uygun yöntem seçilir: filtre sökümü, iç ünite yüzey ve serpantin temizliği, fan kanat kontrolü, drenaj hattı açma. Elektronik kart ve motor yalıtımı korunur. Ağır küf veya yağlı birikimde yıkama kapsamı önceden netleştirilir. Evde yüksek basınçlı su veya bilinmeyen kimyasal sıkmak kanatları eğer, suyu elektroniğe kaçırır ve garanti dışı hasar yaratır. Temizlik bedeli kapsam (standart / derin yıkama) randevu veya keşifte paylaşılır; ek onarım gerekirse ayrı onay alınır. Bağımsız özel servis olarak temizlik sonrası koku ve hava akışı farkını yerinde doğrular, tekrar birikimi geciktirmek için kullanım önerisi bırakırız. Filtreyi ne sıklıkla kontrol etmeniz gerektiğini de pratik olarak anlatırız. Yoğun tozlu ortamlarda bir sonraki temizlik aralığını birlikte planlarız.",
+    commonIssues: [],
+    scope: [
+      "Filtre temizliği",
+      "İç ünite ve serpantin temizliği",
+      "Drenaj hattı temizliği",
+      "Koku kaynağı kontrolü",
+      "Fan kanat kontrolü",
+      "Temizlik sonrası performans kontrolü",
+      "Dış ünite yüzey toz temizliği (erişime göre)",
+      "Küf / nem birikim noktalarının kontrolü",
+    ],
+    relatedFaqIndices: [1, 2, 7],
+    faqs: [
+      {
+        question: "Klima temizliği ile bakım farkı nedir?",
+        answer:
+          "Temizlik kir, koku ve tıkanıklığa odaklanır. Bakım ayrıca basınç, elektrik ve genel performans kontrollerini kapsar. İhtiyaç halinde ikisi aynı ziyarette planlanabilir; kapsam önceden ayrılır.",
+      },
+      {
+        question: "Klimadan kötü koku geliyorsa temizlik yeterli mi?",
+        answer:
+          "Çoğu durumda filtre ve serpantin temizliği yeterlidir. Küf veya drenaj tıkanıklığı varsa bunlar da giderilir; kalıcı koku için nem kaynağı veya başka arıza açısından ek teşhis gerekebilir.",
+      },
+      {
+        question: "Ne sıklıkla klima temizliği yaptırmalıyım?",
+        answer:
+          "Yoğun yaz kullanımında sezon başı önerilir. Tozlu ortam, evcil hayvan veya sürekli düşük fan kullanımı varsa daha sık temizlik faydalıdır.",
+      },
+      {
+        question: "Klima yıkama ev eşyalarına zarar verir mi?",
+        answer:
+          "Uygulamada zemin ve mobilya korunur; su tahliyesi kontrollü yapılır. Yine de değerli eşyaları iç ünite altından uzaklaştırmanız işlemi hızlandırır.",
+      },
+      {
+        question: "Sadece filtreyi kendim yıkasam yeter mi?",
+        answer:
+          "Filtre bakımı koku ve tozu azaltır ama serpantin ve drenaj birikimini çözmez. Koku veya su akıtma sürüyorsa profesyonel iç ünite/serpantin temizliği gerekir.",
+      },
+    ],
+  },
+  "acil-klima-servisi": {
+    slug: "acil-klima-servisi",
+    title: "Acil Klima Servisi",
+    icon: "bolt",
+    description:
+      "İstanbul'da acil klima servisi taleplerinde aynı gün müdahale önceliğiyle yerinde teşhis sunuyoruz. Aşırı sıcaklarda soğutmama, su taşması veya ani kapanma gibi acil durumlarda Kerem Teknik Servis hızlı planlama, şeffaf fiyat ve garantili müdahale ile yanınızdadır. Telefon veya WhatsApp ile hemen randevu oluşturabilirsiniz. Riskli belirtide (yanık kokusu, su baskını) önce güvenli kapatma önerisi verilir. Onayınız olmadan işlem başlatılmaz; teşhis sonrası bedel netleşir.",
+    metaDescription:
+      "İstanbul acil klima servisi: aynı gün yerinde müdahale; soğutmama ve su taşması acillerinde hızlı teşhis ile şeffaf fiyatlandırma sunuyoruz.",
+    updatedAt: "2026-08-10T12:00:00.000Z",
+    uniqueIntro:
+      "Acil serviste önce risk ve kullanım kesintisi değerlendirilir: su baskını, hiç soğutmama, yanık/elektrik kokusu veya ani kapanma önceliklidir. Randevu sırasında adres, kat, marka-model ve belirti alınır; mümkün olan en yakın slot planlanır. Sahada hızlı teşhis sonrası kalıcı onarım veya geçici güvenli kullanım önerisi net fiyatla paylaşılır. Gelene kadar kartı sökmek, drenaja tel sokmak veya sigortayı zorlamak risklidir—özellikle su taşmasında cihazı kapatıp fişi çekmek en doğru adımdır. Acil müdahale bedeli teşhis sonrası şeffaf açılır; onay olmadan işlem başlamaz. Bağımsız özel servis olarak 'gece yarı fiyatı' belirsizliği yerine kapsamı peşinen anlatır, mümkün olan en hızlı güvenli çözümü hedefleriz. Parça gerekiyorsa temin süresi ve ikinci ziyaret seçeneği aynı görüşmede netleşir; sürpriz ek kalem çıkarılmaz. Ev ve ofis acillerinde aynı teşhis disiplini uygulanır.",
+    commonIssues: [
+      "Klimam hiç soğutmuyor (acil)",
+      "Su taşması / ıslatma riski",
+      "Ani kapanma / hata kodu",
+      "Aşırı ses veya yanık kokusu",
+      "Yaz sıcağında çalışmama",
+      "İş yeri / ofis acil arıza",
+      "Gece ani arıza / kesintisiz ihtiyaç",
+      "Dış ünite ani durma",
+    ],
+    relatedFaqIndices: [0, 6, 1],
+    faqs: [
+      {
+        question: "Acil klima servisi gerçekten aynı gün gelir mi?",
+        answer:
+          "Yoğunluğa göre aynı gün planlama hedeflenir. Aciliyet seviyesi (su baskını, hiç soğutmama, yanık kokusu) randevu önceliğini etkiler; uygun slot telefon veya WhatsApp ile netleştirilir.",
+      },
+      {
+        question: "Acil serviste ekstra ücret var mı?",
+        answer:
+          "Fiyat kapsamı randevu ve teşhis sonrası şeffaf paylaşılır. Onayınız olmadan işlem yapılmaz; sürpriz ek ücret uygulanmaz. Aciliyet, iş kapsamını değiştirmez—sadece planlama önceliğini etkiler.",
+      },
+      {
+        question: "Teknisyen gelene kadar ne yapmalıyım?",
+        answer:
+          "Su akıtıyorsa cihazı kapatıp fişi çekin; elektrik veya yanık kokusu varsa enerjiyi kesin. Mümkünse hata kodunu not edin, adres ve kat bilgisini hazır bulundurun.",
+      },
+      {
+        question: "Acil çağrıda hangi bilgiler işi hızlandırır?",
+        answer:
+          "Belirti (soğutmama, su, ses, koku), ne zamandır sürdüğü, marka-model ve erişim (asansör, dış ünite konumu) yeterlidir. Fotoğraf veya hata kodu varsa paylaşın.",
+      },
+      {
+        question: "Acil müdahalede kalıcı onarım her zaman aynı gün biter mi?",
+        answer:
+          "Teşhis ve birçok onarım aynı ziyarette tamamlanır. Parça temini gereken durumlarda güvenli geçici önlem anlatılır; temin ve ikinci ziyaret net tarihle planlanır.",
       },
     ],
   },
@@ -737,6 +1099,12 @@ export const TESTIMONIALS = [
 
 export const SERVICE_HERO_IMAGES: Record<string, string> = {
   "klima-servisi": "/images/services/hero-klima-servisi.webp",
+  "klima-gaz-dolumu": "/images/services/hero-klima-servisi.webp",
+  "klima-bakimi": "/images/services/hero-klima-servisi.webp",
+  "klima-montaji": "/images/services/hero-klima-servisi.webp",
+  "klima-ariza-tamiri": "/images/services/hero-klima-servisi.webp",
+  "klima-temizligi": "/images/services/hero-klima-servisi.webp",
+  "acil-klima-servisi": "/images/services/hero-klima-servisi.webp",
   "kombi-servisi": "/images/services/hero-kombi-servisi.webp",
   "beyaz-esya-servisi": "/images/services/hero-beyaz-esya-servisi.webp",
   "camasir-makinesi-servisi":
@@ -751,6 +1119,12 @@ export const SERVICE_HERO_IMAGES: Record<string, string> = {
 
 export const SERVICE_IMAGES: Record<string, string> = {
   "klima-servisi": SERVICE_HERO_IMAGES["klima-servisi"],
+  "klima-gaz-dolumu": SERVICE_HERO_IMAGES["klima-gaz-dolumu"],
+  "klima-bakimi": SERVICE_HERO_IMAGES["klima-bakimi"],
+  "klima-montaji": SERVICE_HERO_IMAGES["klima-montaji"],
+  "klima-ariza-tamiri": SERVICE_HERO_IMAGES["klima-ariza-tamiri"],
+  "klima-temizligi": SERVICE_HERO_IMAGES["klima-temizligi"],
+  "acil-klima-servisi": SERVICE_HERO_IMAGES["acil-klima-servisi"],
   "kombi-servisi": SERVICE_HERO_IMAGES["kombi-servisi"],
   "beyaz-esya-servisi": SERVICE_HERO_IMAGES["beyaz-esya-servisi"],
   "camasir-makinesi-servisi": SERVICE_HERO_IMAGES["camasir-makinesi-servisi"],

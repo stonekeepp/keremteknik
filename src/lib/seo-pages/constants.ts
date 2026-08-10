@@ -26,7 +26,36 @@ export const STRIP_SIMILARITY_PATTERNS = [
   "İhtiyacınıza uygun sayfaya doğrudan geçebilirsiniz.",
 ] as const;
 
+/** Homepage / hub QC / fault-guide related regions (featured UX). */
 export const PRIORITY_REGION_SLUGS = [
+  "alibeykoy",
+  "eyupsultan",
+  "gaziosmanpasa",
+  "kagithane",
+] as const;
+
+/**
+ * Districts that get `/servis-bolgeleri/[bolge]/[hizmet]` pages.
+ * Includes Ads/SEO expansion districts beyond homepage priority set.
+ */
+export const REGION_SERVICE_REGION_SLUGS = [
+  "alibeykoy",
+  "eyupsultan",
+  "gaziosmanpasa",
+  "kagithane",
+  "sisli",
+  "sariyer",
+  "besiktas",
+  "bayrampasa",
+  "sultangazi",
+] as const;
+
+/**
+ * Indexable region×service pages. Includes all previously indexed priority
+ * districts — never noindex a URL that was already in the indexable set.
+ * New expansion districts stay noindex until explicit rollout.
+ */
+export const INDEXABLE_REGION_SERVICE_REGION_SLUGS = [
   "alibeykoy",
   "eyupsultan",
   "gaziosmanpasa",
@@ -35,6 +64,12 @@ export const PRIORITY_REGION_SLUGS = [
 
 export const REGION_SERVICE_SLUGS = [
   "klima-servisi",
+  "klima-gaz-dolumu",
+  "klima-bakimi",
+  "klima-montaji",
+  "klima-ariza-tamiri",
+  "klima-temizligi",
+  "acil-klima-servisi",
   "kombi-servisi",
   "beyaz-esya-servisi",
 ] as const;
@@ -47,7 +82,9 @@ export const EYUPSULTAN_EXTRA_SERVICE_SLUGS = [
 ] as const;
 
 export function getRegionServiceSlugs(regionSlug: string): readonly string[] {
-  if (!PRIORITY_REGION_SLUGS.includes(regionSlug as (typeof PRIORITY_REGION_SLUGS)[number])) {
+  if (
+    !(REGION_SERVICE_REGION_SLUGS as readonly string[]).includes(regionSlug)
+  ) {
     return [];
   }
   if (regionSlug === "eyupsultan") {

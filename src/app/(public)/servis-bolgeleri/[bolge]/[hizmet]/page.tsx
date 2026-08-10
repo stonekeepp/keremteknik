@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: Params) {
     title: page.title,
     description: page.metaDescription,
     path: page.canonicalPath,
+    noIndex: !page.indexable,
   });
 }
 

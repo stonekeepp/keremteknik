@@ -138,7 +138,41 @@ export function ServiceProcessSection({
 }
 
 const RELATED_SLUGS: Record<string, string[]> = {
-  "klima-servisi": ["kombi-servisi", "periyodik-bakim", "beyaz-esya-servisi"],
+  "klima-servisi": [
+    "klima-gaz-dolumu",
+    "klima-bakimi",
+    "klima-ariza-tamiri",
+  ],
+  "klima-gaz-dolumu": [
+    "klima-servisi",
+    "klima-ariza-tamiri",
+    "klima-bakimi",
+  ],
+  "klima-bakimi": [
+    "klima-servisi",
+    "klima-temizligi",
+    "klima-gaz-dolumu",
+  ],
+  "klima-montaji": [
+    "klima-servisi",
+    "klima-bakimi",
+    "acil-klima-servisi",
+  ],
+  "klima-ariza-tamiri": [
+    "klima-servisi",
+    "klima-gaz-dolumu",
+    "acil-klima-servisi",
+  ],
+  "klima-temizligi": [
+    "klima-servisi",
+    "klima-bakimi",
+    "klima-ariza-tamiri",
+  ],
+  "acil-klima-servisi": [
+    "klima-servisi",
+    "klima-ariza-tamiri",
+    "klima-gaz-dolumu",
+  ],
   "kombi-servisi": ["klima-servisi", "periyodik-bakim", "yedek-parca-iscilik"],
   "beyaz-esya-servisi": [
     "camasir-makinesi-servisi",

@@ -9,7 +9,16 @@ const NAV_GROUPS = [
     label: "İklimlendirme",
     icon: "ac_unit",
     accent: "from-sky-500/8 to-transparent",
-    slugs: ["klima-servisi", "kombi-servisi"],
+    slugs: [
+      "klima-servisi",
+      "klima-gaz-dolumu",
+      "klima-bakimi",
+      "klima-montaji",
+      "klima-ariza-tamiri",
+      "klima-temizligi",
+      "acil-klima-servisi",
+      "kombi-servisi",
+    ],
   },
   {
     label: "Beyaz Eşya",
@@ -33,6 +42,12 @@ const NAV_GROUPS = [
 
 const ICON_STYLES: Record<string, { bg: string; color: string }> = {
   "klima-servisi": { bg: "bg-sky-500/12", color: "text-sky-700" },
+  "klima-gaz-dolumu": { bg: "bg-cyan-500/12", color: "text-cyan-700" },
+  "klima-bakimi": { bg: "bg-teal-500/12", color: "text-teal-700" },
+  "klima-montaji": { bg: "bg-blue-500/12", color: "text-blue-700" },
+  "klima-ariza-tamiri": { bg: "bg-indigo-500/12", color: "text-indigo-700" },
+  "klima-temizligi": { bg: "bg-emerald-500/12", color: "text-emerald-700" },
+  "acil-klima-servisi": { bg: "bg-amber-500/12", color: "text-amber-800" },
   "kombi-servisi": { bg: "bg-orange-500/12", color: "text-orange-700" },
   "beyaz-esya-servisi": { bg: "bg-violet-500/12", color: "text-violet-700" },
   "camasir-makinesi-servisi": { bg: "bg-blue-500/12", color: "text-blue-700" },
