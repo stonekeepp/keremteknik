@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/seo/JsonLd";
+import { GoogleAdsTag } from "@/components/analytics/GoogleAdsTag";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { buildLocalBusinessJsonLd } from "@/lib/seo/json-ld";
 
@@ -9,6 +10,7 @@ export default function PublicRouteLayout({
 }) {
   return (
     <PublicLayout>
+      <GoogleAdsTag />
       <JsonLd data={buildLocalBusinessJsonLd()} />
       {children}
     </PublicLayout>
