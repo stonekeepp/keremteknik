@@ -1,4 +1,5 @@
 import type { ContentSection, FaqItem } from "./types";
+import { REGION_KLIMA_INTENT_CONTENT } from "./region-klima-intent-content";
 
 export type RegionServiceContentOverride = {
   intro: string;
@@ -9,8 +10,22 @@ export type RegionServiceContentOverride = {
   secondaryKeyphrases?: string[];
 };
 
+function mergeRegionServiceContent(
+  base: Record<string, Partial<Record<string, RegionServiceContentOverride>>>,
+  extra: Record<string, Partial<Record<string, RegionServiceContentOverride>>>,
+): Record<string, Partial<Record<string, RegionServiceContentOverride>>> {
+  const out: Record<
+    string,
+    Partial<Record<string, RegionServiceContentOverride>>
+  > = { ...base };
+  for (const [regionSlug, services] of Object.entries(extra)) {
+    out[regionSlug] = { ...out[regionSlug], ...services };
+  }
+  return out;
+}
+
 /** Deep, unique copy for money pages — avoids doorway similarity with sibling districts. */
-export const REGION_SERVICE_CONTENT: Record<
+const REGION_SERVICE_CONTENT_BASE: Record<
   string,
   Partial<Record<string, RegionServiceContentOverride>>
 > = {
@@ -262,3 +277,8 @@ Cumartesi planlı randevu açıktır. Pazar günü için önceden rezervasyon ge
     },
   },
 };
+
+export const REGION_SERVICE_CONTENT = mergeRegionServiceContent(
+  REGION_SERVICE_CONTENT_BASE,
+  REGION_KLIMA_INTENT_CONTENT,
+);
