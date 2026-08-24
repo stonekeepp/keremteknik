@@ -1,3 +1,5 @@
+"use client";
+
 import Script from "next/script";
 
 const DEFAULT_GOOGLE_ADS_ID = "AW-18381685750";
@@ -19,14 +21,18 @@ export function GoogleAdsTag() {
         src={`https://www.googletagmanager.com/gtag/js?id=${adsId}`}
         strategy="afterInteractive"
       />
-      <Script id="google-ads-gtag" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${adsId}');
-        `}
-      </Script>
+      <Script
+        id="google-ads-gtag"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${adsId}');
+          `,
+        }}
+      />
     </>
   );
 }

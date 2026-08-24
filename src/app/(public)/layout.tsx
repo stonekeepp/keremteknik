@@ -9,10 +9,12 @@ export default function PublicRouteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <PublicLayout>
+    <>
       <GoogleAdsTag />
-      <JsonLd data={buildLocalBusinessJsonLd()} />
-      {children}
-    </PublicLayout>
+      <PublicLayout>
+        <JsonLd data={buildLocalBusinessJsonLd()} />
+        {children}
+      </PublicLayout>
+    </>
   );
 }
