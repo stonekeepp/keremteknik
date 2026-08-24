@@ -40,11 +40,6 @@ async function ensureDbFile(): Promise<BlogPost[]> {
   return SEED_BLOG_POSTS;
 }
 
-/** Startup hook: merge seed posts into persisted mock DB (Docker volume safe). */
-export async function warmBlogDb(): Promise<void> {
-  await ensureDbFile();
-}
-
 async function writeDb(posts: BlogPost[]): Promise<void> {
   await fs.mkdir(path.dirname(DB_PATH), { recursive: true });
   await fs.writeFile(DB_PATH, JSON.stringify(posts, null, 2), "utf-8");
