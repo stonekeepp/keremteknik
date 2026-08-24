@@ -7,7 +7,8 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getRegionServicePage, getRegionServiceParams } from "@/lib/seo-pages";
 
-export const dynamicParams = false;
+/** Allow runtime render for new region×service combos after deploy without full rebuild gaps. */
+export const dynamicParams = true;
 
 type Params = { params: Promise<{ bolge: string; hizmet: string }> };
 
