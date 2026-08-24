@@ -37,6 +37,9 @@ RUN addgroup --system --gid 1001 nodejs \
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Initial mock blog seed (Docker volume may overlay /app/data at runtime;
+# MockBlogRepository merges missing seed slugs on read).
+COPY --from=builder --chown=nextjs:nodejs /app/data ./data
 
 RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
 

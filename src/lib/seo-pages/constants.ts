@@ -42,6 +42,7 @@ export const PRIORITY_REGION_SLUGS = [
 export const REGION_SERVICE_REGION_SLUGS = [
   "alibeykoy",
   "eyupsultan",
+  "gokturk",
   "gaziosmanpasa",
   "kagithane",
   "sisli",
@@ -59,6 +60,7 @@ export const REGION_SERVICE_REGION_SLUGS = [
 export const INDEXABLE_REGION_SERVICE_REGION_SLUGS = [
   "alibeykoy",
   "eyupsultan",
+  "gokturk",
   "gaziosmanpasa",
   "kagithane",
 ] as const;

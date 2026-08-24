@@ -329,3 +329,8 @@ Taban (Insights, son 28 gün, ~24 Ağu 2026): 36 tıklama, ~1,03K gösterim.
 ## 11. Sıradaki iş (tek cümle)
 
 **Canlıya al → GSC’de küme URL’lerini denetle → 301 eski path → DataForSEO bağla → Eylül’de tek bilgi içeriği (su damlatma veya bakım yazısı revizyonu), yeni ilçe/mahalle yok.**
+
+### Deploy notu (Docker)
+
+- `docker-compose` volume `mock-blog-data` eski `data/mock-blog-db.json` tutabilir. Kod, seed’de olup volume’da olmayan slug’ları otomatik merge eder; yine de yeni blog 404 olursa container rebuild + gerekirse volume kontrolü.
+- `gokturk` mutlaka `REGION_SERVICE_REGION_SLUGS` içinde olmalı; aksi halde `/servis-bolgeleri/gokturk/klima-servisi` build’de üretilmez (`dynamicParams=false` → kalıcı 404).

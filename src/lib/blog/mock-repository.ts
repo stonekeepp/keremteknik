@@ -9,12 +9,27 @@ import { normalizeTags } from "./types";
 
 const DB_PATH = path.join(process.cwd(), "data", "mock-blog-db.json");
 
+/**
+ * Docker volume `mock-blog-data` can keep an older JSON across deploys.
+ * Merge any seed posts missing by slug so new published articles go live
+ * without wiping admin-created content.
+ */
+async function mergeMissingSeedPosts(existing: BlogPost[]): Promise<BlogPost[]> {
+  const bySlug = new Set(existing.map((p) => p.slug));
+  const missing = SEED_BLOG_POSTS.filter((seed) => !bySlug.has(seed.slug));
+  if (missing.length === 0) return existing;
+
+  const merged = [...existing, ...missing];
+  await writeDb(merged);
+  return merged;
+}
+
 async function ensureDbFile(): Promise<BlogPost[]> {
   try {
     const raw = await fs.readFile(DB_PATH, "utf-8");
     const parsed = JSON.parse(raw) as BlogPost[];
     if (Array.isArray(parsed) && parsed.length > 0) {
-      return parsed;
+      return mergeMissingSeedPosts(parsed);
     }
   } catch {
     // seed below
