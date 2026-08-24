@@ -135,7 +135,7 @@ Hayır. Yanlış gaz, aşırı basınç ve vakumsuz dolum cihazı bozar. R32 yan
 Filtre ve mod kontrolünden sonra soğutma hâlâ zayıfsa, buz veya yağ izi varsa, cihaz sürekli çalışıp odayı düşüremiyorsa kompresörü zorlamayın. Yerinde teşhis [klima servisi](/hizmetlerimiz/klima-servisi) kapsamındadır; randevu için [iletişim](/iletisim) formunu veya 0551 397 25 26 hattını kullanın.
 
 Kerem Teknik Servis, Alibeyköy Uygar Sokak No:8 A merkezli bağımsız özel teknik servistir. Markaların yetkili servisi değildir. Gaz dolumu vaat değil, ölçüm sonucudur.`,
-    coverImage: "/images/services/hero-klima-servisi.webp",
+    coverImage: "/images/blog/klima-gazi-ne-zaman-doldurulur.webp",
     category: "Klima",
     tags: ["klima gazı", "klima gaz doldurma", "klima kaçağı"],
     status: "published",

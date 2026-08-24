@@ -27,36 +27,38 @@ export async function HomeLatestPosts() {
         {latestPosts.map((post) => (
           <article
             key={post.id}
-            className="bg-surface rounded-2xl card-elevation overflow-hidden flex flex-col group"
+            className="bg-surface rounded-2xl card-elevation overflow-hidden group"
           >
-            <div className="relative h-48 bg-surface-container overflow-hidden">
-              {post.coverImage && (
-                <Image
-                  src={post.coverImage}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              )}
-            </div>
-            <div className="p-5 flex flex-col flex-grow">
-              <span className="text-label-md font-label-md text-secondary mb-2">
-                {post.category}
-              </span>
-              <h3 className="text-headline-sm font-headline-sm text-primary mb-2 group-hover:text-secondary transition-colors">
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-              </h3>
-              <p className="text-body-md text-on-surface-variant mb-4 line-clamp-2 flex-grow">
-                {post.excerpt}
-              </p>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="text-secondary font-button text-button hover:underline"
-              >
-                Devamını Oku →
-              </Link>
-            </div>
+            <Link
+              href={`/blog/${post.slug}`}
+              className="flex flex-col h-full"
+            >
+              <div className="relative h-48 bg-surface-container overflow-hidden shrink-0">
+                {post.coverImage && (
+                  <Image
+                    src={post.coverImage}
+                    alt={post.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                )}
+              </div>
+              <div className="p-5 flex flex-col flex-grow gap-2">
+                <span className="text-label-md font-label-md text-secondary">
+                  {post.category}
+                </span>
+                <h3 className="text-headline-sm font-headline-sm text-primary group-hover:text-secondary transition-colors">
+                  {post.title}
+                </h3>
+                <p className="text-body-md text-on-surface-variant line-clamp-2 flex-grow">
+                  {post.excerpt}
+                </p>
+                <span className="text-secondary font-button text-button group-hover:underline mt-2">
+                  Devamını Oku →
+                </span>
+              </div>
+            </Link>
           </article>
         ))}
       </div>
