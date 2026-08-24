@@ -12,10 +12,10 @@ const priorityRegions = REGION_SEEDS.filter((item) =>
   PRIORITY_REGION_SLUGS.includes(item.slug as (typeof PRIORITY_REGION_SLUGS)[number]),
 );
 const europe = REGION_SEEDS.filter(
-  (item) => item.continentSide === "Avrupa Yakası" && item.slug !== "alibeykoy",
+  (item) => item.continentSide === "Avrupa Yakası" && item.areaType === "ilce",
 );
 const anatolia = REGION_SEEDS.filter((item) => item.continentSide === "Anadolu Yakası");
-const alibeykoy = REGION_SEEDS.find((item) => item.slug === "alibeykoy");
+const semtRegions = REGION_SEEDS.filter((item) => item.areaType === "semt");
 
 export const metadata = buildPageMetadata({
   title: page.title,
@@ -62,7 +62,7 @@ export default function RegionHubPage() {
       })}
       extraTop={
         <>
-          <Section title="Öncelikli servis bölgeleri" subtitle="En sık talep gelen dört bölge ve Alibeyköy semti" centered={false}>
+          <Section title="Öncelikli servis bölgeleri" subtitle="Eyüpsultan ilçesi, Alibeyköy ve Göktürk semtleri ile yakın ilçeler" centered={false}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {priorityRegions.map((region) => (
                 <Link
@@ -76,7 +76,9 @@ export default function RegionHubPage() {
               ))}
             </div>
           </Section>
-          {alibeykoy && <RegionGrid title="Alibeyköy özel hizmet alanı" items={[alibeykoy]} />}
+          {semtRegions.length > 0 && (
+            <RegionGrid title="Eyüpsultan semtleri" items={semtRegions} />
+          )}
           <RegionGrid title="Avrupa Yakası ilçeleri" items={europe} />
           <RegionGrid title="Anadolu Yakası ilçeleri" items={anatolia} />
         </>

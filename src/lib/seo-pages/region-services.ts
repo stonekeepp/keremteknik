@@ -6,9 +6,12 @@ import {
   getRegionServiceSlugs,
   hasRegionServicePage,
 } from "./constants";
+import { getServiceHeroImage } from "@/lib/services/site";
 import { REGION_SERVICE_CONTENT } from "./region-service-content";
 import { getRegionPage } from "./regions";
 import type { ContentSection, FaqItem, RegionServicePageData } from "./types";
+
+const KLIMA_HERO_REGION_SLUGS = new Set(["eyupsultan", "alibeykoy", "gokturk"]);
 
 export const SERVICE_TITLES: Record<string, string> = {
   "klima-servisi": "Klima Servisi",
@@ -167,6 +170,21 @@ function buildDefaultFaqs(
   ];
 }
 
+const KLIMA_CLUSTER_SPOKES: Record<string, { slug: string; name: string }[]> = {
+  eyupsultan: [
+    { slug: "alibeykoy", name: "Alibeyköy" },
+    { slug: "gokturk", name: "Göktürk" },
+  ],
+  alibeykoy: [
+    { slug: "eyupsultan", name: "Eyüpsultan" },
+    { slug: "gokturk", name: "Göktürk" },
+  ],
+  gokturk: [
+    { slug: "eyupsultan", name: "Eyüpsultan" },
+    { slug: "alibeykoy", name: "Alibeyköy" },
+  ],
+};
+
 function buildInternalLinks(
   regionSlug: string,
   regionName: string,
@@ -214,18 +232,13 @@ function buildInternalLinks(
   }
 
   if (indexable && isKlimaService(serviceSlug)) {
-    const pair =
-      regionSlug === "eyupsultan"
-        ? "alibeykoy"
-        : regionSlug === "alibeykoy"
-          ? "eyupsultan"
-          : null;
-    if (pair && hasRegionServicePage(pair, serviceSlug)) {
-      const pairName = pair === "alibeykoy" ? "Alibeyköy" : "Eyüpsultan";
+    const cluster = KLIMA_CLUSTER_SPOKES[regionSlug] ?? [];
+    for (const item of cluster) {
+      if (!hasRegionServicePage(item.slug, serviceSlug)) continue;
       links.push({
-        href: `/servis-bolgeleri/${pair}/${serviceSlug}`,
-        label: `${pairName} ${serviceTitle}`,
-        description: `Yakın bölge: ${pairName} ${serviceTitle.toLowerCase()}`,
+        href: `/servis-bolgeleri/${item.slug}/${serviceSlug}`,
+        label: `${item.name} ${serviceTitle}`,
+        description: `Yakın bölge: ${item.name} ${serviceTitle.toLowerCase()}`,
       });
     }
   }
@@ -310,6 +323,13 @@ export function buildRegionServicePages(): RegionServicePageData[] {
           indexable,
         ),
         relatedPageSlugs: [regionSlug, serviceSlug],
+        ...(serviceSlug === "klima-servisi" &&
+        KLIMA_HERO_REGION_SLUGS.has(regionSlug)
+          ? {
+              image: getServiceHeroImage("klima-servisi"),
+              imageAlt: `${region.name} klima servisi — yerinde bakım ve onarım | Kerem Teknik Servis`,
+            }
+          : {}),
         canonicalPath,
         author: "Kerem Teknik Servis",
         technicalReviewer: "Kerem Teknik Servis Teknik Ekip",

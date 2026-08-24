@@ -8,10 +8,12 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { getBlogRepository } from "@/lib/blog";
+import { BLOG_POST_FAQS } from "@/lib/blog/post-faqs";
 import { formatDate, formatReadingTime } from "@/lib/blog/reading-time";
 import {
   buildArticleJsonLd,
   buildBreadcrumbJsonLd,
+  buildFaqPageJsonLd,
 } from "@/lib/seo/json-ld";
 import {
   getBlogCategoryServiceSlug,
@@ -52,6 +54,7 @@ export default async function BlogDetailPage({ params }: Params) {
 
   const internalLinks = getBlogPostInternalLinks(post.category, post.slug);
   const relatedServiceSlug = getBlogCategoryServiceSlug(post.category, post.slug);
+  const postFaqs = BLOG_POST_FAQS[post.slug];
 
   const breadcrumbs = [
     { label: "Ana Sayfa", href: "/" },
@@ -79,6 +82,7 @@ export default async function BlogDetailPage({ params }: Params) {
             { name: "Blog", href: "/blog" },
             { name: post.title },
           ]),
+          ...(postFaqs ? [buildFaqPageJsonLd(postFaqs)] : []),
         ]}
       />
 

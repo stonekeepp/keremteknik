@@ -1,13 +1,11 @@
 import { JsonLd } from "@/components/seo/JsonLd";
 import { InternalLinksSection } from "@/components/seo/InternalLinksSection";
+import { SeoPageHero } from "@/components/seo-pages/SeoPageHero";
 import { Accordion } from "@/components/ui/Accordion";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/ui/CTABand";
 import { Section } from "@/components/ui/Section";
 import { buildBreadcrumbJsonLd } from "@/lib/seo/json-ld";
 import type { SeoPageRecord } from "@/lib/seo-pages/types";
-import { SITE } from "@/lib/services/site";
 import Link from "next/link";
 
 type SeoPageTemplateProps = {
@@ -35,24 +33,13 @@ export function SeoPageTemplate({
   return (
     <>
       <JsonLd data={allJsonLd} />
-      <section className="relative bg-gradient-hero overflow-hidden">
-        <div className="absolute inset-0 opacity-30" />
-        <div className="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 md:py-20">
-          <Breadcrumb items={breadcrumbs} className="mb-6" />
-          <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary max-w-4xl">
-            {page.h1}
-          </h1>
-          <p className="text-body-lg text-on-surface-variant mt-5 max-w-3xl">
-            {page.intro}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <Button href={`tel:${SITE.phoneTel}`}>Hemen Ara</Button>
-            <Button href={`https://wa.me/${SITE.whatsapp}`} variant="whatsapp" external>
-              WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <SeoPageHero
+        h1={page.h1}
+        intro={page.intro}
+        breadcrumbs={breadcrumbs}
+        image={page.image}
+        imageAlt={page.imageAlt}
+      />
 
       {extraTop}
 

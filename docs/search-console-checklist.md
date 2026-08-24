@@ -1,5 +1,7 @@
 # Search Console Haftalık Kontrol Listesi
 
+Strateji, değişmez kurallar ve sıradaki işler: [seo-roadmap.md](./seo-roadmap.md).
+
 ## Kapsam
 
 Kerem Teknik Servis için yeni SEO sayfaları yayınlandıktan sonra aşağıdaki başlıklar haftalık kontrol edilmelidir.

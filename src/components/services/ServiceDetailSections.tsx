@@ -248,6 +248,12 @@ export function ServiceRelatedSection({
       label: "Alibeyköy Beyaz Eşya Servisi",
     });
   }
+  if (hasRegionServicePage("gokturk", currentSlug)) {
+    regionLinks.push({
+      href: `/servis-bolgeleri/gokturk/${currentSlug}`,
+      label: `Göktürk ${serviceTitle}`,
+    });
+  }
 
   if (related.length === 0 && regionLinks.length === 0) return null;
 
@@ -259,7 +265,7 @@ export function ServiceRelatedSection({
           subtitle="Bu hizmet için öncelikli servis bölgeleri"
           centered
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-gutter max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter max-w-5xl mx-auto">
             {regionLinks.map((link) => (
               <Link
                 key={link.href}

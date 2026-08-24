@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Params) {
     description: page.metaDescription,
     path: page.canonicalPath,
     noIndex: !page.indexable,
+    ogImage: page.image,
   });
 }
 
@@ -48,6 +49,7 @@ export default async function RegionServicePage({ params }: Params) {
           path: page.canonicalPath,
           areaName: page.regionName,
           serviceType: page.serviceTitle,
+          image: page.image,
         }),
         buildFaqPageJsonLd(page.faqs),
       ]}

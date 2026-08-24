@@ -30,6 +30,7 @@ export const STRIP_SIMILARITY_PATTERNS = [
 export const PRIORITY_REGION_SLUGS = [
   "alibeykoy",
   "eyupsultan",
+  "gokturk",
   "gaziosmanpasa",
   "kagithane",
 ] as const;
@@ -81,6 +82,9 @@ export const EYUPSULTAN_EXTRA_SERVICE_SLUGS = [
   "bulasik-makinesi-servisi",
 ] as const;
 
+/** Göktürk is a neighborhood spoke — klima only, not a full service clone. */
+export const GOKTURK_SERVICE_SLUGS = ["klima-servisi"] as const;
+
 export function getRegionServiceSlugs(regionSlug: string): readonly string[] {
   if (
     !(REGION_SERVICE_REGION_SLUGS as readonly string[]).includes(regionSlug)
@@ -89,6 +93,9 @@ export function getRegionServiceSlugs(regionSlug: string): readonly string[] {
   }
   if (regionSlug === "eyupsultan") {
     return [...REGION_SERVICE_SLUGS, ...EYUPSULTAN_EXTRA_SERVICE_SLUGS];
+  }
+  if (regionSlug === "gokturk") {
+    return GOKTURK_SERVICE_SLUGS;
   }
   return REGION_SERVICE_SLUGS;
 }
@@ -103,8 +110,8 @@ export function hasRegionServicePage(
 export const CONTENT_DATES = {
   /** Initial programmatic SEO batch publish */
   initialPublish: "2026-03-01T10:00:00.000Z",
-  /** Eyüpsultan local SEO content + linking refresh */
-  qcUpdate: "2026-07-29T10:00:00.000Z",
+  /** Alibeyköy/Eyüpsultan klima cluster + Göktürk spoke */
+  qcUpdate: "2026-08-24T10:00:00.000Z",
   /** Technical review stamp for verified content */
-  technicalReview: "2026-07-29T10:00:00.000Z",
+  technicalReview: "2026-08-24T10:00:00.000Z",
 } as const;

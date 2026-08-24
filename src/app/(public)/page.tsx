@@ -157,9 +157,9 @@ export default function HomePage() {
       <Section
         variant="muted"
         title="Öne çıkan servis bölgeleri"
-        subtitle="Alibeyköy, Eyüpsultan, Gaziosmanpaşa ve Kağıthane için bölge odaklı servis sayfaları"
+        subtitle="Alibeyköy, Eyüpsultan, Göktürk, Gaziosmanpaşa ve Kağıthane için bölge odaklı servis sayfaları"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter">
           {featuredRegions.map((region) => {
             const childSlugs = getRegionServiceSlugs(region.slug).slice(0, 3);
             return (

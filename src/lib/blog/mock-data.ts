@@ -1,8 +1,153 @@
 import type { BlogPost } from "./types";
 
 const now = "2026-01-15T10:00:00.000Z";
+const publishedAug2026 = "2026-08-24T18:00:00.000Z";
 
 export const SEED_BLOG_POSTS: BlogPost[] = [
+  {
+    id: "blog-6",
+    title: "Klima Gazı Ne Zaman Doldurulur?",
+    slug: "klima-gazi-ne-zaman-doldurulur",
+    excerpt:
+      "Klima gazı her yıl bitmez. Eksiklik belirtileri, kaçak onarımı ve doğru dolum sırası; ne zaman servis çağırmanız gerektiği.",
+    content: `Klima gazı ne zaman doldurulur sorusunun cevabı takvimde değil, ölçümde durur. Klimanız çalışıyor ama oda eskisi gibi serinlemiyorsa ilk refleks “gaz bitmiş, doldurulsun” oluyor. Bu refleks çoğu zaman yanlıştır. Soğutucu akışkan kapalı bir devrede dolaşır; sistem sızdırmıyorsa yıllarca aynı miktarda kalır.
+
+> **Kısa cevap:** Klima gazı ne zaman doldurulur? Yalnızca manometre ile eksiklik doğrulandıktan ve varsa kaçak onarıldıktan sonra. “Her yıl gaz basılsın” yaklaşımı kalıcı çözüm değildir.
+
+Yerinde [klima servisi](/hizmetlerimiz/klima-servisi) çağıranların çoğu aslında gaz değil, kirli filtre veya yanlış mod ile gelir. Gaz dolumunu gerçekten gerektiren durumu bu üçünden ayırmak, hem faturayı hem kompresörü korur. Soğutma şikâyetinin genel kontrol listesi [klima soğutmuyor rehberinde](/ariza-rehberi/klima/sogutmuyor) durur; burada konu yalnızca soğutucu akışkandır.
+
+## Klima gazı neden kendiliğinden bitmez?
+
+İç ünite ile dış ünite arasındaki bakır hat, kompresör ve serpantin kapalı bir çevrimdir. Gaz burada “yakıt” gibi tüketilmez; ısıyı taşır ve tekrar döner. Üretici kaynakları da aynı noktayı vurgular: [Bosch Home Comfort klima gazı rehberi](https://www.bosch-homecomfort.com/tr/tr/residential/bilgiler/klima-rehberi/klima-gazi-nedir-ve-ne-zaman-yenilenmelidir-/) gazın normal şartlarda yenilenmediğini, eksilmenin kaçak işareti olduğunu yazar.
+
+Saha pratiğinde sık gördüğümüz tablo şudur: geçen yaz “gaz dolduruldu”, bu yaz aynı şikâyet geri geldi. Kaçak kapanmadan yapılan dolum, belirtileri birkaç hafta gizler; kompresörü kuru çalışmaya zorlar ve faturayı iki kez ödetir. Klima gazı ne zaman doldurulur sorusunu “ne sıklıkla” diye sormak bu yüzden yanıltıcıdır. Sıklık yoktur; koşul vardır.
+
+## Soğutmama her zaman gaz eksikliği değildir
+
+Yazın en çok karıştırılan iki durum: kirli filtre ve düşük gaz. İkisi de “üflüyor ama serinletmiyor” hissi verir. Ayırt etmek için önce kullanımı kontrol edin.
+
+- Kumanda **soğutma** modunda mı, yoksa fan / kurutma / otomatikte mi?
+- Hedef sıcaklık oda sıcaklığının en az birkaç derece altında mı?
+- İç ünite filtresi tozla kapanmış mı?
+- Dış ünite önü kasa, çamaşır, klima kapağı veya bitki ile kapanmış mı?
+
+Bu dördü temizse ve hava hâlâ ılık geliyorsa gaz, fan motoru, inverter kart veya sensör gündeme gelir. Kart ve fan arızası gaz basmakla düzelmez; aksine yanlış dolum yeni bir arıza üretir. Dış ünite fanı dönmüyorsa önce elektrik ve motor bakılır; gaz tüpü bağlamak boşuna işçiliktir. Ekranda kod varsa [klima hata kodları](/hata-kodlari/klima) sayfasından modele göre bakın, kodu silmek için cihazı resetleyip tekrar çalıştırmayın.
+
+İnverter cihazlarda “çalışıyor gibi” ses, düşük devirde kompresörün gazı yetmediği anlamına da gelebilir. Bu yüzden “ses geliyor o halde gaz vardır” çıkarımı güvenilir değildir.
+
+## Klima gazı eksikliği belirtileri
+
+Aşağıdaki belirtilerin birkaçı bir aradaysa gaz kaçağı ihtimali yükselir. Tek belirti yeterli teşhis değildir; kesin sonuç basınç ölçümüdür.
+
+- İç ünite çalışır, üflenen hava oda sıcaklığına yakındır
+- Cihaz uzun süre çalışır, elektrik tüketimi artar, oda hedefe inmez
+- Dış ünite ince bakır borusunda karlanma veya buz görülür
+- İç üniteden su damlar; drenaj açık olsa bile yoğuşma düzensizdir
+- Bakır ek yerinde yağ izi veya hafif tıslama duyulur
+- Kompresör sık açılıp kapanır veya anormal tiz ses çıkarır
+
+Buzlanma “daha çok soğutuyor” anlamına gelmez. Düşük gazda evaporatör aşırı soğur, nem buz tutar, hava yolu kapanır. Buzlu çalıştırmaya devam etmek kompresöre zarar verir; cihazı kapatıp erimesini bekleyin.
+
+## Klima gaz doldurma doğru sırası
+
+Klima gaz doldurma, tüp bağlayıp “biraz basmak” değildir. Evde veya kalitesiz sahada yapılan üstüne ekleme (top-up), nemi ve havayı sisteme hapseder. Kerem Teknik Servis bağımsız özel teknik servis olarak yerinde şu sırayı izler:
+
+1. **Güvenli görsel kontrol.** Filtre, hava akışı, dış ünite fanı, elektrik bağlantısı ve yağ izi.
+2. **Basınç ölçümü.** Manometre ile emiş/basma değerleri ortam sıcaklığına göre okunur.
+3. **Kaçak tarama.** Elektronik dedektör, köpük veya gerekliyse azot basınç testi. Kaçak yok ve basınç normalse gaz doldurulmaz.
+4. **Onarım.** Flare gevşekliği, çatlak boru, servis vanası veya conta. Nokta kapanmadan dolum yapılmaz.
+5. **Vakum.** Nem ve hava tahliye edilir. Bu adım atlanırsa kompresör ve yağ bozulur.
+6. **Doğru gaz, doğru miktar.** Etiketteki R32 veya R410A karıştırılmaz; miktar tartı ile fabrika değerine çekilir.
+7. **Test.** Soğutma düşüşü, akım ve kaçak tekrar kontrol edilir. Onaysız parça değişimi yapılmaz.
+
+Bu sıra, klima gazı ne zaman doldurulur sorusunu pratikte cevaplar: 3. adımda eksiklik yoksa dolum yoktur. 4. adım atlanırsa dolum geçicidir.
+
+## R32 ve R410A karıştırılmaz
+
+Son yıllarda satılan split klimaların çoğu R32, eski stok R410A kullanır. İki gazın basınç eğrisi ve yağ tipi farklıdır. Yanlış tüp bağlamak soğutmayı düzeltmez; kartı, kompresörü ve garanti sürecini riske atar. Etiket iç veya dış ünite gövdesindedir; model yılı tahminle gaz seçilmez.
+
+Bağımsız servis olarak birden fazla markanın ev tipi split ve inverter cihazında bu ölçümü yaparız. Yetkili servis değiliz; marka adları yalnızca cihazı tanımlamak içindir. VRF/VRV veya merkezi sistem ayrı planlama ister.
+
+## Apartman balkonu ile site çatısı aynı iş değildir
+
+Gaz kaçağı çoğu zaman titreşimli flare bağlantısında veya eski bakır hatta çıkar. Teşhis süresi, dış üniteye nasıl ulaşıldığına göre değişir. Bu, yeni bir semt sayfası açmak için değil; randevuda doğru süreyi söylemek içindir.
+
+Eyüpsultan ilçesinde apartman stoğunda iç ünite genelde salon duvarında, dış ünite balkondadır; erişim kısadır. Semt ofisimize yakın Alibeyköy hatlarında toz ve trafik, filtre tıkanmasını gaz şikâyetiyle karıştırır: önce filtre, sonra basınç. Göktürk’te dış ünite sıkça çatı, bahçe veya otopark katındadır; site kaydı ve merdiven/çatı güvenliği randevu notuna yazılır. İlçe planı [Eyüpsultan klima servisi](/servis-bolgeleri/eyupsultan/klima-servisi), apartman yakınlığı [Alibeyköy klima servisi](/servis-bolgeleri/alibeykoy/klima-servisi), villa/site erişimi [Göktürk klima servisi](/servis-bolgeleri/gokturk/klima-servisi) sayfasındadır.
+
+Kemerburgaz ayrı URL değildir; ilçe kapsamında kalır.
+
+## Evde yapılacaklar ve yapılmayacaklar
+
+**Yapın**
+
+- Filtreyi kullanım kılavuzuna göre temizleyin
+- Pencereleri kapatıp 15–20 dakika soğutma modunda gözlemleyin
+- Dış ünite önünü açın; fanın döndüğünü uzaktan bakarak not edin
+- Buz varsa cihazı kapatın
+
+**Yapmayın**
+
+- Tüp, manifold veya “hazır gaz kiti” ile evde doldurmayın
+- Kaçak tespiti için açık alev kullanmayın
+- Buzlu serpantine sıcak su veya kesici alet uygulamayın
+- “Biraz gaz ekleyelim, kaçağa bakmayalım” teklifini kabul etmeyin
+
+Klima gazı ne zaman doldurulur sorusunu evde kesinleştirmek mümkün değildir. Basınç ve kaçak, alet ister.
+
+## Gaz dolumu ile klima bakımı aynı iş değildir
+
+Bakım; filtre, serpantin, drenaj, elektrik bağlantısı ve performans kontrolüdür. Gaz, bakımın otomatik parçası değildir. Sağlam sistemde bakım yapılır, gaz dokunulmaz. Bakım zamanlaması için [klima bakımı ne zaman yapılmalı](/blog/klima-bakimi-ne-zaman-yapilmali) yazısına, sezon öncesi plan için [periyodik bakım](/hizmetlerimiz/periyodik-bakim) sayfasına bakın.
+
+Yılda bir “gaz + bakım paketi” satmak, kaçaksız cihazda gereksiz işlemdir. Biz bu paketi varsayılan ürün olarak sunmuyoruz. Ölçümde eksik yoksa dolum önermeyiz.
+
+## İşlem ne kadar sürer, fiyat nasıl oluşur?
+
+Sadece basınç okuyup kaçak yoksa randevu kısa sürer: cihaz açılır, değerler not edilir, kullanıcıya “dolum yok” denir. Kaçak balkondaki flare’deyse sıkma ve vakum aynı ziyarette bitebilir. Çatıdaki kılcal çatlak, bakır hat değişimi veya kompresör yağının bozulduğu durumlarda iş ikinci güne kalabilir; site yönetimi izni de süreyi uzatır.
+
+Fiyatı önceden tek rakama bağlamak dürüst olmaz. Değişkenler gaz cinsi ve miktarı, kaçak noktası, yedek parça (vana, boru, conta) ve erişimdir. Yerinde teşhis sonrası netleştirilir; onayınız olmadan parça takılmaz. İnternetteki “2026 gaz dolumu 2.000 TL” listeleri cihazınızın etiketi ve kaçağı görmeden yazılmıştır.
+
+Yazın aynı gün randevu, rota ve ekip müsaitliğine bağlıdır. Acil soğutma ihtiyacı varsa cihazı buzlu çalıştırmayın; kısa süreli vantilatör veya oda değişimi, kompresörü kurtarır.
+
+## Sık sorulan sorular
+
+### Klima gazı ne zaman doldurulur?
+
+Klima gazı ne zaman doldurulur? Basınç ölçümü eksikliği gösterdiğinde ve kaçak onarıldıktan sonra. Belirti tek başına yeterli değildir.
+
+### Klima gazı kaç yılda bir doldurulur?
+
+Sabit yıl yoktur. Kaçak yoksa 8–15 yıl dolumsuz çalışan cihaz görülür. Her sezon dolum, genellikle kapanmamış kaçak demektir.
+
+### Klima gazı bittiği nasıl anlaşılır?
+
+Kesin yöntem ölçümdür. Zayıf soğutma, boru buzlanması, yağ izi ve yüksek tüketim şüphe uyandırır; kart veya fan arızası aynı tabloyu taklit edebilir.
+
+### Kaçak onarılmadan gaz doldurulur mu?
+
+Doldurulmamalıdır. Üstüne eklenen gaz kısa sürede kaçar, nem kalır, kompresör zorlanır. Önce nokta, sonra vakum, sonra dolum.
+
+### Klima gaz doldurma evde yapılır mı?
+
+Hayır. Yanlış gaz, aşırı basınç ve vakumsuz dolum cihazı bozar. R32 yanıcı sınıfta değerlendirilir; ev tipi tüp denemesi yangın ve yaralanma riski taşır.
+
+## Ne zaman servis çağırmalısınız?
+
+Filtre ve mod kontrolünden sonra soğutma hâlâ zayıfsa, buz veya yağ izi varsa, cihaz sürekli çalışıp odayı düşüremiyorsa kompresörü zorlamayın. Yerinde teşhis [klima servisi](/hizmetlerimiz/klima-servisi) kapsamındadır; randevu için [iletişim](/iletisim) formunu veya 0551 397 25 26 hattını kullanın.
+
+Kerem Teknik Servis, Alibeyköy Uygar Sokak No:8 A merkezli bağımsız özel teknik servistir. Markaların yetkili servisi değildir. Gaz dolumu vaat değil, ölçüm sonucudur.`,
+    coverImage: "/images/services/hero-klima-servisi.webp",
+    category: "Klima",
+    tags: ["klima gazı", "klima gaz doldurma", "klima kaçağı"],
+    status: "published",
+    metaTitle: "Klima Gazı Ne Zaman Doldurulur?",
+    metaDescription:
+      "Klima gazı her yıl bitmez. Kaçak, buzlanma ve zayıf soğutma belirtilerini; ölçüm, onarım ve dolum sırasını öğrenin. Yerinde kontrol isteyin.",
+    canonicalUrl: null,
+    readingTime: 7,
+    publishedAt: publishedAug2026,
+    createdAt: publishedAug2026,
+    updatedAt: publishedAug2026,
+  },
   {
     id: "blog-1",
     title: "Klima Bakımı Ne Zaman Yapılmalı?",
@@ -33,7 +178,7 @@ export const SEED_BLOG_POSTS: BlogPost[] = [
 
 Su akıtma, yanık kokusu, sigorta attırma, sürekli ses veya belirgin performans kaybı varsa cihazı zorlamayın. Gaz kaçağı, drenaj hattı, fan motoru ve elektronik kart kontrolleri kullanıcı müdahalesiyle yapılmamalıdır.
 
-[Klima servisi](/hizmetlerimiz/klima-servisi) ve [periyodik bakım](/hizmetlerimiz/periyodik-bakim) desteğiyle klimanızı sezon başlamadan kontrol ettirebilirsiniz. Soğutma performansı düşükse [klima soğutmuyor rehberi](/ariza-rehberi/klima/sogutmuyor) ve [Alibeyköy klima servisi](/servis-bolgeleri/alibeykoy/klima-servisi) sayfalarına göz atabilirsiniz.`,
+[Klima servisi](/hizmetlerimiz/klima-servisi) ve [periyodik bakım](/hizmetlerimiz/periyodik-bakim) desteğiyle klimanızı sezon başlamadan kontrol ettirebilirsiniz. Soğutma performansı düşükse [klima soğutmuyor rehberi](/ariza-rehberi/klima/sogutmuyor) ve [klima gazı ne zaman doldurulur](/blog/klima-gazi-ne-zaman-doldurulur) yazısına bakın. Bölge randevusu için [Eyüpsultan klima servisi](/servis-bolgeleri/eyupsultan/klima-servisi) ve [Alibeyköy klima servisi](/servis-bolgeleri/alibeykoy/klima-servisi) sayfalarına göz atabilirsiniz.`,
     coverImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuD4H13woV26a2-EfzcfOlw8HERkv_-I5U5q2jhcOCp-yBpu3HGZ3HsrkxJqcJi4ADtG1o5tzVUWW3GB3jurKaMchNkzZAfnWxS-5rVnMZh_aciXW_Kmq9Tn9k1s_F3aQRYHMyRnEgGNk_1n79TM8MjsQotXinz53lwy6c1hYm5IJCy36xwFh7cnqs4Rd-zKQYZwiDhBpCSMhrThKyyDu66If_Jj6V3uYMAWoPFvCzPRLdCG1SllIgQE",
     category: "Klima",

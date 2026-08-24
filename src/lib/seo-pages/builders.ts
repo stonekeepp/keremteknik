@@ -10,7 +10,7 @@ import type {
 } from "./types";
 
 const FAULT_GUIDE_BLOG: Record<string, string> = {
-  "klima/sogutmuyor": "/blog/klima-bakimi-ne-zaman-yapilmali",
+  "klima/sogutmuyor": "/blog/klima-gazi-ne-zaman-doldurulur",
   "kombi/su-akitiyor": "/blog/kombi-bakimi-neden-onemlidir",
   "bulasik-makinesi/musluk-isareti": "/blog/bulasik-makinesi-neden-koku-yapar",
   "bulasik-makinesi/su-bosaltmiyor": "/blog/bulasik-makinesi-neden-koku-yapar",
@@ -250,10 +250,10 @@ export function buildRegionHubPage(): SeoPageBase {
     title: "İstanbul Servis Bölgeleri | Kerem Teknik Servis",
     seoTitle: "İstanbul Servis Bölgeleri | Kerem Teknik Servis",
     metaDescription:
-      "İstanbul'un 39 ilçesi ve Alibeyköy için klima, kombi ve beyaz eşya teknik servis bölgeleri. Avrupa ve Anadolu Yakası kapsamı.",
+      "İstanbul'un 39 ilçesi ile Alibeyköy ve Göktürk semtleri için klima, kombi ve beyaz eşya teknik servis bölgeleri. Avrupa ve Anadolu Yakası kapsamı.",
     h1: "İstanbul Servis Bölgeleri",
     intro:
-      "Kerem Teknik Servis, İstanbul genelinde klima, kombi ve beyaz eşya arızaları için yerinde teknik destek sunar. Merkez ofisimiz Eyüpsultan Alibeyköy'dedir; aşağıdan ilçenize veya öncelikli hizmet alanlarımıza göz atabilirsiniz.",
+      "Kerem Teknik Servis, İstanbul genelinde klima, kombi ve beyaz eşya arızaları için yerinde teknik destek sunar. Merkez ofisimiz Eyüpsultan Alibeyköy'dedir; aşağıdan ilçenize, Alibeyköy veya Göktürk semt sayfalarına göz atabilirsiniz.",
     sections: [],
     faqs: [],
     internalLinks: [],

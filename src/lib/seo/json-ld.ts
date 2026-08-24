@@ -208,12 +208,14 @@ export function buildAreaServedServiceJsonLd({
   path,
   areaName,
   serviceType,
+  image,
 }: {
   name: string;
   description: string;
   path: string;
   areaName: string;
   serviceType: string;
+  image?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -227,5 +229,6 @@ export function buildAreaServedServiceJsonLd({
       name: areaName,
     },
     url: absoluteUrl(path),
+    ...(image ? { image: absoluteUrl(image) } : {}),
   };
 }

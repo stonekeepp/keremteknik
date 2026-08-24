@@ -92,7 +92,7 @@ export const REGION_SEEDS: RegionSeed[] = [
       "Topçular",
       "Rami Cuma",
     ],
-    nearbyAreas: ["eyupsultan", "gaziosmanpasa", "kagithane", "sultangazi", "bayrampasa"],
+    nearbyAreas: ["eyupsultan", "gokturk", "gaziosmanpasa", "kagithane", "sultangazi", "bayrampasa"],
     localProfile:
       "Alibeyköy, Eyüpsultan sınırında yoğun apartman yerleşimi ve sanayi-ticaret alanlarının iç içe geçtiği bir semttir. Eski bina stokunda kombi ve doğalgaz dönüşümü sonrası beyaz eşya yenileme talepleri sık görülür.",
     servicePlanningNote:
@@ -1025,7 +1025,7 @@ export const REGION_SEEDS: RegionSeed[] = [
       "Topçular",
       "Kemerburgaz",
     ],
-    nearbyAreas: ["alibeykoy", "gaziosmanpasa", "kagithane", "sultangazi", "bayrampasa"],
+    nearbyAreas: ["alibeykoy", "gokturk", "gaziosmanpasa", "kagithane", "sultangazi", "bayrampasa"],
     localProfile:
       "Eyüpsultan tarihi dokusu, sanayi alanları ve hızla gelişen konut bölgelerini bir arada barındırır. Alibeyköy ve Rami hatlarında yoğun apartman yerleşimi, Göktürk'te villa ve site projeleri kombi ve klima talebini şekillendirir.",
     servicePlanningNote:
@@ -1051,7 +1051,7 @@ export const REGION_SEEDS: RegionSeed[] = [
     ],
     localNotes: [
       "Kemerburgaz mahallesi servis kapsamı içindedir; ayrı ilçe sayfası olarak listelenmez.",
-      "Alibeyköy semti Eyüpsultan ilçesi altında ayrı sayfa ile sunulmaktadır.",
+      "Alibeyköy ve Göktürk semtleri Eyüpsultan ilçesi altında ayrı klima sayfaları ile sunulmaktadır.",
     ],
     secondaryKeyphrases: [
       "Eyüp teknik servis",
@@ -1139,7 +1139,7 @@ export const REGION_SEEDS: RegionSeed[] = [
       "Habipler",
       "Şemsipaşa",
     ],
-    nearbyAreas: ["eyupsultan", "alibeykoy", "sultangazi", "kagithane", "bayrampasa"],
+    nearbyAreas: ["eyupsultan", "alibeykoy", "gokturk", "sultangazi", "kagithane", "bayrampasa"],
     localProfile:
       "Gaziosmanpaşa yoğun apartman yerleşimi ve merkezi konumuyla kombi ve beyaz eşya servis talebinin yüksek olduğu bir ilçedir. Küçükköy ve Karayolları mahallelerinde eski bina stoku bakım ihtiyacını artırır.",
     servicePlanningNote:
@@ -1179,6 +1179,62 @@ export const REGION_SEEDS: RegionSeed[] = [
     localNotes: [
       "Küçükköy ve Yıldıztabya mahallelerinde yoğun konut stokunda kombi basınç ve petek sorunları sık görülür.",
       "Yeni yapılaşma alanlarında klima montaj sonrası ilk sezon bakım talepleri artar.",
+    ],
+  },
+  {
+    slug: "gokturk",
+    name: "Göktürk",
+    areaType: "semt",
+    parentArea: "eyupsultan",
+    parentAreaName: "Eyüpsultan",
+    continentSide: "Avrupa Yakası",
+    priorityTier: 1,
+    featured: true,
+    cornerstone: false,
+    latitude: 41.181,
+    longitude: 28.8875,
+    neighborhoods: [
+      "Göktürk Merkez",
+      "5. Levent",
+      "Işıklar",
+      "Ağaçlı",
+      "Odayeri",
+      "Pirinççi",
+      "Çiftalan",
+    ],
+    nearbyAreas: ["eyupsultan", "alibeykoy", "sariyer", "kagithane", "gaziosmanpasa"],
+    localProfile:
+      "Göktürk, Eyüpsultan kuzeyinde villa, site ve planlı konut projelerinin yoğunlaştığı bir semttir. Göktürk Merkez ve 5. Levent hattında dış ünite çoğu zaman bahçe, çatı veya site teknik alanı üzerindedir; ziyaretçi kaydı randevu saatini etkiler.",
+    servicePlanningNote:
+      "Alibeyköy ofisinden kuzey rotası TEM ve Göktürk bağlantısı üzerinden planlanır; site girişinde güvenlik bildirimi için daire ve blok bilgisi önceden alınır.",
+    uniqueIntro:
+      "Göktürk'te klima talepleri, kapalı site ve villa stoğuna göre Alibeyköy apartman hattından farklı planlanır. Dış ünite bahçe, çatı veya otopark katında olabildiğinden randevu kaydında ünite konumu istenir. Kerem Teknik Servis, Göktürk Merkez ve 5. Levent çevresine bağımsız özel teknik servis olarak yerinde teşhis sunar; Eyüpsultan ilçe kapsamı bu semtin bağlı olduğu ana bölgedir.",
+    uniqueFaqs: [
+      {
+        question: "Göktürk hangi ilçeye bağlı?",
+        answer:
+          "Göktürk, Eyüpsultan ilçesi sınırları içinde bir semttir. Servis planlaması Eyüpsultan kapsamında, Göktürk adresine göre yapılır.",
+      },
+      {
+        question: "Site ve villalarda klima servisi nasıl giriyor?",
+        answer:
+          "Güvenlik kaydı için blok, daire ve ziyaret saati önceden bildirilir. Dış ünite bahçe veya çatıdaysa erişim bilgisi randevu notuna yazılır.",
+      },
+      {
+        question: "Kemerburgaz Göktürk sayfasında mı?",
+        answer:
+          "Kemerburgaz ayrı semt sayfası değildir; Eyüpsultan ilçe servis kapsamındadır. Göktürk sayfası Göktürk Merkez, 5. Levent ve yakın kuzey mahalleler içindir.",
+      },
+    ],
+    secondaryKeyphrases: [
+      "Göktürk teknik servis",
+      "Göktürk klima bakım",
+      "5. Levent klima",
+    ],
+    highlightedServices: ["klima-servisi"],
+    localNotes: [
+      "Göktürk–Kemerburgaz yolunda öğleden sonra trafik varış aralığını uzatabilir; saat penceresi önceden paylaşılır.",
+      "Site yönetimleri çoğu zaman teknisyen kimlik bilgisi ister; randevu teyidinde bu bilgi hazırlanır.",
     ],
   },
   {

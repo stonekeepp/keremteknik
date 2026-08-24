@@ -28,6 +28,7 @@ const detailServices = SERVICES.filter((s) => s.hasDetailPage);
 const footerRegionLinks = [
   { href: "/servis-bolgeleri/alibeykoy", label: "Alibeyköy" },
   { href: "/servis-bolgeleri/eyupsultan", label: "Eyüpsultan" },
+  { href: "/servis-bolgeleri/gokturk", label: "Göktürk" },
   { href: "/servis-bolgeleri/gaziosmanpasa", label: "Gaziosmanpaşa" },
   { href: "/servis-bolgeleri/kagithane", label: "Kağıthane" },
   { href: "/servis-bolgeleri", label: "Tüm servis bölgeleri" },
