@@ -5,7 +5,8 @@
 **Canlı site:** https://keremteknikservis.com  
 **Bu dosya:** farklı PC’lerde SEO işine başlamadan **önce** oku. Uygulama bitince bu dosyadaki “Tamamlanan işler” ve “Sıradaki iş” bölümlerini güncelle.
 
-Haftalık Search Console rutini: [search-console-checklist.md](./search-console-checklist.md)
+Haftalık Search Console rutini: [search-console-checklist.md](./search-console-checklist.md)  
+Eyüpsultan mahalle hub detayı: [eyupsultan-mahalle-hub.md](./eyupsultan-mahalle-hub.md)
 
 ---
 
