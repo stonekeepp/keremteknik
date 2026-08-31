@@ -10,8 +10,11 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   buildRegionHubServiceLinks,
+  getMahalleHrefForNeighborhood,
+  getMahalleSeedsByGroup,
   getRegionPage,
   getRegionStaticParams,
+  EYUPSULTAN_SPOKE_REDIRECTS,
 } from "@/lib/seo-pages";
 
 export const dynamicParams = false;
@@ -46,6 +49,9 @@ export default async function RegionDetailPage({ params }: Params) {
   const otherServiceLinks = regionServiceLinks.filter(
     (link) => !klimaLinks.includes(link),
   );
+
+  const isEyupsultan = page.slug === "eyupsultan";
+  const mahalleGroups = isEyupsultan ? getMahalleSeedsByGroup() : [];
 
   return (
     <SeoPageTemplate
@@ -89,18 +95,74 @@ export default async function RegionDetailPage({ params }: Params) {
               </div>
               <div className="rounded-2xl bg-surface p-6 border border-outline-variant/30 lg:col-span-2">
                 <h2 className="text-headline-sm font-headline-sm text-primary mb-3">
-                  Mahalleler
+                  {isEyupsultan ? "Mahalle planlama sayfaları" : "Mahalleler"}
                 </h2>
-                <div className="flex flex-wrap gap-2">
-                  {page.neighborhoods.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-primary/8 px-3 py-1 text-body-md text-primary"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                {isEyupsultan ? (
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-body-md font-semibold text-primary mb-2">
+                        Semt spoke&apos;lar
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {Object.entries(EYUPSULTAN_SPOKE_REDIRECTS).map(
+                          ([name, href]) => (
+                            <Link
+                              key={name}
+                              href={href}
+                              className="rounded-full bg-secondary/10 px-3 py-1 text-body-md text-secondary hover:bg-secondary/20 transition-colors"
+                            >
+                              {name} →
+                            </Link>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                    {mahalleGroups.map((group) => (
+                      <div key={group.group}>
+                        <h3 className="text-body-md font-semibold text-primary mb-2">
+                          {group.label}
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          {group.items.map((item) => (
+                            <Link
+                              key={item.slug}
+                              href={`/servis-bolgeleri/eyupsultan/${item.slug}`}
+                              className="rounded-full bg-primary/8 px-3 py-1 text-body-md text-primary hover:bg-primary/15 transition-colors"
+                            >
+                              {item.name}
+                              {!item.indexable ? " (yakında)" : ""}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap gap-2">
+                    {page.neighborhoods.map((item) => {
+                      const href = getMahalleHrefForNeighborhood(item);
+                      if (href) {
+                        return (
+                          <Link
+                            key={item}
+                            href={href}
+                            className="rounded-full bg-primary/8 px-3 py-1 text-body-md text-primary hover:bg-primary/15 transition-colors"
+                          >
+                            {item}
+                          </Link>
+                        );
+                      }
+                      return (
+                        <span
+                          key={item}
+                          className="rounded-full bg-primary/8 px-3 py-1 text-body-md text-primary"
+                        >
+                          {item}
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
           </Section>

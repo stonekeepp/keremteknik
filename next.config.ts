@@ -16,6 +16,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/servis-bolgelerimiz/:path*",
+        destination: "/servis-bolgeleri/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

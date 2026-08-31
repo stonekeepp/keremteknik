@@ -7,6 +7,7 @@ import { buildErrorCodePages } from "./error-codes";
 import { FAULT_GUIDE_SEEDS } from "./fault-guides";
 import { REGION_SEEDS } from "./regions-seed";
 import { SERVICE_TITLES } from "./region-services";
+import { EYUPSULTAN_MAHALLE_SEEDS } from "./eyupsultan-mahalle-seed";
 
 export type KeywordMapEntry = {
   query: string;
@@ -48,6 +49,34 @@ const BLOG_CANONICAL: KeywordMapEntry[] = [
     pageType: "blog",
     source: "existing",
     reason: "Bakım zamanlaması bilgi niyeti blogda karşılanır.",
+  },
+  {
+    query: "klima su damlatıyor",
+    href: "/blog/klima-su-damlatiyor-nedenleri",
+    pageType: "blog",
+    source: "created",
+    reason: "Su damlatma bilgi niyeti; konum×hizmet landing değil, blog canonical.",
+  },
+  {
+    query: "klima su akıtıyor",
+    href: "/blog/klima-su-damlatiyor-nedenleri",
+    pageType: "blog",
+    source: "created",
+    reason: "Su akıtma eşanlamlı bilgi niyeti blogda karşılanır.",
+  },
+  {
+    query: "klima drenaj tıkanıklığı",
+    href: "/blog/klima-su-damlatiyor-nedenleri",
+    pageType: "blog",
+    source: "created",
+    reason: "Drenaj tıkanıklığı su damlatma yazısının secondary canonical’ı.",
+  },
+  {
+    query: "iç ünite su damlatıyor",
+    href: "/blog/klima-su-damlatiyor-nedenleri",
+    pageType: "blog",
+    source: "created",
+    reason: "İç ünite damlama niyeti aynı blogda toplanır.",
   },
   {
     query: "klima gazı ne zaman doldurulur",
@@ -92,6 +121,34 @@ const BLOG_CANONICAL: KeywordMapEntry[] = [
     reason: "Koku sorunu blog canonical; arıza rehberi destekleyici link alır.",
   },
 ];
+
+function buildMahalleEntries(): KeywordMapEntry[] {
+  const entries: KeywordMapEntry[] = [];
+  for (const seed of EYUPSULTAN_MAHALLE_SEEDS) {
+    entries.push({
+      query: `${seed.name} teknik servis`,
+      href: `/servis-bolgeleri/eyupsultan/${seed.slug}`,
+      pageType: "mahalle-hub",
+      source: "created",
+      reason: "Mahalle planlama niyeti mahalle hub canonical.",
+    });
+    entries.push({
+      query: `${seed.name} klima servisi`,
+      href: "/servis-bolgeleri/eyupsultan/klima-servisi",
+      pageType: "region-service",
+      source: "created",
+      reason: "Para niyeti mahalle hub değil; ilçe klima money sayfası canonical.",
+    });
+    entries.push({
+      query: `${seed.name} kombi servisi`,
+      href: "/servis-bolgeleri/eyupsultan/kombi-servisi",
+      pageType: "region-service",
+      source: "created",
+      reason: "Para niyeti mahalle hub değil; ilçe kombi money sayfası canonical.",
+    });
+  }
+  return entries;
+}
 
 function buildRegionEntries(): KeywordMapEntry[] {
   return REGION_SEEDS.flatMap((region) => {
@@ -204,6 +261,7 @@ export const KEYWORD_TO_URL_MAP: KeywordMapEntry[] = [
   ...BLOG_CANONICAL,
   ...REGIONAL_FAULT_CANNIBALIZATION,
   ...buildRegionEntries(),
+  ...buildMahalleEntries(),
   ...buildBrandEntries(),
   ...buildFaultEntries(),
   ...buildErrorCodeEntries(),

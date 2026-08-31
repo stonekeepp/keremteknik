@@ -36,6 +36,7 @@ Bunlar tartışılmaz. İhlal, doorway ve kannibalizasyon üretir.
 | Yapma | Neden |
 |---|---|
 | 28 mahalle / semt URL’si açma (Rami, Yeşilpınar, Kemerburgaz ayrı sayfa dahil) | ~39 ilçe hub zaten var; 30+ konum uyarısı, 50 hard stop. Kemerburgaz **Eyüpsultan ilçe hub** içinde kalır. |
+| **İstisna (2026-08-31):** Eyüpsultan mahalle **planlama hub** (27 URL, mahalle×hizmet matrisi yok) | Spam-safe: H1 planlama, para sorguları money canonical, dalga 1 = 5 index, `seo:check` benzerlik >%55 red. Detay: `eyupsultan-mahalle-seed.ts`, `/servis-bolgeleri/eyupsultan/[mahalle]`. |
 | `X klima servisi` / `X kombi servisi` başlıklı blog açma | SERP ticari landing; blog kannibalize eder, reklam sayfalarını zayıflatır. |
 | Aynı şablonu 10+ semte kopyalama | Thin / doorway. Unique override yoksa sayfa açma. |
 | Göktürk’e kombi/beyaz eşya sayfası açma | Göktürk yalnız **klima spoke**. |
@@ -117,6 +118,7 @@ Tek sorgu → tek URL. Tablo: `src/lib/seo-pages/keyword-map.ts`.
 | göktürk klima servisi | `/servis-bolgeleri/gokturk/klima-servisi` |
 | klima soğutmuyor | `/ariza-rehberi/klima/sogutmuyor` |
 | klima gazı ne zaman doldurulur / gaz doldurma / gazı bitti | `/blog/klima-gazi-ne-zaman-doldurulur` |
+| klima su damlatıyor / su akıtıyor / drenaj tıkanıklığı | `/blog/klima-su-damlatiyor-nedenleri` |
 | klima bakımı ne zaman | `/blog/klima-bakimi-ne-zaman-yapilmali` |
 | klima servisi (genel, konum yok) | `/hizmetlerimiz/klima-servisi` |
 
@@ -164,6 +166,36 @@ Düşen (düşük hacim, ~1 tıklama): kombi bakım blogu, kombi hizmet, yedek p
 
 **Çıkarım:** bilgi sayfaları (`arıza-rehberi`, `hata-kodlari`) tıklama getiriyor. Konum landing’i kopyalayan blog değil, bu kalıbı çoğalt.
 
+### 2026-08-28 — Klima su damlatıyor blogu
+
+**SERP (cursor-seo / WebSearch):** `klima su damlatıyor` ve `klima su akıtıyor` → bilgi niyeti (rehber/blog). Konum×hizmet landing yok. Yeni `/ariza-rehberi` açılmadı (kombi su akıtıyor zaten var; klima için blog yeterli).
+
+1. **Blog:** `/blog/klima-su-damlatiyor-nedenleri`
+   - Primary: `klima su damlatıyor`; secondary: su akıtıyor, drenaj tıkanıklığı, iç ünite su damlatıyor.
+   - H1/title para kelimesi değil; kısa cevap + drenaj/filtre/eğim/buz ayrımı.
+   - İç link: klima servisi / bakım / temizlik, soğutmama rehberi, gaz + bakım blogları, Eyüpsultan + Alibeyköy klima (1’er).
+   - Ters link: gaz/bakım blogları, `/hizmetlerimiz/klima-servisi`, `/ariza-rehberi/klima/sogutmuyor`.
+   - FAQPage (`post-faqs.ts`) + keyword-map + `mock-data` + `mock-blog-db.json`.
+   - Cover: mevcut `/images/services/hero-klima-servisi.webp`.
+
+**Deploy:** `git pull` → `docker compose --env-file docker/.env build --no-cache web` → `up -d --force-recreate web` → GSC URL Inspection.
+
+### 2026-08-31 — Bakım yazısı revizyonu + teknik (cursor-seo)
+
+**SERP (cursor-seo / WebSearch):** `klima bakımı ne zaman` → bilgi niyeti (mevsim takvimi, sıklık, DIY vs profesyonel). Konum×hizmet landing değil; mevcut URL derinleştirildi.
+
+1. **Blog revize:** `/blog/klima-bakimi-ne-zaman-yapilmali` (yeni URL yok)
+   - Kısa cevap + Nisan–Mayıs / Eylül–Ekim takvimi + yılda 1–2 kez sıklık
+   - Profesyonel bakım adımları vs evde güvenli kontroller; gaz dolumu ayrımı
+   - İç link: gaz/su blogları, soğutmama rehberi, klima bakımı/temizlik, Eyüpsultan + Alibeyköy klima (1’er)
+   - FAQPage (`post-faqs.ts`) + cover `hero-klima-servisi.webp`; `metaTitle` çift marka düzeltildi
+   - `readingTime` 7 dk; `updatedAt` 2026-08-31
+2. **Teknik:** `/servis-bolgelerimiz/*` → `/servis-bolgeleri/*` 301 (`next.config.ts`)
+3. **Title:** `kombi-bakimi-neden-onemlidir` `metaTitle` çift marka kaldırıldı
+4. **`seo:check`:** Red 0, Yellow 0 (161 sorgu)
+
+**Sıradaki (manuel):** su + bakım blogu deploy + GSC Inspection; GBP; DataForSEO MCP.
+
 ---
 
 ## 5. İç link kümesi (klima)
@@ -179,6 +211,8 @@ Düşen (düşük hacim, ~1 tıklama): kombi bakım blogu, kombi hizmet, yedek p
                               ↑↓
          /blog/klima-gazi-ne-zaman-doldurulur
                               ↑↓
+         /blog/klima-su-damlatiyor-nedenleri
+                              ↑↓
          /blog/klima-bakimi-ne-zaman-yapilmali
 ```
 
@@ -192,10 +226,10 @@ Yeni klima içeriği bu grafa bağlanmalı. Orphan URL bırakma.
 
 Önce kod çoğaltma; indekslenme ve GSC.
 
-- [ ] Canlıya al: Göktürk klima, unique Alibeyköy/Eyüpsultan klima, hero görseller, gaz blogu.
+- [ ] Canlıya al: Göktürk klima, unique Alibeyköy/Eyüpsultan klima, hero görseller, gaz blogu, **su blogu**.
 - [ ] GSC URL Inspection: yukarıdaki URL’ler + sitemap ping.
-- [ ] `/servis-bolgelerimiz/*` → `/servis-bolgeleri/*` 301 var mı? Yoksa ekle (Gaziosmanpaşa düşüşü).
-- [ ] Title şablonu: layout `%s | Kerem Teknik Servis`. Blog `metaTitle` içine marka koyma (çift marka). Eski 5 yazıda aynı hata varsa düzelt.
+- [x] `/servis-bolgelerimiz/*` → `/servis-bolgeleri/*` 301 (`next.config.ts`, 2026-08-31).
+- [x] Title şablonu: blog `metaTitle` çift marka düzeltildi (`klima-bakimi`, `kombi-bakimi`, 2026-08-31).
 - [ ] GBP: Eyüpsultan/Alibeyköy foto, saat, WhatsApp, hizmet listesi.
 - [ ] DataForSEO MCP’yi bağla (`user-dataforseo`); hacim/SERP tahminsiz ilerleme.
 
@@ -205,10 +239,10 @@ Yeni ilçe yok. Küme derinleşir.
 
 - [ ] Canlı GSC: `eyüpsultan klima servisi`, `alibeyköy klima servisi`, `göktürk klima servisi` — gösterim/ortalama konum.
 - [ ] Gaz blogu 2–4 hafta impression almazsa H1’i değiştirme; iç link ve GSC “denetle” tekrar.
-- [ ] **Sıradaki bilgi içeriği (biri, hepsi değil):**
-  1. Klima su damlatıyor / drenaj — SERP blog/rehber ise `/ariza-rehberi` veya blog; landing H1 kopyalama.
-  2. Mevcut `klima-bakimi-ne-zaman-yapilmali` yazısını gaz yazısı kalitesine çıkar (ince, 4 dk).
-  3. Klima hata kodu hub’ına 1–2 doğrulanmış kod (kaynak şart).
+- [x] **Sıradaki bilgi içeriği (biri, hepsi değil):** Klima su damlatıyor → `/blog/klima-su-damlatiyor-nedenleri` (2026-08-28).
+- [x] Mevcut `klima-bakimi-ne-zaman-yapilmali` yazısını gaz/su yazısı kalitesine çıkar (2026-08-31; yeni URL yok).
+- [ ] Klima hata kodu hub’ına 1–2 doğrulanmış kod (kaynak şart).
+- [ ] Su + bakım blogu canlıya al + GSC Inspection; 2–4 hafta impression yoksa H1 değiştirme, iç link/index.
 - [ ] Eyüpsultan klima FAQ / PAA: GSC sorgu raporu geldikten sonra, exact-match spoke kannibalizasyonu olmadan.
 - [ ] Hero: diğer öncelikli klima sayfalarına (Gaziosmanpaşa, Kağıthane) aynı görsel **isteğe bağlı**; zorunlu değil.
 
@@ -244,8 +278,9 @@ Yayında:
 
 | Slug | Rol |
 |---|---|
-| `klima-gazi-ne-zaman-doldurulur` | Klima kümesi spoke — birincil yeni yazı |
-| `klima-bakimi-ne-zaman-yapilmali` | Bakım zamanı; gaz yazısına bağlandı; **kalite yükselt** |
+| `klima-su-damlatiyor-nedenleri` | Klima kümesi — su/drenaj bilgi (2026-08-28) |
+| `klima-gazi-ne-zaman-doldurulur` | Klima kümesi spoke — gaz bilgi |
+| `klima-bakimi-ne-zaman-yapilmali` | Bakım zamanı; gaz/su kalitesine revize (2026-08-31) |
 | `kombi-bakimi-neden-onemlidir` | GSC düşen; kış öncesi revize |
 | `buzdolabi-sogutmuyorsa-ne-yapilmali` | Beyaz eşya |
 | `camasir-makinesi-sikma-yapmiyorsa-sebebi-ne-olabilir` | GSC E05 / arıza kalıbına yakın |
@@ -253,22 +288,22 @@ Yayında:
 
 Sıradaki adaylar (SERP önce `cursor-seo` + DataForSEO; landing değilse yaz):
 
-1. Klima su damlatıyor / iç ünite su akıtıyor  
-2. Klima bakımı yazısı genişletme (yeni URL yok)  
-3. Kombi basıncı neden düşer (mevcut su akıtıyor rehberiyle çakışmayı kontrol et)  
-4. Bulaşık elektrik gelmiyor — GSC yükselen rehberi güçlendir, kopya blog açma  
+1. ~~Klima su damlatıyor / iç ünite su akıtıyor~~ → **yayında** (`klima-su-damlatiyor-nedenleri`)
+2. ~~Klima bakımı yazısı genişletme~~ → **revize** (`klima-bakimi-ne-zaman-yapilmali`, 2026-08-31)
+3. Kombi basıncı neden düşer (mevcut su akıtıyor rehberiyle çakışmayı kontrol et) — **sıradaki** (Faz C)
+4. Bulaşık elektrik gelmiyor — GSC yükselen rehberi güçlendir, kopya blog açma
 
-Yeni blog checklist:
+Yeni blog checklist (`klima-su-damlatiyor-nedenleri`):
 
-- [ ] Primary, hiçbir konum×hizmet landing focus’u değil  
-- [ ] Title 50–60 **render** (şablon markayı ekler)  
-- [ ] Meta description 130–150  
-- [ ] Primary title, H1, slug, ilk 100 kelime, görsel alt  
-- [ ] Yoğunluk ~0,5–2%  
-- [ ] 3–5 gerçek iç link; para sayfalarına en fazla birer exact-match çapa  
-- [ ] `keyword-map.ts` + `BLOG_SEO_LINKS` + `BLOG_SERVICE_SLUG`  
-- [ ] FAQ şema: `src/lib/blog/post-faqs.ts`  
-- [ ] `seo:check`
+- [x] Primary, hiçbir konum×hizmet landing focus’u değil  
+- [x] Title 50–60 **render** (şablon markayı ekler)  
+- [x] Meta description 130–150  
+- [x] Primary title, H1, slug, ilk 100 kelime  
+- [x] Yoğunluk ~0,5–2% (doğrulama: `seo:check` / kelime sayımı)  
+- [x] 3–5+ gerçek iç link; para sayfalarına en fazla birer exact-match çapa  
+- [x] `keyword-map.ts` + `BLOG_SEO_LINKS` + `BLOG_SERVICE_SLUG`  
+- [x] FAQ şema: `src/lib/blog/post-faqs.ts`  
+- [x] `seo:check` (Red: 0) — canlı deploy ayrı
 
 ---
 
@@ -276,7 +311,7 @@ Yeni blog checklist:
 
 | Konu | Durum / hedef |
 |---|---|
-| `npm run seo:check` | Red 0, Yellow 0 (~133 sorgu, 2026-08-24) |
+| `npm run seo:check` | Red 0, Yellow 0 (242 sorgu, 2026-08-31; 27 mahalle keyword map) |
 | Şema | Ana: LocalBusiness. Blog: BlogPosting + FAQ. Bölge×hizmet: Service + FAQ + image |
 | CWV | Mevcut PageSpeed işi korunur; yeni hero `priority` + webp |
 | Blog veri | `DATA_MODE=mock` → `data/mock-blog-db.json`. Postgres henüz aktif değil |
@@ -289,6 +324,9 @@ Kod haritası:
 | Unique bölge×hizmet metin | `src/lib/seo-pages/region-service-content.ts` |
 | Hangi bölgede hangi hizmet URL | `src/lib/seo-pages/constants.ts` |
 | Semt/ilçe seed | `src/lib/seo-pages/regions-seed.ts` |
+| Eyüpsultan mahalle hub seed | `src/lib/seo-pages/eyupsultan-mahalle-seed.ts` |
+| Mahalle sayfa builder | `src/lib/seo-pages/mahalle-pages.ts` |
+| Mahalle rota | `src/app/(public)/servis-bolgeleri/eyupsultan/[mahalle]/page.tsx` |
 | Keyword canonical | `src/lib/seo-pages/keyword-map.ts` |
 | İç linkler | `src/lib/seo/internal-links.ts` |
 | Blog gövde | `src/lib/blog/mock-data.ts` + `data/mock-blog-db.json` |
@@ -328,7 +366,46 @@ Taban (Insights, son 28 gün, ~24 Ağu 2026): 36 tıklama, ~1,03K gösterim.
 
 ## 11. Sıradaki iş (tek cümle)
 
-**Canlıya al → GSC’de küme URL’lerini denetle → 301 eski path → DataForSEO bağla → Eylül’de tek bilgi içeriği (su damlatma veya bakım yazısı revizyonu), yeni ilçe/mahalle yok.**
+**Deploy + GSC Inspection (Eyüpsultan mahalle dalga 1) → 4 hafta GSC mahalle KPI → dalga 2 (5 mahalle index).**
+
+### Deploy + GSC Inspection (dalga 1)
+
+Deploy sonrası Search Console → URL Inspection → “Dizine eklenmesini iste”:
+
+| URL | Amaç |
+|---|---|
+| `/servis-bolgeleri/eyupsultan` | İlçe hub güncellemesi |
+| `/servis-bolgeleri/eyupsultan/klima-servisi` | Money landing |
+| `/servis-bolgeleri/eyupsultan/rami` | Mahalle hub dalga 1 |
+| `/servis-bolgeleri/eyupsultan/yesilpinar` | Mahalle hub dalga 1 |
+| `/servis-bolgeleri/eyupsultan/kemerburgaz` | Mahalle hub dalga 1 |
+| `/servis-bolgeleri/eyupsultan/emniyettepe` | Mahalle hub dalga 1 |
+| `/servis-bolgeleri/eyupsultan/merkez` | Mahalle hub dalga 1 |
+| `/servis-bolgeleri/gokturk/klima-servisi` | Spoke doğrulama |
+
+`noindex` mahalle hub’lar sitemap’te yok; dalga 2–3 onayından sonra `indexable: true` yap.
+
+### Reklam final URL tablosu (geo → money landing)
+
+| Kampanya geo / hedef | Final URL (reklam) | Not |
+|---|---|---|
+| Eyüpsultan genel | `/servis-bolgeleri/eyupsultan/klima-servisi` | Mahalle hub’a reklam yönlendirme |
+| Alibeyköy | `/servis-bolgeleri/alibeykoy/klima-servisi` | Spoke money |
+| Göktürk | `/servis-bolgeleri/gokturk/klima-servisi` | Spoke money |
+| Mahalle adı (Rami vb.) | `/servis-bolgeleri/eyupsultan/klima-servisi` | Mahalle hub organik/GBP destek |
+
+### 4 hafta GSC mahalle KPI (2026-09-28 civarı)
+
+- Dalga 1 mahalle URL’lerinde impression var mı?
+- `eyüpsultan klima servisi` money sayfası düştü mü? → kannibalizasyon; index durdur, dalga 2 ertele
+- Mahalle hub CTR düşük + money yükseliyorsa → beklenen hub–spoke ayrımı
+
+### Tamamlanan (2026-08-31)
+
+- Eyüpsultan ilçe hub: mahalle grid tıklanabilir, gruplu UI, spoke yönlendirme
+- 27 mahalle hub seed + rota + builder (`indexable` dalga 1: 5 mahalle)
+- `seo:check`: mahalle benzerlik >%55 red, H1 para kelimesi yasak, keyword-map canonical
+- Eyüpsultan klima money: dalga 1 mahalle hub iç linkleri
 
 ### Deploy notu (Docker)
 

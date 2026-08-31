@@ -282,12 +282,32 @@ Periyodik bakımda filtre hijyeni, serpantin kontrolü, fan performansı ve dren
         },
         {
           id: "neighborhoods-center",
-          title: "Rami, tarihi merkez ve diğer mahalleler",
-          body: `Yoğun apartman: Rami Cuma, Rami Yeni, Yeşilpınar (ilçe planı), Silahtarağa, Emniyettepe, Defterdar, Nişanca, Mithatpaşa, Akşemsettin, Merkez, Mimar Sinan, İslambey, İhsaniye, Düğmeciler, Sakarya, Esentepe, Çırçır, Akpınar.
+          title: "Rami, tarihi merkez ve mahalle planlama hub'ları",
+          body: `Yoğun apartman: Rami, Yeşilpınar, Silahtarağa, Emniyettepe, Defterdar, Nişanca, Mithatpaşa, Akşemsettin, Merkez, Mimar Sinan, İslambey, İhsaniye, Düğmeciler, Sakarya, Esentepe, Çırçır, Akpınar.
+
+Dalga 1 mahalle hub (index): Rami, Yeşilpınar, Kemerburgaz, Emniyettepe, Merkez — planlama notları için /servis-bolgeleri/eyupsultan/{mahalle} sayfalarına bakın. Para niyetli klima/kombi randevusu bu ilçe money sayfasından alınır.
 
 Tarihi dokuya yakın mahallelerde eski elektrik tesisatı ve sigorta kapasitesi kontrol listesindedir. Yüksek katlı veya site girişli adreslerde balkon/teras güvenliği randevu notuna eklenir.
 
 Odayeri, Pirinççi, Ağaçlı ve Çiftalan kuzey mahalleleri Göktürk semt sayfasıyla da ilişkilidir; ilçe randevusu yine bu hub üzerinden alınabilir.`,
+        },
+        {
+          id: "mahalle-hub-rami",
+          title: "Rami mahalle planlama",
+          href: "/servis-bolgeleri/eyupsultan/rami",
+          body: `Rami apartman bandı, sanayi-konut karışımı ve eski tesisat notları mahalle hub sayfasında. Klima/kombi money randevusu bu ilçe klima sayfasından planlanır.`,
+        },
+        {
+          id: "mahalle-hub-yesilpinar",
+          title: "Yeşilpınar mahalle planlama",
+          href: "/servis-bolgeleri/eyupsultan/yesilpinar",
+          body: `Yeşilpınar sanayi tozu, filtre sıklığı ve apartman erişim notları mahalle hub'da. Para sorguları ilçe klima money URL'sine gider.`,
+        },
+        {
+          id: "mahalle-hub-kemerburgaz",
+          title: "Kemerburgaz mahalle planlama",
+          href: "/servis-bolgeleri/eyupsultan/kemerburgaz",
+          body: `Kemerburgaz villa-site, çatı dış ünite ve uzun drenaj notları mahalle hub sayfasında. İlçe kapsamı; ayrı ilçe URL'si yok.`,
         },
         {
           id: "device-types",

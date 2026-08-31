@@ -1,6 +1,7 @@
 import { STRIP_SIMILARITY_PATTERNS } from "./constants";
 import { KEYWORD_TO_URL_MAP } from "./keyword-map";
 import { getAllSeoPages, getIndexableSeoPages } from "./registry";
+import { EYUPSULTAN_MAHALLE_SEEDS } from "./eyupsultan-mahalle-seed";
 
 export type SeoValidationIssue = {
   level: "red" | "yellow";
@@ -44,6 +45,8 @@ export function jaccardSimilarity(a: string, b: string): number {
   return intersection / union;
 }
 
+const MAHALLE_MONEY_H1_PATTERN = /klima servisi|kombi servisi/i;
+
 export function validateSeoPages(): SeoValidationIssue[] {
   const issues: SeoValidationIssue[] = [];
   const pages = getAllSeoPages();
@@ -77,6 +80,14 @@ export function validateSeoPages(): SeoValidationIssue[] {
     }
     if (!page.h1) {
       issues.push({ level: "red", message: "Eksik H1", path: page.canonicalPath });
+    }
+
+    if (page.pageType === "mahalle-hub" && MAHALLE_MONEY_H1_PATTERN.test(page.h1)) {
+      issues.push({
+        level: "red",
+        message: "Mahalle H1 para kelimesi içeremez (klima/kombi servisi)",
+        path: page.canonicalPath,
+      });
     }
 
     if (seenCanonical.has(page.canonicalPath)) {
@@ -219,6 +230,39 @@ export function validateSeoPages(): SeoValidationIssue[] {
         });
       }
     }
+  }
+
+  const mahallePages = indexable.filter((page) => page.pageType === "mahalle-hub");
+  for (let i = 0; i < mahallePages.length; i += 1) {
+    for (let j = i + 1; j < mahallePages.length; j += 1) {
+      const first = mahallePages[i];
+      const second = mahallePages[j];
+      const firstBody = [first.intro, ...first.sections.map((section) => section.body)].join(" ");
+      const secondBody = [second.intro, ...second.sections.map((section) => section.body)].join(" ");
+      const similarity = jaccardSimilarity(firstBody, secondBody);
+
+      if (similarity >= 0.55) {
+        issues.push({
+          level: "red",
+          message: `Mahalle hub benzerliği kritik (${Math.round(similarity * 100)}%) -> ${second.canonicalPath}`,
+          path: first.canonicalPath,
+        });
+      } else if (similarity >= 0.45) {
+        issues.push({
+          level: "yellow",
+          message: `Mahalle hub benzerliği yüksek (${Math.round(similarity * 100)}%) -> ${second.canonicalPath}`,
+          path: first.canonicalPath,
+        });
+      }
+    }
+  }
+
+  const indexableMahalleCount = EYUPSULTAN_MAHALLE_SEEDS.filter((s) => s.indexable).length;
+  if (indexableMahalleCount > 27) {
+    issues.push({
+      level: "red",
+      message: `Indexlenebilir mahalle sayısı limiti aşıldı: ${indexableMahalleCount}`,
+    });
   }
 
   return issues;

@@ -2,8 +2,127 @@ import type { BlogPost } from "./types";
 
 const now = "2026-01-15T10:00:00.000Z";
 const publishedAug2026 = "2026-08-24T18:00:00.000Z";
+const publishedAug28 = "2026-08-28T10:00:00.000Z";
+const publishedAug31 = "2026-08-31T10:00:00.000Z";
 
 export const SEED_BLOG_POSTS: BlogPost[] = [
+  {
+    id: "blog-7",
+    title: "Klima Su Damlatıyor: Nedenleri ve Ne Yapmalı?",
+    slug: "klima-su-damlatiyor-nedenleri",
+    excerpt:
+      "İç üniteden su damlamasının en sık nedenleri drenaj tıkanıklığı, kirli filtre ve eğim hatasıdır. Güvenli kontroller ve ne zaman servis çağıracağınız.",
+    content: `Klima su damlatıyor şikâyeti yazın en sık gelen çağrılardan biridir. Salon duvarındaki iç ünitenin altından damlayan su, mobilyayı ıslatır; panik “cihaz bozuldu, gaz bitti” refleksini tetikler. Çoğu zaman sorun soğutucu gaz değil, yoğuşma suyunun dışarı çıkamamasıdır.
+
+> **Kısa cevap:** İç üniteden su sızıyorsa önce cihazı kapatın, suyun elektronik karta ulaşmasını engelleyin. En sık neden tıkanmış drenaj hattı, kirli filtre veya bozuk iç ünite eğimidir. Hortuma tel sokmak veya panel sökmek risklidir; güvenli kontrollerden sonra yerinde teşhis gerekir.
+
+Yoğuşma normaldir: soğutma modunda iç ünite bataryası soğur, odadaki nem suya dönüşür ve drenaj tavası + hortum üzerinden dışarı akar. Su **iç mekâna** sızıyorsa tahliye yolu tıkanmış veya yönü bozulmuş demektir. Soğutmama şikâyeti ayrı bir listedir; genel kontrol için [klima soğutmuyor rehberine](/ariza-rehberi/klima/sogutmuyor) bakın. Burada konu yalnızca su sızıntısıdır.
+
+## İç ünite damlaması ile dış ünite damlaması aynı şey değildir
+
+Dış ünite veya tahliye hortumunun dış ucundan damlayan su, doğru montajda beklenen bir sonuçtur: iç mekândaki yoğuşma dışarı taşınır. Hortum ucu tıkalıysa veya yukarı kıvrılmışsa su geri basar; o zaman klima su damlatıyor tablosu içeride görülür.
+
+İç ünitenin altından, yanından veya duvar birleşiminden gelen su normal sayılmaz. Elektronik kart ıslanmadan önce fişi çekin veya sigortayı kapatın. Su + elektrik bir arada güvenlik riskidir; “biraz daha çalışsın, oda soğusun” yaklaşımı kartı bozabilir.
+
+Üretici rehberleri de aynı ayrımı yapar: [Bosch Home Comfort — klima neden su akıtır](https://www.bosch-homecomfort.com/tr/tr/residential/bilgiler/klima-rehberi/klima-neden-su-akitir-/) tahliye tıkanıklığı, filtre ve montaj eğimini öne çıkarır.
+
+Split cihazlarda yoğuşma miktarı oda nemine, hedef sıcaklığa ve çalışma süresine bağlıdır. Nemli yaz günlerinde tava daha hızlı dolar; hat kısmen tıkalıysa taşma erken başlar. Kışın ısıtma modunda iç ünite damlaması nadirdir; görürseniz farklı bir kaçak (yoğuşma dışı) ihtimali yükselir.
+
+## Klima su damlatıyor: en sık nedenler
+
+Tek belirti tek teşhis değildir; saha sırası genelde şöyledir.
+
+### 1. Drenaj hattı tıkanıklığı
+
+Toz, yosun, küf ve böcek kalıntısı hortumu daraltır veya tıkar. Klima uzun çalıştıkça tava dolar, taşar. Belirti: dış uçtan su gelmezken iç ünite damlar; bazen şıpırtı sesi veya küf kokusu eşlik eder. Bu, klima drenaj tıkanıklığı aramalarının da karşılığıdır.
+
+### 2. Kirli filtre ve bozulmuş hava akışı
+
+Filtre tıkalıysa batarya aşırı soğuyabilir, buz tutar; cihaz kapanınca buz erir ve tavayı aşar. Aynı anda soğutma zayıfsa önce filtre, sonra basınç bakılır. Gaz şüphesi için [klima gazı ne zaman doldurulur](/blog/klima-gazi-ne-zaman-doldurulur) yazısına geçin; suyun tek başına “gaz bitmiş” demek olmadığını unutmayın.
+
+### 3. İç ünite eğimi veya montaj hatası
+
+İç ünite tahliye tarafına hafif eğimli olmalıdır. Yanlış terazide su tavayı aşar; montajdan hemen sonra başlayan damlama sık bu gruptadır. Sonradan duvar dübellerinin gevşemesi de eğimi bozabilir.
+
+### 4. Drenaj tavası / hortum hasarı
+
+Tava çatlamış, yerinden oynamış veya hortum ezilmiş, delinmiş olabilir. Koku ile birlikte damlama biyofilm birikimine işaret eder; yüzeysel silmek kök nedeni çözmez. Hijyen odaklı temizlik [klima bakımı](/hizmetlerimiz/klima-bakimi) ve [klima temizliği](/hizmetlerimiz/klima-temizligi) kapsamındadır.
+
+### 5. Buzlanma sonrası ani taşma
+
+Düşük gaz, kirli filtre veya zayıf hava akışı bataryada buz bırakır. Erime ani ve yoğundur; tava kapasitesini aşar. Buzlu çalıştırmaya devam etmeyin; cihazı kapatıp erimesini bekleyin.
+
+## Evde güvenli kontroller
+
+**Yapın**
+
+- Cihazı kapatın; suyu karttan uzak tutun, zemini kurulayın
+- Kullanım kılavuzuna göre filtreyi çıkarıp yıkayın / kurulayın
+- Dışarıdaki drenaj hortumu ucuna bakın: kıvrık mı, tıkaç var mı, su damlıyor mu?
+- İç ünite duvara göre belirgin bir yana yatık mı, gözle not edin
+- Koku var mı, buz görünüyor mu kaydedin
+
+**Yapmayın**
+
+- Hortuma tel, askı teli veya sivri cisim sokmayın (delinme riski)
+- Panel söküp tava “temizliği” için bilinmeyen kimyasal dökmeyin
+- Açık alev veya kaynar su ile buz eritmeye çalışmayın
+- Su varken cihazı zorla çalıştırmayın
+
+Görünür dış uç tıkanıklığı bazen elle açılır; hat içindeki jel kıvamındaki birikinti basınçlı temizlik ister. “Sirke döküp kapatalım” denemeleri yanlış eğimde veya delik hortumda işe yaramaz.
+
+## Apartman balkonu ile site hattı
+
+Alibeyköy ve Eyüpsultan apartman stoğunda iç ünite çoğu zaman salon duvarında, hortum balkona iner; kısa hat, hızlı tıkanma. Dar sokak tozu filtre aralığını kısaltır. Göktürk ve site adreslerinde dış ünite çatı veya otopark katındaysa uzun drenaj, güvenlik kaydı ve erişim randevu süresini uzatır.
+
+İlçe planı [Eyüpsultan klima servisi](/servis-bolgeleri/eyupsultan/klima-servisi), semt ofis yakınlığı [Alibeyköy klima servisi](/servis-bolgeleri/alibeykoy/klima-servisi) sayfasındadır. Bu yazı konum landing’i değildir; su şikâyetinin bilgi rehberidir.
+
+## Bakım ile acil su sızıntısı ayrımı
+
+Periyodik bakım filtre, serpantin, drenaj akış testi ve performans kontrolünü kapsar; taşmayı önler. Zamanlama için [klima bakımı ne zaman yapılmalı](/blog/klima-bakimi-ne-zaman-yapilmali) yazısına bakın. Su hâlihazırda akıyorsa “sonraki bakıma bırakayım” demeyin: kart ıslanması onarımı büyütür.
+
+Yerinde teşhis [klima servisi](/hizmetlerimiz/klima-servisi) kapsamındadır. Tıkanıklık açılır, eğim düzeltilir, gerekirse hortum veya tava değişir; onayınız olmadan parça takılmaz. Bağımsız özel teknik servisiz; markaların yetkili servisi değiliz.
+
+## Sık sorulan sorular
+
+### Klima su damlatıyor neden olur?
+
+En sık neden drenaj hattı tıkanıklığıdır. Kirli filtre, yanlış eğim, çatlak tava ve buz erimesi de aynı belirtiyi verir.
+
+### Klima su akıtıyor ise gaz mı bitmiş?
+
+Çoğu zaman hayır. Gaz eksikliği buzlanma yoluyla dolaylı taşma yapabilir; asıl sık neden tahliye tıkanıklığıdır. Basınç ölçümü olmadan gaz basmak doğru değildir.
+
+### Dış üniteden su damlaması normal mi?
+
+Doğru montajda dış tahliye ucundan damlama beklenen yoğuşma tahliyesidir. İç üniteden damlama normal değildir.
+
+### Drenaj hortumunu kendim temizleyebilir miyim?
+
+Dış uçtaki görünür tıkaç bazen temizlenebilir. Hortum içine tel sokmak, panel sökmek veya bilinmeyen kimyasal dökmek önerilmez.
+
+### Ne zaman servis çağırmalıyım?
+
+Su tekrarlıyorsa, koku veya buz varsa, filtre temizliği yetmiyorsa, elektrik/ıslanma riski varsa cihazı kapatıp servis alın.
+
+## Ne zaman servis çağırmalısınız?
+
+İç üniteden damlama filtre + dış uç kontrolünden sonra devam ediyorsa kompresörü veya kartı riske atmayın. Randevu için [iletişim](/iletisim) formunu veya 0551 397 25 26 hattını kullanın.
+
+Kerem Teknik Servis, Alibeyköy Uygar Sokak No:8 A merkezli bağımsız özel teknik servistir. Markaların yetkili servisi değildir. Su sızıntısında önce güvenlik, sonra kök neden.`,
+    coverImage: "/images/services/hero-klima-servisi.webp",
+    category: "Klima",
+    tags: ["klima su damlatıyor", "klima drenaj", "klima su akıtıyor"],
+    status: "published",
+    metaTitle: "Klima Su Damlatıyor: Nedenleri ve Ne Yapmalı?",
+    metaDescription:
+      "Klima su damlatıyor? Drenaj tıkanıklığı, kirli filtre ve eğim hatalarını ayırın. Güvenli kontroller ve ne zaman servis çağıracağınız.",
+    canonicalUrl: null,
+    readingTime: 5,
+    publishedAt: publishedAug28,
+    createdAt: publishedAug28,
+    updatedAt: publishedAug28,
+  },
   {
     id: "blog-6",
     title: "Klima Gazı Ne Zaman Doldurulur?",
@@ -42,7 +161,7 @@ Aşağıdaki belirtilerin birkaçı bir aradaysa gaz kaçağı ihtimali yükseli
 - İç ünite çalışır, üflenen hava oda sıcaklığına yakındır
 - Cihaz uzun süre çalışır, elektrik tüketimi artar, oda hedefe inmez
 - Dış ünite ince bakır borusunda karlanma veya buz görülür
-- İç üniteden su damlar; drenaj açık olsa bile yoğuşma düzensizdir
+- İç üniteden su damlar; drenaj açık olsa bile yoğuşma düzensizdir ([klima su damlatıyor rehberi](/blog/klima-su-damlatiyor-nedenleri))
 - Bakır ek yerinde yağ izi veya hafif tıslama duyulur
 - Kompresör sık açılıp kapanır veya anormal tiz ses çıkarır
 
@@ -153,45 +272,125 @@ Kerem Teknik Servis, Alibeyköy Uygar Sokak No:8 A merkezli bağımsız özel te
     title: "Klima Bakımı Ne Zaman Yapılmalı?",
     slug: "klima-bakimi-ne-zaman-yapilmali",
     excerpt:
-      "Klima bakımının ideal zamanları, düzenli bakımın faydaları ve bakım gerektiren uyarı işaretleri hakkında bilmeniz gerekenler.",
-    content: `Klimalar hem yaz hem kış aylarında yoğun kullanılır. Düzenli bakım, cihaz ömrünü uzatır, enerji tüketimini kontrol altında tutar ve sezon ortasında yaşanabilecek arızaları azaltır.
+      "Ev tipi klimalarda yılda en az bir kez, yoğun kullanımda iki kez bakım önerilir. Yaz öncesi Nisan–Mayıs, ısıtma kullanıyorsanız Eylül–Ekim ideal dönemdir.",
+    content: `Klima bakımı ne zaman yapılmalı sorusunun cevabı, cihazı ne kadar ve hangi modda kullandığınıza bağlıdır. Takvimde tek bir “bakım günü” yoktur; doğru zaman, cihazın en yoğun çalışacağı sezondan hemen öncedir. Bakımı ertelemek, yazın ortasında soğutma düşüşü, koku veya su damlatma şikâyetiyle karşılaşmanız anlamına gelir.
 
-## İdeal Bakım Zamanları
+> **Kısa cevap:** Konut kullanımında yılda en az bir kez profesyonel klima bakımı yapılmalıdır; ideal dönem yaz öncesi Nisan–Mayıs’tır. Klimayı kışın ısıtma modunda da kullanıyorsanız Eylül–Ekim’de ikinci kontrol önerilir. Evde yalnızca filtre temizliği yapılır; gaz, drenaj ve serpantin işlemleri servis kapsamındadır.
 
-- **İlkbahar (Nisan-Mayıs):** Yaz sezonu öncesi soğutma performansı için ideal dönemdir.
-- **Sonbahar (Eylül-Ekim):** Isıtma modu kullanılacaksa ikinci bakım önerilir.
+Düzenli bakım cihaz ömrünü uzatır, elektrik tüketimini kontrol altında tutar ve sezon ortası arızaları azaltır. Bakım ile [klima gazı dolumu](/blog/klima-gazi-ne-zaman-doldurulur) aynı iş değildir: sağlam sistemde gaz dokunulmaz, filtre ve drenaj temizlenir. Soğutma şikâyeti için önce [klima soğutmuyor rehberine](/ariza-rehberi/klima/sogutmuyor) bakın; burada konu yalnızca bakım zamanlamasıdır.
 
-## Evde Yapılabilecek Güvenli Kontroller
+## Mevsimlik bakım takvimi
 
-- Filtrelerin tozlanıp tozlanmadığını kontrol edin ve kullanım kılavuzuna uygun şekilde temizleyin.
-- Kumanda modunun, sıcaklık ayarının ve fan hızının doğru seçildiğinden emin olun.
-- İç ünitede kötü koku, anormal ses, su damlatma veya performans düşüşü olup olmadığını gözlemleyin.
+Türkiye’de ev tipi split klimalar çoğunlukla yazın soğutma, bir kısmı kışın ısıtma için çalışır. Bakım takvimi bu kullanıma göre kurulur.
 
-## Bakım Gerektiren Belirtiler
+### Yaz sezonu öncesi (Nisan – Mayıs)
 
-- Klimadan kötü koku gelmesi
-- Soğutma veya ısıtma performansında düşüş
-- Cihazdan anormal sesler
-- Su damlatma veya nem artışı
+Kış boyunca kapalı veya seyrek kullanılan cihazda toz, küf ve kuru kir birikir. Bahar bakımı, yaz sıcakları başlamadan filtre, serpantin ve drenaj hattını temizler. Soğutma performansı sezonun ilk gününden ölçülür; kompresör zorlanmadan oda hedefe iner.
 
-## Ne Zaman Servis Çağırmalısınız?
+Bu dönem randevu yoğunluğu artar; Mayıs ortasına bırakmak aynı gün servis bulmayı zorlaştırabilir. Nisan sonu – Mayıs başı genelde en rahat penceredir.
 
-Su akıtma, yanık kokusu, sigorta attırma, sürekli ses veya belirgin performans kaybı varsa cihazı zorlamayın. Gaz kaçağı, drenaj hattı, fan motoru ve elektronik kart kontrolleri kullanıcı müdahalesiyle yapılmamalıdır.
+### Kış / ısıtma öncesi (Eylül – Ekim)
 
-[Klima servisi](/hizmetlerimiz/klima-servisi) ve [periyodik bakım](/hizmetlerimiz/periyodik-bakim) desteğiyle klimanızı sezon başlamadan kontrol ettirebilirsiniz. Soğutma performansı düşükse [klima soğutmuyor rehberi](/ariza-rehberi/klima/sogutmuyor) ve [klima gazı ne zaman doldurulur](/blog/klima-gazi-ne-zaman-doldurulur) yazısına bakın. Bölge randevusu için [Eyüpsultan klima servisi](/servis-bolgeleri/eyupsultan/klima-servisi) ve [Alibeyköy klima servisi](/servis-bolgeleri/alibeykoy/klima-servisi) sayfalarına göz atabilirsiniz.`,
-    coverImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD4H13woV26a2-EfzcfOlw8HERkv_-I5U5q2jhcOCp-yBpu3HGZ3HsrkxJqcJi4ADtG1o5tzVUWW3GB3jurKaMchNkzZAfnWxS-5rVnMZh_aciXW_Kmq9Tn9k1s_F3aQRYHMyRnEgGNk_1n79TM8MjsQotXinz53lwy6c1hYm5IJCy36xwFh7cnqs4Rd-zKQYZwiDhBpCSMhrThKyyDu66If_Jj6V3uYMAWoPFvCzPRLdCG1SllIgQE",
+Isıtma modu kullanıyorsanız yaz birikintisi temizlenmeli; nemli serpantin kışın odaya küflü hava üfleyebilir. Isıtma performansı ve drenaj testi yapılır. Yalnızca yazın soğutma kullanan konutlarda ikinci bakım şart değildir; yılda bir kez yaz öncesi yeterli olabilir.
+
+### Yoğun kullanımda sıklık
+
+Günde birkaç saatten fazla çalışan, evcil hayvanlı, tozlu veya kalabalık evlerde altı ayda bir kontrol mantıklıdır. Ofis, dükkân ve sürekli açık işyerleri ayrı planlama ister; bu yazı ev tipi konut odaklıdır.
+
+## Profesyonel bakımda neler yapılır?
+
+[Klima bakımı](/hizmetlerimiz/klima-bakimi) ve [klima temizliği](/hizmetlerimiz/klima-temizligi) kapsamında yerinde tipik adımlar şunlardır:
+
+1. **Filtre kontrolü ve temizlik** — tıkanıklık hava akışını bozar, buzlanma ve zayıf soğutma yapar.
+2. **İç serpantin ve fan temizliği** — toz tabakası ısı transferini düşürür, koku üretir.
+3. **Drenaj hattı akış testi** — tıkanıklık [klima su damlatıyor](/blog/klima-su-damlatiyor-nedenleri) tablosunun öncüsüdür.
+4. **Dış ünite görsel kontrolü** — fan, kanat temizliği, hortum ve montaj eğimi.
+5. **Elektrik bağlantıları ve kumanda testi** — gevşek klemens, mod ve sıcaklık ayarı doğrulaması.
+6. **Performans gözlemi** — soğutma/ısıtma düşüşü, anormal ses veya koku not edilir.
+
+Gaz basıncı şüphe varsa ayrı ölçüm yapılır; rutin bakım paketine “otomatik gaz dolumu” dahil değildir. Ölçümde eksik yoksa dolum önerilmez.
+
+## Evde yapılabilecek güvenli kontroller
+
+**Yapın**
+
+- Kullanım kılavuzuna göre filtreyi çıkarıp yıkayın veya süpürün; tam kuruyana kadar bekleyin
+- Kumandanın soğutma/ısıtma modunu ve hedef sıcaklığı kontrol edin
+- İç ünitede koku, ses, su izi veya performans düşüşü olup olmadığını not edin
+- Dış ünite önünün kapalı olmadığını, hortum ucunun tıkalı olmadığını gözle kontrol edin
+
+**Yapmayın**
+
+- Panel söküp serpantine kimyasal dökmeyin
+- Drenaj hortumuna tel veya sivri cisim sokmayın
+- “Bakım” adı altında evde gaz tüpü bağlamayın
+- Koku veya su varken cihazı zorla çalıştırmayın
+
+Ayda bir filtre kontrolü ev kullanıcısının yapabileceği tek düzenli işlemdir. Serpantin yıkama, basınçlı temizlik ve elektrik testi ekipman ister.
+
+## Bakım gerektiren belirtiler (takvim dışı)
+
+Sezon öncesi beklemeyin; aşağıdakilerden biri varsa erken bakım veya arıza teşhisi gerekir:
+
+- Klimadan küf, ekşi veya yanık koku
+- Soğutma veya ısıtma belirgin zayıfladı; cihaz uzun süre çalışıyor, oda inmiyor
+- Tıkırtı, gıcırtı veya anormal titreşim
+- İç üniteden su damlatma — ayrıntı: [klima su damlatıyor nedenleri](/blog/klima-su-damlatiyor-nedenleri)
+- Son bakımdan bir yıldan uzun süre geçti ve performans düştü
+
+Tek belirti tek teşhis değildir. Zayıf soğutma gaz, filtre veya kart kaynaklı olabilir; [klima gazı ne zaman doldurulur](/blog/klima-gazi-ne-zaman-doldurulur) yazısında ölçüm şartı anlatılır.
+
+## Bakım ile acil arıza ayrımı
+
+Periyodik bakım önleyicidir; su sızıntısı, yanık kokusu, sigorta attırma veya sürekli arıza kodu acildir. “Zaten bakım randevusu aldım, bir hafta daha çalışsın” yaklaşımı kart ıslanması veya kompresör zorlanması riskini büyütür.
+
+Su şikâyeti varsa önce cihazı kapatın; bakım tarihini beklemeyin. Koku ve performans için kısa süreli kullanım tolere edilebilir; yine de randevuyu öne çekmek daha güvenlidir.
+
+## Apartman ve site farkı
+
+Alibeyköy ve Eyüpsultan apartman stoğunda iç ünite salon duvarında, dış ünite balkondadır; erişim kısa, filtre tozu hızlı birikir. Site ve Göktürk tipi adreslerde dış ünite çatı veya otopark katında olabilir; erişim ve güvenlik kaydı randevu süresini uzatır.
+
+Bölge planı [Eyüpsultan klima servisi](/servis-bolgeleri/eyupsultan/klima-servisi) ve [Alibeyköy klima servisi](/servis-bolgeleri/alibeykoy/klima-servisi) sayfalarındadır. Bu yazı konum landing’i değildir; bakım zamanlaması bilgi rehberidir.
+
+## Sık sorulan sorular
+
+### Klima bakımı ne zaman yapılmalı?
+
+Konut kullanımında yılda en az bir kez; ideal dönem yaz öncesi Nisan–Mayıs. Isıtma modu kullanılıyorsa Eylül–Ekim’de ikinci kontrol önerilir.
+
+### Klima bakımı kaç ayda bir yapılır?
+
+Normal ev kullanımında yılda bir kez yeterlidir. Günde saatlerce çalışan veya tozlu ortamda altı ayda bir düşünülebilir.
+
+### Evde klima bakımı yapılır mı?
+
+Yalnızca filtre temizliği ve görsel kontrol evde yapılır. Serpantin, drenaj, gaz ve elektrik işlemleri servis kapsamındadır.
+
+### Klima bakımında gaz dolumu yapılır mı?
+
+Hayır, rutin bakımın parçası değildir. Gaz yalnızca basınç ölçümüyle eksiklik doğrulandığında ve kaçak onarıldıktan sonra doldurulur.
+
+### Ne zaman servis çağırmalıyım?
+
+Sezon öncesi planlı bakım için veya koku, su, ses, performans düşüşü ve bir yılı aşan bakımsızlık için. Acil su veya yanık kokusunda beklemeyin.
+
+## Ne zaman servis çağırmalısınız?
+
+Nisan–Mayıs veya Eylül–Ekim penceresinde [periyodik bakım](/hizmetlerimiz/periyodik-bakim) veya [klima servisi](/hizmetlerimiz/klima-servisi) randevusu alın. Belirti varsa takvimi beklemeyin. Randevu için [iletişim](/iletisim) formunu veya 0551 397 25 26 hattını kullanın.
+
+Kerem Teknik Servis, Alibeyköy Uygar Sokak No:8 A merkezli bağımsız özel teknik servistir. Markaların yetkili servisi değildir. Bakım ölçüm ve temizlik işidir; gereksiz gaz dolumu önerilmez.`,
+    coverImage: "/images/services/hero-klima-servisi.webp",
     category: "Klima",
-    tags: ["klima bakım", "periyodik bakım"],
+    tags: ["klima bakım", "periyodik bakım", "klima bakımı ne zaman"],
     status: "published",
-    metaTitle: "Klima Bakımı Ne Zaman Yapılmalı? | Kerem Teknik Servis",
+    metaTitle: "Klima Bakımı Ne Zaman Yapılmalı?",
     metaDescription:
-      "Klima bakımının ne zaman yapılması gerektiğini, ideal dönemleri ve bakım belirtilerini uzmanlarımızdan öğrenin.",
+      "Klima bakımı ne zaman yapılmalı? Yaz öncesi Nisan–Mayıs, ısıtma kullanıyorsanız Eylül–Ekim. Yılda kaç kez, evde ne yapılır, gaz dolumu ayrımı.",
     canonicalUrl: null,
-    readingTime: 4,
+    readingTime: 7,
     publishedAt: "2026-01-10T09:00:00.000Z",
     createdAt: now,
-    updatedAt: now,
+    updatedAt: publishedAug31,
   },
   {
     id: "blog-2",
@@ -228,7 +427,7 @@ Kış sezonu öncesinde [kombi servisi](/hizmetlerimiz/kombi-servisi) veya [peri
     category: "Kombi",
     tags: ["kombi bakım", "petek"],
     status: "published",
-    metaTitle: "Kombi Bakımı Neden Önemlidir? | Kerem Teknik Servis",
+    metaTitle: "Kombi Bakımı Neden Önemlidir?",
     metaDescription:
       "Kombi bakımının güvenlik, verim ve arıza önleme açısından önemini; evde güvenli kontrolleri ve servis gerektiren durumları öğrenin.",
     canonicalUrl: null,

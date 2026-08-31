@@ -1,4 +1,5 @@
 import type { BlogCategory } from "@/lib/blog/types";
+import { getMahalleSeed } from "@/lib/seo-pages/mahalle-nav";
 import { SERVICES } from "@/lib/services/site";
 
 export const INTERNAL_LINK_LIMIT = 6;
@@ -53,6 +54,7 @@ const CATEGORY_SERVICE_SLUG: Partial<Record<BlogCategory, string>> = {
 const BLOG_SERVICE_SLUG: Record<string, string> = {
   "klima-bakimi-ne-zaman-yapilmali": "klima-servisi",
   "klima-gazi-ne-zaman-doldurulur": "klima-servisi",
+  "klima-su-damlatiyor-nedenleri": "klima-servisi",
   "kombi-bakimi-neden-onemlidir": "kombi-servisi",
   "buzdolabi-sogutmuyorsa-ne-yapilmali": "buzdolabi-servisi",
   "camasir-makinesi-sikma-yapmiyorsa-sebebi-ne-olabilir":
@@ -251,6 +253,10 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
                     href: "/blog/klima-gazi-ne-zaman-doldurulur",
                     label: "Klima gazı ne zaman doldurulur",
                   },
+                  {
+                    href: "/blog/klima-su-damlatiyor-nedenleri",
+                    label: "Klima su damlatıyor nedenleri",
+                  },
                 ]
               : []),
           ]
@@ -373,7 +379,37 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
   } else if (path.startsWith("/servis-bolgeleri/")) {
     const parts = path.replace("/servis-bolgeleri/", "").split("/");
     const regionSlug = parts[0];
-    const serviceSlug = parts[1];
+    const secondSlug = parts[1];
+    const mahalleSeed =
+      regionSlug === "eyupsultan" && secondSlug
+        ? getMahalleSeed(secondSlug)
+        : undefined;
+
+    if (mahalleSeed) {
+      block = {
+        heading: "Mahalle ve ilçe bağlantıları",
+        links: finalizeLinks(
+          [
+            { href: "/servis-bolgeleri/eyupsultan", label: "Eyüpsultan ilçe hub" },
+            {
+              href: "/servis-bolgeleri/eyupsultan/klima-servisi",
+              label: "Eyüpsultan klima servisi",
+            },
+            {
+              href: "/servis-bolgeleri/eyupsultan/kombi-servisi",
+              label: "Eyüpsultan kombi servisi",
+            },
+            {
+              href: "/servis-bolgeleri/alibeykoy/klima-servisi",
+              label: "Alibeyköy klima servisi",
+            },
+            { href: "/iletisim", label: "Servis talebi oluştur" },
+          ],
+          path,
+        ),
+      };
+    } else {
+    const serviceSlug = secondSlug;
     const regionChildLinks =
       regionSlug === "eyupsultan"
         ? [
@@ -441,6 +477,10 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
                   href: "/blog/klima-gazi-ne-zaman-doldurulur",
                   label: "Klima gazı ne zaman doldurulur",
                 },
+                {
+                  href: "/blog/klima-su-damlatiyor-nedenleri",
+                  label: "Klima su damlatıyor nedenleri",
+                },
               ]
             : []),
           { href: "/iletisim", label: "İletişim" },
@@ -448,6 +488,7 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
         path,
       ),
     };
+    }
   } else if (path === "/markalar") {
     block = {
       heading: "Marka ve servis sayfaları",
@@ -493,6 +534,15 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
   } else if (path.startsWith("/ariza-rehberi/")) {
     const faultKey = path.replace("/ariza-rehberi/", "");
     const relatedBlog = FAULT_GUIDE_BLOG[faultKey];
+    const extraKlimaBlog =
+      faultKey === "klima/sogutmuyor"
+        ? [
+            {
+              href: "/blog/klima-su-damlatiyor-nedenleri",
+              label: "Klima su damlatıyor nedenleri",
+            },
+          ]
+        : [];
     block = {
       heading: "İlgili sayfalar",
       links: finalizeLinks(
@@ -500,6 +550,7 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
           ...(relatedBlog
             ? [{ href: relatedBlog, label: "İlgili blog rehberi" }]
             : []),
+          ...extraKlimaBlog,
           { href: "/ariza-rehberi", label: "Tüm arıza rehberleri" },
           { href: "/hata-kodlari", label: "Hata kodları rehberi" },
           { href: "/hizmetlerimiz", label: "Ana hizmet sayfaları" },
@@ -533,6 +584,7 @@ export function getInternalLinksForPath(pathname: string): InternalLinksBlock | 
 const BLOG_SEO_LINKS: Record<string, ContextualLink[]> = {
   "klima-bakimi-ne-zaman-yapilmali": [
     { href: "/blog/klima-gazi-ne-zaman-doldurulur", label: "Klima gazı ne zaman doldurulur" },
+    { href: "/blog/klima-su-damlatiyor-nedenleri", label: "Klima su damlatıyor nedenleri" },
     { href: "/hizmetlerimiz/klima-bakimi", label: "Klima bakımı hizmeti" },
     { href: "/hizmetlerimiz/klima-gaz-dolumu", label: "Klima gaz dolumu" },
     { href: "/ariza-rehberi/klima/sogutmuyor", label: "Klima soğutmuyor rehberi" },
@@ -547,9 +599,20 @@ const BLOG_SEO_LINKS: Record<string, ContextualLink[]> = {
     { href: "/hizmetlerimiz/klima-gaz-dolumu", label: "Klima gaz dolumu" },
     { href: "/ariza-rehberi/klima/sogutmuyor", label: "Klima soğutmuyor rehberi" },
     { href: "/blog/klima-bakimi-ne-zaman-yapilmali", label: "Klima bakımı ne zaman yapılmalı" },
+    { href: "/blog/klima-su-damlatiyor-nedenleri", label: "Klima su damlatıyor nedenleri" },
     { href: "/servis-bolgeleri/eyupsultan/klima-servisi", label: "Eyüpsultan klima servisi" },
     { href: "/servis-bolgeleri/alibeykoy/klima-servisi", label: "Alibeyköy klima servisi" },
     { href: "/servis-bolgeleri/gokturk/klima-servisi", label: "Göktürk klima servisi" },
+  ],
+  "klima-su-damlatiyor-nedenleri": [
+    { href: "/hizmetlerimiz/klima-servisi", label: "Klima servisi" },
+    { href: "/hizmetlerimiz/klima-bakimi", label: "Klima bakımı" },
+    { href: "/hizmetlerimiz/klima-temizligi", label: "Klima temizliği" },
+    { href: "/ariza-rehberi/klima/sogutmuyor", label: "Klima soğutmuyor rehberi" },
+    { href: "/blog/klima-gazi-ne-zaman-doldurulur", label: "Klima gazı ne zaman doldurulur" },
+    { href: "/blog/klima-bakimi-ne-zaman-yapilmali", label: "Klima bakımı ne zaman yapılmalı" },
+    { href: "/servis-bolgeleri/eyupsultan/klima-servisi", label: "Eyüpsultan klima servisi" },
+    { href: "/servis-bolgeleri/alibeykoy/klima-servisi", label: "Alibeyköy klima servisi" },
   ],
   "kombi-bakimi-neden-onemlidir": [
     { href: "/ariza-rehberi/kombi/su-akitiyor", label: "Kombi su akıtıyor rehberi" },

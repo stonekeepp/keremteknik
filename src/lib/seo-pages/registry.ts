@@ -10,6 +10,8 @@ import {
   buildRegionHubPage,
 } from "./builders";
 import { buildErrorCodeHubPages, buildErrorCodePages } from "./error-codes";
+import { buildMahallePages } from "./mahalle-pages";
+import { getMahalleStaticParams } from "./mahalle-nav";
 import { buildRegionPages } from "./regions";
 import {
   buildRegionServicePages,
@@ -21,6 +23,7 @@ export function getAllSeoPages(): SeoPageRecord[] {
   return [
     buildRegionHubPage(),
     ...buildRegionPages(),
+    ...buildMahallePages(),
     ...buildRegionServicePages(),
     buildBrandHubIndexPage(),
     ...buildBrandHubPages(),
@@ -39,6 +42,10 @@ export function getIndexableSeoPages(): SeoPageRecord[] {
 
 export function getSeoPageByCanonicalPath(path: string): SeoPageRecord | undefined {
   return getAllSeoPages().find((page) => page.canonicalPath === path);
+}
+
+export function getMahalleParams(): { mahalle: string }[] {
+  return getMahalleStaticParams();
 }
 
 export function getRegionStaticParams(): { bolge: string }[] {

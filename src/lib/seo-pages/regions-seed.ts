@@ -1031,27 +1031,43 @@ export const REGION_SEEDS: RegionSeed[] = [
     servicePlanningNote:
       "Merkez servis noktasına yakınlık nedeniyle Eyüpsultan ve Alibeyköy adreslerine hızlı randevu planlanabilir.",
     uniqueIntro:
-      "Eyüpsultan, Kerem Teknik Servis'in ana hizmet bölgesi olarak öncelikli planlama yapılan ilçelerden biridir. Alibeyköy, Rami ve Yeşilpınar'daki yoğun konutlarda kombi ve beyaz eşya arızaları, Göktürk'teki villalarda klima bakımı sık karşılaşılan ihtiyaçlardır. Tarihi bölgedeki eski bina stokunda tesisat uyumluluğu kontrolü önem taşır. Kemerburgaz ve çevre mahalleler de servis kapsamı içinde değerlendirilir.",
+      "Eyüpsultan, Kerem Teknik Servis'in ana hizmet bölgesidir; merkez ofisimiz Alibeyköy Uygar Sokak üzerindedir. İlçe panoraması apartman yoğunluğu (Rami, Yeşilpınar), tarihi merkez (Akşemsettin, Mithatpaşa) ve kuzey villa-site bandını (Kemerburgaz, Odayeri) kapsar. Alibeyköy ve Göktürk semtleri ayrı spoke sayfalarıyla sunulur; diğer mahalleler için planlama hub sayfaları açılmıştır. Klima, kombi ve beyaz eşya randevuları ilçe money sayfalarından planlanır.",
     uniqueFaqs: [
       {
-        question: "Eyüpsultan'da teknik servis ne kadar sürede gelir?",
+        question: "Eyüpsultan'da teknik servis aynı gün gelir mi?",
         answer:
-          "Merkez bölgeye yakınlık sayesinde çoğu adrese aynı gün veya ertesi iş günü randevu planlanabilir; saat aralığı önceden bildirilir.",
+          "Ofise yakın mahallelerde (Merkez, Rami, Yeşilpınar, Emniyettepe) çoğu talebe aynı gün veya ertesi iş günü randevu planlanabilir. Kuzey mahallelerde trafik bandı paylaşılır.",
       },
       {
-        question: "Eyüpsultan Göktürk'e servis gidiyor mu?",
+        question: "Hangi mahalleler için ayrı planlama sayfası var?",
         answer:
-          "Evet. Göktürk, Kemerburgaz, Alibeyköy ve tüm Eyüpsultan mahallelerine randevu ile yerinde servis planlanır.",
+          "Rami, Yeşilpınar, Kemerburgaz, Emniyettepe ve Merkez dahil 27 mahalle hub sayfası vardır. Alibeyköy ve Göktürk semt spoke sayfalarına yönlendirilir.",
       },
       {
-        question: "Eyüpsultan'da kombi ve klima servisi birlikte alınabilir mi?",
+        question: "Alibeyköy ile Eyüpsultan klima sayfası farkı nedir?",
+        answer:
+          "Eyüpsultan sayfası ilçe geneli hub'dır. Alibeyköy semt spoke'u ofis yakını apartman ve cadde notlarını taşır; para sorguları için ayrı klima money URL'si kullanılır.",
+      },
+      {
+        question: "Göktürk klima servisi nereden planlanır?",
+        answer:
+          "Göktürk semti için /servis-bolgeleri/gokturk/klima-servisi spoke sayfası kullanılır. İlçe geneli Eyüpsultan klima hub'ından okunur.",
+      },
+      {
+        question: "Eyüpsultan'da kombi ve klima birlikte planlanır mı?",
         answer:
           "Aynı adreste birden fazla cihaz için tek randevuda planlama yapılabilir; cihaz listesini paylaşmanız yeterlidir.",
       },
+      {
+        question: "Mahalle sayfasından doğrudan klima randevusu alınır mı?",
+        answer:
+          "Mahalle hub sayfaları planlama ve erişim notları içindir. Arıza ve bakım randevusu Eyüpsultan klima, kombi veya beyaz eşya money sayfalarından alınır.",
+      },
     ],
     localNotes: [
-      "Kemerburgaz mahallesi servis kapsamı içindedir; ayrı ilçe sayfası olarak listelenmez.",
-      "Alibeyköy ve Göktürk semtleri Eyüpsultan ilçesi altında ayrı klima sayfaları ile sunulmaktadır.",
+      "Kemerburgaz mahalle hub sayfası planlama notları içindir; ayrı ilçe sayfası yoktur.",
+      "Alibeyköy ve Göktürk semtleri Eyüpsultan ilçesi altında ayrı spoke sayfalarıyla sunulur.",
+      "Dalga 1 index: Rami, Yeşilpınar, Kemerburgaz, Emniyettepe, Merkez mahalle hub URL'leri.",
     ],
     secondaryKeyphrases: [
       "Eyüp teknik servis",

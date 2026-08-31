@@ -1,6 +1,7 @@
 export type PageType =
   | "region-hub"
   | "region"
+  | "mahalle-hub"
   | "region-service"
   | "brand-hub"
   | "brand-service"
@@ -104,6 +105,26 @@ export type RegionPageData = SeoPageBase & {
   localNotes?: string[];
 };
 
+import type { BuildingStock, DriveTimeBand } from "./eyupsultan-mahalle-seed";
+
+export type MahallePageData = SeoPageBase & {
+  pageType: "mahalle-hub";
+  name: string;
+  parentIlce: string;
+  parentIlceName: string;
+  latitude: number;
+  longitude: number;
+  distanceKmAir: number;
+  driveTimeBand: DriveTimeBand;
+  buildingStock: BuildingStock;
+  klimaAccessNote: string;
+  kombiNote?: string;
+  nearbyMahalleler: string[];
+  localProfile: string;
+  planningNote: string;
+  group: string;
+};
+
 export type RegionServicePageData = SeoPageBase & {
   pageType: "region-service";
   regionSlug: string;
@@ -174,6 +195,7 @@ export type ErrorCodePageData = SeoPageBase & {
 export type SeoPageRecord =
   | SeoPageBase
   | RegionPageData
+  | MahallePageData
   | RegionServicePageData
   | BrandHubPageData
   | BrandServicePageData
